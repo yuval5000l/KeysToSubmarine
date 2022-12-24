@@ -81,4 +81,9 @@ public class MainMenuScript : MonoBehaviour
         PauseMenu.isGamePaused = true;
 
     }
+    public void QuitGame()
+    {
+        Time.timeScale = 1f;
+        Application.Quit();
+    }
 }
