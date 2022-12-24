@@ -140,6 +140,8 @@ public class StationScript : MonoBehaviour
     
     
 
+
+
     // This checks which player is on the station
     private void OnCollisionEnter2D(Collision2D collision)
     {
