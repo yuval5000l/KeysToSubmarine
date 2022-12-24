@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players_in_station: []
   station_active: 0
-  mission_index: 0
+  mission_index: 1
   press_in_a_row: 0
   missionManager: {fileID: 1962775321}
 --- !u!1 &446122626
@@ -3836,7 +3836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players_in_station: []
   station_active: 0
-  mission_index: 0
+  mission_index: 2
   press_in_a_row: 0
   missionManager: {fileID: 1962775321}
 --- !u!1 &1654148969
@@ -5014,7 +5014,10 @@ MonoBehaviour:
   time_left: 30
   score: 0
   missionsToWinTarget: 10
-  stations: []
+  stations:
+  - {fileID: 7760786}
+  - {fileID: 313241012}
+  - {fileID: 1643094140}
   stationsNames: []
   missionsExplanation: []
 --- !u!1 &2064588931
