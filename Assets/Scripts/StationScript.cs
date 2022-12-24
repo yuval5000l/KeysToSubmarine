@@ -43,11 +43,13 @@ public class StationScript : MonoBehaviour
     {
         if (Input.GetKeyDown(players_action_key[0]))
         {
-            Debug.Log("Station Nuetralized");
+            Debug.Log("Station Neutralized");
             station_active = false;
             missionManager.AddTime(5);
         }
     }
+
+
 
     // This checks which player is on the station
     private void OnCollisionEnter2D(Collision2D collision)
