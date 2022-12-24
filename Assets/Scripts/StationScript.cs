@@ -19,6 +19,8 @@ public class StationScript : MonoBehaviour
 
     [SerializeField] private MissionManager missionManager;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,15 @@ public class StationScript : MonoBehaviour
         }
     }
 
+    private void getKeyDownTwoPlayers()
+    {
+        if (Input.GetKey(players_action_key[0]) && Input.GetKey(players_action_key[1]))
+        {
+            Debug.Log("Station Neutralized");
+            station_active = false;
+            missionManager.AddTime(5);
+        }
+    }
 
 
     // This checks which player is on the station
