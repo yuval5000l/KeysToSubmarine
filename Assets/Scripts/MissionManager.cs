@@ -2,26 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using Random = System.Random;
+
 public class MissionManager : MonoBehaviour
 {
+    Random rnd = new Random( );
     [SerializeField] private TMP_Text timer_text;
+    
+    [SerializeField] private TMP_Text score_text;
+
     [SerializeField] private float time_left = 30;
+    
+    [SerializeField] private int score = 0;
+    [SerializeField] private int missionsToWinTarget = 10;
+    
+    [SerializeField] private List<StationScript> stations = new List<StationScript>();
+    [SerializeField] private List<string> stationsNames = new List<string>();
+    [SerializeField] private List<string> missionsExplanation = new List<string>();
+    
+    
+    
+    private bool isGameFinsihed = false;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        stationsNames.Add("Blue");
+        stationsNames.Add("Green");
+        stationsNames.Add("Red");
+        missionsExplanation.Add("Click 1 time on M");
+        missionsExplanation.Add("Click 5 time on M");
+        
+        
         updateText();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isGameFinsihed)
+        {
+            return;
+        }
+
         time_left -= Time.deltaTime;
         updateText();
+
+        if (score >= missionsToWinTarget)
+        {
+            Debug.Log("You Win! You Win! You Win! You Win!");
+            isGameFinsihed = true;
+            return;
+        }
         if (time_left <= 0)
         {
-            Debug.Log("You Lose!");
+            isGameFinsihed = true;
+
+            Debug.Log("You Lose! You Lose! You Lose! You Lose!");
             Time.timeScale = 0f;
         }
+
+        rollTheDice();
+    }
+
+    public void missionDone(float bonus_time, int pointsWorth)
+    {
+        time_left += bonus_time;
+        score += pointsWorth;
+
     }
 
     public void AddTime(float bonus_time)
@@ -32,5 +82,40 @@ public class MissionManager : MonoBehaviour
     private void updateText()
     {
         timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
+        score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
+    }
+
+    private void rollTheDice()
+    {
+        
+        
+
+        for (int j = 0; j < stations.Count; j++)
+        {
+            if (!stations[j].getStationActiveState()) // if station is not active
+            {
+                Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
+                int diceResult = (int) rnd.Next(500);
+                Debug.Log("Dice Result == " + diceResult.ToString());
+                if (diceResult == 1) // Has a 1/100 chance to generate a new mission
+                {
+                    int mission_index = rnd.Next(stations[j].getMissionsCount());
+                    Debug.Log("Station number: " + j.ToString() + " Has Won its self the " +mission_index.ToString() + "th Mission!!");
+                    
+                    // todo  Add here some information to the screen that can give the users info about the new mission 
+                    printMissionInfo(mission_index, j);
+                    //todo some stations can't have certian missions, we can add if else logic here
+                    stations[j].setMissionIndex(mission_index);
+                    
+                }
+            }
+            
+        }
+
+    }
+    
+    private void printMissionInfo(int mission_index, int station_index)
+    {
+        Debug.Log("Go to the "+ stationsNames[station_index]  + " Station"  + " And " + missionsExplanation[mission_index]);
     }
 }

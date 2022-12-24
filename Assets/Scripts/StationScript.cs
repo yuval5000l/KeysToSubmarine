@@ -7,7 +7,7 @@ public class StationScript : MonoBehaviour
 {
     // Player Section
     private List<KeyCode> players_action_key =new List<KeyCode>(); // All the relevant keys
-    [SerializeField] private int PlayersInStation = 1; // How many players in this station?
+    
     [SerializeField] private List<GameObject> players_in_station; // List that holds all the current players
     
     // Is Station Active
@@ -15,14 +15,25 @@ public class StationScript : MonoBehaviour
 
     // Missions
     private List<Action> missions = new List<Action>(); // List that contains all the functions for the missions
+    private List<int> missionsNumberOfPlayers = new List<int>(); // List that contains the number of players that need to be in the station for each mission
     [SerializeField] private int mission_index = 0; // The mission we choose for this station
 
+    [SerializeField] private int press_in_a_row = 0; 
     [SerializeField] private MissionManager missionManager;
+    
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        missions.Add(getKeyDown);
+        missions.Add(getAllKeysDown);
+        missionsNumberOfPlayers.Add(1);
+        // missions.Add(getAllKeysDown);
+        // missionsNumberOfPlayers.Add(2);
+        missions.Add(pressNKeyInARow);
+        missionsNumberOfPlayers.Add(1);
+
     }
 
     // Update is called once per frame
@@ -30,7 +41,7 @@ public class StationScript : MonoBehaviour
     {
         if (station_active)
         {
-            if (players_in_station.Count == PlayersInStation)
+            if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index](); 
             }
@@ -39,20 +50,100 @@ public class StationScript : MonoBehaviour
 
 
     // Different missions
-    private void getKeyDown()
+    // private void getKeyDown()
+    // {
+    //     if (Input.GetKeyDown(players_action_key[0]))
+    //     {
+    //         Debug.Log("Station getKeyDown() Mission Accomplished with ");
+    //         // station_active = false;
+    //         missionManager.missionDone(5, 1);
+    //     }
+    // }
+    
+    
+    private void getAllKeysDown()
     {
-        if (Input.GetKeyDown(players_action_key[0]))
+        int count = 0;
+        foreach (var action_key in players_action_key)
         {
-            Debug.Log("Station Nuetralized");
-            station_active = false;
-            missionManager.AddTime(5);
+            if (Input.GetKeyDown(action_key))
+            {
+                count += 1;
+            }
+        }
+
+        int points = (int) (missionsNumberOfPlayers[mission_index] + 1) / 2;
+
+        if (count == missionsNumberOfPlayers[mission_index])
+        {
+            Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            station_active = false; //todo uncomment once we finish testing otherwise annoying
+            missionManager.missionDone(5, points);
         }
     }
+    
+    
+    // private void pressKeyInARow()
+    // {
+    //     if (Input.GetKeyDown(players_action_key[0]))
+    //     {
+    //         Debug.Log("Player Pressed Right Key! +=1 to press in a row!");
+    //         press_in_a_row += 1;
+    //     }
+    //
+    //     if (press_in_a_row == 5)
+    //     {
+    //         station_active = false; //todo uncomment once we finish testing otherwise annoying
+    //         Debug.Log("Station pressKeyInARow() Mission Accomplished");
+    //
+    //         missionManager.missionDone(5, 2);
+    //         press_in_a_row = 0;
+    //     }
+    // }
+    
+    
+    
+    private void pressNKeyInARow()
+    {
+        int count = 0;
+        foreach (var action_key in players_action_key)
+        {
+            if (Input.GetKeyDown(action_key))
+            {
+                count += 1;
+            }
+        }
+        
+
+        int points = (int) (missionsNumberOfPlayers[mission_index] + 1) / 2;
+
+        if (count == missionsNumberOfPlayers[mission_index])
+        {
+            Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            station_active = false; //todo uncomment once we finish testing otherwise annoying
+            //missionManager.missionDone(10, points);
+            press_in_a_row += 1;
+        }
+        
+       
+
+        if (press_in_a_row == 5)
+        {
+            station_active = false; //todo uncomment we finish testing otherwise annoying
+            Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " +  missionsNumberOfPlayers[mission_index].ToString() +" points");
+
+            missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
+            press_in_a_row = 0;
+        }
+        
+    }
+    
+    
 
     // This checks which player is on the station
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && players_in_station.Count < PlayersInStation)
+        if (collision.gameObject.tag == "Player" && players_in_station.Count < missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Player Touched");
             players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
@@ -70,8 +161,27 @@ public class StationScript : MonoBehaviour
 
                 players_action_key.Remove(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton());
                 players_in_station.Remove(collision.gameObject);
+                press_in_a_row = 0;
             }
         }
     }
+
+    public void setMissionIndex(int i)
+    {
+        
+        mission_index = i;
+        station_active = true;
+    }
+
+    public bool getStationActiveState()
+    {
+        return station_active;
+    }
+    
+    public int getMissionsCount()
+    {
+        return missions.Count;
+    }
+    
 
 }
