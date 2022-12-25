@@ -1745,6 +1745,7 @@ MonoBehaviour:
   left_button: 103
   right_button: 106
   player_action_button: 98
+  controller_set: 0
   rb: {fileID: 507032320}
   moveSpeed: 0.5
   debug_Text: {fileID: 0}
@@ -2256,6 +2257,7 @@ MonoBehaviour:
   left_button: 103
   right_button: 106
   player_action_button: 98
+  controller_set: 0
   rb: {fileID: 736064098}
   moveSpeed: 0.5
   debug_Text: {fileID: 0}
@@ -4121,6 +4123,7 @@ MonoBehaviour:
   left_button: 97
   right_button: 100
   player_action_button: 114
+  controller_set: 0
   rb: {fileID: 1707934286}
   moveSpeed: 0.5
   debug_Text: {fileID: 0}
@@ -4674,6 +4677,7 @@ MonoBehaviour:
   left_button: 276
   right_button: 275
   player_action_button: 109
+  controller_set: 1
   rb: {fileID: 1740355561}
   moveSpeed: 0.5
   debug_Text: {fileID: 0}
