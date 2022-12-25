@@ -265,9 +265,9 @@ public class StationScript : MonoBehaviour
                 }
                 else
                 {
-                    players_in_station.Remove(collision.gameObject);
+                    players_action_key.Remove(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton());
                 }
-                players_action_key.Remove(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton());
+                players_in_station.Remove(collision.gameObject);
                 press_in_a_row = 0; // NOICE
                 
             }
