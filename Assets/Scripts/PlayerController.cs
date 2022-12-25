@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode right_button = KeyCode.D;
 
     [SerializeField] private KeyCode player_action_button = KeyCode.R;
+    [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
 
+    [SerializeField] private bool controller_set = false;
+    Player1Controls controls;
 
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
@@ -22,15 +25,61 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TMP_Text debug_Text;
     private Vector2 movement;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        controls = new Player1Controls();
+        if (controller_set)
+        {
+            EnableController();
+        }
+    }
+
+    public void EnableController()
+    {
+        //controls.Gameplay.Action.performed += ctx => Simple();
+        player_action_button_new = controls.Gameplay.Action;
+        controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+        Debug.Log(controls.Gameplay.Move.GetType());
+    }
+
+    void Simple()
+    {
+        //Debug.Log("HEY");
+    }
+
+    private void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (controller_set)
+        {
+            //Vector2 m = new Vector2(movement.x, movement.y) * Time.deltaTime;
+            //transform.Translate(m, Space.World);
 
+        }
+        else
+        {
+            movement_keyboard();
+        }
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
+    }
+    private void movement_controller()
+    {
+
+    }
+    private void movement_keyboard()
+    {
         if (Input.GetKey(right_button))
         {
             movement.x = 1;
@@ -46,17 +95,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(up_button))
         {
             movement.y = 1;
-        }            
+        }
         else if (Input.GetKey(down_button))
-        {            
+        {
             movement.y = -1;
         }
         else
         {
             movement.y = 0;
         }
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
@@ -67,6 +114,16 @@ public class PlayerController : MonoBehaviour
     public KeyCode GetPlayerActionButton()
     {
         return player_action_button;
+    }
+    
+    public bool is_Controller()
+    {
+        return controller_set;
+    }
+
+    public InputAction GetPlayerActionButtonNew()
+    {
+        return player_action_button_new;
     }
     void PlayerMovement()
     {
