@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Random = System.Random;
-
+using UnityEngine.SceneManagement;
 public class MissionManager : MonoBehaviour
 {
     Random rnd = new Random( );
@@ -54,6 +54,7 @@ public class MissionManager : MonoBehaviour
         {
             Debug.Log("You Win! You Win! You Win! You Win!");
             isGameFinsihed = true;
+            SceneManager.LoadScene("EndScreenWon");
             return;
         }
         if (time_left <= 0)
@@ -62,6 +63,7 @@ public class MissionManager : MonoBehaviour
 
             Debug.Log("You Lose! You Lose! You Lose! You Lose!");
             Time.timeScale = 0f;
+            SceneManager.LoadScene("EndScreenLost");
         }
 
         rollTheDice();
@@ -95,7 +97,7 @@ public class MissionManager : MonoBehaviour
             if (!stations[j].getStationActiveState()) // if station is not active
             {
                 //Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
-                int diceResult = (int) rnd.Next(500);
+                int diceResult = (int) rnd.Next(2000);
                 //Debug.Log("Dice Result == " + diceResult.ToString());
                 if (diceResult == 1) // Has a 1/100 chance to generate a new mission
                 {
@@ -106,6 +108,7 @@ public class MissionManager : MonoBehaviour
                     printMissionInfo(mission_index, j);
                     //todo some stations can't have certian missions, we can add if else logic here
                     stations[j].setMissionIndex(mission_index);
+                    stations[j].activatePopup();
                     
                 }
             }

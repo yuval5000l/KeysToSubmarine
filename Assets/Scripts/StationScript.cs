@@ -21,7 +21,7 @@ public class StationScript : MonoBehaviour
     [SerializeField] private int press_in_a_row = 0; 
     [SerializeField] private MissionManager missionManager;
     
-    
+    [SerializeField] private GameObject stationPopup;
     
 
 
@@ -35,7 +35,9 @@ public class StationScript : MonoBehaviour
         // missionsNumberOfPlayers.Add(2);
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(1);
-
+        stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
+        deActivatePopup();
     }
 
     // Update is called once per frame
@@ -80,6 +82,7 @@ public class StationScript : MonoBehaviour
         {
             Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; //todo uncomment once we finish testing otherwise annoying
+            deActivatePopup();
             missionManager.missionDone(5, points);
         }
     }
@@ -123,6 +126,7 @@ public class StationScript : MonoBehaviour
         {
             Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; //todo uncomment once we finish testing otherwise annoying
+
             //missionManager.missionDone(10, points);
             press_in_a_row += 1;
         }
@@ -132,6 +136,7 @@ public class StationScript : MonoBehaviour
         if (press_in_a_row == 5)
         {
             station_active = false; //todo uncomment we finish testing otherwise annoying
+            deActivatePopup();
             Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " +  missionsNumberOfPlayers[mission_index].ToString() +" points");
 
             missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
@@ -148,6 +153,7 @@ public class StationScript : MonoBehaviour
         {
             Debug.Log("Station Neutralized");
             station_active = false;
+            deActivatePopup();
             missionManager.AddTime(5);
         }
     }
@@ -184,6 +190,7 @@ public class StationScript : MonoBehaviour
         
         mission_index = i;
         station_active = true;
+        activatePopup();
     }
 
     public bool getStationActiveState()
@@ -194,6 +201,16 @@ public class StationScript : MonoBehaviour
     public int getMissionsCount()
     {
         return missions.Count;
+    }
+
+    public void activatePopup()
+    {
+        stationPopup.SetActive(true);
+    }
+
+    public void deActivatePopup()
+    {
+        stationPopup.SetActive(false);
     }
     
 

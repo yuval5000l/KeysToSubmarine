@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MainMenuScript : MonoBehaviour
         Time.timeScale = 1f;
         MainMenu.SetActive(false);
         mainMenuActive = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //Tutorial.SetActive(false);
     }
 
