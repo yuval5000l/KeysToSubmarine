@@ -94,13 +94,13 @@ public class MissionManager : MonoBehaviour
         {
             if (!stations[j].getStationActiveState()) // if station is not active
             {
-                Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
+                //Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
                 int diceResult = (int) rnd.Next(500);
-                Debug.Log("Dice Result == " + diceResult.ToString());
+                //Debug.Log("Dice Result == " + diceResult.ToString());
                 if (diceResult == 1) // Has a 1/100 chance to generate a new mission
                 {
                     int mission_index = rnd.Next(stations[j].getMissionsCount());
-                    Debug.Log("Station number: " + j.ToString() + " Has Won its self the " +mission_index.ToString() + "th Mission!!");
+                    //Debug.Log("Station number: " + j.ToString() + " Has Won its self the " +mission_index.ToString() + "th Mission!!");
                     
                     // todo  Add here some information to the screen that can give the users info about the new mission 
                     printMissionInfo(mission_index, j);
