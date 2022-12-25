@@ -21,7 +21,8 @@ public class MainMenuScript : MonoBehaviour
         Time.timeScale = 1f;
         MainMenu.SetActive(false);
         mainMenuActive = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("SampleSceneFida");
         //Tutorial.SetActive(false);
     }
 
