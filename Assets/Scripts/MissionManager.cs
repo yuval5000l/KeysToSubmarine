@@ -97,7 +97,7 @@ public class MissionManager : MonoBehaviour
             if (!stations[j].getStationActiveState()) // if station is not active
             {
                 //Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
-                int diceResult = (int) rnd.Next(2000);
+                int diceResult = (int) rnd.Next(500);
                 //Debug.Log("Dice Result == " + diceResult.ToString());
                 if (diceResult == 1) // Has a 1/100 chance to generate a new mission
                 {

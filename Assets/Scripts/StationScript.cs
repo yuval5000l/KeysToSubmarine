@@ -22,7 +22,12 @@ public class StationScript : MonoBehaviour
     [SerializeField] private MissionManager missionManager;
     
     [SerializeField] private GameObject stationPopup;
-    
+    private float timeWindowToPress = 0;
+    //replaces the variable "count" in pressNKeysInARow
+    private int pressKeysInARowCount = 0;
+    //The maximal frame count before we automatically reset pressKeysInARowCount, should find a solution using milliseconds
+    //instead of number of frames.
+    private float maximalTime = 0.25f;
 
 
 
@@ -31,10 +36,10 @@ public class StationScript : MonoBehaviour
     {
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(1);
-        // missions.Add(getAllKeysDown);
+        // missions.Add(getKeyDownTwoPlayers);
         // missionsNumberOfPlayers.Add(2);
-        missions.Add(pressNKeyInARow);
-        missionsNumberOfPlayers.Add(1);
+        // missions.Add(pressNKeyInARow);
+        // missionsNumberOfPlayers.Add(2); 
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
         deActivatePopup();
@@ -43,6 +48,12 @@ public class StationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //temporary fix for presKeyInRow, needs better solution
+        if(timeWindowToPress >= maximalTime)
+        {
+            timeWindowToPress = 0;
+            pressKeysInARowCount = 0;
+        }
         if (station_active)
         {
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
@@ -50,6 +61,7 @@ public class StationScript : MonoBehaviour
                 missions[mission_index](); 
             }
         }
+        timeWindowToPress += Time.deltaTime;
     }
 
 
@@ -110,25 +122,27 @@ public class StationScript : MonoBehaviour
     
     private void pressNKeyInARow()
     {
-        int count = 0;
+        
         foreach (var action_key in players_action_key)
         {
             if (Input.GetKeyDown(action_key))
             {
-                count += 1;
+                Debug.Log(pressKeysInARowCount);
+                pressKeysInARowCount += 1;
             }
         }
         
 
         int points = (int) (missionsNumberOfPlayers[mission_index] + 1) / 2;
 
-        if (count == missionsNumberOfPlayers[mission_index])
+        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            station_active = false; //todo uncomment once we finish testing otherwise annoying
+            // station_active = false; //todo uncomment once we finish testing otherwise annoying
 
             //missionManager.missionDone(10, points);
             press_in_a_row += 1;
+            pressKeysInARowCount = 0;
         }
         
        
@@ -168,8 +182,15 @@ public class StationScript : MonoBehaviour
             players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
             players_in_station.Add(collision.gameObject);
         }
+        station_active = true;
     }
-
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            station_active = true;
+        }
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -183,6 +204,7 @@ public class StationScript : MonoBehaviour
                 press_in_a_row = 0;
             }
         }
+        station_active = false;
     }
 
     public void setMissionIndex(int i)
