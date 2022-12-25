@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class StationScript : MonoBehaviour
 {
     // Player Section
@@ -27,9 +28,9 @@ public class StationScript : MonoBehaviour
     private int pressKeysInARowCount = 0;
     //The maximal frame count before we automatically reset pressKeysInARowCount, should find a solution using milliseconds
     //instead of number of frames.
-    private float maximalTime = 0.25f;
+    [SerializeField] private float maximalTime = 0.25f;
 
-
+    [SerializeField] private TMP_Text playersForMission; 
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class StationScript : MonoBehaviour
         // missions.Add(pressNKeyInARow);
         // missionsNumberOfPlayers.Add(2); 
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
         deActivatePopup();
     }
 
@@ -58,7 +59,8 @@ public class StationScript : MonoBehaviour
         {
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
-                missions[mission_index](); 
+                missions[mission_index]();
+                 
             }
         }
         timeWindowToPress += Time.deltaTime;
@@ -182,15 +184,9 @@ public class StationScript : MonoBehaviour
             players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
             players_in_station.Add(collision.gameObject);
         }
-        station_active = true;
+
     }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            station_active = true;
-        }
-    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -204,7 +200,7 @@ public class StationScript : MonoBehaviour
                 press_in_a_row = 0;
             }
         }
-        station_active = false;
+
     }
 
     public void setMissionIndex(int i)
@@ -212,6 +208,7 @@ public class StationScript : MonoBehaviour
         
         mission_index = i;
         station_active = true;
+        
         activatePopup();
     }
 
@@ -227,13 +224,19 @@ public class StationScript : MonoBehaviour
 
     public void activatePopup()
     {
+        playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
         stationPopup.SetActive(true);
     }
 
     public void deActivatePopup()
     {
+        playersForMission.text = "";
         stationPopup.SetActive(false);
     }
     
+    public bool hasPlayersInStation()
+    {
+        return (players_in_station.Count != 0);
+    }
 
 }

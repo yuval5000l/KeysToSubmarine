@@ -94,7 +94,7 @@ public class MissionManager : MonoBehaviour
 
         for (int j = 0; j < stations.Count; j++)
         {
-            if (!stations[j].getStationActiveState()) // if station is not active
+            if (!stations[j].getStationActiveState() && !stations[j].hasPlayersInStation()) // if station is not active
             {
                 //Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
                 int diceResult = (int) rnd.Next(500);
