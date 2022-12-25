@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class StationScript : MonoBehaviour
 {
     // Player Section
@@ -20,10 +20,10 @@ public class StationScript : MonoBehaviour
 
     [SerializeField] private int press_in_a_row = 0; 
     [SerializeField] private MissionManager missionManager;
-    
-    
-    
 
+    private InputAction player_action;
+
+    private bool action_key_pressed = false;
 
 
     // Start is called before the first frame update
@@ -161,6 +161,13 @@ public class StationScript : MonoBehaviour
             //Debug.Log("Player Touched");
             players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
             players_in_station.Add(collision.gameObject);
+            if (collision.gameObject.GetComponent<PlayerController>().is_Controller())
+            {
+                player_action = collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButtonNew();
+                player_action.started += ctx => action_key_pressed = true;
+                player_action.performed += ctx => action_key_pressed = true;
+                player_action.canceled += ctx => action_key_pressed = false;
+            }
         }
     }
 
@@ -175,9 +182,15 @@ public class StationScript : MonoBehaviour
                 players_action_key.Remove(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton());
                 players_in_station.Remove(collision.gameObject);
                 press_in_a_row = 0;
+                if (collision.gameObject.GetComponent<PlayerController>().is_Controller())
+                {
+                    player_action = null;
+                }
             }
         }
     }
+
+
 
     public void setMissionIndex(int i)
     {
