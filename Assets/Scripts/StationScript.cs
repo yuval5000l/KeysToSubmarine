@@ -114,6 +114,7 @@ public class StationScript : MonoBehaviour
             {
                 Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
                 station_active = false; //todo uncomment once we finish testing otherwise annoying
+                deActivatePopup();
                 missionManager.missionDone(5, points);
             }
         }
@@ -313,3 +314,5 @@ public class StationScript : MonoBehaviour
     }
 
 }
+
+

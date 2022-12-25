@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
         Debug.Log(controls.Gameplay.Move.GetType());
     }
 
-    void Simple()
-    {
-        //Debug.Log("HEY");
-    }
+    //void Simple()
+    //{
+    //    //Debug.Log("HEY");
+    //}
 
     private void OnEnable()
     {
@@ -61,23 +61,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller_set)
-        {
-            //Vector2 m = new Vector2(movement.x, movement.y) * Time.deltaTime;
-            //transform.Translate(m, Space.World);
-
-        }
-        else
+        if (!controller_set)
         {
             movement_keyboard();
         }
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
-    }
-    private void movement_controller()
-    {
 
     }
+
     private void movement_keyboard()
     {
         if (Input.GetKey(right_button))
