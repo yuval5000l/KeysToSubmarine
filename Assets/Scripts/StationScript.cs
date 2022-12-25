@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class StationScript : MonoBehaviour
 {
     // Player Section
@@ -21,33 +22,48 @@ public class StationScript : MonoBehaviour
     [SerializeField] private int press_in_a_row = 0; 
     [SerializeField] private MissionManager missionManager;
     
-    
-    
+    [SerializeField] private GameObject stationPopup;
+    private float timeWindowToPress = 0;
+    //replaces the variable "count" in pressNKeysInARow
+    private int pressKeysInARowCount = 0;
+    //The maximal frame count before we automatically reset pressKeysInARowCount, should find a solution using milliseconds
+    //instead of number of frames.
+    [SerializeField] private float maximalTime = 0.25f;
 
-
+    [SerializeField] private TMP_Text playersForMission; 
 
     // Start is called before the first frame update
     void Start()
     {
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(1);
-        // missions.Add(getAllKeysDown);
+        // missions.Add(getKeyDownTwoPlayers);
         // missionsNumberOfPlayers.Add(2);
-        missions.Add(pressNKeyInARow);
-        missionsNumberOfPlayers.Add(1);
-
+        // missions.Add(pressNKeyInARow);
+        // missionsNumberOfPlayers.Add(2); 
+        stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
+        deActivatePopup();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //temporary fix for presKeyInRow, needs better solution
+        if(timeWindowToPress >= maximalTime)
+        {
+            timeWindowToPress = 0;
+            pressKeysInARowCount = 0;
+        }
         if (station_active)
         {
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
-                missions[mission_index](); 
+                missions[mission_index]();
+                 
             }
         }
+        timeWindowToPress += Time.deltaTime;
     }
 
 
@@ -80,6 +96,7 @@ public class StationScript : MonoBehaviour
         {
             Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; //todo uncomment once we finish testing otherwise annoying
+            deActivatePopup();
             missionManager.missionDone(5, points);
         }
     }
@@ -107,24 +124,27 @@ public class StationScript : MonoBehaviour
     
     private void pressNKeyInARow()
     {
-        int count = 0;
+        
         foreach (var action_key in players_action_key)
         {
             if (Input.GetKeyDown(action_key))
             {
-                count += 1;
+                Debug.Log(pressKeysInARowCount);
+                pressKeysInARowCount += 1;
             }
         }
         
 
         int points = (int) (missionsNumberOfPlayers[mission_index] + 1) / 2;
 
-        if (count == missionsNumberOfPlayers[mission_index])
+        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            station_active = false; //todo uncomment once we finish testing otherwise annoying
+            // station_active = false; //todo uncomment once we finish testing otherwise annoying
+
             //missionManager.missionDone(10, points);
             press_in_a_row += 1;
+            pressKeysInARowCount = 0;
         }
         
        
@@ -132,6 +152,7 @@ public class StationScript : MonoBehaviour
         if (press_in_a_row == 5)
         {
             station_active = false; //todo uncomment we finish testing otherwise annoying
+            deActivatePopup();
             Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " +  missionsNumberOfPlayers[mission_index].ToString() +" points");
 
             missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
@@ -148,6 +169,7 @@ public class StationScript : MonoBehaviour
         {
             Debug.Log("Station Neutralized");
             station_active = false;
+            deActivatePopup();
             missionManager.AddTime(5);
         }
     }
@@ -162,6 +184,7 @@ public class StationScript : MonoBehaviour
             players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
             players_in_station.Add(collision.gameObject);
         }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -177,6 +200,7 @@ public class StationScript : MonoBehaviour
                 press_in_a_row = 0;
             }
         }
+
     }
 
     public void setMissionIndex(int i)
@@ -184,6 +208,8 @@ public class StationScript : MonoBehaviour
         
         mission_index = i;
         station_active = true;
+        
+        activatePopup();
     }
 
     public bool getStationActiveState()
@@ -195,6 +221,22 @@ public class StationScript : MonoBehaviour
     {
         return missions.Count;
     }
+
+    public void activatePopup()
+    {
+        playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
+        stationPopup.SetActive(true);
+    }
+
+    public void deActivatePopup()
+    {
+        playersForMission.text = "";
+        stationPopup.SetActive(false);
+    }
     
+    public bool hasPlayersInStation()
+    {
+        return (players_in_station.Count != 0);
+    }
 
 }
