@@ -142,9 +142,7 @@ public class StationScript : MonoBehaviour
     
     private void pressNKeyInARow()
     {
-     
-        
-        foreach (var action_key in players_action_key)
+        if (action_key_pressed)
         {
             int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
             Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
@@ -153,11 +151,30 @@ public class StationScript : MonoBehaviour
             action_key_pressed = false;
             if (press_in_a_row == 5)
             {
-                Debug.Log(pressKeysInARowCount);
-                pressKeysInARowCount += 1;
+                station_active = false; //todo uncomment we finish testing otherwise annoying
+                Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " + missionsNumberOfPlayers[mission_index].ToString() + " points");
+
+                missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
+                press_in_a_row = 0;
             }
 
         }
+        else
+        {
+            foreach (var action_key in players_action_key)
+            {
+                int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
+                Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+                //station_active = false;
+                press_in_a_row += 1;
+                action_key_pressed = false;
+                if (press_in_a_row == 5)
+                {
+                    Debug.Log(pressKeysInARowCount);
+                    pressKeysInARowCount += 1;
+                }
+
+            }
             int count = 0;
             foreach (var action_key in players_action_key)
             {
@@ -167,30 +184,31 @@ public class StationScript : MonoBehaviour
                 }
             }
 
-        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
-        {
-            Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            // station_active = false; //todo uncomment once we finish testing otherwise annoying
+            if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
+            {
+                Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+                // station_active = false; //todo uncomment once we finish testing otherwise annoying
 
-            //missionManager.missionDone(10, points);
-            press_in_a_row += 1;
-            pressKeysInARowCount = 0;
-        }
-        
-       
+                //missionManager.missionDone(10, points);
+                press_in_a_row += 1;
+                pressKeysInARowCount = 0;
+            }
 
-        if (press_in_a_row == 5)
-        {
-            station_active = false; //todo uncomment we finish testing otherwise annoying
-            deActivatePopup();
-            Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " +  missionsNumberOfPlayers[mission_index].ToString() +" points");
+
+
             if (press_in_a_row == 5)
             {
                 station_active = false; //todo uncomment we finish testing otherwise annoying
+                deActivatePopup();
                 Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " + missionsNumberOfPlayers[mission_index].ToString() + " points");
+                if (press_in_a_row == 5)
+                {
+                    station_active = false; //todo uncomment we finish testing otherwise annoying
+                    Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " + missionsNumberOfPlayers[mission_index].ToString() + " points");
 
-                missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
-                press_in_a_row = 0;
+                    missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
+                    press_in_a_row = 0;
+                }
             }
         }
         
