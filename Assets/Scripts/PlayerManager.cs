@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField] private OurEventHandler gameManager;
     private PlayerController[] players = new PlayerController[4];
-    private int players_in_game = 3;
+    private int players_in_game = 2;
     // Start is called before the first frame update
     void Start()
     {
+        players_in_game = gameManager.getNumOfPlayers();
         int i = 0;
         foreach(PlayerController player in GetComponentsInChildren<PlayerController>())
         {
             players[i] = player;
+            if (players_in_game <= i)
+            {
+                player.gameObject.SetActive(false);
+            }
             i += 1;
         }
-        players[3].gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,20 +28,28 @@ public class PlayerManager : MonoBehaviour
     {
         
     }
-    public void AddPlayer()
+    //public void AddPlayer()
+    //{
+    //    if (players_in_game < 4)
+    //    {
+    //        players[players_in_game].gameObject.SetActive(true);
+    //        players_in_game += 1;
+    //    }
+    //}
+    //public void RemovePlayer()
+    //{
+    //    if (players_in_game > 2)
+    //    {
+    //        players[players_in_game].gameObject.SetActive(false);
+    //        players_in_game -= 1;
+    //    }
+    //}
+    public void UpdatePlayers(int numPlayers)
     {
-        if (players_in_game < 4)
+        players_in_game = numPlayers;
+        foreach(PlayerController player in players)
         {
-            players[3].gameObject.SetActive(true);
-            players_in_game += 1;
-        }
-    }
-    public void RemovePlayer()
-    {
-        if (players_in_game > 3)
-        {
-            players[3].gameObject.SetActive(false);
-            players_in_game -= 1;
+            player.gameObject.SetActive(true);
         }
     }
 }
