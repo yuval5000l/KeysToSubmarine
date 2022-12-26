@@ -1217,6 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215daaa6c7bd8de42abf78bdca92d49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GM: {fileID: 0}
   pauseMenuUI: {fileID: 1543390312}
   MainMenu: {fileID: 0}
 --- !u!114 &278941940
@@ -4080,6 +4081,7 @@ MonoBehaviour:
   time_left: 20
   score: 0
   missionsToWinTarget: 10
+  indicator: {fileID: 0}
   stations: []
   stationsNames: []
   missionsExplanation: []

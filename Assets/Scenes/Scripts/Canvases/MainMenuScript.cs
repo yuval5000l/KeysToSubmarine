@@ -14,20 +14,12 @@ public class MainMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PauseMenu.isGamePaused = true;
-        //Time.timeScale = 0f;
         num_players = gameManager.getNumOfPlayers();
         num_players_text.text = num_players.ToString();
     }
     public void StartGame()
     {
-        PauseMenu.isGamePaused = false;
-        //Time.timeScale = 1f;
-        MainMenu.SetActive(false);
-        mainMenuActive = false;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         gameManager.Nextlevel();
-        //Tutorial.SetActive(false);
     }
 
     public void AddPlayer()

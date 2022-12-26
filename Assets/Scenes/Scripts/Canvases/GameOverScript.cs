@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    [SerializeField] private GameObject GameOverScreen;
-    //[SerializeField] private MaEventHandler GM;
+    //[SerializeField] private GameObject GameOverScreen;
+    [SerializeField] private OurEventHandler GM;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,12 @@ public class GameOverScript : MonoBehaviour
 
     public void TryAgain()
     {
-        //GM.replay();
-        Time.timeScale = 1f;
-        PauseMenu.isGamePaused = false;
-        GameOverScreen.SetActive(false);
+        GM.Setlevel(0);
+        GM.Nextlevel();
+    }
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
     }
     public void Quit()
     {
