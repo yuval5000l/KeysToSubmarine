@@ -1227,7 +1227,7 @@ GameObject:
   - component: {fileID: 256428756}
   - component: {fileID: 256428755}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1294,8 +1294,8 @@ Transform:
   m_GameObject: {fileID: 256428754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.78, y: -4.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.2, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1962775320}
   m_RootOrder: 6
@@ -4163,8 +4163,8 @@ EdgeCollider2D:
   - {x: 1.9522791, y: 1.1790655}
   - {x: 2.7009883, y: 0.6212512}
   - {x: 2.8960733, y: -0.75674564}
-  - {x: 1.9862202, y: -1.3498831}
-  - {x: -0.015933514, y: -1.3594898}
+  - {x: 1.9623793, y: -1.5167704}
+  - {x: -0.015933514, y: -1.4071718}
   - {x: -0.83317673, y: -0.91214335}
   - {x: -0.8713529, y: 0.63623405}
   - {x: -0.123039305, y: 1.0956898}

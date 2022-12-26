@@ -80,7 +80,14 @@ public class MissionManager : MonoBehaviour
         }
 
         rollTheDice();
-        indicator.transform.localScale = new Vector3((initial_time - time_left)/2, indicator.transform.localScale.y);
+        Debug.Log(1 - (time_left / initial_time));
+        Debug.Log(indicator.transform.localScale);
+        //indicator.transform.localScale =
+        //    Vector3.Lerp(indicator.transform.localScale,
+        //    new Vector3(15f,indicator.transform.localScale.y), 
+        //    1 - (time_left / initial_time));
+
+        indicator.transform.localScale = new Vector3((1 - (time_left / initial_time))*16f, indicator.transform.localScale.y);
     }
 
     public void missionDone(float bonus_time, int pointsWorth)
