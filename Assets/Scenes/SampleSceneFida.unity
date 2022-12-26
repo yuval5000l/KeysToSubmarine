@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -1559,6 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -1748,6 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -1880,6 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -3111,6 +3115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -3575,6 +3580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -4289,8 +4295,28 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: up_button
+      value: 117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: down_button
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: left_button
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: right_button
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: player_action_button
+      value: 121
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}

@@ -120,7 +120,7 @@ public class MissionManager : MonoBehaviour
                     printMissionInfo(mission_index, j);
                     //todo some stations can't have certian missions, we can add if else logic here
                     stations[j].setMissionIndex(mission_index);
-                    stations[j].activatePopup();
+
                     
                 }
             }
