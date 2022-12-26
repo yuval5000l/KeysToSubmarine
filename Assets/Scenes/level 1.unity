@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -1689,6 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -1878,6 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -2010,6 +2013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -3395,6 +3399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -3838,6 +3843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_action_key: 
   players_in_station: []
   station_active: 0
   mission_index: 0
@@ -4600,7 +4606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
