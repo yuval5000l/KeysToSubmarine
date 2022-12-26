@@ -44,8 +44,9 @@ public class StationScript : MonoBehaviour
     {
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(1);
-        // missions.Add(getKeyDownTwoPlayers);
-        // missionsNumberOfPlayers.Add(2);
+        //missions.Add(getKeyDownTwoPlayers);
+        missions.Add(getAllKeysDown);
+        missionsNumberOfPlayers.Add(2);
         // missions.Add(pressNKeyInARow);
         // missionsNumberOfPlayers.Add(2); 
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
@@ -95,27 +96,27 @@ public class StationScript : MonoBehaviour
             Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; //todo uncomment once we finish testing otherwise annoying
             deActivatePopup();
-            missionManager.missionDone(3, points);
+            missionManager.missionDone(1, points);
         }
         else
         {
-            int count = 0;
+            //int count = 0;
             foreach (var action_key in players_action_key)
             {
                 if (Input.GetKeyDown(action_key))
                 {
-                    count += 1;
+                    pressKeysInARowCount += 1;
                 }
             }
 
             int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
 
-            if (count == missionsNumberOfPlayers[mission_index])
+            if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
             {
                 Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
                 station_active = false; //todo uncomment once we finish testing otherwise annoying
                 deActivatePopup();
-                missionManager.missionDone(3, points);
+                missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
             }
         }
     }
