@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class OurEventHandler : MonoBehaviour
 {
-    private static int NumberOfPlayers = 2;
+    [SerializeField] private static int NumberOfPlayers = 2;
     [SerializeField] private PlayerManager playerManager;
     private int levelNumber = 0;
     // Start is called before the first frame update
