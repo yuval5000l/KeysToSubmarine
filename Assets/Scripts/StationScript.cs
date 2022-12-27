@@ -9,35 +9,35 @@ using TMPro;
 public class StationScript : MonoBehaviour
 {
     // Player Section
-    [SerializeField] private List<KeyCode> players_action_key =new List<KeyCode>(); // All the relevant keys
+    [SerializeField] protected List<KeyCode> players_action_key =new List<KeyCode>(); // All the relevant keys
     
-    [SerializeField] private List<GameObject> players_in_station; // List that holds all the current players
+    [SerializeField] protected List<GameObject> players_in_station; // List that holds all the current players
     
     // Is Station Active
-    [SerializeField] private bool station_active = false; // Checks if the station is active (has a mission)
+    [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
 
     // Missions
-    private List<Action> missions = new List<Action>(); // List that contains all the functions for the missions
-    private List<int> missionsNumberOfPlayers = new List<int>(); // List that contains the number of players that need to be in the station for each mission
-    [SerializeField] private int mission_index = 0; // The mission we choose for this station
+    protected List<Action> missions = new List<Action>(); // List that contains all the functions for the missions
+    protected List<int> missionsNumberOfPlayers = new List<int>(); // List that contains the number of players that need to be in the station for each mission
+    [SerializeField] protected int mission_index = 0; // The mission we choose for this station
 
-    [SerializeField] private int press_in_a_row = 0; 
-    [SerializeField] private MissionManager missionManager;
+    [SerializeField] protected int press_in_a_row = 0; 
+    [SerializeField] protected MissionManager missionManager;
 
-    private InputAction player_action;
+    protected InputAction player_action;
 
-    private bool action_key_pressed = false;
+    protected bool action_key_pressed = false;
 
     
-    [SerializeField] private GameObject stationPopup;
-    private float timeWindowToPress = 0;
+    [SerializeField] protected GameObject stationPopup;
+    protected float timeWindowToPress = 0;
     //replaces the variable "count" in pressNKeysInARow
-    private int pressKeysInARowCount = 0;
+    protected int pressKeysInARowCount = 0;
     //The maximal frame count before we automatically reset pressKeysInARowCount, should find a solution using milliseconds
     //instead of number of frames.
-    [SerializeField] private float maximalTime = 0.25f;
+    [SerializeField] protected float maximalTime = 0.25f;
 
-    [SerializeField] private TMP_Text playersForMission; 
+    [SerializeField] protected TMP_Text playersForMission; 
 
     // Start is called before the first frame update
     void Start()
@@ -247,7 +247,7 @@ public class StationScript : MonoBehaviour
     }
 
     // This checks which player is on the station
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && players_in_station.Count < missionsNumberOfPlayers[mission_index])
         {
@@ -268,7 +268,7 @@ public class StationScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    protected void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

@@ -1848,7 +1848,7 @@ GameObject:
   - component: {fileID: 517266592}
   - component: {fileID: 517266595}
   - component: {fileID: 517266594}
-  - component: {fileID: 517266593}
+  - component: {fileID: 517266596}
   m_Layer: 0
   m_Name: Station1 (3)
   m_TagString: Untagged
@@ -1864,34 +1864,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517266591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.45, y: 2.53, z: 0}
+  m_LocalPosition: {x: -5.7, y: 0.29, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1962775320}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &517266593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517266591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e3f8ff6a2ddc554d831b041f4755c3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players_action_key: 
-  players_in_station: []
-  station_active: 0
-  mission_index: 0
-  press_in_a_row: 0
-  missionManager: {fileID: 1962775321}
-  stationPopup: {fileID: 0}
-  maximalTime: 0.25
-  playersForMission: {fileID: 902175040}
 --- !u!61 &517266594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1970,6 +1949,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &517266596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517266591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fd1705425fda04cb257f62bfbb1cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players_action_key: 
+  players_in_station: []
+  station_active: 0
+  mission_index: 0
+  press_in_a_row: 0
+  missionManager: {fileID: 1962775321}
+  stationPopup: {fileID: 0}
+  maximalTime: 0.25
+  playersForMission: {fileID: 902175040}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
