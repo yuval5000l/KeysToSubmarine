@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] private OurEventHandler GM;
     public static bool isGamePaused = false;
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private MainMenuScript MainMenu;
@@ -53,11 +54,14 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = true;
     }
 
+    public void Restartlevel()
+    {
+        Time.timeScale = 1f;
+        GM.restartlevel();
+    }
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        //GM.replay();
-        //MainMenu.ReturnToMainMenu();
         SceneManager.LoadScene("StartScreen");
         pauseMenuUI.SetActive(false);
 

@@ -2,37 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuScript : MonoBehaviour
 {
-    [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private TMP_Text num_players_text;
+    [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
     private bool mainMenuActive = true;
+    private int num_players;
     // Start is called before the first frame update
     void Start()
     {
-        PauseMenu.isGamePaused = true;
-        Time.timeScale = 0f;
-
+        num_players = gameManager.getNumOfPlayers();
+        num_players_text.text = num_players.ToString();
     }
     public void StartGame()
     {
-        PauseMenu.isGamePaused = false;
-        Time.timeScale = 1f;
-        MainMenu.SetActive(false);
-        mainMenuActive = false;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene("SampleSceneFida");
-        //Tutorial.SetActive(false);
+        gameManager.Nextlevel();
     }
 
     public void AddPlayer()
     {
-        playerManager.AddPlayer();
+        gameManager.AddPlayer();
+        num_players = gameManager.getNumOfPlayers();
+        num_players_text.text = num_players.ToString();
+
+
     }
     public void RemovePlayer()
     {
-        playerManager.RemovePlayer();
+        gameManager.RemovePlayer();
+        num_players = gameManager.getNumOfPlayers();
+        num_players_text.text = num_players.ToString();
+
     }
 
     public bool getMainMenuActive()
@@ -75,15 +78,15 @@ public class MainMenuScript : MonoBehaviour
     //    fade_out.settrigger("fadeout");
     //}
 
-    public void ReturnToMainMenu()
-    {
-        MainMenu.SetActive(true);
-        mainMenuActive = true;
+    //public void ReturnToMainMenu()
+    //{
+    //    MainMenu.SetActive(true);
+    //    mainMenuActive = true;
 
-        Time.timeScale = 0f;
-        PauseMenu.isGamePaused = true;
+    //    Time.timeScale = 0f;
+    //    PauseMenu.isGamePaused = true;
 
-    }
+    //}
     public void QuitGame()
     {
         Time.timeScale = 1f;
