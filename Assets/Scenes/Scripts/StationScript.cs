@@ -293,7 +293,7 @@ public class StationScript : MonoBehaviour
 
 
 
-    public void setMissionIndex(int i)
+    public virtual void setMissionIndex(int i)
     {
         
         mission_index = i;
