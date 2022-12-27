@@ -16,7 +16,7 @@ public class ShowerStation : StationScript
     void Start()
     {
         missions.Add(HoldKey);
-        missionsNumberOfPlayers.Add(1);
+        missionsNumberOfPlayers.Add(numberOfPlayers);
 
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
@@ -26,6 +26,11 @@ public class ShowerStation : StationScript
     // Update is called once per frame
     void Update()
     {
+        if(timeWindowToPress >= maximalTime)
+        {
+            timeWindowToPress = 0;
+            pressKeysInARowCount = 0;
+        }
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
@@ -35,7 +40,7 @@ public class ShowerStation : StationScript
                  
             }
         }
-
+        timeWindowToPress += Time.deltaTime;
     }
 
 

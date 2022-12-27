@@ -18,7 +18,7 @@ public class CodeStation : StationScript
     void Start()
     {
         missions.Add(pressNKeyInARow);
-        missionsNumberOfPlayers.Add(1);
+        missionsNumberOfPlayers.Add(numberOfPlayers);
         spriteR.sprite = xSprite;
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
@@ -34,8 +34,12 @@ public class CodeStation : StationScript
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
-                 
             }
+        }
+        if(timeWindowToPress >= maximalTime)
+        {
+            timeWindowToPress = 0;
+            pressKeysInARowCount = 0;
         }
 
     }
@@ -110,7 +114,6 @@ public class CodeStation : StationScript
     
     public override void setMissionIndex(int i)
     {
-
         mission_index = i;
         spriteR.sprite = xSprite;
         station_active = true;

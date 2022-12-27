@@ -38,7 +38,7 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected float maximalTime = 0.25f;
 
     [SerializeField] protected TMP_Text playersForMission; 
-
+    [SerializeField] protected int numberOfPlayers;
     // Start is called before the first frame update
     void Start()
     {

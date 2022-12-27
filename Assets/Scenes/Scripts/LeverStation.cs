@@ -14,7 +14,7 @@ public class LeverStation : StationScript
     void Start()
     {
         missions.Add(getAllKeysDown);
-        missionsNumberOfPlayers.Add(1);
+        missionsNumberOfPlayers.Add(numberOfPlayers);
 
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
@@ -24,13 +24,14 @@ public class LeverStation : StationScript
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
-                 
+                
             }
         }
 
@@ -64,7 +65,7 @@ public class LeverStation : StationScript
             if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
             {
                 Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-                station_active = false;
+                station_active = false; 
                 pressKeysInARowCount = 0;
                 deActivatePopup();
                 missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
