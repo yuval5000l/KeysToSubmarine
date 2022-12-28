@@ -105,7 +105,7 @@ public class CodeStation : StationScript
             {
                 station_active = false;
 
-                missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
+                missionManager.missionDone(1, missionsNumberOfPlayers[mission_index] * 2);
                 press_in_a_row = 0;
             }
         }
