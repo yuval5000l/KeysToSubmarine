@@ -107,6 +107,7 @@ MonoBehaviour:
   stationPopup: {fileID: 0}
   maximalTime: 0.25
   playersForMission: {fileID: 0}
+  numberOfPlayers: 1
   spriteR: {fileID: 9037751452991745275}
   vSprite: {fileID: 21300000, guid: 793c846e1897196489a6b8af49c1b637, type: 3}
   xSprite: {fileID: 21300000, guid: 60fdf3e22741ce04cab44d4d52fb1743, type: 3}

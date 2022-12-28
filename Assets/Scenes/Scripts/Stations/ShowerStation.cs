@@ -19,7 +19,7 @@ public class ShowerStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
 
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1.5f,0);
         deActivatePopup();
     }
 

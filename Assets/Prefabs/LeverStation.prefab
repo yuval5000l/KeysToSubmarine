@@ -107,6 +107,7 @@ MonoBehaviour:
   stationPopup: {fileID: 0}
   maximalTime: 0.25
   playersForMission: {fileID: 0}
+  numberOfPlayers: 1
 --- !u!60 &3943577113499008756
 PolygonCollider2D:
   m_ObjectHideFlags: 0

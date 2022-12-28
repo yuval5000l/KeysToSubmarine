@@ -218,5 +218,6 @@ MonoBehaviour:
   stationPopup: {fileID: 0}
   maximalTime: 0.25
   playersForMission: {fileID: 0}
+  numberOfPlayers: 1
   holdTime: 1
   indicator: {fileID: 2216415086897726427}
