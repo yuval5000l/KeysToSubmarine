@@ -61,8 +61,8 @@ public class StationScript : MonoBehaviour
         //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
         missionsNumberOfPlayers.Add(3);
 
-        stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,2,0);
+        stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
         deActivatePopup();
     }
 

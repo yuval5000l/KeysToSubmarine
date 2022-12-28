@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level 2.unity
     guid: e559f9d22541aea458af03c691410f0d
+  - enabled: 1
+    path: Assets/Scenes/ChooseNumPlayers.unity
+    guid: 187875a9b1d5a4e43b23f8a7b28fbf1f
+  - enabled: 1
+    path: Assets/Scenes/Lore.unity
+    guid: 6b877d9299c5f474c9be3a2aa8111041
   m_configObjects: {}

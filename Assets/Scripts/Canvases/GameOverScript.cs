@@ -22,8 +22,7 @@ public class GameOverScript : MonoBehaviour
 
     public void TryAgain()
     {
-        GM.Setlevel(0);
-        GM.Nextlevel();
+        GM.Nextlevel(-1);
     }
     public void ReturnToMenu()
     {

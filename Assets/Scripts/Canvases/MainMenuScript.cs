@@ -23,7 +23,15 @@ public class MainMenuScript : MonoBehaviour
         gameManager.Nextlevel(-1);
 
     }
+    public void nextAfterLore()
+    {
+        SceneManager.LoadScene("ChooseNumPlayers");
+    }
 
+    public void ToLore()
+    {
+        SceneManager.LoadScene("Lore");
+    }
     public void AddPlayer()
     {
         gameManager.AddPlayer();

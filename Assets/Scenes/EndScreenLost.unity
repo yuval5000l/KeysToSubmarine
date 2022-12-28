@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
+  nextlevel: {fileID: 0}
+  MaxlevelNum: 4
 --- !u!4 &183065628
 Transform:
   m_ObjectHideFlags: 0

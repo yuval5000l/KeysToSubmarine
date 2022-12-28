@@ -17,9 +17,11 @@ public class LeverStation : StationScript
     {
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-
-        stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1.5f, 0);
+        if (stationPopup == null)
+        {
+            stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
+        }
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
         deActivatePopup();
 
     }

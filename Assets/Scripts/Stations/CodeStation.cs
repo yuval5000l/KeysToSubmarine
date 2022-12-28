@@ -26,8 +26,8 @@ public class CodeStation : StationScript
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         spriteR.sprite = idle;
-        stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1.5f, 0);
+        stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
         deActivatePopup();
         
     }
