@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class MissionManager : MonoBehaviour
 {
     Random rnd = new Random( );
+
+    [SerializeField] private OurEventHandler GM;
     [SerializeField] private TMP_Text timer_text;
     
     [SerializeField] private TMP_Text score_text;
@@ -67,7 +69,7 @@ public class MissionManager : MonoBehaviour
         {
             Debug.Log("You Win! You Win! You Win! You Win!");
             isGameFinsihed = true;
-            SceneManager.LoadScene("EndScreenWon");
+            GM.Nextlevel();
             return;
         }
         if (time_left <= 0)

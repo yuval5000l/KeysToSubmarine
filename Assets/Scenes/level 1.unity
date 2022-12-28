@@ -531,6 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 1967353466}
+  MaxlevelNum: 3
 --- !u!1 &139510086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,6 +3711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b9de99895f4ad4e849b42f69e42ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GM: {fileID: 97783157}
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
   time_left: 20
@@ -4109,7 +4111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}

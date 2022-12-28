@@ -9,6 +9,7 @@ public class OurEventHandler : MonoBehaviour
     [SerializeField] private static int NumberOfPlayers = 3;
     [SerializeField] private PlayerManager playerManager;
     private int levelNumber = 0;
+    [SerializeField] private int MaxlevelNum = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +49,10 @@ public class OurEventHandler : MonoBehaviour
     public void Nextlevel(int numlevel = 0)
     {
         levelNumber += numlevel + 1;
+        if (levelNumber >= MaxlevelNum)
+        {
+            SceneManager.LoadScene("EndScreenWon");
+        }
         SceneManager.LoadScene("level " + levelNumber);
         Time.timeScale = 1f;
     }

@@ -19,7 +19,9 @@ public class MainMenuScript : MonoBehaviour
     }
     public void StartGame()
     {
-        gameManager.Nextlevel();
+        gameManager.Setlevel(1);
+        gameManager.Nextlevel(-1);
+
     }
 
     public void AddPlayer()

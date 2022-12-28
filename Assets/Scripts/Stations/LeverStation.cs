@@ -24,7 +24,7 @@ public class LeverStation : StationScript
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(missionsNumberOfPlayers[mission_index]);
+        //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {

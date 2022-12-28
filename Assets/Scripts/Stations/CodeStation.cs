@@ -47,7 +47,7 @@ public class CodeStation : StationScript
 
     private void pressNKeyInARow()
     {
-        Debug.Log(action_key_pressed);
+        //Debug.Log(action_key_pressed);
         if (action_key_pressed)
         {
             int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
