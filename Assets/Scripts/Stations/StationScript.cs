@@ -12,7 +12,9 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected List<KeyCode> players_action_key =new List<KeyCode>(); // All the relevant keys
     
     [SerializeField] protected List<GameObject> players_in_station; // List that holds all the current players
-    
+
+    [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station;
+
     // Is Station Active
     [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
 
@@ -25,6 +27,8 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected MissionManager missionManager;
 
     protected InputAction player_action;
+
+    protected List<bool> action_keys_pressed;
 
     protected bool action_key_pressed = false;
 
@@ -154,14 +158,14 @@ public class StationScript : MonoBehaviour
         if (action_key_pressed)
         {
             int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
-            Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            //Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             //station_active = false;
             press_in_a_row += 1;
             action_key_pressed = false;
             if (press_in_a_row == 5)
             {
                 station_active = false; //todo uncomment we finish testing otherwise annoying
-                Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " + missionsNumberOfPlayers[mission_index].ToString() + " points");
+                //Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " + missionsNumberOfPlayers[mission_index].ToString() + " points");
 
                 missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
                 press_in_a_row = 0;
@@ -232,14 +236,14 @@ public class StationScript : MonoBehaviour
         {
         foreach( var action_key in players_action_key)
         {
-            Debug.Log("In Loop");
+            //Debug.Log("In Loop");
             if (!Input.GetKey(action_key))
             {
                 return;
             }
         }
 
-        Debug.Log("Station Neutralized");
+        //Debug.Log("Station Neutralized");
         station_active = false;
         deActivatePopup();
         missionManager.missionDone(5, 1);
@@ -254,6 +258,7 @@ public class StationScript : MonoBehaviour
             //Debug.Log("Player Touched");
             if (collision.gameObject.GetComponent<PlayerController>().is_Controller())
             {
+                int counter = players_controller_in_station.Count;
                 player_action = collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButtonNew();
                 player_action.started += ctx => action_key_pressed = true;
                 //player_action.performed += ctx => action_key_pressed = true;
@@ -264,7 +269,7 @@ public class StationScript : MonoBehaviour
                 players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
             }
             players_in_station.Add(collision.gameObject);
-            
+
         }
     }
 

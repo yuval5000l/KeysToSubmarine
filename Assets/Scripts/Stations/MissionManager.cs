@@ -11,7 +11,6 @@ public class MissionManager : MonoBehaviour
 
     [SerializeField] private OurEventHandler GM;
     [SerializeField] private TMP_Text timer_text;
-    
     [SerializeField] private TMP_Text score_text;
 
     [SerializeField] private float time_left = 30;
@@ -19,10 +18,12 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private int score = 0;
     [SerializeField] private int missionsToWinTarget = 10;
     [SerializeField] private GameObject indicator;
+    [SerializeField] private GameObject Orb;
+    [SerializeField] private SpriteRenderer GreenScreen;
+
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
     [SerializeField] private List<string> stationsNames = new List<string>();
     [SerializeField] private List<string> missionsExplanation = new List<string>();
-
 
     private float initial_time;
     private bool isGameFinsihed = false;
@@ -82,6 +83,14 @@ public class MissionManager : MonoBehaviour
         }
 
         rollTheDice();
+
+        // For Gadi
+        
+
+        //
+
+        float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
+        Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         indicator.transform.localScale = new Vector3((1 - (time_left / initial_time))*16f, indicator.transform.localScale.y);
     }
 
