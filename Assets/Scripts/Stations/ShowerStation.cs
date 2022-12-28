@@ -11,6 +11,8 @@ public class ShowerStation : StationScript
 
     [SerializeField] private float holdTime = 0;
     [SerializeField] private GameObject indicator;
+    [SerializeField] private Animator station_animation;
+
     private float timeHeld = 0;
 
     void Start()
@@ -37,8 +39,16 @@ public class ShowerStation : StationScript
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
-                 
+                station_animation.SetTrigger("Touched");
             }
+            else
+            {
+                station_animation.SetTrigger("idle");
+            }
+        }
+        else
+        {
+            station_animation.SetTrigger("idle");
         }
         timeWindowToPress += Time.deltaTime;
     }
@@ -50,6 +60,7 @@ public class ShowerStation : StationScript
        {
             if (Input.GetKey(action_key))
             {
+                station_animation.SetTrigger("StartShower");
                 timeHeld += Time.deltaTime;
                 indicator.transform.localScale = new Vector3((timeHeld)*1f, indicator.transform.localScale.y);
             }
@@ -62,13 +73,15 @@ public class ShowerStation : StationScript
         {
             if (action_key.Item2 == true)
             {
+                station_animation.SetTrigger("StartShower");
                 timeHeld += Time.deltaTime;
                 indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
             }
         }
         if (timeHeld >= holdTime) 
        {
-        timeHeld = 0;
+            station_animation.SetTrigger("EndShower");
+            timeHeld = 0;
         station_active = false;
         indicator.transform.localScale = new Vector3(0.01f, indicator.transform.localScale.y);
         deActivatePopup();

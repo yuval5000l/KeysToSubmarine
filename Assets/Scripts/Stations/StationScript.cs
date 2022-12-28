@@ -41,7 +41,7 @@ public class StationScript : MonoBehaviour
     //instead of number of frames.
     [SerializeField] protected float maximalTime = 0.25f;
 
-    [SerializeField] protected TMP_Text playersForMission; 
+    //[SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
 
 
@@ -340,13 +340,13 @@ public class StationScript : MonoBehaviour
 
     public void activatePopup()
     {
-        playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
+        //playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
         stationPopup.SetActive(true);
     }
 
     public void deActivatePopup()
     {
-        playersForMission.text = "";
+        //playersForMission.text = "";
         stationPopup.SetActive(false);
     }
     

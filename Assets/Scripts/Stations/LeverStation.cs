@@ -10,6 +10,7 @@ public class LeverStation : StationScript
 {
 
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
+    [SerializeField] private Animator station_animation;
 
 
     void Start()
@@ -20,6 +21,7 @@ public class LeverStation : StationScript
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1.5f, 0);
         deActivatePopup();
+
     }
 
     // Update is called once per frame
@@ -32,9 +34,18 @@ public class LeverStation : StationScript
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
-                
+                station_animation.SetTrigger("Hover");
+            }
+            else
+            {
+                station_animation.SetTrigger("StopHover");
             }
         }
+        else
+        {
+            station_animation.SetTrigger("StopHover");
+        }
+
         for (int i = 0; i < players_controller_in_station.Count; i++)
         {
             if (players_controller_in_station[i].Item2 == false)
@@ -88,8 +99,11 @@ public class LeverStation : StationScript
             station_active = false; 
             pressKeysInARowCount = 0;
             deActivatePopup();
+            station_animation.SetTrigger("pullLever");
             missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
         }
     }
+
+    
     //}
 }

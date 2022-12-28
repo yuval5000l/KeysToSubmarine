@@ -10,8 +10,14 @@ public class CodeStation : StationScript
 
 {
     [SerializeField] private SpriteRenderer spriteR;
-    [SerializeField] private Sprite vSprite;
-    [SerializeField] private Sprite xSprite;
+    [SerializeField] private Sprite idle;
+    [SerializeField] private Sprite HoverSprite;
+
+    [SerializeField] private Sprite[] states;
+    //[SerializeField] private Sprite x1Sprite;
+    //[SerializeField] private Sprite x2Sprite;
+    //[SerializeField] private Sprite x3Sprite;
+    //[SerializeField] private Sprite x4Sprite;
     List<bool> check_pressed_once = new List<bool>() { false, false, false, false };
 
 
@@ -19,7 +25,7 @@ public class CodeStation : StationScript
     {
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        spriteR.sprite = xSprite;
+        spriteR.sprite = idle;
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1.5f, 0);
         deActivatePopup();
@@ -34,9 +40,17 @@ public class CodeStation : StationScript
         {
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
+                if (press_in_a_row == 0)
+                {
+                    spriteR.sprite = HoverSprite;
+                }
                 missions[mission_index]();
             }
         }
+        //else
+        //{
+        //    spriteR.sprite = idle;
+        //}
         if (timeWindowToPress >= maximalTime)
         {
             timeWindowToPress = 0;
@@ -81,6 +95,7 @@ public class CodeStation : StationScript
 
             //Debug.Log(press_in_a_row);
             press_in_a_row += 1;
+            spriteR.sprite = states[press_in_a_row - 1];
             pressKeysInARowCount = 0;
         }
 
@@ -88,12 +103,12 @@ public class CodeStation : StationScript
 
         if (press_in_a_row == 5)
         {
-            spriteR.sprite = vSprite;
+            spriteR.sprite = states[press_in_a_row - 1];
             station_active = false;
             deActivatePopup();
             if (press_in_a_row == 5)
             {
-                station_active = false; 
+                station_active = false;
 
                 missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
                 press_in_a_row = 0;
@@ -113,7 +128,7 @@ public class CodeStation : StationScript
     public override void setMissionIndex(int i)
     {
         mission_index = i;
-        spriteR.sprite = xSprite;
+        spriteR.sprite = idle;
         station_active = true;
         activatePopup();
     }

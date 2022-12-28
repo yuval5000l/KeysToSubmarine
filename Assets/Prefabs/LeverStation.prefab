@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3943577113499008744}
   - component: {fileID: 3943577113499008759}
   - component: {fileID: 3943577113499008757}
-  - component: {fileID: 3943577113499008756}
+  - component: {fileID: 120271504988597064}
+  - component: {fileID: 747443521}
   m_Layer: 0
   m_Name: LeverStation
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3943577113499008745}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.8, y: -2.36, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 507e0e5f15d900e468cb86d1d4a2f5ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09fe47e8dd9c1ed44a356cf60e03cf72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,10 +107,10 @@ MonoBehaviour:
   missionManager: {fileID: 0}
   stationPopup: {fileID: 0}
   maximalTime: 0.25
-  playersForMission: {fileID: 0}
   numberOfPlayers: 1
---- !u!60 &3943577113499008756
-PolygonCollider2D:
+  station_animation: {fileID: 747443521}
+--- !u!61 &120271504988597064
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,7 +122,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05507469, y: 0.15420866}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,30 +132,26 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.89, y: -0.58}
-      - {x: 0.93, y: -0.29}
-      - {x: 0.93, y: -0.19999999}
-      - {x: 0.91999996, y: -0.14999999}
-      - {x: 0.9, y: -0.06}
-      - {x: 0.83, y: 0.22999999}
-      - {x: 0.82, y: 0.32999998}
-      - {x: 0.74, y: 0.62}
-      - {x: 0.71999997, y: 0.64}
-      - {x: 0.16, y: 0.65}
-      - {x: 0.13, y: 0.68}
-      - {x: -0.099999994, y: 0.68}
-      - {x: -0.13, y: 0.65}
-      - {x: -0.71999997, y: 0.65}
-      - {x: -0.75, y: 0.62}
-      - {x: -0.87, y: 0.11}
-      - {x: -0.94, y: -0.19}
-      - {x: -0.94, y: -0.31}
-      - {x: -0.90999997, y: -0.5}
-      - {x: -0.85999995, y: -0.84}
-      - {x: -0.83, y: -0.87}
-      - {x: -0.26, y: -0.87}
-      - {x: -0.25, y: -0.88}
-      - {x: 0.83, y: -0.88}
-      - {x: 0.84999996, y: -0.85999995}
+  serializedVersion: 2
+  m_Size: {x: 1.4972534, y: 0.5499687}
+  m_EdgeRadius: 0
+--- !u!95 &747443521
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943577113499008745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a72e0feb298c1da499b29717727b6ef6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
