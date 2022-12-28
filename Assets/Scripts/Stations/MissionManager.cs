@@ -70,7 +70,7 @@ public class MissionManager : MonoBehaviour
         {
             Debug.Log("You Win! You Win! You Win! You Win!");
             isGameFinsihed = true;
-            GM.Nextlevel();
+            GM.NextlevelCanvas();
             return;
         }
         if (time_left <= 0)

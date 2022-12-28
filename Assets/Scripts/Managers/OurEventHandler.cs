@@ -8,6 +8,7 @@ public class OurEventHandler : MonoBehaviour
 {
     [SerializeField] private static int NumberOfPlayers = 3;
     [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private NextLevelCanva nextlevel;
     private int levelNumber = 0;
     [SerializeField] private int MaxlevelNum = 3;
     // Start is called before the first frame update
@@ -57,6 +58,11 @@ public class OurEventHandler : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void NextlevelCanvas()
+    {
+        Time.timeScale = 0f;
+        nextlevel.gameObject.SetActive(true);
+    }
     public int getNumOfPlayers()
     {
         return NumberOfPlayers;

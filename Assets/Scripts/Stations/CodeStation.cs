@@ -47,10 +47,6 @@ public class CodeStation : StationScript
                 missions[mission_index]();
             }
         }
-        //else
-        //{
-        //    spriteR.sprite = idle;
-        //}
         if (timeWindowToPress >= maximalTime)
         {
             timeWindowToPress = 0;
@@ -93,7 +89,6 @@ public class CodeStation : StationScript
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
 
-            //Debug.Log(press_in_a_row);
             press_in_a_row += 1;
             spriteR.sprite = states[press_in_a_row - 1];
             pressKeysInARowCount = 0;
