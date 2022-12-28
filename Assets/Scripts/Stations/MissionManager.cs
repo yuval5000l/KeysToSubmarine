@@ -144,6 +144,6 @@ public class MissionManager : MonoBehaviour
     
     private void printMissionInfo(int mission_index, int station_index)
     {
-        Debug.Log("Go to the "+ stationsNames[station_index]  + " Station"  + " And " + missionsExplanation[mission_index]);
+        //Debug.Log("Go to the "+ stationsNames[station_index]  + " Station"  + " And " + missionsExplanation[mission_index]);
     }
 }

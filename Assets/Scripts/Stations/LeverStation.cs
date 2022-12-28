@@ -9,6 +9,7 @@ using TMPro;
 public class LeverStation : StationScript
 {
 
+    List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
 
 
     void Start()
@@ -34,42 +35,61 @@ public class LeverStation : StationScript
                 
             }
         }
-
+        for (int i = 0; i < players_controller_in_station.Count; i++)
+        {
+            if (players_controller_in_station[i].Item2 == false)
+            {
+                check_pressed_once[i] = false;
+            }
+            else
+            {
+                check_pressed_once[i] = true;
+            }
+        }
     }
 
 
     private void getAllKeysDown()
     {
-        if (action_key_pressed)
-        {
-            int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
+        //if (action_key_pressed)
+        //{
+        //    int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
 
-            Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            station_active = false; //todo uncomment once we finish testing otherwise annoying
-            deActivatePopup();
-            missionManager.missionDone(1, points);
-        }
-        else
-        {
+        //    Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+        //    station_active = false; //todo uncomment once we finish testing otherwise annoying
+        //    deActivatePopup();
+        //    missionManager.missionDone(1, points);
+        //}
+        //else
+        //{
             //int count = 0;
-            foreach (var action_key in players_action_key)
+        foreach (var action_key in players_action_key)
+        {
+            if (Input.GetKeyDown(action_key))
             {
-                if (Input.GetKeyDown(action_key))
-                {
-                    pressKeysInARowCount += 1;
-                }
+                pressKeysInARowCount += 1;
             }
-
-            int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
-
-            if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
+        }
+        int counter = 0;
+        foreach (var action_key in players_controller_in_station) // For Controller
+        {
+            if (action_key.Item2 && check_pressed_once[counter] == false)
             {
-                Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-                station_active = false; 
-                pressKeysInARowCount = 0;
-                deActivatePopup();
-                missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
+                pressKeysInARowCount += 1;
+                timeWindowToPress = 0;
             }
+            counter++;
+        }
+        int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
+
+        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
+        {
+            //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            station_active = false; 
+            pressKeysInARowCount = 0;
+            deActivatePopup();
+            missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
         }
     }
+    //}
 }

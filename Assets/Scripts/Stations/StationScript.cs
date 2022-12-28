@@ -13,7 +13,7 @@ public class StationScript : MonoBehaviour
     
     [SerializeField] protected List<GameObject> players_in_station; // List that holds all the current players
 
-    [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station;
+    [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
 
     // Is Station Active
     [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
@@ -26,7 +26,7 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected int press_in_a_row = 0; 
     [SerializeField] protected MissionManager missionManager;
 
-    protected InputAction player_action;
+    protected List<InputAction> player_action_controller = new List<InputAction>();
 
     protected List<bool> action_keys_pressed;
 
@@ -43,6 +43,8 @@ public class StationScript : MonoBehaviour
 
     [SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,7 +105,7 @@ public class StationScript : MonoBehaviour
         {
             int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
 
-            Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; //todo uncomment once we finish testing otherwise annoying
             deActivatePopup();
             missionManager.missionDone(1, points);
@@ -123,7 +125,7 @@ public class StationScript : MonoBehaviour
 
             if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
             {
-                Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+                //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
                 station_active = false; //todo uncomment once we finish testing otherwise annoying
                 deActivatePopup();
                 missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
@@ -234,19 +236,19 @@ public class StationScript : MonoBehaviour
     {
         if(players_action_key.Count > 0)
         {
-        foreach( var action_key in players_action_key)
-        {
-            //Debug.Log("In Loop");
-            if (!Input.GetKey(action_key))
+            foreach( var action_key in players_action_key)
             {
-                return;
+                //Debug.Log("In Loop");
+                if (!Input.GetKey(action_key))
+                {
+                    return;
+                }
             }
-        }
 
-        //Debug.Log("Station Neutralized");
-        station_active = false;
-        deActivatePopup();
-        missionManager.missionDone(5, 1);
+            //Debug.Log("Station Neutralized");
+            station_active = false;
+            deActivatePopup();
+            missionManager.missionDone(5, 1);
         }
     }
 
@@ -256,17 +258,24 @@ public class StationScript : MonoBehaviour
         if (collision.gameObject.tag == "Player" && players_in_station.Count < missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Player Touched");
-            if (collision.gameObject.GetComponent<PlayerController>().is_Controller())
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player.is_Controller())
             {
+                //Debug.Log("Player with controller");
                 int counter = players_controller_in_station.Count;
-                player_action = collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButtonNew();
-                player_action.started += ctx => action_key_pressed = true;
+                player_action_controller.Add(player.GetPlayerActionButtonNew());
+                //player_action_controller[counter] = player.GetPlayerActionButtonNew();
+                players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
+                //Debug.Log(player_action_controller);
+                //Debug.Log("Counter = " + counter);
+                player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
                 //player_action.performed += ctx => action_key_pressed = true;
-                player_action.canceled += ctx => action_key_pressed = false;
+                player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+                
             }
             else
             {
-                players_action_key.Add(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton()); // There must be a better way
+                players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
             }
             players_in_station.Add(collision.gameObject);
 
@@ -278,15 +287,27 @@ public class StationScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //Debug.Log("Player Bye");
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             if (players_in_station.Contains(collision.gameObject))
             {
-                if (collision.gameObject.GetComponent<PlayerController>().is_Controller())
+                if (player.is_Controller())
                 {
-                    player_action = null;
+                    int location = 0;
+                    int counter = 0;
+                    foreach(Tuple<PlayerController, bool> playera in players_controller_in_station)
+                    {
+                        if (playera.Item1 == player)
+                        {
+                            player_action_controller.Remove(player_action_controller[counter]);
+                            location = counter;
+                        }
+                        counter++;
+                    }
+                    players_controller_in_station.Remove(players_controller_in_station[location]);
                 }
                 else
                 {
-                    players_action_key.Remove(collision.gameObject.GetComponent<PlayerController>().GetPlayerActionButton());
+                    players_action_key.Remove(player.GetPlayerActionButton());
                 }
                 players_in_station.Remove(collision.gameObject);
                 press_in_a_row = 0; // NOICE

@@ -2277,7 +2277,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller_set: 0
+  controller_set1: 0
+  controller_set2: 0
   rb: {fileID: 905805244}
   moveSpeed: 0.1
   debug_Text: {fileID: 0}
@@ -2969,7 +2970,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller_set: 0
+  controller_set1: 0
+  controller_set2: 0
   rb: {fileID: 1332110777}
   moveSpeed: 0.1
   debug_Text: {fileID: 0}
@@ -3123,7 +3125,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller_set: 0
+  controller_set1: 0
+  controller_set2: 0
   rb: {fileID: 1532204282}
   moveSpeed: 0.1
   debug_Text: {fileID: 0}
@@ -4218,6 +4221,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set2
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

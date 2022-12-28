@@ -16,9 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode player_action_button = KeyCode.R;
     [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
 
-    [SerializeField] private bool controller_set = false;
-    Player1Controls controls;
+    [SerializeField] private bool controller_set1 = false;
+    [SerializeField] private bool controller_set2 = false;
 
+    Player1Controls controls_1;
+    Player2Controls controls;
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
@@ -27,22 +29,37 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        controls = new Player1Controls();
-        if (controller_set)
+        controls = new Player2Controls();
+        controls_1 = new Player1Controls();
+        if (controller_set1)
         {
-            EnableController();
+            EnableController1();
+        }
+        else if (controller_set2)
+        {
+            EnableController2();
         }
     }
 
-    public void EnableController()
+    public void EnableController1()
+    {
+        //controls.Gameplay.Action.performed += ctx => Simple();
+        player_action_button_new = controls_1.Gameplay.Action;
+        controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+        controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+        //Debug.Log(controls.Gameplay.Move.GetType());
+        Debug.Log("Player1");
+    }
+    public void EnableController2()
     {
         //controls.Gameplay.Action.performed += ctx => Simple();
         player_action_button_new = controls.Gameplay.Action;
         controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-        Debug.Log(controls.Gameplay.Move.GetType());
-    }
+        //Debug.Log(controls.Gameplay.Move.GetType());
+        Debug.Log("Player2");
 
+    }
     //void Simple()
     //{
     //    //Debug.Log("HEY");
@@ -61,7 +78,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!controller_set)
+        if (!(controller_set1 || controller_set2))
         {
             movement_keyboard();
         }
@@ -108,7 +125,7 @@ public class PlayerController : MonoBehaviour
     
     public bool is_Controller()
     {
-        return controller_set;
+        return controller_set1 || controller_set2;
     }
 
     public InputAction GetPlayerActionButtonNew()

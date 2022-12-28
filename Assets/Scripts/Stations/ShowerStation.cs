@@ -58,7 +58,15 @@ public class ShowerStation : StationScript
                 timeHeld = 0;
             }
        }
-       if (timeHeld >= holdTime) 
+       foreach(var action_key in players_controller_in_station)
+        {
+            if (action_key.Item2 == true)
+            {
+                timeHeld += Time.deltaTime;
+                indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
+            }
+        }
+        if (timeHeld >= holdTime) 
        {
         timeHeld = 0;
         station_active = false;

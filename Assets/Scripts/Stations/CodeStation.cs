@@ -9,10 +9,10 @@ using TMPro;
 public class CodeStation : StationScript
 
 {
-[SerializeField] private SpriteRenderer spriteR;
-[SerializeField] private Sprite vSprite;
-[SerializeField] private Sprite xSprite;
-
+    [SerializeField] private SpriteRenderer spriteR;
+    [SerializeField] private Sprite vSprite;
+    [SerializeField] private Sprite xSprite;
+    List<bool> check_pressed_once = new List<bool>() { false, false, false, false };
 
 
     void Start()
@@ -23,6 +23,7 @@ public class CodeStation : StationScript
         stationPopup = Instantiate(Resources.Load("StationPopup")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1.5f, 0);
         deActivatePopup();
+        
     }
 
     // Update is called once per frame
@@ -36,69 +37,66 @@ public class CodeStation : StationScript
                 missions[mission_index]();
             }
         }
-        if(timeWindowToPress >= maximalTime)
+        if (timeWindowToPress >= maximalTime)
         {
             timeWindowToPress = 0;
             pressKeysInARowCount = 0;
         }
+        for (int i = 0; i < players_controller_in_station.Count; i++)
+        {
+            if (players_controller_in_station[i].Item2 == false)
+            {
+                check_pressed_once[i] = false;
+            }
+            else
+            {
+                check_pressed_once[i] = true;
+            }
+        }
 
     }
 
-
     private void pressNKeyInARow()
     {
-        //Debug.Log(action_key_pressed);
-        if (action_key_pressed)
+        foreach (var action_key in players_action_key)
         {
-            int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
-            Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            //station_active = false;
+            if (Input.GetKeyDown(action_key))
+            {
+                pressKeysInARowCount += 1;
+                timeWindowToPress = 0;
+            }
+        }
+        int counter = 0;
+        foreach (var action_key in players_controller_in_station) // For Controller
+        {
+            if (action_key.Item2 && check_pressed_once[counter] == false)
+            {
+                pressKeysInARowCount += 1;
+                timeWindowToPress = 0;
+            }
+            counter++;
+        }
+        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
+        {
+
+            //Debug.Log(press_in_a_row);
             press_in_a_row += 1;
-            action_key_pressed = false;
+            pressKeysInARowCount = 0;
+        }
+
+
+
+        if (press_in_a_row == 5)
+        {
+            spriteR.sprite = vSprite;
+            station_active = false;
+            deActivatePopup();
             if (press_in_a_row == 5)
             {
-                station_active = false; //todo uncomment we finish testing otherwise annoying
-                Debug.Log("Station pressKeyInARow() Mission Accomplished giving: " + missionsNumberOfPlayers[mission_index].ToString() + " points");
+                station_active = false; 
 
                 missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
                 press_in_a_row = 0;
-            }
-
-        }
-        else
-        {
-
-            foreach (var action_key in players_action_key)
-            {
-                if (Input.GetKeyDown(action_key))
-                {
-                    pressKeysInARowCount += 1;
-                    timeWindowToPress = 0;
-                }
-            }
-
-            if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
-            {
-
-                Debug.Log(press_in_a_row);
-                press_in_a_row += 1;
-                pressKeysInARowCount = 0;
-            }
-
-
-
-            if (press_in_a_row == 5)
-            {
-                spriteR.sprite = vSprite;
-                station_active = false;
-                deActivatePopup();
-                if (press_in_a_row == 5)
-                {
-                    station_active = false; 
-
-                    missionManager.missionDone(5, missionsNumberOfPlayers[mission_index] * 2);
-                    press_in_a_row = 0;
-                }
             }
         }
     }
