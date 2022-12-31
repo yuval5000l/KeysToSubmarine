@@ -134,7 +134,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller_set: 0
+  controller_set1: 0
+  controller_set2: 0
   rb: {fileID: 1939331252252770638}
   moveSpeed: 0.25
   debug_Text: {fileID: 0}
@@ -152,5 +153,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.015960336, y: -0.3670925}
-  m_Size: {x: 1.9036543, y: 2.5101554}
+  m_Size: {x: 1.9, y: 2.5}
   m_Direction: 0

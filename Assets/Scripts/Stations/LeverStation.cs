@@ -13,6 +13,7 @@ public class LeverStation : StationScript
     [SerializeField] private Animator station_animation;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime;
+    [SerializeField] private bool alwaysActive;
     
 
 
@@ -40,7 +41,7 @@ public class LeverStation : StationScript
     {
         //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
-        if (station_active)
+        if (station_active || alwaysActive)
         {
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
@@ -106,7 +107,6 @@ public class LeverStation : StationScript
 
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
-            Debug.Log("Is it is about to happen");//todo del this
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; 
             pressKeysInARowCount = 0;
@@ -114,15 +114,12 @@ public class LeverStation : StationScript
             station_animation.SetTrigger("pullLever");
             if (door != null)
             {
-                Debug.Log("Here we Go calling OpenDoorFor "); //todo del this
-                door.OpenDoor();
-                StartCoroutine(door.OpenDoorFor(1)); 
+                // door.OpenDoor();
+                StartCoroutine(door.OpenDoorFor(DoorOpenTime)); 
             }
             missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
             
         }
     }
-
     
-    //}
 }

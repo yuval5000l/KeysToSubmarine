@@ -316,6 +316,72 @@ public class StationScript : MonoBehaviour
         }
 
     }
+    
+    
+    void OnTriggerEnter2D(Collider2D colider) {
+        if (colider.gameObject.tag == "Player" && players_in_station.Count < missionsNumberOfPlayers[mission_index])
+        {
+            //Debug.Log("Player Touched");
+            PlayerController player = colider.gameObject.GetComponent<PlayerController>();
+            if (player.is_Controller())
+            {
+                //Debug.Log("Player with controller");
+                int counter = players_controller_in_station.Count;
+                player_action_controller.Add(player.GetPlayerActionButtonNew());
+                //player_action_controller[counter] = player.GetPlayerActionButtonNew();
+                players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
+                //Debug.Log(player_action_controller);
+                //Debug.Log("Counter = " + counter);
+                player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
+                //player_action.performed += ctx => action_key_pressed = true;
+                player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+                
+            }
+            else
+            {
+                players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
+            }
+            players_in_station.Add(colider.gameObject);
+
+        }
+        
+    }
+    
+    
+    void OnTriggerExit2D(Collider2D colider) {
+        if (colider.gameObject.tag == "Player")
+        {
+            //Debug.Log("Player Bye");
+            PlayerController player = colider.gameObject.GetComponent<PlayerController>();
+            if (players_in_station.Contains(colider.gameObject))
+            {
+                if (player.is_Controller())
+                {
+                    int location = 0;
+                    int counter = 0;
+                    foreach(Tuple<PlayerController, bool> playera in players_controller_in_station)
+                    {
+                        if (playera.Item1 == player)
+                        {
+                            player_action_controller.Remove(player_action_controller[counter]);
+                            location = counter;
+                        }
+                        counter++;
+                    }
+                    players_controller_in_station.Remove(players_controller_in_station[location]);
+                }
+                else
+                {
+                    players_action_key.Remove(player.GetPlayerActionButton());
+                }
+                players_in_station.Remove(colider.gameObject);
+                press_in_a_row = 0; // NOICE
+                
+            }
+        }
+        
+    }
+    
 
 
 
