@@ -9,14 +9,7 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator anim;
 
-    // private Vector3 pos;
     
-
-    // void Start()
-    // {
-    //     coli.enabled = true;
-    //     pos = transform.position;
-    // }
 
     void update()
     {
@@ -36,19 +29,18 @@ public class DoorScript : MonoBehaviour
     
     public IEnumerator CloseDoorIn(float xSec)
     {
-        Debug.Log("CloseDoorIn()");
         yield return new WaitForSeconds(xSec);
+        //anim.Settrigger("CloseOpenDoor")
 
         coli.enabled = true;
         sprite.enabled = true;
-
 
     }
     
     
     public void OpenDoor()
     {
-        Debug.Log("OpenDoor()");
+        //anim.Settrigger("OpenDoor")
 
         coli.enabled = false;
         sprite.enabled = false;
