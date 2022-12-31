@@ -105,6 +105,7 @@ public class LeverStation : StationScript
         }
         int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
 
+
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
@@ -117,7 +118,11 @@ public class LeverStation : StationScript
                 // door.OpenDoor();
                 StartCoroutine(door.OpenDoorFor(DoorOpenTime)); 
             }
-            missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
+            
+            if (!alwaysActive) // otherwise they get points for opening the door ... 
+            {
+                missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
+            }
             
         }
     }
