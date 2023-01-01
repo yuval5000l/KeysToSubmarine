@@ -9,21 +9,29 @@ public class MissionManager : MonoBehaviour
 {
     Random rnd = new Random( );
 
+
     [SerializeField] private OurEventHandler GM;
+    
+    // Text
     [SerializeField] private TMP_Text timer_text;
     [SerializeField] private TMP_Text score_text;
 
-    [SerializeField] private float time_left = 30;
-    
-    [SerializeField] private int score = 0;
+    // Score
+    private int score = 0;
     [SerializeField] private int missionsToWinTarget = 10;
+    
+    // Timer
+    [SerializeField] private float time_left = 30;
     [SerializeField] private GameObject indicator;
     [SerializeField] private GameObject Orb;
     [SerializeField] private SpriteRenderer GreenScreen;
 
+    // Stations
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
-    [SerializeField] private List<string> stationsNames = new List<string>();
-    [SerializeField] private List<string> missionsExplanation = new List<string>();
+    [SerializeField] private int MaxStationsAtTime = 3;
+    private int numActiveStations = 0;
+    //[SerializeField] private List<string> stationsNames = new List<string>();
+    //[SerializeField] private List<string> missionsExplanation = new List<string>();
 
     private float initial_time;
     private bool isGameFinsihed = false;
@@ -36,19 +44,19 @@ public class MissionManager : MonoBehaviour
         {
             stations.Add(station);
         }
-        stationsNames.Add("Blue");
-        stationsNames.Add("Green");
-        stationsNames.Add("Red");
-        stationsNames.Add("Red");
-        stationsNames.Add("Red");
-        stationsNames.Add("Red");
+        //stationsNames.Add("Blue");
+        //stationsNames.Add("Green");
+        //stationsNames.Add("Red");
+        //stationsNames.Add("Red");
+        //stationsNames.Add("Red");
+        //stationsNames.Add("Red");
 
-        missionsExplanation.Add("Click 1 time on M");
-        missionsExplanation.Add("Click 5 time on M");
-        missionsExplanation.Add("Click 1 time on M");
-        missionsExplanation.Add("Click 1 time on M");
-        missionsExplanation.Add("Click 1 time on M");
-        missionsExplanation.Add("Click 1 time on M");
+        //missionsExplanation.Add("Click 1 time on M");
+        //missionsExplanation.Add("Click 5 time on M");
+        //missionsExplanation.Add("Click 1 time on M");
+        //missionsExplanation.Add("Click 1 time on M");
+        //missionsExplanation.Add("Click 1 time on M");
+        //missionsExplanation.Add("Click 1 time on M");
 
 
         updateText();
@@ -98,7 +106,7 @@ public class MissionManager : MonoBehaviour
     {
         time_left += bonus_time;
         score += pointsWorth;
-
+        numActiveStations -= 1;
     }
 
     public void AddTime(float bonus_time)
@@ -114,31 +122,33 @@ public class MissionManager : MonoBehaviour
 
     private void rollTheDice()
     {
-        
-        
-
-        for (int j = 0; j < stations.Count; j++)
+        if (numActiveStations < MaxStationsAtTime)
         {
-            if (!stations[j].getStationActiveState() && !stations[j].hasPlayersInStation()) // if station is not active
+            for (int j = 0; j < stations.Count; j++)
             {
-                //Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
-                int diceResult = (int) rnd.Next(250);
-                //Debug.Log("Dice Result == " + diceResult.ToString());
-                if (diceResult == 1) // Has a 1/100 chance to generate a new mission
+                if (!stations[j].getStationActiveState() && !stations[j].hasPlayersInStation()) // if station is not active
                 {
-                    int mission_index = rnd.Next(stations[j].getMissionsCount());
-                    //Debug.Log("Station number: " + j.ToString() + " Has Won its self the " +mission_index.ToString() + "th Mission!!");
-                    
-                    // todo  Add here some information to the screen that can give the users info about the new mission 
-                    printMissionInfo(mission_index, j);
-                    //todo some stations can't have certian missions, we can add if else logic here
-                    stations[j].setMissionIndex(mission_index);
+                    //Debug.Log("Station number: " + j.ToString() +" is about to rollTheDice!!");
+                    int diceResult = (int)rnd.Next(250);
+                    //Debug.Log("Dice Result == " + diceResult.ToString());
+                    if (diceResult == 1) // Has a 1/100 chance to generate a new mission
+                    {
+                        numActiveStations += 1;
+                        int mission_index = rnd.Next(stations[j].getMissionsCount());
+                        //Debug.Log("Station number: " + j.ToString() + " Has Won its self the " +mission_index.ToString() + "th Mission!!");
 
-                    
+                        // todo  Add here some information to the screen that can give the users info about the new mission 
+                        printMissionInfo(mission_index, j);
+                        //todo some stations can't have certian missions, we can add if else logic here
+                        stations[j].setMissionIndex(mission_index);
+
+
+                    }
                 }
+
             }
-            
         }
+        
 
     }
     

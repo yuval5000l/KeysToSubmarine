@@ -766,7 +766,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181444428
 GameObject:
@@ -834,7 +834,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &198085651
 GameObject:
@@ -1663,7 +1663,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591072987
 GameObject:
@@ -1882,7 +1882,7 @@ RectTransform:
   - {fileID: 591072988}
   - {fileID: 639320737}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1908,7 +1908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &639320737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2157,7 +2157,7 @@ Transform:
   - {fileID: 93085347}
   - {fileID: 1691262356}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715573250
 GameObject:
@@ -3000,7 +3000,7 @@ Transform:
   m_Children:
   - {fileID: 687067956}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061234665
 GameObject:
@@ -5380,7 +5380,7 @@ Transform:
   - {fileID: 1586952207}
   - {fileID: 1837730368}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962775321
 MonoBehaviour:
@@ -5397,15 +5397,13 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
-  time_left: 17
-  score: 0
   missionsToWinTarget: 10
+  time_left: 17
   indicator: {fileID: 256428754}
   Orb: {fileID: 907512076}
   GreenScreen: {fileID: 0}
   stations: []
-  stationsNames: []
-  missionsExplanation: []
+  MaxStationsAtTime: 3
 --- !u!1 &1967353464
 GameObject:
   m_ObjectHideFlags: 0
