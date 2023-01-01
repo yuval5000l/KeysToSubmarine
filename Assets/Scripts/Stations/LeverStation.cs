@@ -39,6 +39,7 @@ public class LeverStation : StationScript
     // Update is called once per frame
     void Update()
     {
+        pressKeysInARowCount = 0;
         //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || alwaysActive)
@@ -110,8 +111,8 @@ public class LeverStation : StationScript
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
             station_active = false; 
-            pressKeysInARowCount = 0;
             deActivatePopup();
+            //Debug.Log("Did it");
             station_animation.SetTrigger("pullLever");
             if (door != null)
             {

@@ -2051,8 +2051,8 @@ Canvas:
   m_GameObject: {fileID: 634885247}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2061,7 +2061,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &634885251
 RectTransform:
@@ -5768,15 +5768,13 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
-  time_left: 17
-  score: 0
   missionsToWinTarget: 20
+  time_left: 17
   indicator: {fileID: 256428754}
   Orb: {fileID: 907512076}
   GreenScreen: {fileID: 0}
   stations: []
-  stationsNames: []
-  missionsExplanation: []
+  MaxStationsAtTime: 3
 --- !u!1 &1967353464
 GameObject:
   m_ObjectHideFlags: 0

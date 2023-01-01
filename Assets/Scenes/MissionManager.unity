@@ -5398,7 +5398,7 @@ MonoBehaviour:
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
   missionsToWinTarget: 10
-  time_left: 17
+  time_left: 100
   indicator: {fileID: 256428754}
   Orb: {fileID: 907512076}
   GreenScreen: {fileID: 0}
