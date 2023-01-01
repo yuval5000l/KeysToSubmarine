@@ -42,29 +42,22 @@ public class MissionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        refillStations();
+        updateText();
+        initial_time = time_left;
+
+        //stationsNames.Add("Red");
+        //missionsExplanation.Add("Click 1 time on M");
+        //missionsExplanation.Add("Click 5 time on M");
+    }
+
+    private void refillStations()
+    {
         foreach (StationScript station in GetComponentsInChildren<StationScript>())
         {
             stations.Add(station);
         }
-        //stationsNames.Add("Blue");
-        //stationsNames.Add("Green");
-        //stationsNames.Add("Red");
-        //stationsNames.Add("Red");
-        //stationsNames.Add("Red");
-        //stationsNames.Add("Red");
-
-        //missionsExplanation.Add("Click 1 time on M");
-        //missionsExplanation.Add("Click 5 time on M");
-        //missionsExplanation.Add("Click 1 time on M");
-        //missionsExplanation.Add("Click 1 time on M");
-        //missionsExplanation.Add("Click 1 time on M");
-        //missionsExplanation.Add("Click 1 time on M");
-
-
-        updateText();
-        initial_time = time_left;
     }
-
     // Update is called once per frame
     void Update()
     {
