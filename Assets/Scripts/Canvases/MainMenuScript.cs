@@ -15,7 +15,10 @@ public class MainMenuScript : MonoBehaviour
     void Start()
     {
         num_players = gameManager.getNumOfPlayers();
-        num_players_text.text = num_players.ToString();
+        if (num_players_text != null)
+        {
+            num_players_text.text = num_players.ToString();
+        }
     }
     public void StartGame()
     {
