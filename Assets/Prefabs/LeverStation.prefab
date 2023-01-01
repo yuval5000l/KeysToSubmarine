@@ -112,6 +112,7 @@ MonoBehaviour:
   station_animation: {fileID: 747443521}
   door: {fileID: 0}
   DoorOpenTime: 0
+  alwaysActive: 0
 --- !u!61 &120271504988597064
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05507469, y: 0.1}
+  m_Offset: {x: -0.0118358135, y: 0.013522625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -182,5 +183,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 0.7499687}
+  m_Size: {x: 1.2729554, y: 1.1823559}
   m_EdgeRadius: 0.088

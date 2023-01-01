@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Block
+  - Boulder
   layers:
   - Default
   - TransparentFX
