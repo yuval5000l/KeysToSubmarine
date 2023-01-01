@@ -20,8 +20,15 @@ public class BollderStation : StationScript
     // Update is called once per frame
     void Update()
     {
-        
-        rigi.bodyType = RigidbodyType2D.Static;
+        pressKeysInARowCount = 0;
+        if (rigi != null)
+        {
+            if (rigi.bodyType != RigidbodyType2D.Static)
+            {
+                rigi.bodyType = RigidbodyType2D.Static;
+            }
+        }
+
 
         if (station_active)
         {
@@ -52,7 +59,7 @@ public class BollderStation : StationScript
 
         foreach (var action_key in players_action_key)
         {
-            if (Input.GetKeyDown(action_key))
+            if (Input.GetKey(action_key))
             {
                 pressKeysInARowCount += 1;
             }
@@ -68,13 +75,11 @@ public class BollderStation : StationScript
             }
             counter++;
         }
-
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             pressKeysInARowCount = 0;
             
             rigi.bodyType = RigidbodyType2D.Dynamic;
-
         }
     }
 }

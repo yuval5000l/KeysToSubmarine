@@ -18,7 +18,7 @@ public class DoorScript : MonoBehaviour
 
     public void CloseDoor()
     {
-        Debug.Log("CloseDoor()");
+        //Debug.Log("CloseDoor()");
 
         coli.enabled = true;
         sprite.enabled = true;

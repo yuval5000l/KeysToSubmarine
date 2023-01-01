@@ -22,7 +22,7 @@ public class LeverStation : StationScript
         //functionaly
         if (DoorOpenTime == null)
         {
-            DoorOpenTime = (float) 1.0;
+            DoorOpenTime = 1.0f;
             
         }
         missions.Add(getAllKeysDown);

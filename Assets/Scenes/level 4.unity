@@ -593,7 +593,7 @@ Transform:
   m_Children:
   - {fileID: 1967353465}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97783157
 MonoBehaviour:
@@ -981,7 +981,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &198085651
 GameObject:
@@ -1815,7 +1815,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &545601472
 PrefabInstance:
@@ -2104,7 +2104,7 @@ RectTransform:
   - {fileID: 278941943}
   - {fileID: 591072988}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2132,6 +2132,7 @@ MonoBehaviour:
   stationPopup: {fileID: 0}
   maximalTime: 0.25
   numberOfPlayers: 1
+  rigi: {fileID: 0}
 --- !u!1001 &672898299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2209,7 +2210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: moveSpeed
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set
@@ -2383,7 +2384,7 @@ Transform:
   - {fileID: 93085347}
   - {fileID: 1691262356}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715573250
 GameObject:
@@ -2578,6 +2579,14 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 77939311}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: DoorOpenTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: alwaysActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: stationPopup
       value: 
@@ -2943,7 +2952,7 @@ MonoBehaviour:
   controller_set1: 0
   controller_set2: 0
   rb: {fileID: 905805244}
-  moveSpeed: 0.05
+  moveSpeed: 0.1
   debug_Text: {fileID: 0}
 --- !u!50 &905805244
 Rigidbody2D:
@@ -3101,7 +3110,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &907512079
 Animator:
@@ -3166,7 +3175,7 @@ Transform:
   m_Children:
   - {fileID: 687067956}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061234665
 GameObject:
@@ -3403,11 +3412,31 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1962775320}
     m_Modifications:
+    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: rigi
+      value: 
+      objectReference: {fileID: 1164811126}
+    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: stationPopup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: missionManager
+      value: 
+      objectReference: {fileID: 1962775321}
+    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: numberOfPlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: players_in_station.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3481,6 +3510,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!4 &1164811127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
+  m_PrefabInstance: {fileID: 1164811124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1233332054
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,7 +3832,7 @@ MonoBehaviour:
   controller_set1: 0
   controller_set2: 0
   rb: {fileID: 1332110777}
-  moveSpeed: 0.05
+  moveSpeed: 0.1
   debug_Text: {fileID: 0}
 --- !u!50 &1332110777
 Rigidbody2D:
@@ -3953,7 +3987,7 @@ MonoBehaviour:
   controller_set1: 0
   controller_set2: 0
   rb: {fileID: 1532204282}
-  moveSpeed: 0.05
+  moveSpeed: 0.1
   debug_Text: {fileID: 0}
 --- !u!50 &1532204282
 Rigidbody2D:
@@ -5240,7 +5274,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909945983
 GameObject:
@@ -5488,8 +5522,9 @@ Transform:
   - {fileID: 77939306}
   - {fileID: 1569299382}
   - {fileID: 545601473}
+  - {fileID: 1164811127}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962775321
 MonoBehaviour:
@@ -5506,7 +5541,7 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
-  time_left: 16
+  time_left: 100
   score: 0
   missionsToWinTarget: 30
   indicator: {fileID: 256428754}
