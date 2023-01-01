@@ -30,6 +30,8 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
     [SerializeField] private int MaxStationsAtTime = 3;
     private int numActiveStations = 0;
+
+    // TODO Make a weighted probability. TODO Make a list of stations with stations.
     //[SerializeField] private List<string> stationsNames = new List<string>();
     //[SerializeField] private List<string> missionsExplanation = new List<string>();
 

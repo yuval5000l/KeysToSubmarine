@@ -1908,7 +1908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &639320737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5397,15 +5397,13 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
-  time_left: 17
-  score: 0
   missionsToWinTarget: 10
+  time_left: 17
   indicator: {fileID: 256428754}
   Orb: {fileID: 907512076}
   GreenScreen: {fileID: 0}
   stations: []
-  stationsNames: []
-  missionsExplanation: []
+  MaxStationsAtTime: 3
 --- !u!1 &1967353464
 GameObject:
   m_ObjectHideFlags: 0
