@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Dialogue : MonoBehaviour
+using UnityEngine.UI;
+[System.Serializable]
+public class Dialogue
 {
     public string name;
-    public string[] dialogue;
+    [TextArea(3,10)]
+    public string[] sentences;
     // Start is called before the first frame update
     void Start()
     {
