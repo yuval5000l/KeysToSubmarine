@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Block
+  - Holdable
+  - Bin
+  - RadioActive
   layers:
   - Default
   - TransparentFX
