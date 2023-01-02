@@ -2058,11 +2058,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.51
+      value: -2.75
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2842,6 +2842,7 @@ MonoBehaviour:
   rb: {fileID: 905805244}
   moveSpeed: 0.05
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!50 &905805244
 Rigidbody2D:
   serializedVersion: 4
@@ -3614,6 +3615,7 @@ MonoBehaviour:
   rb: {fileID: 1332110777}
   moveSpeed: 0.05
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!50 &1332110777
 Rigidbody2D:
   serializedVersion: 4
@@ -3769,6 +3771,7 @@ MonoBehaviour:
   rb: {fileID: 1532204282}
   moveSpeed: 0.05
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!50 &1532204282
 Rigidbody2D:
   serializedVersion: 4
@@ -5319,15 +5322,13 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 198085653}
   score_text: {fileID: 300253001}
-  time_left: 16
-  score: 0
   missionsToWinTarget: 30
+  time_left: 16
   indicator: {fileID: 256428754}
   Orb: {fileID: 907512076}
   GreenScreen: {fileID: 0}
   stations: []
-  stationsNames: []
-  missionsExplanation: []
+  MaxStationsAtTime: 3
 --- !u!1 &1967353464
 GameObject:
   m_ObjectHideFlags: 0

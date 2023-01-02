@@ -65,8 +65,10 @@ public class MissionManager : MonoBehaviour
         {
             return;
         }
-
-        time_left -= Time.deltaTime;
+        if (time_left != -100f)
+        {
+            time_left -= Time.deltaTime;
+        }
         updateText();
 
         if (score >= missionsToWinTarget)
@@ -76,7 +78,7 @@ public class MissionManager : MonoBehaviour
             GM.NextlevelCanvas();
             return;
         }
-        if (time_left <= 0)
+        if (time_left <= 0 && time_left != -100f)
         {
             isGameFinsihed = true;
 
@@ -91,9 +93,12 @@ public class MissionManager : MonoBehaviour
         
 
         //
-
-        float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
-        Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
+        if (Orb != null)
+        {
+            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
+            Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
+        }
+        
         indicator.transform.localScale = new Vector3((1 - (time_left / initial_time))*16f, indicator.transform.localScale.y);
     }
 
@@ -111,8 +116,8 @@ public class MissionManager : MonoBehaviour
 
     private void updateText()
     {
-        timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
-        score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
+        //timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
+        //score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
     }
 
     private void rollTheDice()

@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(movement * moveSpeed);
+        rb.AddForce(movement * moveSpeed, ForceMode2D.Impulse);
     }
 
     public KeyCode GetPlayerActionButton()

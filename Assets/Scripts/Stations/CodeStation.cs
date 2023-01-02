@@ -19,6 +19,7 @@ public class CodeStation : StationScript
     //[SerializeField] private Sprite x3Sprite;
     //[SerializeField] private Sprite x4Sprite;
     List<bool> check_pressed_once = new List<bool>() { false, false, false, false };
+    [SerializeField] private float bonus_time = 1f;
 
 
     void Start()
@@ -46,6 +47,14 @@ public class CodeStation : StationScript
                 }
                 missions[mission_index]();
             }
+            else
+            {
+                spriteR.sprite = idle;
+            }
+        }
+        else
+        {
+            spriteR.sprite = idle;
         }
         if (timeWindowToPress >= maximalTime)
         {
@@ -105,7 +114,7 @@ public class CodeStation : StationScript
             {
                 station_active = false;
 
-                missionManager.missionDone(1, missionsNumberOfPlayers[mission_index] * 2);
+                missionManager.missionDone(bonus_time, missionsNumberOfPlayers[mission_index] * 2);
                 press_in_a_row = 0;
             }
         }

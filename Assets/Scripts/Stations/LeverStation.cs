@@ -14,7 +14,7 @@ public class LeverStation : StationScript
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
     [SerializeField] private bool alwaysActive;
-    
+    [SerializeField] private float bonus_time = 1.5f;
 
 
     void Start()
@@ -117,12 +117,12 @@ public class LeverStation : StationScript
             if (door != null)
             {
                 // door.OpenDoor();
-                StartCoroutine(door.OpenDoorFor(DoorOpenTime)); 
+                door.OpenDoor(DoorOpenTime);
             }
             
             if (!alwaysActive) // otherwise they get points for opening the door ... 
             {
-                missionManager.missionDone((pressKeysInARowCount * 1.5f), points);
+                missionManager.missionDone((pressKeysInARowCount * bonus_time), points);
             }
             
         }
