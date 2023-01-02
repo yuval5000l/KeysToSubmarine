@@ -55,11 +55,13 @@ public class CodeStation : StationScript
             }
             else
             {
+                PlayerAnimationIdle();
                 spriteR.sprite = idle;
             }
         }
         else
         {
+            PlayerAnimationIdle();
             spriteR.sprite = idle;
         }
         if (timeWindowToPress >= maximalTime)
@@ -103,7 +105,7 @@ public class CodeStation : StationScript
         }
         if (keys_pressed.Count == missionsNumberOfPlayers[mission_index])
         {
-
+            PlayerAnimationWork();
             press_in_a_row += 1;
             spriteR.sprite = states[press_in_a_row - 1];
             keys_pressed.Clear();

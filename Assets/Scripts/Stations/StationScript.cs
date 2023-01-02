@@ -374,7 +374,7 @@ public class StationScript : MonoBehaviour
                 }
                 players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
-                
+                player.AnimationIdle();
             }
         }
         
@@ -383,9 +383,10 @@ public class StationScript : MonoBehaviour
 
     protected void PlayerAnimationWork()
     {
+        Vector3 loc = gameObject.transform.localPosition;
         foreach (PlayerController player in players_in_station)
         {
-            player.AnimationWork();
+            player.AnimationWork(loc);
         }
     }
 

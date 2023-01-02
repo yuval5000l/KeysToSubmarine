@@ -187,14 +187,56 @@ public class PlayerController : MonoBehaviour
         player_action_button = new_key;
     }
 
-    public void AnimationWork()
+    public void AnimationWork(Vector3 otherlocalLocation)
     {
+        PlayerDirectionAnimation(otherlocalLocation);
         animator.SetTrigger("work");
+    }
+    private void PlayerDirectionAnimation(Vector3 otherlocalLocation)
+    {
+        float x1 = transform.localPosition.x;
+        float y1 = transform.localPosition.y;
+        float x2 = otherlocalLocation.x;
+        float y2 = otherlocalLocation.y;
+        float deg = Mathf.Atan2((y2 - y1), (x2 - x1));
+        if (deg > -2.25f && deg <= -0.75f)
+        {
+            animator.SetTrigger("Run_Down");
+        }
+        else if(deg > -0.75 && deg <= 0.75f)
+        {
+            animator.SetTrigger("Run_Right");
+            if (!looking_right)
+            {
+                looking_right = true;
+                transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
+            }
+            
+        }
+        else if(deg > 0.75f && deg <= 2.25f)
+        {
+            animator.SetTrigger("Run_Up");
+        }
+        else
+        {
+            animator.SetTrigger("Run_Right");
+            if (looking_right)
+            {
+                looking_right = false;
+                transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+            }
+        }
+        //Debug.Log(deg);
+    }
+    public void AnimationPush(Vector3 otherlocalLocation)
+    {
+        PlayerDirectionAnimation(otherlocalLocation);
+        animator.SetTrigger("push");
     }
 
     public void AnimationIdle()
     {
-        if (Mathf.Abs(rb.velocity.x) <= 0.01f && Mathf.Abs(rb.velocity.y) <= 0.01f)
+        if (Mathf.Abs(rb.velocity.x) <= 0.01f && Mathf.Abs(rb.velocity.y) <= 0.01f && !Input.GetKeyDown(player_action_button))
         {
             animator.SetTrigger("idle");
         }
