@@ -388,7 +388,6 @@ public class StationScript : MonoBehaviour
         
         mission_index = i;
         station_active = true;
-        
         activatePopup();
     }
 

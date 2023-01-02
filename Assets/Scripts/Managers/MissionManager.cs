@@ -29,13 +29,13 @@ public class MissionManager : MonoBehaviour
     // Stations
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
     [SerializeField] private int MaxStationsAtTime = 3;
-    private int numActiveStations = 0;
+    //private int numActiveStations = 0;
 
     // TODO Make a weighted probability. TODO Make a list of stations with stations.
     private List<List<StationScript>> stationScripts = new List<List<StationScript>>();
     //[SerializeField] private List<string> stationsNames = new List<string>();
     //[SerializeField] private List<string> missionsExplanation = new List<string>();
-
+    private List<StationScript> stationsActive = new List<StationScript>();
     private float initial_time;
     private bool isGameFinsihed = false;
     
@@ -65,7 +65,6 @@ public class MissionManager : MonoBehaviour
                     new_list.Add(station);
                 }
             }
-            
             stationScripts.Add(new_list);
         }
 
@@ -114,10 +113,10 @@ public class MissionManager : MonoBehaviour
             SceneManager.LoadScene("EndScreenLost");
         }
 
-        rollTheDice();
-
+        //rollTheDice();
+        ChooseStratgies();
         // For Gadi
-        
+
 
         //
         if (Orb != null)
@@ -131,11 +130,43 @@ public class MissionManager : MonoBehaviour
 
     public void missionDone(float bonus_time, int pointsWorth)
     {
+        StationScript station_to_remove = null;
+        List<StationScript> strategy_to_remove = null;
+        foreach (List<StationScript> strategy in stationScripts)
+        {
+            foreach (StationScript station in strategy)
+            {
+                if (stationsActive.Contains(station) && station.getStationActiveState() == false)
+                {
+                    stationsActive.Remove(station);
+                    station_to_remove = station;
+                    strategy_to_remove = strategy;
+                }
+            }
+            if (station_to_remove != null)
+            {
+                strategy.Remove(station_to_remove);
+                station_to_remove = null;
+            }
+        }
+        if (strategy_to_remove.Count == 0)
+        {
+            stationScripts.Remove(strategy_to_remove);
+        }
+        else
+        {
+            ActivateStation(strategy_to_remove);
+        }
         time_left += bonus_time;
         score += pointsWorth;
-        numActiveStations -= 1;
+        //numActiveStations -= 1;
     }
 
+    private void ActivateStation(List<StationScript> strategy)
+    {
+        strategy[0].setMissionIndex(0);
+        stationsActive.Add(strategy[0]); // Station Active
+    }
     public void AddTime(float bonus_time)
     {
         time_left += bonus_time;
@@ -147,9 +178,18 @@ public class MissionManager : MonoBehaviour
         score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
     }
 
+    private void ChooseStratgies()
+    {
+        while (stationsActive.Count < MaxStationsAtTime)
+        {
+            int diceResult = (int)rnd.Next(stationScripts.Count);
+            ActivateStation(stationScripts[diceResult]);
+        }
+    }
+
     private void rollTheDice()
     {
-        if (numActiveStations < MaxStationsAtTime)
+        if (stationsActive.Count < MaxStationsAtTime)
         {
             for (int j = 0; j < stations.Count; j++)
             {
@@ -160,7 +200,6 @@ public class MissionManager : MonoBehaviour
                     //Debug.Log("Dice Result == " + diceResult.ToString());
                     if (diceResult == 1) // Has a 1/100 chance to generate a new mission
                     {
-                        numActiveStations += 1;
                         int mission_index = rnd.Next(stations[j].getMissionsCount());
                         //Debug.Log("Station number: " + j.ToString() + " Has Won its self the " +mission_index.ToString() + "th Mission!!");
 
@@ -168,8 +207,7 @@ public class MissionManager : MonoBehaviour
                         printMissionInfo(mission_index, j);
                         //todo some stations can't have certian missions, we can add if else logic here
                         stations[j].setMissionIndex(mission_index);
-
-
+                        stationsActive.Add(stations[j]); // Station Active
                     }
                 }
 
