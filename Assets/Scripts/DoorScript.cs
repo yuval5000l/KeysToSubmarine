@@ -10,7 +10,7 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private bool always_open = false;
     [SerializeField] private int numOfStations = 1;
-
+    [SerializeField] private bool permanent_changes = false;
     private int counter_stations = 0;
 
     void update()
@@ -41,10 +41,11 @@ public class DoorScript : MonoBehaviour
     
     public void StopTouchDoor()
     {
-        if (counter_stations >= 0)
+        if (counter_stations >= 0 && !permanent_changes)
         {
             counter_stations--;
         }
+        Debug.Log(counter_stations);
     }
     
     public void OpenDoor(float xSeconds = 1)

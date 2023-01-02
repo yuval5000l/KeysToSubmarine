@@ -116,8 +116,8 @@ public class MissionManager : MonoBehaviour
 
     private void updateText()
     {
-        //timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
-        //score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
+        timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
+        score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
     }
 
     private void rollTheDice()

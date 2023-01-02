@@ -13,12 +13,13 @@ public class CodeStation : StationScript
     [SerializeField] private Sprite idle;
     [SerializeField] private Sprite HoverSprite;
 
+
     [SerializeField] private Sprite[] states;
     List<bool> check_pressed_once = new List<bool>() { false, false, false, false };
     [SerializeField] private float bonus_time = 1f;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
-
+    private List<KeyCode> keys_pressed = new List<KeyCode>();
     private bool door_activated = true;
 
 
@@ -64,7 +65,8 @@ public class CodeStation : StationScript
         if (timeWindowToPress >= maximalTime)
         {
             timeWindowToPress = 0;
-            pressKeysInARowCount = 0;
+            //pressKeysInARowCount = 0;
+            keys_pressed.Clear();
         }
         for (int i = 0; i < players_controller_in_station.Count; i++)
         {
@@ -77,17 +79,17 @@ public class CodeStation : StationScript
                 check_pressed_once[i] = true;
             }
         }
-
+        timeWindowToPress += Time.deltaTime;
     }
-
+    // Bug - player can press multiple times and act like 3 players.
     private void pressNKeyInARow()
     {
         foreach (var action_key in players_action_key)
         {
-            if (Input.GetKeyDown(action_key))
+            if (Input.GetKeyDown(action_key) && !keys_pressed.Contains(action_key))
             {
-                pressKeysInARowCount += 1;
                 timeWindowToPress = 0;
+                keys_pressed.Add(action_key);
             }
         }
         int counter = 0;
@@ -95,19 +97,17 @@ public class CodeStation : StationScript
         {
             if (action_key.Item2 && check_pressed_once[counter] == false)
             {
-                pressKeysInARowCount += 1;
                 timeWindowToPress = 0;
             }
             counter++;
         }
-        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
+        if (keys_pressed.Count == missionsNumberOfPlayers[mission_index])
         {
 
             press_in_a_row += 1;
             spriteR.sprite = states[press_in_a_row - 1];
-            pressKeysInARowCount = 0;
+            keys_pressed.Clear();
         }
-
 
 
         if (press_in_a_row == 5)

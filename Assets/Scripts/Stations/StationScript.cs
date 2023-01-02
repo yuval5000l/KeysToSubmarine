@@ -330,7 +330,6 @@ public class StationScript : MonoBehaviour
                 player_action_controller.Add(player.GetPlayerActionButtonNew());
                 //player_action_controller[counter] = player.GetPlayerActionButtonNew();
                 players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
-                //Debug.Log(player_action_controller);
                 //Debug.Log("Counter = " + counter);
                 player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
                 //player_action.performed += ctx => action_key_pressed = true;
@@ -342,7 +341,6 @@ public class StationScript : MonoBehaviour
                 players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
             }
             players_in_station.Add(colider.gameObject);
-
         }
         
     }
