@@ -17,7 +17,7 @@ public class TrashCan : TriggerObject, Radioactivity
         
     }
 
-    public new void DoAction(GameObject otherObject)
+    public void DoAction(GameObject otherObject)
     {
         Destroy(otherObject);
     }

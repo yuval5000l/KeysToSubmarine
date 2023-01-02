@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2634894880941143837}
   - component: {fileID: 892537652825943537}
   - component: {fileID: 8937359963266487451}
-  - component: {fileID: 5151147109213035198}
+  - component: {fileID: 1773163718418810348}
+  - component: {fileID: 1164811126}
   m_Layer: 0
   m_Name: Bollder
   m_TagString: Untagged
@@ -27,10 +28,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8415134283173520219}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.3297, y: 2.8453, z: 0}
-  m_LocalScale: {x: 1.3485888, y: 0.6259114, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.7786705, y: 0.6797513, z: 0.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -107,8 +108,8 @@ MonoBehaviour:
   missionManager: {fileID: 0}
   stationPopup: {fileID: 0}
   maximalTime: 0.25
-  numberOfPlayers: 0
-  rigi: {fileID: 5151147109213035198}
+  numberOfPlayers: 1
+  rigi: {fileID: 1164811126}
 --- !u!60 &8937359963266487451
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +155,52 @@ PolygonCollider2D:
       - {x: 0.40234375, y: 0.29296875}
       - {x: 0.29296875, y: 0.40234375}
       - {x: 0.15234375, y: 0.47265625}
---- !u!50 &5151147109213035198
+--- !u!60 &1773163718418810348
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415134283173520219}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.12726538, y: 0.6715499}
+      - {x: -0.46189332, y: 0.37277105}
+      - {x: -0.29296875, y: 0.40234375}
+      - {x: -0.47561762, y: 0.3535157}
+      - {x: -0.5189345, y: 0.23307306}
+      - {x: -0.5694173, y: 0.070638224}
+      - {x: -0.48808235, y: -0.25325537}
+      - {x: -0.41005674, y: -0.3837893}
+      - {x: -0.24669063, y: -0.5133467}
+      - {x: -0.12149158, y: -0.64420617}
+      - {x: 0.1311218, y: -0.6210939}
+      - {x: 0.23718715, y: -0.5432943}
+      - {x: 0.37781218, y: -0.50325537}
+      - {x: 0.4640481, y: -0.4039716}
+      - {x: 0.5459304, y: -0.1119791}
+      - {x: 0.5269958, y: 0.09082037}
+      - {x: 0.48808247, y: 0.1927084}
+      - {x: 0.42069265, y: 0.42100218}
+      - {x: 0.26850373, y: 0.62640226}
+      - {x: 0.01778534, y: 0.632698}
+--- !u!50 &1164811126
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -166,8 +212,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 8
-  m_LinearDrag: 8
+  m_Mass: 5
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

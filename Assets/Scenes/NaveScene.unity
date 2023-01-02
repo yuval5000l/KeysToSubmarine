@@ -2070,7 +2070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: moveSpeed
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set
@@ -2083,6 +2083,18 @@ PrefabInstance:
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: player_action_button
       value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770638, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770638, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770638, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
@@ -2812,8 +2824,9 @@ MonoBehaviour:
   controller_set1: 0
   controller_set2: 0
   rb: {fileID: 905805244}
-  moveSpeed: 0.1
+  moveSpeed: 1
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!50 &905805244
 Rigidbody2D:
   serializedVersion: 4
@@ -2827,9 +2840,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3275,36 +3288,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1962775320}
     m_Modifications:
     - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: rigi
-      value: 
-      objectReference: {fileID: 1164811126}
-    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: stationPopup
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: missionManager
       value: 
       objectReference: {fileID: 1962775321}
-    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: numberOfPlayers
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 892537652825943537, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: players_in_station.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7786705
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6797513
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3346,42 +3335,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8415134283173520219, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_Name
       value: Bollder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28ad506da49736b43b00463693c91164, type: 3}
---- !u!1 &1164811125 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8415134283173520219, guid: 28ad506da49736b43b00463693c91164, type: 3}
-  m_PrefabInstance: {fileID: 1164811124}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1164811126
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164811125}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 10
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
 --- !u!4 &1164811127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
@@ -3704,8 +3663,9 @@ MonoBehaviour:
   controller_set1: 0
   controller_set2: 0
   rb: {fileID: 1332110777}
-  moveSpeed: 0.1
+  moveSpeed: 1
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!50 &1332110777
 Rigidbody2D:
   serializedVersion: 4
@@ -3719,9 +3679,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3859,8 +3819,9 @@ MonoBehaviour:
   controller_set1: 0
   controller_set2: 0
   rb: {fileID: 1532204282}
-  moveSpeed: 0.1
+  moveSpeed: 1
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!50 &1532204282
 Rigidbody2D:
   serializedVersion: 4
@@ -3874,9 +3835,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

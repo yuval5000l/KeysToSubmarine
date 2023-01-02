@@ -23,7 +23,7 @@ public class StationScript : MonoBehaviour
     protected List<int> missionsNumberOfPlayers = new List<int>(); // List that contains the number of players that need to be in the station for each mission
     [SerializeField] protected int mission_index = 0; // The mission we choose for this station
 
-    [SerializeField] protected int press_in_a_row = 0; 
+    [SerializeField] protected int press_in_a_row = 0;
     [SerializeField] protected MissionManager missionManager;
 
     protected List<InputAction> player_action_controller = new List<InputAction>();

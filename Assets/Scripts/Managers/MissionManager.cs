@@ -32,6 +32,7 @@ public class MissionManager : MonoBehaviour
     private int numActiveStations = 0;
 
     // TODO Make a weighted probability. TODO Make a list of stations with stations.
+    private List<List<StationScript>> stationScripts = new List<List<StationScript>>();
     //[SerializeField] private List<string> stationsNames = new List<string>();
     //[SerializeField] private List<string> missionsExplanation = new List<string>();
 
@@ -42,6 +43,7 @@ public class MissionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        refillStrategies();
         refillStations();
         updateText();
         initial_time = time_left;
@@ -49,6 +51,31 @@ public class MissionManager : MonoBehaviour
         //stationsNames.Add("Red");
         //missionsExplanation.Add("Click 1 time on M");
         //missionsExplanation.Add("Click 5 time on M");
+    }
+
+    private void refillStrategies()
+    {
+        foreach(Transform strategy in gameObject.transform)
+        {
+            List<StationScript> new_list = new List<StationScript>();
+            if (strategy.GetComponent<StationScript>() == null)
+            {
+                foreach (StationScript station in strategy.GetComponentsInChildren<StationScript>())
+                {
+                    new_list.Add(station);
+                }
+            }
+            
+            stationScripts.Add(new_list);
+        }
+
+        //foreach (List<StationScript> strategy in stationScripts)
+        //{
+        //    foreach (StationScript station in strategy)
+        //    {
+        //        Debug.Log(station);
+        //    }
+        //}
     }
 
     private void refillStations()
