@@ -14,12 +14,12 @@ public class CodeStation : StationScript
     [SerializeField] private Sprite HoverSprite;
 
     [SerializeField] private Sprite[] states;
-    //[SerializeField] private Sprite x1Sprite;
-    //[SerializeField] private Sprite x2Sprite;
-    //[SerializeField] private Sprite x3Sprite;
-    //[SerializeField] private Sprite x4Sprite;
     List<bool> check_pressed_once = new List<bool>() { false, false, false, false };
     [SerializeField] private float bonus_time = 1f;
+    [SerializeField] private DoorScript door;
+    [SerializeField] private float DoorOpenTime = 1.0f;
+
+    private bool door_activated = true;
 
 
     void Start()
@@ -36,6 +36,11 @@ public class CodeStation : StationScript
     // Update is called once per frame
     void Update()
     {
+        if (door & !door_activated)
+        {
+            door.StopTouchDoor();
+            door_activated = true;
+        }
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
@@ -116,6 +121,11 @@ public class CodeStation : StationScript
 
                 missionManager.missionDone(bonus_time, missionsNumberOfPlayers[mission_index] * 2);
                 press_in_a_row = 0;
+            }
+            if (door && door_activated)
+            {
+                door.OpenDoor(DoorOpenTime);
+                door_activated = false;
             }
         }
     }

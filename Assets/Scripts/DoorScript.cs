@@ -51,7 +51,7 @@ public class DoorScript : MonoBehaviour
     {
         //anim.Settrigger("OpenDoor")
         counter_stations++;
-        Debug.Log(counter_stations);
+        //Debug.Log(counter_stations);
 
         if (always_open)
         {

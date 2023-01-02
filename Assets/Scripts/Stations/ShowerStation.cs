@@ -37,6 +37,9 @@ public class ShowerStation : StationScript
         {
             timeWindowToPress = 0;
             pressKeysInARowCount = 0;
+            timeHeld = 0;
+            indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
+            station_animation.SetTrigger("EndShower");
         }
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
@@ -67,8 +70,9 @@ public class ShowerStation : StationScript
             {
                 station_animation.SetTrigger("StartShower");
                 timeHeld += Time.deltaTime;
+                timeWindowToPress = 0;
                 indicator.transform.localScale = new Vector3((timeHeld)*1f, indicator.transform.localScale.y);
-                if (door_activated)
+                if (door && door_activated)
                 {
                     door.OpenDoor();
                     door_activated = false;
@@ -77,9 +81,10 @@ public class ShowerStation : StationScript
             else
             {
                 timeHeld = 0;
-                if (!door_activated)
+                if (door & !door_activated)
                 {
                     door.StopTouchDoor();
+                    door_activated = true;
                 }
             }
        }
@@ -90,6 +95,8 @@ public class ShowerStation : StationScript
                 station_animation.SetTrigger("StartShower");
                 timeHeld += Time.deltaTime;
                 indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
+                timeWindowToPress = 0;
+
             }
         }
         if (timeHeld >= holdTime)
