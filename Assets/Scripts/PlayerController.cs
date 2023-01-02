@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
     private bool looking_right = true;
+    private bool idle = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -95,23 +96,24 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(right_button))
         {
-            animator.SetTrigger("Run_Right");
+
+            //animator.SetTrigger("Run_Right");
             movement.x = 1;
-            if (!looking_right)
-            {
-                looking_right = true;
-                transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
-            }
+            //if (!looking_right)
+            //{
+            //    looking_right = true;
+            //    transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
+            //}
         }
         else if (Input.GetKey(left_button))
         {
-            animator.SetTrigger("Run_Right");
             movement.x = -1;
-            if (looking_right)
-            {
-                looking_right = false;
-                transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
-            }
+            //animator.SetTrigger("Run_Right");
+            //if (looking_right)
+            //{
+            //    looking_right = false;
+            //    transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+            //}
         }
         else
         {
@@ -119,12 +121,12 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(up_button))
         {
-            animator.SetTrigger("Run_Up");
+            //animator.SetTrigger("Run_Up");
             movement.y = 1;
         }
         else if (Input.GetKey(down_button))
         {
-            animator.SetTrigger("Run_Down");
+            //animator.SetTrigger("Run_Down");
             movement.y = -1;
         }
         else
@@ -134,9 +136,51 @@ public class PlayerController : MonoBehaviour
         AnimationIdle();
     }
 
+    private void AnimationDecideState()
+    {
+        float x1 = rb.velocity.x;
+        float y1 = rb.velocity.y;
+        if (Mathf.Abs(x1) > Mathf.Abs(y1))
+        {
+            if (x1 > 0)
+            {
+                animator.SetTrigger("Run_Right");
+                if (!looking_right)
+                {
+                    looking_right = true;
+                    transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
+                }
+            }
+            else
+            {
+                animator.SetTrigger("Run_Right");
+                if (looking_right)
+                {
+                    looking_right = false;
+                    transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+                }
+            }
+        }
+        else
+        {
+            if (y1 > 0)
+            {
+                animator.SetTrigger("Run_Up");
+            }
+            else
+            {
+                animator.SetTrigger("Run_Down");
+            }
+        }
+    }
     private void FixedUpdate()
     {
         rb.AddForce(movement * moveSpeed, ForceMode2D.Impulse);
+        if (!idle)
+        {
+            AnimationDecideState();
+        }
+
     }
 
     public KeyCode GetPlayerActionButton()
@@ -189,7 +233,7 @@ public class PlayerController : MonoBehaviour
 
     public void AnimationWork(Vector3 otherlocalLocation)
     {
-        PlayerDirectionAnimation(otherlocalLocation);
+        //PlayerDirectionAnimation(otherlocalLocation);
         animator.SetTrigger("work");
     }
     private void PlayerDirectionAnimation(Vector3 otherlocalLocation)
@@ -230,8 +274,11 @@ public class PlayerController : MonoBehaviour
     }
     public void AnimationPush(Vector3 otherlocalLocation)
     {
-        PlayerDirectionAnimation(otherlocalLocation);
-        animator.SetTrigger("push");
+        //PlayerDirectionAnimation(otherlocalLocation);
+        if (!idle)
+        {
+            animator.SetTrigger("push");
+        }
     }
 
     public void AnimationIdle()
@@ -239,6 +286,11 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(rb.velocity.x) <= 0.01f && Mathf.Abs(rb.velocity.y) <= 0.01f && !Input.GetKeyDown(player_action_button))
         {
             animator.SetTrigger("idle");
+            idle = true;
+        }
+        else
+        {
+            idle = false;
         }
     }
     void OnTriggerStay2D(Collider2D other)
