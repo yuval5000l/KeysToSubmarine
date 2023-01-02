@@ -12,7 +12,7 @@ public class LeverStation : StationScript
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Animator station_animation;
     [SerializeField] private DoorScript door;
-    [SerializeField] private float DoorOpenTime;
+    [SerializeField] private float DoorOpenTime = 1.0f;
     [SerializeField] private bool alwaysActive;
     
 
@@ -20,11 +20,11 @@ public class LeverStation : StationScript
     void Start()
     {
         //functionaly
-        if (DoorOpenTime == null)
-        {
-            DoorOpenTime = 1.0f;
+        //if (DoorOpenTime == null)
+        //{
+        //    DoorOpenTime = 1.0f;
             
-        }
+        //}
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         if (stationPopup == null)
