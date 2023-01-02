@@ -11,7 +11,7 @@ public class StationScript : MonoBehaviour
     // Player Section
     [SerializeField] protected List<KeyCode> players_action_key =new List<KeyCode>(); // All the relevant keys
     
-    [SerializeField] protected List<GameObject> players_in_station; // List that holds all the current players
+    [SerializeField] protected List<PlayerController> players_in_station; // List that holds all the current players
 
     [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
 
@@ -340,7 +340,7 @@ public class StationScript : MonoBehaviour
             {
                 players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
             }
-            players_in_station.Add(colider.gameObject);
+            players_in_station.Add(player);
         }
         
     }
@@ -351,7 +351,7 @@ public class StationScript : MonoBehaviour
         {
             //Debug.Log("Player Bye");
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
-            if (players_in_station.Contains(colider.gameObject))
+            if (players_in_station.Contains(player))
             {
                 if (player.is_Controller())
                 {
@@ -372,16 +372,30 @@ public class StationScript : MonoBehaviour
                 {
                     players_action_key.Remove(player.GetPlayerActionButton());
                 }
-                players_in_station.Remove(colider.gameObject);
+                players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
                 
             }
         }
         
     }
-    
 
 
+    protected void PlayerAnimationWork()
+    {
+        foreach (PlayerController player in players_in_station)
+        {
+            player.AnimationWork();
+        }
+    }
+
+    protected void PlayerAnimationIdle()
+    {
+        foreach (PlayerController player in players_in_station)
+        {
+            player.AnimationIdle();
+        }
+    }
 
     public virtual void setMissionIndex(int i)
     {

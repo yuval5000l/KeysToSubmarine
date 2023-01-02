@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool controller_set1 = false;
     [SerializeField] private bool controller_set2 = false;
 
+    [SerializeField] private Animator animator;
+
     Player1Controls controls_1;
     Player2Controls controls;
     // In charge of speed & stuff
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
-   
+    private bool looking_right = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -93,11 +95,23 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(right_button))
         {
+            animator.SetTrigger("Run_Right");
             movement.x = 1;
+            if (!looking_right)
+            {
+                looking_right = true;
+                transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
+            }
         }
         else if (Input.GetKey(left_button))
         {
+            animator.SetTrigger("Run_Right");
             movement.x = -1;
+            if (looking_right)
+            {
+                looking_right = false;
+                transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+            }
         }
         else
         {
@@ -105,16 +119,19 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(up_button))
         {
+            animator.SetTrigger("Run_Up");
             movement.y = 1;
         }
         else if (Input.GetKey(down_button))
         {
+            animator.SetTrigger("Run_Down");
             movement.y = -1;
         }
         else
         {
             movement.y = 0;
         }
+        AnimationIdle();
     }
 
     private void FixedUpdate()
@@ -170,6 +187,18 @@ public class PlayerController : MonoBehaviour
         player_action_button = new_key;
     }
 
+    public void AnimationWork()
+    {
+        animator.SetTrigger("work");
+    }
+
+    public void AnimationIdle()
+    {
+        if (Mathf.Abs(rb.velocity.x) <= 0.01f && Mathf.Abs(rb.velocity.y) <= 0.01f)
+        {
+            animator.SetTrigger("idle");
+        }
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Holdable")
