@@ -45,7 +45,7 @@ public class DoorScript : MonoBehaviour
         {
             counter_stations--;
         }
-        Debug.Log(counter_stations);
+        //Debug.Log(counter_stations);
     }
     
     public void OpenDoor(float xSeconds = 1)

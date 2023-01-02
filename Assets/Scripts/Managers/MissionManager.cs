@@ -46,6 +46,7 @@ public class MissionManager : MonoBehaviour
         refillStrategies();
         refillStations();
         updateText();
+        addActiveStations();
         initial_time = time_left;
 
         //stationsNames.Add("Red");
@@ -53,6 +54,22 @@ public class MissionManager : MonoBehaviour
         //missionsExplanation.Add("Click 5 time on M");
     }
 
+    private void addActiveStations()
+    {
+        foreach (List<StationScript> strategy in stationScripts)
+        {
+            foreach (StationScript station in strategy)
+            {
+                if (station.getStationActiveState())
+                {
+                    if (!stationsActive.Contains(station))
+                    {
+                        stationsActive.Add(station);
+                    }
+                }
+            }
+        }
+    }
     private void refillStrategies()
     {
         foreach(Transform strategy in gameObject.transform)
@@ -68,13 +85,6 @@ public class MissionManager : MonoBehaviour
             stationScripts.Add(new_list);
         }
 
-        //foreach (List<StationScript> strategy in stationScripts)
-        //{
-        //    foreach (StationScript station in strategy)
-        //    {
-        //        Debug.Log(station);
-        //    }
-        //}
     }
 
     private void refillStations()
@@ -159,7 +169,6 @@ public class MissionManager : MonoBehaviour
         }
         time_left += bonus_time;
         score += pointsWorth;
-        //numActiveStations -= 1;
     }
 
     private void ActivateStation(List<StationScript> strategy)
