@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private TMP_Text debug_Text;
     private Vector2 movement;
+    [SerializeField] private float radioActivity = 0f;
+    private bool[] levelsOfRadioActivity;
+   
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             EnableController2();
         }
+        levelsOfRadioActivity = new bool[] {false,false,false};
     }
 
     public void EnableController1()
@@ -115,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + (movement * moveSpeed));
+        rb.AddForce(movement * moveSpeed);
     }
 
     public KeyCode GetPlayerActionButton()
@@ -164,5 +168,41 @@ public class PlayerController : MonoBehaviour
     public void setActionKey(KeyCode new_key)
     {
         player_action_button = new_key;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.tag == "Holdable")
+        {
+            if(Input.GetKey(player_action_button))
+            {
+               other.transform.position = gameObject.transform.position + new Vector3(0f,-0.5f,0f); 
+            }
+        }
+
+        if(other.tag == "RadioActive")
+        {
+            radioActivity += 4 * other.gameObject.GetComponent<TrashCan>().getRadioActivityLevel();
+            checkRadioActivity();
+        }
+    }
+
+    void checkRadioActivity()
+    {
+        if(radioActivity >= 10000 && !levelsOfRadioActivity[2])
+        {
+            levelsOfRadioActivity[2] = true;
+            Destroy(gameObject);
+        }
+        else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
+        {
+            moveSpeed = moveSpeed / 2;
+            levelsOfRadioActivity[1] = true;
+        }
+        else if (radioActivity >= 3333 && !levelsOfRadioActivity[0])
+        {
+            moveSpeed = moveSpeed / 2;
+            levelsOfRadioActivity[0] = true;
+        }
     }
 }
