@@ -57,6 +57,7 @@ public class LeverStation : StationScript
         else
         {
             station_animation.SetTrigger("StopHover");
+            PlayerAnimationIdle();
         }
 
         for (int i = 0; i < players_controller_in_station.Count; i++)
@@ -93,6 +94,7 @@ public class LeverStation : StationScript
             {
                 pressKeysInARowCount += 1;
             }
+
         }
         int counter = 0;
         foreach (var action_key in players_controller_in_station) // For Controller
@@ -110,6 +112,8 @@ public class LeverStation : StationScript
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            PlayerAnimationWork();
+
             station_active = false; 
             deActivatePopup();
             //Debug.Log("Did it");
@@ -124,7 +128,10 @@ public class LeverStation : StationScript
             {
                 missionManager.missionDone((pressKeysInARowCount * bonus_time), points);
             }
-            
+        }
+        else
+        {
+            PlayerAnimationIdle();
         }
     }
     

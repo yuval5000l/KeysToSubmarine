@@ -37,6 +37,14 @@ public class BollderStation : StationScript
                 missions[mission_index]();
                 // station_animation.SetTrigger("Hover");
             }
+            //else
+            //{
+            //    PlayerAnimationIdle();
+            //}
+        }
+        else
+        {
+            PlayerAnimationIdle();
         }
         
         for (int i = 0; i < players_controller_in_station.Count; i++)
@@ -53,7 +61,14 @@ public class BollderStation : StationScript
     }
     
     
-    
+    private void PlayerAnimationPush()
+    {
+        Vector3 loc = gameObject.transform.localPosition;
+        foreach (PlayerController player in players_in_station)
+        {
+            player.AnimationPush(loc);
+        }
+    }
     private void getAllKeysDown()
     {
 
@@ -77,8 +92,8 @@ public class BollderStation : StationScript
         }
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
+            PlayerAnimationPush();
             pressKeysInARowCount = 0;
-            
             rigi.bodyType = RigidbodyType2D.Dynamic;
         }
     }

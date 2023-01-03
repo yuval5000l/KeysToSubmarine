@@ -8,6 +8,7 @@ TagManager:
   - Holdable
   - Bin
   - RadioActive
+  - Boulder
   layers:
   - Default
   - TransparentFX
