@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1939331252252770638}
   - component: {fileID: 1939331252252770637}
   - component: {fileID: 9155494576261838045}
+  - component: {fileID: 736046353}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -29,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 1939331252252770626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.48, y: 1.51, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8f5dc7e8e4c0d84fa9f859c3a391843, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7543ba693e19c0c4aba1800f127f572d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,10 +101,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: b29d3eae8c6c75748971f4b460eb051b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -124,7 +125,7 @@ MonoBehaviour:
   down_button: 115
   left_button: 97
   right_button: 100
-  player_action_button: 114
+  player_action_button: 113
   player_action_button_new:
     m_Name: Player_action_button_new
     m_Type: 0
@@ -136,9 +137,11 @@ MonoBehaviour:
     m_Flags: 0
   controller_set1: 0
   controller_set2: 0
+  animator: {fileID: 736046353}
   rb: {fileID: 1939331252252770638}
-  moveSpeed: 0.25
+  moveSpeed: 1
   debug_Text: {fileID: 0}
+  radioActivity: 0
 --- !u!70 &9155494576261838045
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +158,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0.015960336, y: -0.3670925}
   m_Size: {x: 1.9, y: 2.5}
   m_Direction: 0
+--- !u!95 &736046353
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939331252252770626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d05efbc1d8c33b45a737564aea0242b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
