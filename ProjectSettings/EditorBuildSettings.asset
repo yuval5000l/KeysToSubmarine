@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: d815c3e53e7265441a4ae8d9ecdb69d4
   - enabled: 1
-    path: Assets/Scenes/SampleSceneFida.unity
+    path: Assets/Scenes/PreviousScenes/SampleSceneFida.unity
     guid: e3ab96e1b664fb144ac85bb495c3dce3
   - enabled: 1
     path: Assets/Scenes/EndScreenLost.unity
