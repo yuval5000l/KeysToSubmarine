@@ -73,13 +73,13 @@ public class StationScript : MonoBehaviour
     // missionsNumberOfPlayers.Add(players_in_station.Count);
     // missions.Add(pressNKeyInARow);
     // missionsNumberOfPlayers.Add(2);
-    missions.Add(getKeyDownAllPlayers);
-        //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
-        missionsNumberOfPlayers.Add(3);
+    //missions.Add(getKeyDownAllPlayers);
+    //    //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
+    //    missionsNumberOfPlayers.Add(3);
 
-        stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
-        deActivatePopup();
+        //stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
+        //stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
+        //deActivatePopup();
         
     }
 
