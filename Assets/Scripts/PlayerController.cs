@@ -18,11 +18,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool controller_set1 = false;
     [SerializeField] private bool controller_set2 = false;
+    [SerializeField] private bool controller_set3 = false;
+    [SerializeField] private bool controller_set4 = false;
+
 
     [SerializeField] private Animator animator;
 
     Player1Controls controls_1;
     Player2Controls controls;
+
+
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
@@ -36,64 +41,104 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        controls = new Player2Controls();
-        controls_1 = new Player1Controls();
-        if (controller_set1)
-        {
-            EnableController1();
-        }
-        else if (controller_set2)
-        {
-            EnableController2();
-        }
+        //controls = new Player2Controls();
+        //controls_1 = new Player1Controls();
+        //if (controller_set1)
+        //{
+        //    EnableController1();
+        //}
+        //else if (controller_set2)
+        //{
+        //    EnableController2();
+        //}
+
         levelsOfRadioActivity = new bool[] {false,false,false};
     }
 
-    public void EnableController1()
-    {
-        //controls.Gameplay.Action.performed += ctx => Simple();
-        player_action_button_new = controls_1.Gameplay.Action;
-        controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-        //Debug.Log(controls.Gameplay.Move.GetType());
-        Debug.Log("Player1");
-    }
-    public void EnableController2()
-    {
-        //controls.Gameplay.Action.performed += ctx => Simple();
-        player_action_button_new = controls.Gameplay.Action;
-        controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-        //Debug.Log(controls.Gameplay.Move.GetType());
-        Debug.Log("Player2");
+    //public void EnableController1()
+    //{
+    //    //controls.Gameplay.Action.performed += ctx => Simple();
+    //    player_action_button_new = controls_1.Gameplay.Action;
+    //    controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+    //    controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+    //    //Debug.Log(controls.Gameplay.Move.GetType());
+    //    Debug.Log("Player1");
+    //}
+    //public void EnableController2()
+    //{
+    //    //controls.Gameplay.Action.performed += ctx => Simple();
+    //    player_action_button_new = controls.Gameplay.Action;
+    //    controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+    //    controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+    //    //Debug.Log(controls.Gameplay.Move.GetType());
+    //    Debug.Log("Player2");
 
-    }
+    //}
     //void Simple()
     //{
     //    //Debug.Log("HEY");
     //}
 
-    private void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
+    //private void OnEnable()
+    //{
+    //    controls.Gameplay.Enable();
+    //}
 
-    private void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
+    //private void OnDisable()
+    //{
+    //    controls.Gameplay.Disable();
+    //}
 
     // Update is called once per frame
     void Update()
     {
-        if (!(controller_set1 || controller_set2))
+        if (!(controller_set1 || controller_set2 || controller_set3))
         {
             if (!playerStop)
             {
                 movement_keyboard();
             }
         }
-
+        if (controller_set3)
+        {
+            if (player_action_button != KeyCode.Joystick1Button0)
+            {
+                player_action_button = KeyCode.Joystick1Button0;
+            }
+            movement.x = Input.GetAxis("J1Horizontal");
+            movement.y = -Input.GetAxis("J1Vertical");
+            if (Mathf.Abs(movement.x) < 0.3f)
+            {
+                movement.x = 0f;
+            }
+            if (Mathf.Abs(movement.y) < 0.3f)
+            {
+                movement.y = 0f;
+            }
+            AnimationIdle();
+            //if (Input.GetButton("J1A"))
+            //{
+            //    Debug.Log("YAS");
+            //}
+        }
+        if (controller_set4)
+        {
+            movement.x = Input.GetAxis("J2Horizontal");
+            movement.y = -Input.GetAxis("J2Vertical");
+            if (Mathf.Abs(movement.x ) < 0.3f)
+            {
+                movement.x = 0f;
+            }
+            if (Mathf.Abs(movement.y) < 0.3f)
+            {
+                movement.y = 0f;
+            }
+            AnimationIdle();
+            //if (Input.GetButton("J2A"))
+            //{
+            //    Debug.Log("YAS2");
+            //}
+        }
     }
 
     private void movement_keyboard()

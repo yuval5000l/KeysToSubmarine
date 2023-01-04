@@ -24,8 +24,7 @@ public class CodeStation : StationScript
     private List<KeyCode> keys_pressed = new List<KeyCode>();
     private bool door_activated = true;
 
-
-    void Start()
+    new void Start()
     {
         base.Start();
         missions.Add(pressNKeyInARow);

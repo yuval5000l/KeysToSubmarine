@@ -2187,6 +2187,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set3
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
 --- !u!4 &736046348 stripped
@@ -6537,6 +6545,18 @@ PrefabInstance:
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: right_button
       value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: controller_set4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: player_action_button

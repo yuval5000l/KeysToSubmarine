@@ -311,13 +311,17 @@ public class StationScript : MonoBehaviour
                 //Debug.Log("Player with controller");
                 int counter = players_controller_in_station.Count;
                 player_action_controller.Add(player.GetPlayerActionButtonNew());
-                //player_action_controller[counter] = player.GetPlayerActionButtonNew();
+                player_action_controller[counter] = player.GetPlayerActionButtonNew();
                 players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
                 //Debug.Log("Counter = " + counter);
-                player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
-                //player_action.performed += ctx => action_key_pressed = true;
-                player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
-                
+                if (player_action_controller[counter] != null)
+                {
+                    player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
+                    //player_action.performed += ctx => action_key_pressed = true;
+                    player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+
+                }
+
             }
             else
             {
