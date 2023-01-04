@@ -200,7 +200,10 @@ public class MissionManager : MonoBehaviour
         while (stationsActive.Count < MaxStationsAtTime)
         {
             int diceResult = (int)rnd.Next(stationScripts.Count);
-            ActivateStation(stationScripts[diceResult]);
+            if (stationScripts[diceResult].Count > 0)
+            {
+                ActivateStation(stationScripts[diceResult]);
+            }
         }
     }
 
