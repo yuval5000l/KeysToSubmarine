@@ -25,7 +25,7 @@ public class DoorScript : MonoBehaviour
         coli.enabled = true;
         sprite.enabled = true;
         //anim.Settrigger("CloseDoor")
-
+        counter_stations = 0;
 
     }
     
