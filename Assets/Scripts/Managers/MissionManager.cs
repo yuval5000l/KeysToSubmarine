@@ -129,11 +129,13 @@ public class MissionManager : MonoBehaviour
         //rollTheDice();
         ChooseStratgies();
         // For Gadi
-		Noise.color = new Color (1f,1f,1f,(1 - (time_left / initial_time)));
-		GreenVignette1.color = new Color (1f,1f,1f,(1 - (time_left / initial_time)));
-		float x  = 0.5f + (time_left/ initial_time) * 0.5f;
-		GreenVignette2.transform.localScale = new Vector3 (x,x,x);
-
+        if (Noise != null)
+        {
+            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            float x = 0.5f + (time_left / initial_time) * 0.5f;
+           GreenVignette2.transform.localScale = new Vector3(x, x, x);
+        }
         //
         if (Orb != null)
         {
