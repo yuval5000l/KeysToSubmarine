@@ -15,6 +15,7 @@ public class StationScript : MonoBehaviour
 
     [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
 
+    
     // Is Station Active
     [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
 
