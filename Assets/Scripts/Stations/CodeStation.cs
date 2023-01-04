@@ -27,6 +27,7 @@ public class CodeStation : StationScript
 
     void Start()
     {
+        base.Start();
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         spriteR.sprite = idle;

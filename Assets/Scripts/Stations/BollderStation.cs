@@ -10,6 +10,7 @@ public class BollderStation : StationScript
 
     void Start()
     {
+        base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         mission_index = 0;

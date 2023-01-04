@@ -18,12 +18,7 @@ public class LeverStation : StationScript
     [SerializeField] private GameObject stationExplainer;
     void Start()
     {
-        //functionaly
-        //if (DoorOpenTime == null)
-        //{
-        //    DoorOpenTime = 1.0f;
-            
-        //}
+        base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         if (stationPopup == null)

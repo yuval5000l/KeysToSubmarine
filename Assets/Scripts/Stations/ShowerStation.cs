@@ -23,6 +23,7 @@ public class ShowerStation : StationScript
 
     void Start()
     {
+        base.Start();
         missions.Add(HoldKey);
         missionsNumberOfPlayers.Add(numberOfPlayers);
 

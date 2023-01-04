@@ -44,27 +44,43 @@ public class StationScript : MonoBehaviour
 
     //[SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
-
+    protected GameObject[] numOfPlayersIndicator = new GameObject[4];
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        // missions.Add(getAllKeysDown);
-        // missionsNumberOfPlayers.Add(1);
-        //missions.Add(getKeyDownTwoPlayers);
-        // missions.Add(getAllKeysDown);
-        // missionsNumberOfPlayers.Add(2);
-        // missions.Add(getAllKeysDown);
-        // missionsNumberOfPlayers.Add(players_in_station.Count);
-        // missions.Add(pressNKeyInARow);
-        // missionsNumberOfPlayers.Add(2);
-        missions.Add(getKeyDownAllPlayers);
+        //numOfPlayersIndicator[0] = Instantiate(Resources.Load("1Person_01")) as GameObject;
+        //numOfPlayersIndicator[1] = Instantiate(Resources.Load("2Person_01")) as GameObject;
+        //numOfPlayersIndicator[2] = Instantiate(Resources.Load("3Person_01")) as GameObject;
+        //numOfPlayersIndicator[3] = Instantiate(Resources.Load("4Person_01")) as GameObject;
+
+        for (int i = 0; i < 4; i++)
+        {
+            numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
+            numOfPlayersIndicator[i].SetActive(false);
+            numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
+
+        }
+
+        numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
+        
+    // missions.Add(getAllKeysDown);
+    // missionsNumberOfPlayers.Add(1);
+    //missions.Add(getKeyDownTwoPlayers);
+    // missions.Add(getAllKeysDown);
+    // missionsNumberOfPlayers.Add(2);
+    // missions.Add(getAllKeysDown);
+    // missionsNumberOfPlayers.Add(players_in_station.Count);
+    // missions.Add(pressNKeyInARow);
+    // missionsNumberOfPlayers.Add(2);
+    missions.Add(getKeyDownAllPlayers);
         //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
         missionsNumberOfPlayers.Add(3);
 
         stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
         deActivatePopup();
+        
     }
 
     // Update is called once per frame
