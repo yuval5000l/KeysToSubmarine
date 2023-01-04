@@ -1746,7 +1746,7 @@ PrefabInstance:
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 100672121}
+      objectReference: {fileID: 0}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: holdTime
       value: 100
@@ -2301,6 +2301,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1455051104}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
       objectReference: {fileID: 0}
@@ -2388,6 +2392,10 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -3109,7 +3117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6669100357282733532, guid: 3d6757ad52312024f82182c82b163f68, type: 3}
       propertyPath: permanent_changes
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 3d6757ad52312024f82182c82b163f68, type: 3}
       propertyPath: m_RootOrder
@@ -3409,7 +3417,7 @@ GameObject:
   m_IsActive: 1
 --- !u!95 &695683620
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3426,7 +3434,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &695683621
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3755,6 +3763,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1816155143}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: DoorOpenTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 1
       objectReference: {fileID: 0}
@@ -3832,6 +3848,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 238397989}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 1
@@ -3916,6 +3936,10 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -4260,6 +4284,10 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -4379,6 +4407,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 632765220}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
@@ -4845,6 +4877,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1314245608}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 1
@@ -5538,11 +5574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.61
+      value: -7.39
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5671,6 +5707,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 540041589}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: DoorOpenTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 1
       objectReference: {fileID: 0}
@@ -5747,6 +5791,10 @@ PrefabInstance:
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: door
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
@@ -5832,6 +5880,10 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -6410,6 +6462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 100672121}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
       objectReference: {fileID: 0}
@@ -6793,6 +6849,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -6905,6 +6965,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 506258862}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
@@ -7059,11 +7123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.65
+      value: -7.37
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.47
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7366,9 +7430,13 @@ PrefabInstance:
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 540041589}
+      objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -7573,6 +7641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 38033412}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
       objectReference: {fileID: 0}
@@ -7650,6 +7722,14 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 562276070}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: DoorOpenTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 1
@@ -7735,7 +7815,7 @@ PrefabInstance:
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 100672121}
+      objectReference: {fileID: 0}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: holdTime
       value: 100
@@ -8499,6 +8579,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 238397989}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
       objectReference: {fileID: 0}
@@ -8587,7 +8671,11 @@ PrefabInstance:
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 2092373676}
+      objectReference: {fileID: 100672121}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
@@ -9090,7 +9178,7 @@ PrefabInstance:
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 100672121}
+      objectReference: {fileID: 0}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: holdTime
       value: 100
@@ -9490,6 +9578,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2092373676}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
       objectReference: {fileID: 0}
@@ -9705,6 +9797,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 2092373676}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
@@ -10777,6 +10873,10 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
+      propertyPath: DoorOpenTime
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
@@ -11562,11 +11662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.64
+      value: -6.53
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11702,6 +11802,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 38033412}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
