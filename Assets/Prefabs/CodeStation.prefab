@@ -117,6 +117,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: daf6d44e6820b264f8ff3b28a194279b, type: 3}
   - {fileID: 21300000, guid: db9e7747c25e09747b80617183d76abd, type: 3}
   - {fileID: 21300000, guid: 75ebfd8a0d915344b8fabcce61fbb461, type: 3}
+  bonus_time: 1
+  door: {fileID: 0}
+  DoorOpenTime: 1
 --- !u!60 &5350649873979931604
 PolygonCollider2D:
   m_ObjectHideFlags: 0

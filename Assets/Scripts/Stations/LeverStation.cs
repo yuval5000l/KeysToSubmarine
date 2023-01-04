@@ -15,8 +15,7 @@ public class LeverStation : StationScript
     [SerializeField] private float DoorOpenTime = 1.0f;
     [SerializeField] private bool alwaysActive;
     [SerializeField] private float bonus_time = 1.5f;
-
-
+    [SerializeField] private GameObject stationExplainer;
     void Start()
     {
         //functionaly
@@ -39,11 +38,16 @@ public class LeverStation : StationScript
     // Update is called once per frame
     void Update()
     {
+
         pressKeysInARowCount = 0;
         //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || alwaysActive)
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
@@ -56,6 +60,10 @@ public class LeverStation : StationScript
         }
         else
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(false);
+            }
             station_animation.SetTrigger("StopHover");
             PlayerAnimationIdle();
         }
