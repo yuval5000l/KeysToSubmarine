@@ -112,8 +112,11 @@ public class LeverStation : StationScript
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            foreach (PlayerController player in players_in_station)
+            {
+                player.ForceStop();
+            }
             PlayerAnimationWork();
-
             station_active = false; 
             deActivatePopup();
             //Debug.Log("Did it");

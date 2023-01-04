@@ -69,6 +69,11 @@ public class CodeStation : StationScript
             timeWindowToPress = 0;
             //pressKeysInARowCount = 0;
             keys_pressed.Clear();
+            //foreach (PlayerController player in players_in_station)
+            //{
+            //    player.cancelForceStop();
+            //}
+
         }
         for (int i = 0; i < players_controller_in_station.Count; i++)
         {
@@ -105,6 +110,10 @@ public class CodeStation : StationScript
         }
         if (keys_pressed.Count == missionsNumberOfPlayers[mission_index])
         {
+            foreach (PlayerController player in players_in_station)
+            {
+                player.ForceStop();
+            }
             PlayerAnimationWork();
             press_in_a_row += 1;
             spriteR.sprite = states[press_in_a_row - 1];
@@ -129,6 +138,10 @@ public class CodeStation : StationScript
                 door.OpenDoor(DoorOpenTime);
                 door_activated = false;
             }
+            //foreach (PlayerController player in players_in_station)
+            //{
+            //    player.cancelForceStop();
+            //}
         }
     }
 

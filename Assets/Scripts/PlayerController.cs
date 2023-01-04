@@ -30,8 +30,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
-    private bool looking_right = true;
+    private bool looking_right = false;
     private bool idle = true;
+    private bool playerStop = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -87,7 +88,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!(controller_set1 || controller_set2))
         {
-            movement_keyboard();
+            if (!playerStop)
+            {
+                movement_keyboard();
+            }
         }
 
     }
@@ -96,24 +100,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(right_button))
         {
-
-            //animator.SetTrigger("Run_Right");
             movement.x = 1;
-            //if (!looking_right)
-            //{
-            //    looking_right = true;
-            //    transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
-            //}
         }
         else if (Input.GetKey(left_button))
         {
             movement.x = -1;
-            //animator.SetTrigger("Run_Right");
-            //if (looking_right)
-            //{
-            //    looking_right = false;
-            //    transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
-            //}
         }
         else
         {
@@ -121,12 +112,10 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(up_button))
         {
-            //animator.SetTrigger("Run_Up");
             movement.y = 1;
         }
         else if (Input.GetKey(down_button))
         {
-            //animator.SetTrigger("Run_Down");
             movement.y = -1;
         }
         else
@@ -293,6 +282,17 @@ public class PlayerController : MonoBehaviour
             idle = false;
         }
     }
+    public void ForceStop()
+    {
+        rb.velocity = Vector2.zero;
+        //playerStop = true;
+    }
+
+    public void cancelForceStop()
+    {
+        playerStop = false;
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Holdable")

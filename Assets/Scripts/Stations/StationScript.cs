@@ -134,24 +134,6 @@ public class StationScript : MonoBehaviour
     }
     
     
-    // private void pressKeyInARow()
-    // {
-    //     if (Input.GetKeyDown(players_action_key[0]))
-    //     {
-    //         Debug.Log("Player Pressed Right Key! +=1 to press in a row!");
-    //         press_in_a_row += 1;
-    //     }
-    //
-    //     if (press_in_a_row == 5)
-    //     {
-    //         station_active = false; //todo uncomment once we finish testing otherwise annoying
-    //         Debug.Log("Station pressKeyInARow() Mission Accomplished");
-    //
-    //         missionManager.missionDone(5, 2);
-    //         press_in_a_row = 0;
-    //     }
-    // }
-    
     
     
     private void pressNKeyInARow()
@@ -176,22 +158,6 @@ public class StationScript : MonoBehaviour
         }
         else
         {
-            // foreach (var action_key in players_action_key)
-            // {
-            //     int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
-            //     Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            //     //station_active = false;
-            //     press_in_a_row += 1;
-            //     action_key_pressed = false;
-            //     if (press_in_a_row == 5)
-            //     {
-            //         Debug.Log(pressKeysInARowCount);
-            //         pressKeysInARowCount += 1;
-            //     }
-
-            // }
-        
-            // int count = 0;
             foreach (var action_key in players_action_key)
             {
                 if (Input.GetKeyDown(action_key))
@@ -375,6 +341,10 @@ public class StationScript : MonoBehaviour
                 players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
                 player.AnimationIdle();
+                foreach (PlayerController playerz in players_in_station)
+                {
+                    playerz.cancelForceStop();
+                }
             }
         }
         
