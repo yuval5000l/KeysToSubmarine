@@ -2392,7 +2392,7 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: DoorOpenTime
@@ -3892,7 +3892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745272, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.09
+      value: 3.91
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745272, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3936,7 +3936,7 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: DoorOpenTime
@@ -4284,7 +4284,7 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: DoorOpenTime
@@ -5880,7 +5880,7 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: DoorOpenTime
@@ -6849,7 +6849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: DoorOpenTime
@@ -10374,7 +10374,7 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 2027799594}
   score_text: {fileID: 943208466}
-  missionsToWinTarget: 20
+  missionsToWinTarget: 7777
   time_left: -100
   indicator: {fileID: 256428754}
   Orb: {fileID: 0}
@@ -10873,7 +10873,7 @@ PrefabInstance:
       objectReference: {fileID: 506258862}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: DoorOpenTime
