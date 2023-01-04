@@ -1262,6 +1262,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: station_active
       value: 1
       objectReference: {fileID: 0}
@@ -2953,6 +2957,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1314245608}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
       objectReference: {fileID: 0}
@@ -3454,6 +3462,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1314245608}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
@@ -5123,6 +5135,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 506258862}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
       value: 0
@@ -7660,6 +7676,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 2092373676}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: bonus_time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: DoorOpenTime
       value: 1
