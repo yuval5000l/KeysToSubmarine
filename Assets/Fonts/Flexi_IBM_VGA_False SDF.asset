@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Flexi_IBM_VGA_False SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1966669819
   material: {fileID: 6146197176600701772}
-  materialHashCode: 0
+  materialHashCode: -424034693
   m_Version: 1.1.0
   m_SourceFontFileGUID: 1948ed56b584fa442ab69c03e2e95026
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 1948ed56b584fa442ab69c03e2e95026, type: 3}
@@ -2713,9 +2713,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

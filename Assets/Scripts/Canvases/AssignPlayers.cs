@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class AssignPlayers : MonoBehaviour
@@ -9,6 +10,10 @@ public class AssignPlayers : MonoBehaviour
     [SerializeField] private TMP_Text num_players_text;
     [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
+    [SerializeField] private SpriteRenderer player1;
+    [SerializeField] private SpriteRenderer player2;
+    [SerializeField] private SpriteRenderer player3;
+    [SerializeField] private Button button;
     private bool mainMenuActive = true;
     private int num_players = 0;
     private KeyCode player_1_action = KeyCode.Q;
@@ -24,6 +29,8 @@ public class AssignPlayers : MonoBehaviour
         {
             num_players_text.text = num_players.ToString();
         }
+        button.image.color = new Color(1f, 1f, 1f, 0.2f);
+        button.enabled = false;
     }
 
     void Update()
@@ -33,6 +40,7 @@ public class AssignPlayers : MonoBehaviour
             if (Input.GetKeyDown(player_1_action))
             {
                 num_players += 1;
+                player1.color = new Color(1f, 1f, 1f, 1f);
             }
         }
         else if (num_players == 1)
@@ -40,10 +48,12 @@ public class AssignPlayers : MonoBehaviour
             if (Input.GetKeyDown(player_2_action))
             {
                 num_players += 1;
+                player2.color = new Color(1f, 1f, 1f, 1f);
             }
             if (Input.GetKeyDown(player_1_action))
             {
                 num_players -= 1;
+                player1.color = new Color(1f, 1f, 1f, 0.5f);
             }
         }
         else if (num_players == 2)
@@ -51,10 +61,12 @@ public class AssignPlayers : MonoBehaviour
             if (Input.GetKeyDown(player_3_action))
             {
                 num_players += 1;
+                player3.color = new Color(1f, 1f, 1f, 1f);
             }
             if (Input.GetKeyDown(player_2_action))
             {
                 num_players -= 1;
+                player2.color = new Color(1f, 1f, 1f, 0.5f);
             }
         }
         else if (num_players == 3)
@@ -66,6 +78,7 @@ public class AssignPlayers : MonoBehaviour
             if (Input.GetKeyDown(player_3_action))
             {
                 num_players -= 1;
+                player3.color = new Color(1f, 1f, 1f, 0.5f);
             }
         }
         else if (num_players == 3)
@@ -77,6 +90,9 @@ public class AssignPlayers : MonoBehaviour
         }
         if (num_players >= 2)
         {
+            button.enabled = true;
+            button.image.color = new Color(1f, 1f, 1f, 1f);
+
             while (num_players > gameManager.getNumOfPlayers())
             {
                 gameManager.AddPlayer();
@@ -85,6 +101,11 @@ public class AssignPlayers : MonoBehaviour
             {
                 gameManager.RemovePlayer();
             }
+        }
+        else
+        {
+            button.enabled = false;
+            button.image.color = new Color(1f, 1f, 1f, 0.2f);
         }
         num_players_text.text = num_players.ToString();
 
