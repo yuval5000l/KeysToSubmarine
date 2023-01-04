@@ -19,6 +19,8 @@ public class CodeStation : StationScript
     [SerializeField] private float bonus_time = 1f;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
+    [SerializeField] private GameObject stationExplainer;
+
     private List<KeyCode> keys_pressed = new List<KeyCode>();
     private bool door_activated = true;
 
@@ -37,14 +39,18 @@ public class CodeStation : StationScript
     // Update is called once per frame
     void Update()
     {
-        if (door & !door_activated)
-        {
-            door.StopTouchDoor();
-            door_activated = true;
-        }
+        //if (door & !door_activated)
+        //{
+        //    door.StopTouchDoor();
+        //    door_activated = true;
+        //}
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 if (press_in_a_row == 0)
@@ -61,6 +67,10 @@ public class CodeStation : StationScript
         }
         else
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(false);
+            }
             PlayerAnimationIdle();
             spriteR.sprite = idle;
         }

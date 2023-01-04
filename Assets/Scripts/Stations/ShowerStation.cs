@@ -16,6 +16,8 @@ public class ShowerStation : StationScript
     [SerializeField] private DoorScript door;
     private float timeHeld = 0;
     private bool door_activated = true;
+    [SerializeField] private GameObject stationExplainer;
+
 
 
 
@@ -44,6 +46,10 @@ public class ShowerStation : StationScript
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
@@ -56,6 +62,10 @@ public class ShowerStation : StationScript
         }
         else
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(false);
+            }
             station_animation.SetTrigger("idle");
         }
         timeWindowToPress += Time.deltaTime;

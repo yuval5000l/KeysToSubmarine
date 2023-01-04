@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class OurEventHandler : MonoBehaviour
 {
-    [SerializeField] private static int NumberOfPlayers = 4;
+    [SerializeField] private static int NumberOfPlayers = 3;
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private NextLevelCanva nextlevel;
     private static int levelNumber;
