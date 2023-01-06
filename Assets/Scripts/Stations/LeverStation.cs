@@ -34,8 +34,6 @@ public class LeverStation : StationScript
     void Update()
     {
 
-        pressKeysInARowCount = 0;
-        //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || alwaysActive)
         {
@@ -142,6 +140,7 @@ public class LeverStation : StationScript
             {
                 missionManager.missionDone((pressKeysInARowCount * bonus_time), points);
             }
+            pressKeysInARowCount = 0;
         }
         else
         {
