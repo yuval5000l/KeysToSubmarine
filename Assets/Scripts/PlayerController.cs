@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool controller_set3 = false;
     [SerializeField] private bool controller_set4 = false;
 
+    private float RunAnimationThreshold = 0.1f;
 
     [SerializeField] private Animator animator;
 
-    Player1Controls controls_1;
-    Player2Controls controls;
+    //Player1Controls controls_1;
+    //Player2Controls controls;
 
 
     // In charge of speed & stuff
@@ -41,58 +42,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //controls = new Player2Controls();
-        //controls_1 = new Player1Controls();
-        //if (controller_set1)
-        //{
-        //    EnableController1();
-        //}
-        //else if (controller_set2)
-        //{
-        //    EnableController2();
-        //}
 
         levelsOfRadioActivity = new bool[] {false,false,false};
     }
 
-    //public void EnableController1()
-    //{
-    //    //controls.Gameplay.Action.performed += ctx => Simple();
-    //    player_action_button_new = controls_1.Gameplay.Action;
-    //    controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-    //    controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-    //    //Debug.Log(controls.Gameplay.Move.GetType());
-    //    Debug.Log("Player1");
-    //}
-    //public void EnableController2()
-    //{
-    //    //controls.Gameplay.Action.performed += ctx => Simple();
-    //    player_action_button_new = controls.Gameplay.Action;
-    //    controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-    //    controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-    //    //Debug.Log(controls.Gameplay.Move.GetType());
-    //    Debug.Log("Player2");
-
-    //}
-    //void Simple()
-    //{
-    //    //Debug.Log("HEY");
-    //}
-
-    //private void OnEnable()
-    //{
-    //    controls.Gameplay.Enable();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    controls.Gameplay.Disable();
-    //}
-
     // Update is called once per frame
     void Update()
     {
-        if (!(controller_set1 || controller_set2 || controller_set3))
+        if (!(controller_set1 || controller_set2 || controller_set3 || controller_set4))
         {
             if (!playerStop)
             {
@@ -174,6 +131,10 @@ public class PlayerController : MonoBehaviour
     {
         float x1 = rb.velocity.x;
         float y1 = rb.velocity.y;
+        if (x1 == 0 && y1 == 0)
+        {
+            return;
+        }
         if (Mathf.Abs(x1) > Mathf.Abs(y1))
         {
             if (x1 > 0)
@@ -317,7 +278,7 @@ public class PlayerController : MonoBehaviour
 
     public void AnimationIdle()
     {
-        if (Mathf.Abs(rb.velocity.x) <= 0.01f && Mathf.Abs(rb.velocity.y) <= 0.01f && !Input.GetKeyDown(player_action_button))
+        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKeyDown(player_action_button))
         {
             animator.SetTrigger("idle");
             idle = true;
@@ -389,4 +350,52 @@ public class PlayerController : MonoBehaviour
             levelsOfRadioActivity[0] = false;
         }
     }
+
+    //void Awake()
+    //{
+    //controls = new Player2Controls();
+    //controls_1 = new Player1Controls();
+    //if (controller_set1)
+    //{
+    //    EnableController1();
+    //}
+    //else if (controller_set2)
+    //{
+    //    EnableController2();
+    //}
+
+    //}
+    //public void EnableController1()
+    //{
+    //    //controls.Gameplay.Action.performed += ctx => Simple();
+    //    player_action_button_new = controls_1.Gameplay.Action;
+    //    controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+    //    controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+    //    //Debug.Log(controls.Gameplay.Move.GetType());
+    //    Debug.Log("Player1");
+    //}
+    //public void EnableController2()
+    //{
+    //    //controls.Gameplay.Action.performed += ctx => Simple();
+    //    player_action_button_new = controls.Gameplay.Action;
+    //    controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+    //    controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+    //    //Debug.Log(controls.Gameplay.Move.GetType());
+    //    Debug.Log("Player2");
+
+    //}
+    //void Simple()
+    //{
+    //    //Debug.Log("HEY");
+    //}
+
+    //private void OnEnable()
+    //{
+    //    controls.Gameplay.Enable();
+    //}
+
+    //private void OnDisable()
+    //{
+    //    controls.Gameplay.Disable();
+    //}
 }
