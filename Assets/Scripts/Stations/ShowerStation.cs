@@ -21,7 +21,7 @@ public class ShowerStation : StationScript
 
 
 
-    void Start()
+    new void Start()
     {
         base.Start();
         missions.Add(HoldKey);
