@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7543ba693e19c0c4aba1800f127f572d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d652ee44fe5001a47a07700700cab8b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
     m_Flags: 0
   controller_set1: 0
   controller_set2: 0
+  controller_set3: 0
+  controller_set4: 0
   animator: {fileID: 736046353}
   rb: {fileID: 1939331252252770638}
   moveSpeed: 1
