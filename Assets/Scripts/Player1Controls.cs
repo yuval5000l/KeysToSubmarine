@@ -72,7 +72,18 @@ public partial class @Player1Controls : IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""GamePad1"",
+            ""bindingGroup"": ""GamePad1"",
+            ""devices"": []
+        },
+        {
+            ""name"": ""GamePad2"",
+            ""bindingGroup"": ""GamePad2"",
+            ""devices"": []
+        }
+    ]
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
@@ -174,6 +185,24 @@ public partial class @Player1Controls : IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+    private int m_GamePad1SchemeIndex = -1;
+    public InputControlScheme GamePad1Scheme
+    {
+        get
+        {
+            if (m_GamePad1SchemeIndex == -1) m_GamePad1SchemeIndex = asset.FindControlSchemeIndex("GamePad1");
+            return asset.controlSchemes[m_GamePad1SchemeIndex];
+        }
+    }
+    private int m_GamePad2SchemeIndex = -1;
+    public InputControlScheme GamePad2Scheme
+    {
+        get
+        {
+            if (m_GamePad2SchemeIndex == -1) m_GamePad2SchemeIndex = asset.FindControlSchemeIndex("GamePad2");
+            return asset.controlSchemes[m_GamePad2SchemeIndex];
+        }
+    }
     public interface IGameplayActions
     {
         void OnAction(InputAction.CallbackContext context);

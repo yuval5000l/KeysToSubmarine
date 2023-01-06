@@ -11,10 +11,11 @@ public class StationScript : MonoBehaviour
     // Player Section
     [SerializeField] protected List<KeyCode> players_action_key =new List<KeyCode>(); // All the relevant keys
     
-    [SerializeField] protected List<GameObject> players_in_station; // List that holds all the current players
+    [SerializeField] protected List<PlayerController> players_in_station; // List that holds all the current players
 
     [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
 
+    
     // Is Station Active
     [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
 
@@ -43,27 +44,43 @@ public class StationScript : MonoBehaviour
 
     //[SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
-
+    protected GameObject[] numOfPlayersIndicator = new GameObject[4];
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        // missions.Add(getAllKeysDown);
-        // missionsNumberOfPlayers.Add(1);
-        //missions.Add(getKeyDownTwoPlayers);
-        // missions.Add(getAllKeysDown);
-        // missionsNumberOfPlayers.Add(2);
-        // missions.Add(getAllKeysDown);
-        // missionsNumberOfPlayers.Add(players_in_station.Count);
-        // missions.Add(pressNKeyInARow);
-        // missionsNumberOfPlayers.Add(2);
-        missions.Add(getKeyDownAllPlayers);
-        //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
-        missionsNumberOfPlayers.Add(3);
+        //numOfPlayersIndicator[0] = Instantiate(Resources.Load("1Person_01")) as GameObject;
+        //numOfPlayersIndicator[1] = Instantiate(Resources.Load("2Person_01")) as GameObject;
+        //numOfPlayersIndicator[2] = Instantiate(Resources.Load("3Person_01")) as GameObject;
+        //numOfPlayersIndicator[3] = Instantiate(Resources.Load("4Person_01")) as GameObject;
 
-        stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
-        deActivatePopup();
+        for (int i = 0; i < 4; i++)
+        {
+            numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
+            numOfPlayersIndicator[i].SetActive(false);
+            numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
+
+        }
+
+        numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
+        
+    // missions.Add(getAllKeysDown);
+    // missionsNumberOfPlayers.Add(1);
+    //missions.Add(getKeyDownTwoPlayers);
+    // missions.Add(getAllKeysDown);
+    // missionsNumberOfPlayers.Add(2);
+    // missions.Add(getAllKeysDown);
+    // missionsNumberOfPlayers.Add(players_in_station.Count);
+    // missions.Add(pressNKeyInARow);
+    // missionsNumberOfPlayers.Add(2);
+    //missions.Add(getKeyDownAllPlayers);
+    //    //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
+    //    missionsNumberOfPlayers.Add(3);
+
+        //stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
+        //stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
+        //deActivatePopup();
+        
     }
 
     // Update is called once per frame
@@ -134,24 +151,6 @@ public class StationScript : MonoBehaviour
     }
     
     
-    // private void pressKeyInARow()
-    // {
-    //     if (Input.GetKeyDown(players_action_key[0]))
-    //     {
-    //         Debug.Log("Player Pressed Right Key! +=1 to press in a row!");
-    //         press_in_a_row += 1;
-    //     }
-    //
-    //     if (press_in_a_row == 5)
-    //     {
-    //         station_active = false; //todo uncomment once we finish testing otherwise annoying
-    //         Debug.Log("Station pressKeyInARow() Mission Accomplished");
-    //
-    //         missionManager.missionDone(5, 2);
-    //         press_in_a_row = 0;
-    //     }
-    // }
-    
     
     
     private void pressNKeyInARow()
@@ -176,22 +175,6 @@ public class StationScript : MonoBehaviour
         }
         else
         {
-            // foreach (var action_key in players_action_key)
-            // {
-            //     int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
-            //     Debug.Log("Station pressNKeyInARow() +=1 with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            //     //station_active = false;
-            //     press_in_a_row += 1;
-            //     action_key_pressed = false;
-            //     if (press_in_a_row == 5)
-            //     {
-            //         Debug.Log(pressKeysInARowCount);
-            //         pressKeysInARowCount += 1;
-            //     }
-
-            // }
-        
-            // int count = 0;
             foreach (var action_key in players_action_key)
             {
                 if (Input.GetKeyDown(action_key))
@@ -328,19 +311,23 @@ public class StationScript : MonoBehaviour
                 //Debug.Log("Player with controller");
                 int counter = players_controller_in_station.Count;
                 player_action_controller.Add(player.GetPlayerActionButtonNew());
-                //player_action_controller[counter] = player.GetPlayerActionButtonNew();
+                player_action_controller[counter] = player.GetPlayerActionButtonNew();
                 players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
                 //Debug.Log("Counter = " + counter);
-                player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
-                //player_action.performed += ctx => action_key_pressed = true;
-                player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
-                
+                if (player_action_controller[counter] != null)
+                {
+                    player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
+                    //player_action.performed += ctx => action_key_pressed = true;
+                    player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+
+                }
+
             }
             else
             {
                 players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
             }
-            players_in_station.Add(colider.gameObject);
+            players_in_station.Add(player);
         }
         
     }
@@ -351,7 +338,7 @@ public class StationScript : MonoBehaviour
         {
             //Debug.Log("Player Bye");
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
-            if (players_in_station.Contains(colider.gameObject))
+            if (players_in_station.Contains(player))
             {
                 if (player.is_Controller())
                 {
@@ -372,16 +359,35 @@ public class StationScript : MonoBehaviour
                 {
                     players_action_key.Remove(player.GetPlayerActionButton());
                 }
-                players_in_station.Remove(colider.gameObject);
+                players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
-                
+                player.AnimationIdle();
+                foreach (PlayerController playerz in players_in_station)
+                {
+                    playerz.cancelForceStop();
+                }
             }
         }
         
     }
-    
 
 
+    protected void PlayerAnimationWork()
+    {
+        Vector3 loc = gameObject.transform.localPosition;
+        foreach (PlayerController player in players_in_station)
+        {
+            player.AnimationWork(loc);
+        }
+    }
+
+    protected void PlayerAnimationIdle()
+    {
+        foreach (PlayerController player in players_in_station)
+        {
+            player.AnimationIdle();
+        }
+    }
 
     public virtual void setMissionIndex(int i)
     {

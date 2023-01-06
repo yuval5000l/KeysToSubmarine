@@ -25,6 +25,9 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private GameObject indicator;
     [SerializeField] private GameObject Orb;
     [SerializeField] private SpriteRenderer GreenScreen;
+    [SerializeField] private SpriteRenderer Noise;
+    [SerializeField] private SpriteRenderer GreenVignette1;
+    [SerializeField] private GameObject GreenVignette2;
 
     // Stations
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
@@ -126,8 +129,13 @@ public class MissionManager : MonoBehaviour
         //rollTheDice();
         ChooseStratgies();
         // For Gadi
-
-
+        if (Noise != null)
+        {
+            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            float x = 0.5f + (time_left / initial_time) * 0.5f;
+           GreenVignette2.transform.localScale = new Vector3(x, x, x);
+        }
         //
         if (Orb != null)
         {
@@ -192,7 +200,10 @@ public class MissionManager : MonoBehaviour
         while (stationsActive.Count < MaxStationsAtTime)
         {
             int diceResult = (int)rnd.Next(stationScripts.Count);
-            ActivateStation(stationScripts[diceResult]);
+            if (stationScripts[diceResult].Count > 0)
+            {
+                ActivateStation(stationScripts[diceResult]);
+            }
         }
     }
 

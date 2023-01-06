@@ -113,6 +113,8 @@ MonoBehaviour:
   door: {fileID: 0}
   DoorOpenTime: 0
   alwaysActive: 0
+  bonus_time: 1.5
+  stationExplainer: {fileID: 0}
 --- !u!61 &120271504988597064
 BoxCollider2D:
   m_ObjectHideFlags: 0

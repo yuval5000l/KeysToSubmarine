@@ -15,16 +15,10 @@ public class LeverStation : StationScript
     [SerializeField] private float DoorOpenTime = 1.0f;
     [SerializeField] private bool alwaysActive;
     [SerializeField] private float bonus_time = 1.5f;
-
-
-    void Start()
+    [SerializeField] private GameObject stationExplainer;
+    new void Start()
     {
-        //functionaly
-        //if (DoorOpenTime == null)
-        //{
-        //    DoorOpenTime = 1.0f;
-            
-        //}
+        base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         if (stationPopup == null)
@@ -39,11 +33,16 @@ public class LeverStation : StationScript
     // Update is called once per frame
     void Update()
     {
+
         pressKeysInARowCount = 0;
         //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || alwaysActive)
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
@@ -56,7 +55,12 @@ public class LeverStation : StationScript
         }
         else
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(false);
+            }
             station_animation.SetTrigger("StopHover");
+            PlayerAnimationIdle();
         }
 
         for (int i = 0; i < players_controller_in_station.Count; i++)
@@ -93,6 +97,7 @@ public class LeverStation : StationScript
             {
                 pressKeysInARowCount += 1;
             }
+
         }
         int counter = 0;
         foreach (var action_key in players_controller_in_station) // For Controller
@@ -110,6 +115,11 @@ public class LeverStation : StationScript
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
+            foreach (PlayerController player in players_in_station)
+            {
+                player.ForceStop();
+            }
+            PlayerAnimationWork();
             station_active = false; 
             deActivatePopup();
             //Debug.Log("Did it");
@@ -124,7 +134,10 @@ public class LeverStation : StationScript
             {
                 missionManager.missionDone((pressKeysInARowCount * bonus_time), points);
             }
-            
+        }
+        else
+        {
+            PlayerAnimationIdle();
         }
     }
     

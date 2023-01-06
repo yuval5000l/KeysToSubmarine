@@ -18,9 +18,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool controller_set1 = false;
     [SerializeField] private bool controller_set2 = false;
+    [SerializeField] private bool controller_set3 = false;
+    [SerializeField] private bool controller_set4 = false;
+
+
+    [SerializeField] private Animator animator;
 
     Player1Controls controls_1;
     Player2Controls controls;
+
+
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
@@ -28,65 +35,110 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
-   
+    private bool looking_right = false;
+    private bool idle = true;
+    private bool playerStop = false;
     // Start is called before the first frame update
     void Awake()
     {
-        controls = new Player2Controls();
-        controls_1 = new Player1Controls();
-        if (controller_set1)
-        {
-            EnableController1();
-        }
-        else if (controller_set2)
-        {
-            EnableController2();
-        }
+        //controls = new Player2Controls();
+        //controls_1 = new Player1Controls();
+        //if (controller_set1)
+        //{
+        //    EnableController1();
+        //}
+        //else if (controller_set2)
+        //{
+        //    EnableController2();
+        //}
+
         levelsOfRadioActivity = new bool[] {false,false,false};
     }
 
-    public void EnableController1()
-    {
-        //controls.Gameplay.Action.performed += ctx => Simple();
-        player_action_button_new = controls_1.Gameplay.Action;
-        controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-        //Debug.Log(controls.Gameplay.Move.GetType());
-        Debug.Log("Player1");
-    }
-    public void EnableController2()
-    {
-        //controls.Gameplay.Action.performed += ctx => Simple();
-        player_action_button_new = controls.Gameplay.Action;
-        controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-        //Debug.Log(controls.Gameplay.Move.GetType());
-        Debug.Log("Player2");
+    //public void EnableController1()
+    //{
+    //    //controls.Gameplay.Action.performed += ctx => Simple();
+    //    player_action_button_new = controls_1.Gameplay.Action;
+    //    controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+    //    controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+    //    //Debug.Log(controls.Gameplay.Move.GetType());
+    //    Debug.Log("Player1");
+    //}
+    //public void EnableController2()
+    //{
+    //    //controls.Gameplay.Action.performed += ctx => Simple();
+    //    player_action_button_new = controls.Gameplay.Action;
+    //    controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+    //    controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+    //    //Debug.Log(controls.Gameplay.Move.GetType());
+    //    Debug.Log("Player2");
 
-    }
+    //}
     //void Simple()
     //{
     //    //Debug.Log("HEY");
     //}
 
-    private void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
+    //private void OnEnable()
+    //{
+    //    controls.Gameplay.Enable();
+    //}
 
-    private void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
+    //private void OnDisable()
+    //{
+    //    controls.Gameplay.Disable();
+    //}
 
     // Update is called once per frame
     void Update()
     {
-        if (!(controller_set1 || controller_set2))
+        if (!(controller_set1 || controller_set2 || controller_set3))
         {
-            movement_keyboard();
+            if (!playerStop)
+            {
+                movement_keyboard();
+            }
         }
-
+        if (controller_set3)
+        {
+            if (player_action_button != KeyCode.Joystick1Button0)
+            {
+                player_action_button = KeyCode.Joystick1Button0;
+            }
+            movement.x = Input.GetAxis("J1Horizontal");
+            movement.y = -Input.GetAxis("J1Vertical");
+            if (Mathf.Abs(movement.x) < 0.3f)
+            {
+                movement.x = 0f;
+            }
+            if (Mathf.Abs(movement.y) < 0.3f)
+            {
+                movement.y = 0f;
+            }
+            AnimationIdle();
+            //if (Input.GetButton("J1A"))
+            //{
+            //    Debug.Log("YAS");
+            //}
+        }
+        if (controller_set4)
+        {
+            movement.x = Input.GetAxis("J2Horizontal");
+            movement.y = -Input.GetAxis("J2Vertical");
+            if (Mathf.Abs(movement.x ) < 0.3f)
+            {
+                movement.x = 0f;
+            }
+            if (Mathf.Abs(movement.y) < 0.3f)
+            {
+                movement.y = 0f;
+            }
+            AnimationIdle();
+            //if (Input.GetButton("J2A"))
+            //{
+            //    Debug.Log("YAS2");
+            //}
+        }
     }
 
     private void movement_keyboard()
@@ -115,11 +167,54 @@ public class PlayerController : MonoBehaviour
         {
             movement.y = 0;
         }
+        AnimationIdle();
     }
 
+    private void AnimationDecideState()
+    {
+        float x1 = rb.velocity.x;
+        float y1 = rb.velocity.y;
+        if (Mathf.Abs(x1) > Mathf.Abs(y1))
+        {
+            if (x1 > 0)
+            {
+                animator.SetTrigger("Run_Right");
+                if (!looking_right)
+                {
+                    looking_right = true;
+                    transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
+                }
+            }
+            else
+            {
+                animator.SetTrigger("Run_Right");
+                if (looking_right)
+                {
+                    looking_right = false;
+                    transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+                }
+            }
+        }
+        else
+        {
+            if (y1 > 0)
+            {
+                animator.SetTrigger("Run_Up");
+            }
+            else
+            {
+                animator.SetTrigger("Run_Down");
+            }
+        }
+    }
     private void FixedUpdate()
     {
         rb.AddForce(movement * moveSpeed, ForceMode2D.Impulse);
+        if (!idle)
+        {
+            AnimationDecideState();
+        }
+
     }
 
     public KeyCode GetPlayerActionButton()
@@ -170,6 +265,79 @@ public class PlayerController : MonoBehaviour
         player_action_button = new_key;
     }
 
+    public void AnimationWork(Vector3 otherlocalLocation)
+    {
+        //PlayerDirectionAnimation(otherlocalLocation);
+        animator.SetTrigger("work");
+    }
+    private void PlayerDirectionAnimation(Vector3 otherlocalLocation)
+    {
+        float x1 = transform.localPosition.x;
+        float y1 = transform.localPosition.y;
+        float x2 = otherlocalLocation.x;
+        float y2 = otherlocalLocation.y;
+        float deg = Mathf.Atan2((y2 - y1), (x2 - x1));
+        if (deg > -2.25f && deg <= -0.75f)
+        {
+            animator.SetTrigger("Run_Down");
+        }
+        else if(deg > -0.75 && deg <= 0.75f)
+        {
+            animator.SetTrigger("Run_Right");
+            if (!looking_right)
+            {
+                looking_right = true;
+                transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
+            }
+            
+        }
+        else if(deg > 0.75f && deg <= 2.25f)
+        {
+            animator.SetTrigger("Run_Up");
+        }
+        else
+        {
+            animator.SetTrigger("Run_Right");
+            if (looking_right)
+            {
+                looking_right = false;
+                transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+            }
+        }
+        //Debug.Log(deg);
+    }
+    public void AnimationPush(Vector3 otherlocalLocation)
+    {
+        //PlayerDirectionAnimation(otherlocalLocation);
+        if (!idle)
+        {
+            animator.SetTrigger("push");
+        }
+    }
+
+    public void AnimationIdle()
+    {
+        if (Mathf.Abs(rb.velocity.x) <= 0.01f && Mathf.Abs(rb.velocity.y) <= 0.01f && !Input.GetKeyDown(player_action_button))
+        {
+            animator.SetTrigger("idle");
+            idle = true;
+        }
+        else
+        {
+            idle = false;
+        }
+    }
+    public void ForceStop()
+    {
+        rb.velocity = Vector2.zero;
+        //playerStop = true;
+    }
+
+    public void cancelForceStop()
+    {
+        playerStop = false;
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Holdable")
@@ -183,6 +351,12 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "RadioActive")
         {
             radioActivity += 4 * other.gameObject.GetComponent<TrashCan>().getRadioActivityLevel();
+            checkRadioActivity();
+        }
+
+        if(other.tag == "ActiveShower")
+        {
+            radioActivity -= 50;
             checkRadioActivity();
         }
     }
@@ -203,6 +377,16 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = moveSpeed / 2;
             levelsOfRadioActivity[0] = true;
+        }
+        else if(3333 <= radioActivity && radioActivity <6666 && levelsOfRadioActivity[1])
+        {
+            moveSpeed = moveSpeed * 2;
+            levelsOfRadioActivity[1] = false;
+        }
+        else if(radioActivity < 3333 && levelsOfRadioActivity[0])
+        {
+            moveSpeed = moveSpeed * 2;
+            levelsOfRadioActivity[0] = false;
         }
     }
 }

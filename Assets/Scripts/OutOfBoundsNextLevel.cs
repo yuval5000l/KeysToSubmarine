@@ -24,7 +24,7 @@ public class OutOfBoundsNextLevel : MonoBehaviour
         counter++;
         if (counter == NumPlayers)
         {
-            GM.Nextlevel();
+            GM.NextlevelCanvas();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

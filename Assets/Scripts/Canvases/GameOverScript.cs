@@ -22,7 +22,7 @@ public class GameOverScript : MonoBehaviour
 
     public void TryAgain()
     {
-        GM.Nextlevel();
+        GM.restartlevel();
     }
     public void ReturnToMenu()
     {

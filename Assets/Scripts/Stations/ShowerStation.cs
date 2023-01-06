@@ -16,14 +16,17 @@ public class ShowerStation : StationScript
     [SerializeField] private DoorScript door;
     private float timeHeld = 0;
     private bool door_activated = true;
+    [SerializeField] private GameObject stationExplainer;
+
 
 
 
     void Start()
     {
+        base.Start();
         missions.Add(HoldKey);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-
+        gameObject.tag = "None";
         stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1.5f,0);
         deActivatePopup();
@@ -44,6 +47,10 @@ public class ShowerStation : StationScript
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
@@ -56,6 +63,10 @@ public class ShowerStation : StationScript
         }
         else
         {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(false);
+            }
             station_animation.SetTrigger("idle");
         }
         timeWindowToPress += Time.deltaTime;
@@ -69,6 +80,7 @@ public class ShowerStation : StationScript
             if (Input.GetKey(action_key))
             {
                 station_animation.SetTrigger("StartShower");
+                gameObject.tag = "ActiveShower";
                 timeHeld += Time.deltaTime;
                 timeWindowToPress = 0;
                 indicator.transform.localScale = new Vector3((timeHeld)*1f, indicator.transform.localScale.y);
@@ -81,6 +93,7 @@ public class ShowerStation : StationScript
             else
             {
                 timeHeld = 0;
+                gameObject.tag = "None";
                 if (door & !door_activated)
                 {
                     door.StopTouchDoor();
@@ -93,6 +106,7 @@ public class ShowerStation : StationScript
             if (action_key.Item2 == true)
             {
                 station_animation.SetTrigger("StartShower");
+                gameObject.tag = "ActiveShower";
                 timeHeld += Time.deltaTime;
                 indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
                 timeWindowToPress = 0;
@@ -103,6 +117,7 @@ public class ShowerStation : StationScript
         {
             station_animation.SetTrigger("EndShower");
             timeHeld = 0;
+            gameObject.tag = "None";
             station_active = false;
             indicator.transform.localScale = new Vector3(0.01f, indicator.transform.localScale.y);
             deActivatePopup();
