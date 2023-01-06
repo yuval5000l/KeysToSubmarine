@@ -74,6 +74,13 @@ public class LeverStation : StationScript
                 check_pressed_once[i] = true;
             }
         }
+        if (timeWindowToPress >= maximalTime)
+        {
+            timeWindowToPress = 0;
+            pressKeysInARowCount = 0;
+        }
+        timeWindowToPress += Time.deltaTime;
+
     }
 
 
@@ -96,6 +103,7 @@ public class LeverStation : StationScript
             if (Input.GetKeyDown(action_key))
             {
                 pressKeysInARowCount += 1;
+                timeWindowToPress = 0;
             }
 
         }

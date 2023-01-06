@@ -1430,12 +1430,20 @@ PrefabInstance:
       objectReference: {fileID: 100672121}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: holdTime
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: bonus_time
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
+      propertyPath: always_active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
+      propertyPath: missionManager
+      value: 
+      objectReference: {fileID: 1962775321}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: station_active
       value: 1
@@ -6382,12 +6390,20 @@ PrefabInstance:
       objectReference: {fileID: 100672121}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: holdTime
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: bonus_time
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
+      propertyPath: always_active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
+      propertyPath: missionManager
+      value: 
+      objectReference: {fileID: 1962775321}
     - target: {fileID: 2216415087479973847, guid: a97154d1081981a4bbbc40abb5b07316, type: 3}
       propertyPath: station_active
       value: 1

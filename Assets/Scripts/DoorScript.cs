@@ -12,12 +12,15 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private int numOfStations = 1;
     [SerializeField] private bool permanent_changes = false;
     private int counter_stations = 0;
-
+    private bool door_open = false;
     void update()
     {
         
     }
-
+    public bool DoorState()
+    {
+        return door_open;
+    }
     public void CloseDoor()
     {
         //Debug.Log("CloseDoor()");
@@ -26,6 +29,7 @@ public class DoorScript : MonoBehaviour
         sprite.enabled = true;
         //anim.Settrigger("CloseDoor")
         counter_stations = 0;
+        door_open = false;
 
     }
     
@@ -36,7 +40,6 @@ public class DoorScript : MonoBehaviour
 
         coli.enabled = true;
         sprite.enabled = true;
-
     }
     
     public void StopTouchDoor()
@@ -60,6 +63,7 @@ public class DoorScript : MonoBehaviour
             {
                 coli.enabled = false;
                 sprite.enabled = false;
+                door_open = true;
             }
         }
         else
@@ -77,7 +81,7 @@ public class DoorScript : MonoBehaviour
 
         coli.enabled = false;
         sprite.enabled = false;
-
+        door_open = true;
         //anim.Settrigger("OpenDoor")
 
         yield return new WaitForSeconds(xSeconds);
