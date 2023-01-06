@@ -353,6 +353,12 @@ public class PlayerController : MonoBehaviour
             radioActivity += 4 * other.gameObject.GetComponent<TrashCan>().getRadioActivityLevel();
             checkRadioActivity();
         }
+
+        if(other.tag == "ActiveShower")
+        {
+            radioActivity -= 50;
+            checkRadioActivity();
+        }
     }
 
     void checkRadioActivity()
@@ -371,6 +377,16 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = moveSpeed / 2;
             levelsOfRadioActivity[0] = true;
+        }
+        else if(3333 <= radioActivity && radioActivity <6666 && levelsOfRadioActivity[1])
+        {
+            moveSpeed = moveSpeed * 2;
+            levelsOfRadioActivity[1] = false;
+        }
+        else if(radioActivity < 3333 && levelsOfRadioActivity[0])
+        {
+            moveSpeed = moveSpeed * 2;
+            levelsOfRadioActivity[0] = false;
         }
     }
 }

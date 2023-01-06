@@ -9,6 +9,8 @@ TagManager:
   - Bin
   - RadioActive
   - Boulder
+  - ActiveShower
+  - None
   layers:
   - Default
   - TransparentFX
