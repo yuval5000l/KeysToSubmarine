@@ -51,7 +51,6 @@ public class MissionManager : MonoBehaviour
         updateText();
         addActiveStations();
         initial_time = time_left;
-
         //stationsNames.Add("Red");
         //missionsExplanation.Add("Click 1 time on M");
         //missionsExplanation.Add("Click 5 time on M");
@@ -85,7 +84,10 @@ public class MissionManager : MonoBehaviour
                     new_list.Add(station);
                 }
             }
-            stationScripts.Add(new_list);
+            if (new_list.Count > 0)
+            {
+                stationScripts.Add(new_list);
+            }
         }
 
     }
@@ -127,7 +129,16 @@ public class MissionManager : MonoBehaviour
         }
 
         //rollTheDice();
-        ChooseStratgies();
+        if (stationScripts.Count != 0)
+        {
+            ChooseStratgies();
+        }
+        if (stationScripts.Count == 0)
+        {
+            //Debug.Log(stationScripts);
+            refillStrategies();
+            //Debug.Log(stationScripts);
+        }
         // For Gadi
         if (Noise != null)
         {
@@ -148,6 +159,7 @@ public class MissionManager : MonoBehaviour
 
     public void missionDone(float bonus_time, int pointsWorth)
     {
+        //printStationScript();
         StationScript station_to_remove = null;
         List<StationScript> strategy_to_remove = null;
         foreach (List<StationScript> strategy in stationScripts)
@@ -177,8 +189,21 @@ public class MissionManager : MonoBehaviour
         }
         time_left += bonus_time;
         score += pointsWorth;
+        //printStationScript();
+        //Debug.Log(stationScripts.Count);
     }
 
+    private void printStationScript()
+    {
+        Debug.Log("printing");
+        foreach(List<StationScript> stationL in stationScripts)
+        {
+            foreach(StationScript station in stationL)
+            {
+                Debug.Log(station);
+            }
+        }
+    }
     private void ActivateStation(List<StationScript> strategy)
     {
         strategy[0].setMissionIndex(0);
@@ -197,9 +222,10 @@ public class MissionManager : MonoBehaviour
 
     private void ChooseStratgies()
     {
-        while (stationsActive.Count < MaxStationsAtTime)
-        {
-            int diceResult = (int)rnd.Next(stationScripts.Count);
+        if (stationsActive.Count < MaxStationsAtTime)
+        //while (stationsActive.Count < MaxStationsAtTime)
+            {
+                int diceResult = (int)rnd.Next(stationScripts.Count);
             if (stationScripts[diceResult].Count > 0)
             {
                 ActivateStation(stationScripts[diceResult]);
