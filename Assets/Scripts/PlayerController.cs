@@ -192,10 +192,6 @@ public class PlayerController : MonoBehaviour
     {
         return player_action_button_new;
     }
-    void PlayerMovement()
-    {
-
-    }
 
     public KeyCode[] GetKeys()
     {
