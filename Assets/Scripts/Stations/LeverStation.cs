@@ -118,7 +118,7 @@ public class LeverStation : StationScript
             
             if (!alwaysActive) // otherwise they get points for opening the door ... 
             {
-                missionManager.missionDone((pressKeysInARowCount * bonus_time), points);
+                missionManager.missionDone(bonus_time, points_award);
             }
             pressKeysInARowCount = 0;
         }

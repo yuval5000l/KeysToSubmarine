@@ -8,7 +8,11 @@ public class TrashCan : TriggerObject, Radioactivity
     // Start is called before the first frame update
     void Start()
     {
-        radioActivityLevel = 1f;
+    
+        if (radioActivityLevel == null)
+        {        
+            radioActivityLevel = 1f;
+        }
     }
 
     // Update is called once per frame
