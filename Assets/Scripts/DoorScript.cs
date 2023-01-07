@@ -11,11 +11,31 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private bool always_open = false;
     [SerializeField] private int numOfStations = 1;
     [SerializeField] private bool permanent_changes = false;
+    private List<SpriteRenderer> cables = new List<SpriteRenderer>();
+    private Color default_color;
     private int counter_stations = 0;
     private bool door_open = false;
+
+    private void Awake()
+    {
+        int counter = 0;
+        foreach(SpriteRenderer sprite1 in  GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (counter > 0)
+            {
+                cables.Add(sprite1);
+
+            }
+            counter++;
+        }
+        if (cables.Count != 0)
+        {
+            default_color = cables[0].color;
+        }
+
+    }
     void update()
     {
-        
     }
     public bool DoorState()
     {
@@ -30,7 +50,10 @@ public class DoorScript : MonoBehaviour
         //anim.Settrigger("CloseDoor")
         counter_stations = 0;
         door_open = false;
-
+        foreach (SpriteRenderer sprite1 in cables)
+        {
+            sprite1.color = default_color;
+        }
     }
     
     public IEnumerator CloseDoorIn(float xSec)
@@ -64,6 +87,10 @@ public class DoorScript : MonoBehaviour
                 coli.enabled = false;
                 sprite.enabled = false;
                 door_open = true;
+                foreach (SpriteRenderer sprite1 in cables)
+                {
+                    sprite1.color = new Color(1f, 1f, 1f, 1f);
+                }
             }
         }
         else
@@ -83,7 +110,10 @@ public class DoorScript : MonoBehaviour
         sprite.enabled = false;
         door_open = true;
         //anim.Settrigger("OpenDoor")
-
+        foreach (SpriteRenderer sprite1 in cables)
+        {
+            sprite1.color = new Color(1f, 1f, 1f, 1f);
+        }
         yield return new WaitForSeconds(xSeconds);
         CloseDoor();
     }

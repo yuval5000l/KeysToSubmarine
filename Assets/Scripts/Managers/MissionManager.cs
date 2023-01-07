@@ -51,9 +51,6 @@ public class MissionManager : MonoBehaviour
         updateText();
         addActiveStations();
         initial_time = time_left;
-        //stationsNames.Add("Red");
-        //missionsExplanation.Add("Click 1 time on M");
-        //missionsExplanation.Add("Click 5 time on M");
     }
 
     private void addActiveStations()
@@ -133,11 +130,9 @@ public class MissionManager : MonoBehaviour
         {
             ChooseStratgies();
         }
-        if (stationScripts.Count == 0)
+        if (stationScripts.Count == MaxStationsAtTime)
         {
-            //Debug.Log(stationScripts);
             refillStrategies();
-            //Debug.Log(stationScripts);
         }
         // For Gadi
         if (Noise != null)
