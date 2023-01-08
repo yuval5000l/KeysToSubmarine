@@ -64,7 +64,7 @@ public class MissionManager : MonoBehaviour
             {
                 if (station.getStationActiveState())
                 {
-                    if ((!stationsActive.Contains(station) && station.isAlwaysActive()))
+                    if ((!stationsActive.Contains(station) && !station.isAlwaysActive()))
                     {
                         stationsActive.Add(station);
                         station.activatePopup();
