@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class TrashCan : TriggerObject, Radioactivity
 {
-    [SerializeField] private float radioActivityLevel;
+    [SerializeField] private float radioActivityLevel = 1f;
     // Start is called before the first frame update
     void Start()
     {
     
-        if (radioActivityLevel == null)
-        {        
-            radioActivityLevel = 1f;
-        }
+        //if (radioActivityLevel == null)
+        //{        
+        //    radioActivityLevel = 1f;
+        //}
     }
 
     // Update is called once per frame

@@ -13,7 +13,7 @@ public class StationScript : MonoBehaviour
     
     [SerializeField] protected List<PlayerController> players_in_station; // List that holds all the current players
 
-    [SerializeField] protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
+    /*[SerializeField]*/ protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
 
     
     // Is Station Active
@@ -22,9 +22,9 @@ public class StationScript : MonoBehaviour
     // Missions
     protected List<Action> missions = new List<Action>(); // List that contains all the functions for the missions
     protected List<int> missionsNumberOfPlayers = new List<int>(); // List that contains the number of players that need to be in the station for each mission
-    [SerializeField] protected int mission_index = 0; // The mission we choose for this station
+    /*[SerializeField]*/ protected int mission_index = 0; // The mission we choose for this station
 
-    [SerializeField] protected int press_in_a_row = 0;
+    /*[SerializeField]*/ protected int press_in_a_row = 0;
     [SerializeField] protected int points_award = 0;
     [SerializeField] protected MissionManager missionManager;
 
@@ -50,11 +50,11 @@ public class StationScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        if (points_award ==null)
-        {
-            points_award = 0;
+        //if (points_award ==null)
+        //{
+        //    points_award = 0;
             
-        }
+        //}
         for (int i = 0; i < 4; i++)
         {
             numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;

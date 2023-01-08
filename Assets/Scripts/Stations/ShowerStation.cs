@@ -120,7 +120,7 @@ public class ShowerStation : StationScript
 
             }
         }
-        if (timeHeld >= holdTime)
+        if (!always_active && timeHeld >= holdTime)
         {
             station_animation.SetTrigger("EndShower");
             timeHeld = 0;

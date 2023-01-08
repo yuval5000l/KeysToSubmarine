@@ -39,10 +39,16 @@ public class PlayerController : MonoBehaviour
     private bool looking_right = false;
     private bool idle = true;
     private bool playerStop = false;
+
+    private SpriteRenderer sprite;
+    private Material default_material;
+    private Material radio_active_material;
     // Start is called before the first frame update
     void Awake()
     {
-
+        sprite = GetComponent<SpriteRenderer>();
+        default_material = sprite.material;
+        radio_active_material = Resources.Load<Material>("Radioactive_player");
         levelsOfRadioActivity = new bool[] {false,false,false};
     }
 
@@ -309,12 +315,17 @@ public class PlayerController : MonoBehaviour
         {
             radioActivity += 4 * other.gameObject.GetComponent<TrashCan>().getRadioActivityLevel();
             checkRadioActivity();
+            sprite.material = radio_active_material;
         }
 
         if(other.tag == "ActiveShower")
         {
-            radioActivity -= 50;
+            if (radioActivity > 0)
+            {
+                radioActivity -= 50;
+            }
             checkRadioActivity();
+            sprite.material = default_material;
         }
     }
 
