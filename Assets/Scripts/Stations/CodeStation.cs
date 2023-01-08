@@ -122,7 +122,7 @@ public class CodeStation : StationScript
             {
                 station_active = false;
 
-                missionManager.missionDone(bonus_time, missionsNumberOfPlayers[mission_index] * 2);
+                missionManager.missionDone(bonus_time, points_award);
                 press_in_a_row = 0;
             }
             if (door && door_activated)

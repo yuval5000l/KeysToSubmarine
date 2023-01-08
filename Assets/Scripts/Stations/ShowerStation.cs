@@ -129,7 +129,7 @@ public class ShowerStation : StationScript
             station_active = false;
             indicator.transform.localScale = new Vector3(0.01f, indicator.transform.localScale.y);
             deActivatePopup();
-            missionManager.missionDone(bonus_time, 1);
+            missionManager.missionDone(bonus_time, points_award);
         }
     }
 }

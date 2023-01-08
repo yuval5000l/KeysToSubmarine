@@ -25,6 +25,7 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected int mission_index = 0; // The mission we choose for this station
 
     [SerializeField] protected int press_in_a_row = 0;
+    [SerializeField] protected int points_award = 0;
     [SerializeField] protected MissionManager missionManager;
 
     protected List<InputAction> player_action_controller = new List<InputAction>();
@@ -49,6 +50,11 @@ public class StationScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
+        if (points_award ==null)
+        {
+            points_award = 0;
+            
+        }
         for (int i = 0; i < 4; i++)
         {
             numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
