@@ -148,8 +148,10 @@ public class MissionManager : MonoBehaviour
             float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
             Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         }
-        
-        indicator.transform.localScale = new Vector3((1 - (time_left / initial_time))*16f, indicator.transform.localScale.y);
+        if (indicator)
+        {
+            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 16f, indicator.transform.localScale.y);
+        }
     }
 
     public void missionDone(float bonus_time, int pointsWorth)

@@ -71,7 +71,7 @@ public class ShowerStation : StationScript
             station_animation.SetTrigger("idle");
         }
         timeWindowToPress += Time.deltaTime;
-        if (door.DoorState())
+        if (door && door.DoorState())
         {
             if (stationExplainer)
             {
