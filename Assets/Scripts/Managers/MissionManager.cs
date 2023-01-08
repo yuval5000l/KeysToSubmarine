@@ -31,7 +31,10 @@ public class MissionManager : MonoBehaviour
 
     // Stations
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
-    [SerializeField] private int MaxStationsAtTime = 3;
+    [SerializeField] private int MaxStrategiesAtTime = 3;
+    [SerializeField] private bool ReadAsBatch = false;
+    // A Random directory
+    //[SerializeField] private bool Manual;
     //private int numActiveStations = 0;
 
     // TODO Make a weighted probability. TODO Make a list of stations with stations.
@@ -61,9 +64,10 @@ public class MissionManager : MonoBehaviour
             {
                 if (station.getStationActiveState())
                 {
-                    if (!stationsActive.Contains(station))
+                    if ((!stationsActive.Contains(station) && station.isAlwaysActive()))
                     {
                         stationsActive.Add(station);
+                        station.activatePopup();
                     }
                 }
             }
@@ -130,7 +134,7 @@ public class MissionManager : MonoBehaviour
         {
             ChooseStratgies();
         }
-        if (stationScripts.Count == MaxStationsAtTime)
+        if (stationScripts.Count == MaxStrategiesAtTime)
         {
             refillStrategies();
         }
@@ -176,13 +180,13 @@ public class MissionManager : MonoBehaviour
                 station_to_remove = null;
             }
         }
-        if (strategy_to_remove.Count == 0)
+        if (strategy_to_remove != null && strategy_to_remove.Count == 0)
         {
             stationScripts.Remove(strategy_to_remove);
         }
-        else
+        else if (!ReadAsBatch)
         {
-            ActivateStation(strategy_to_remove);
+            ActivateStation(strategy_to_remove[0]);
         }
         time_left += bonus_time;
         score += pointsWorth;
@@ -201,10 +205,10 @@ public class MissionManager : MonoBehaviour
             }
         }
     }
-    private void ActivateStation(List<StationScript> strategy)
+    private void ActivateStation(StationScript strategy)
     {
-        strategy[0].setMissionIndex(0);
-        stationsActive.Add(strategy[0]); // Station Active
+        strategy.setMissionIndex(0);
+        stationsActive.Add(strategy); // Station Active
     }
     public void AddTime(float bonus_time)
     {
@@ -217,22 +221,34 @@ public class MissionManager : MonoBehaviour
         score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
     }
 
+    private void ActivateBatch()
+    {
+        foreach(StationScript station in stationScripts[0])
+        {
+            ActivateStation(station);
+        }
+    }
+
     private void ChooseStratgies()
     {
-        if (stationsActive.Count < MaxStationsAtTime)
+        if (stationsActive.Count < MaxStrategiesAtTime)
         //while (stationsActive.Count < MaxStationsAtTime)
+        {
+            int diceResult = (int)rnd.Next(stationScripts.Count);
+            if (ReadAsBatch)
             {
-                int diceResult = (int)rnd.Next(stationScripts.Count);
-            if (stationScripts[diceResult].Count > 0)
+                ActivateBatch();
+            }
+            else if (stationScripts[diceResult].Count > 0)
             {
-                ActivateStation(stationScripts[diceResult]);
+                ActivateStation(stationScripts[diceResult][0]);
             }
         }
     }
 
     private void rollTheDice()
     {
-        if (stationsActive.Count < MaxStationsAtTime)
+        if (stationsActive.Count < MaxStrategiesAtTime)
         {
             for (int j = 0; j < stations.Count; j++)
             {

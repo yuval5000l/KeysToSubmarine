@@ -18,7 +18,7 @@ public class StationScript : MonoBehaviour
     
     // Is Station Active
     [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
-
+    [SerializeField] protected bool always_active = false;
     // Missions
     protected List<Action> missions = new List<Action>(); // List that contains all the functions for the missions
     protected List<int> missionsNumberOfPlayers = new List<int>(); // List that contains the number of players that need to be in the station for each mission
@@ -136,7 +136,10 @@ public class StationScript : MonoBehaviour
     
     
     
-    
+    public bool isAlwaysActive()
+    {
+        return always_active;
+    }
     private void pressNKeyInARow()
     {
         Debug.Log(action_key_pressed);

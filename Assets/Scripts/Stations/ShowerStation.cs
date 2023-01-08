@@ -8,13 +8,12 @@ using TMPro;
 
 public class ShowerStation : StationScript
 {
-
+    //[SerializeField] private bool always_active;
     [SerializeField] private float holdTime = 0;
     [SerializeField] private GameObject indicator;
     [SerializeField] private Animator station_animation;
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private DoorScript door;
-    [SerializeField] private bool always_active;
     private float timeHeld = 0;
     private bool door_activated = true;
     [SerializeField] private GameObject stationExplainer;
