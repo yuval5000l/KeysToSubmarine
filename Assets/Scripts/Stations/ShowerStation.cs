@@ -14,6 +14,7 @@ public class ShowerStation : StationScript
     [SerializeField] private Animator station_animation;
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private DoorScript door;
+    [SerializeField] private bool always_active;
     private float timeHeld = 0;
     private bool door_activated = true;
     [SerializeField] private GameObject stationExplainer;
@@ -21,7 +22,7 @@ public class ShowerStation : StationScript
 
 
 
-    void Start()
+    new void Start()
     {
         base.Start();
         missions.Add(HoldKey);
@@ -45,7 +46,7 @@ public class ShowerStation : StationScript
             station_animation.SetTrigger("EndShower");
         }
         //temporary fix for presKeyInRow, needs better solution
-        if (station_active)
+        if (station_active || always_active)
         {
             if (stationExplainer)
             {
@@ -70,6 +71,13 @@ public class ShowerStation : StationScript
             station_animation.SetTrigger("idle");
         }
         timeWindowToPress += Time.deltaTime;
+        if (door.DoorState())
+        {
+            if (stationExplainer)
+            {
+                stationExplainer.SetActive(false);
+            }
+        }
     }
 
 
@@ -121,7 +129,7 @@ public class ShowerStation : StationScript
             station_active = false;
             indicator.transform.localScale = new Vector3(0.01f, indicator.transform.localScale.y);
             deActivatePopup();
-            missionManager.missionDone(bonus_time, 1);
+            missionManager.missionDone(bonus_time, points_award);
         }
     }
 }

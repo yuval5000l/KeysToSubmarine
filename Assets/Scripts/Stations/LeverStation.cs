@@ -2,9 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using TMPro;
 
 public class LeverStation : StationScript
 {
@@ -34,8 +31,6 @@ public class LeverStation : StationScript
     void Update()
     {
 
-        pressKeysInARowCount = 0;
-        //Debug.Log(missionsNumberOfPlayers[mission_index]);
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || alwaysActive)
         {
@@ -74,55 +69,46 @@ public class LeverStation : StationScript
                 check_pressed_once[i] = true;
             }
         }
+        if (timeWindowToPress >= maximalTime)
+        {
+            timeWindowToPress = 0;
+            pressKeysInARowCount = 0;
+        }
+        timeWindowToPress += Time.deltaTime;
+
     }
 
 
     private void getAllKeysDown()
     {
-        //if (action_key_pressed)
-        //{
-        //    int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
-
-        //    Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-        //    station_active = false; //todo uncomment once we finish testing otherwise annoying
-        //    deActivatePopup();
-        //    missionManager.missionDone(1, points);
-        //}
-        //else
-        //{
-            //int count = 0;
         foreach (var action_key in players_action_key)
         {
             if (Input.GetKeyDown(action_key))
             {
                 pressKeysInARowCount += 1;
+                timeWindowToPress = 0;
             }
 
         }
-        int counter = 0;
-        foreach (var action_key in players_controller_in_station) // For Controller
-        {
-            if (action_key.Item2 && check_pressed_once[counter] == false)
-            {
-                pressKeysInARowCount += 1;
-                timeWindowToPress = 0;
-            }
-            counter++;
-        }
+        //int counter = 0;
+        //foreach (var action_key in players_controller_in_station) // For Controller
+        //{
+        //    if (action_key.Item2 && check_pressed_once[counter] == false)
+        //    {
+        //        pressKeysInARowCount += 1;
+        //        timeWindowToPress = 0;
+        //    }
+        //    counter++;
+        //}
         int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
 
 
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            foreach (PlayerController player in players_in_station)
-            {
-                player.ForceStop();
-            }
             PlayerAnimationWork();
             station_active = false; 
             deActivatePopup();
-            //Debug.Log("Did it");
             station_animation.SetTrigger("pullLever");
             if (door != null)
             {
@@ -132,8 +118,9 @@ public class LeverStation : StationScript
             
             if (!alwaysActive) // otherwise they get points for opening the door ... 
             {
-                missionManager.missionDone((pressKeysInARowCount * bonus_time), points);
+                missionManager.missionDone(bonus_time, points_award);
             }
+            pressKeysInARowCount = 0;
         }
         else
         {

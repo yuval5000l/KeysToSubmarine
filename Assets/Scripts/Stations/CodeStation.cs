@@ -2,9 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using TMPro;
 
 public class CodeStation : StationScript
 
@@ -39,11 +36,6 @@ public class CodeStation : StationScript
     // Update is called once per frame
     void Update()
     {
-        //if (door & !door_activated)
-        //{
-        //    door.StopTouchDoor();
-        //    door_activated = true;
-        //}
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
@@ -77,13 +69,7 @@ public class CodeStation : StationScript
         if (timeWindowToPress >= maximalTime)
         {
             timeWindowToPress = 0;
-            //pressKeysInARowCount = 0;
             keys_pressed.Clear();
-            //foreach (PlayerController player in players_in_station)
-            //{
-            //    player.cancelForceStop();
-            //}
-
         }
         for (int i = 0; i < players_controller_in_station.Count; i++)
         {
@@ -120,10 +106,6 @@ public class CodeStation : StationScript
         }
         if (keys_pressed.Count == missionsNumberOfPlayers[mission_index])
         {
-            foreach (PlayerController player in players_in_station)
-            {
-                player.ForceStop();
-            }
             PlayerAnimationWork();
             press_in_a_row += 1;
             spriteR.sprite = states[press_in_a_row - 1];
@@ -140,7 +122,7 @@ public class CodeStation : StationScript
             {
                 station_active = false;
 
-                missionManager.missionDone(bonus_time, missionsNumberOfPlayers[mission_index] * 2);
+                missionManager.missionDone(bonus_time, points_award);
                 press_in_a_row = 0;
             }
             if (door && door_activated)
@@ -148,20 +130,8 @@ public class CodeStation : StationScript
                 door.OpenDoor(DoorOpenTime);
                 door_activated = false;
             }
-            //foreach (PlayerController player in players_in_station)
-            //{
-            //    player.cancelForceStop();
-            //}
         }
     }
-
-    // public new void activatePopup()
-    // {
-    //     playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
-    //     stationPopup.SetActive(true);
-
-
-    // }
 
     
     public override void setMissionIndex(int i)

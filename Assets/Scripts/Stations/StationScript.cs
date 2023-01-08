@@ -25,6 +25,7 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected int mission_index = 0; // The mission we choose for this station
 
     [SerializeField] protected int press_in_a_row = 0;
+    [SerializeField] protected int points_award = 0;
     [SerializeField] protected MissionManager missionManager;
 
     protected List<InputAction> player_action_controller = new List<InputAction>();
@@ -49,11 +50,11 @@ public class StationScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        //numOfPlayersIndicator[0] = Instantiate(Resources.Load("1Person_01")) as GameObject;
-        //numOfPlayersIndicator[1] = Instantiate(Resources.Load("2Person_01")) as GameObject;
-        //numOfPlayersIndicator[2] = Instantiate(Resources.Load("3Person_01")) as GameObject;
-        //numOfPlayersIndicator[3] = Instantiate(Resources.Load("4Person_01")) as GameObject;
-
+        if (points_award ==null)
+        {
+            points_award = 0;
+            
+        }
         for (int i = 0; i < 4; i++)
         {
             numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
@@ -63,23 +64,6 @@ public class StationScript : MonoBehaviour
         }
 
         numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
-        
-    // missions.Add(getAllKeysDown);
-    // missionsNumberOfPlayers.Add(1);
-    //missions.Add(getKeyDownTwoPlayers);
-    // missions.Add(getAllKeysDown);
-    // missionsNumberOfPlayers.Add(2);
-    // missions.Add(getAllKeysDown);
-    // missionsNumberOfPlayers.Add(players_in_station.Count);
-    // missions.Add(pressNKeyInARow);
-    // missionsNumberOfPlayers.Add(2);
-    //missions.Add(getKeyDownAllPlayers);
-    //    //ToDo, needs an elegant solution, station shouldn't know how many players are in the game.
-    //    missionsNumberOfPlayers.Add(3);
-
-        //stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
-        //stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1,0);
-        //deActivatePopup();
         
     }
 
@@ -393,8 +377,11 @@ public class StationScript : MonoBehaviour
     {
         
         mission_index = i;
-        station_active = true;
-        activatePopup();
+        if (!station_active)
+        {
+            station_active = true;
+            activatePopup();
+        }
     }
 
     public bool getStationActiveState()

@@ -8,7 +8,7 @@ public class BollderStation : StationScript
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Rigidbody2D rigi;
 
-    void Start()
+    new void Start()
     {
         base.Start();
         missions.Add(getAllKeysDown);
