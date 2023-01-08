@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private bool idle = true;
     private bool playerStop = false;
 
+    private bool radio_active_state = false;
     private SpriteRenderer sprite;
     private Material default_material;
     private Material radio_active_material;
@@ -101,6 +102,11 @@ public class PlayerController : MonoBehaviour
             //{
             //    Debug.Log("YAS2");
             //}
+        }
+        if (radio_active_state)
+        {
+            radioActivity += 4 * 1f;
+            checkRadioActivity();
         }
     }
 
@@ -316,6 +322,7 @@ public class PlayerController : MonoBehaviour
             radioActivity += 4 * other.gameObject.GetComponent<TrashCan>().getRadioActivityLevel();
             checkRadioActivity();
             sprite.material = radio_active_material;
+            radio_active_state = true;
         }
 
         if(other.tag == "ActiveShower")
@@ -323,9 +330,14 @@ public class PlayerController : MonoBehaviour
             if (radioActivity > 0)
             {
                 radioActivity -= 50;
+                if (radioActivity < 0)
+                {
+                    radioActivity = 0;
+                }
             }
             checkRadioActivity();
             sprite.material = default_material;
+            radio_active_state = false;
         }
     }
 
