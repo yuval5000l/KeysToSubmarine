@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         }
         if (radio_active_state)
         {
-            radioActivity += 4 * 1f;
+            radioActivity += 4 * 1f * Time.deltaTime;
             checkRadioActivity();
         }
     }
