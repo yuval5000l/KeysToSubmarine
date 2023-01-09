@@ -13379,5 +13379,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Image
       objectReference: {fileID: 0}
+    - target: {fileID: 5300941544582995903, guid: 6253bd4878e5a544691e6a9e23babbd4, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6253bd4878e5a544691e6a9e23babbd4, type: 3}
