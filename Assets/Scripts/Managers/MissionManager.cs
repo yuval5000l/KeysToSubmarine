@@ -44,7 +44,7 @@ public class MissionManager : MonoBehaviour
     private List<StationScript> stationsActive = new List<StationScript>();
     private float initial_time;
     private bool isGameFinsihed = false;
-    
+    private int strategiessActive = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -66,8 +66,15 @@ public class MissionManager : MonoBehaviour
                 {
                     if ((!stationsActive.Contains(station) && !station.isAlwaysActive()))
                     {
-                        stationsActive.Add(station);
-                        station.activatePopup();
+                        if (ReadAsBatch)
+                        {
+                            ActivateBatch();
+                        }
+                        else
+                        {
+                            stationsActive.Add(station);
+                            station.activatePopup();
+                        }   
                     }
                 }
             }
@@ -183,6 +190,10 @@ public class MissionManager : MonoBehaviour
         if (strategy_to_remove != null && strategy_to_remove.Count == 0)
         {
             stationScripts.Remove(strategy_to_remove);
+            if (ReadAsBatch)
+            {
+                strategiessActive -= 1;
+            }
         }
         else if (!ReadAsBatch)
         {
@@ -208,7 +219,10 @@ public class MissionManager : MonoBehaviour
     private void ActivateStation(StationScript strategy)
     {
         strategy.setMissionIndex(0);
-        stationsActive.Add(strategy); // Station Active
+        if (!ReadAsBatch)
+        {
+            stationsActive.Add(strategy); // Station Active
+        }
     }
     public void AddTime(float bonus_time)
     {
@@ -223,23 +237,31 @@ public class MissionManager : MonoBehaviour
 
     private void ActivateBatch()
     {
-        foreach(StationScript station in stationScripts[0])
+        int temp = strategiessActive;
+        for (int i = temp; i < MaxStrategiesAtTime; i++)
         {
-            ActivateStation(station);
+            foreach (StationScript station in stationScripts[i])
+            {
+                ActivateStation(station);
+            }
+            strategiessActive += 1;
         }
     }
 
     private void ChooseStratgies()
     {
-        if (stationsActive.Count < MaxStrategiesAtTime)
-        //while (stationsActive.Count < MaxStationsAtTime)
+        if (ReadAsBatch)
         {
-            int diceResult = (int)rnd.Next(stationScripts.Count);
-            if (ReadAsBatch)
+            if (strategiessActive < MaxStrategiesAtTime)
             {
                 ActivateBatch();
             }
-            else if (stationScripts[diceResult].Count > 0)
+        }
+        else if (stationsActive.Count < MaxStrategiesAtTime)
+        //while (stationsActive.Count < MaxStationsAtTime)
+        {
+            int diceResult = (int)rnd.Next(stationScripts.Count);
+            if (stationScripts[diceResult].Count > 0)
             {
                 ActivateStation(stationScripts[diceResult][0]);
             }
