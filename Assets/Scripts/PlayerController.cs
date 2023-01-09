@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         if (radio_active_state)
         {
             radioActivity += 4 * 1f * Time.deltaTime * 60f;
-            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0001f;
+            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0003f;
             checkRadioActivity();
         }
     }
@@ -339,7 +339,7 @@ public class PlayerController : MonoBehaviour
             if (radioActivity > 0)
             {
                 radioActivity -= 50 * Time.deltaTime * 60;
-                radioActiveIndicator.fillAmount -= 12.5f * 240f * Time.deltaTime * 0.0001f;              
+                radioActiveIndicator.fillAmount -= 12.5f * 240f * Time.deltaTime * 0.0003f;              
             if (radioActivity < 0)
                 {
                     radioActivity = 0;
@@ -357,26 +357,31 @@ public class PlayerController : MonoBehaviour
         {
             levelsOfRadioActivity[2] = true;
             Destroy(gameObject);
+            Destroy(radioActiveIndicator);
         }
         else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
         {
             moveSpeed = moveSpeed / 2;
             levelsOfRadioActivity[1] = true;
+            radioActiveIndicator.fillAmount = 0;
         }
         else if (radioActivity >= 3333 && !levelsOfRadioActivity[0])
         {
             moveSpeed = moveSpeed / 2;
             levelsOfRadioActivity[0] = true;
+            radioActiveIndicator.fillAmount = 0;
         }
         else if(3333 <= radioActivity && radioActivity <6666 && levelsOfRadioActivity[1])
         {
             moveSpeed = moveSpeed * 2;
             levelsOfRadioActivity[1] = false;
+            radioActiveIndicator.fillAmount = 0;
         }
         else if(radioActivity < 3333 && levelsOfRadioActivity[0])
         {
             moveSpeed = moveSpeed * 2;
             levelsOfRadioActivity[0] = false;
+            radioActiveIndicator.fillAmount = 0;
         }
     }
 
