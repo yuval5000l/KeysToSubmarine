@@ -178,6 +178,9 @@ public class MissionManager : MonoBehaviour
         //printStationScript();
         StationScript station_to_remove = null;
         List<StationScript> strategy_to_remove = null;
+        //Debug.Log(stationScripts[0][0]);
+        //Debug.Log(stationsActive.Count);
+
         foreach (List<StationScript> strategy in stationScripts)
         {
             foreach (StationScript station in strategy)
@@ -209,6 +212,10 @@ public class MissionManager : MonoBehaviour
         }
         time_left += bonus_time;
         score += pointsWorth;
+        //Debug.Log(strategiessActive);
+        //Debug.Log(stationScripts.Count);
+        //Debug.Log(stationScripts[0].Count);
+
         //printStationScript();
     }
 
@@ -229,6 +236,7 @@ public class MissionManager : MonoBehaviour
         {
             strategy.setMissionIndex(0);
             stationsActive.Add(strategy); // Station Active
+
         }
     }
     public void AddTime(float bonus_time)

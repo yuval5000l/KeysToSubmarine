@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode player_action_button = KeyCode.R;
     [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
 
-    [SerializeField] private bool controller_set1 = false;
-    [SerializeField] private bool controller_set2 = false;
+    //[SerializeField] private bool controller_set1 = false;
+    //[SerializeField] private bool controller_set2 = false;
     [SerializeField] private bool controller_set3 = false;
     [SerializeField] private bool controller_set4 = false;
 
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private TMP_Text debug_Text;
+    //[SerializeField] private TMP_Text debug_Text;
     private Vector2 movement;
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private Material radio_active_material;
     // Start is called before the first frame update
     [SerializeField] private Image radioActiveIndicator;
-    [SerializeField] private RectTransform RT;
+    //[SerializeField] private RectTransform RT;
     [SerializeField] private Camera mCamera;
     void Awake()
     {
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         Vector2 viewportPoint = Camera.main.WorldToViewportPoint(pos);
         radioActiveIndicator.rectTransform.anchorMin = viewportPoint;
         radioActiveIndicator.rectTransform.anchorMax = viewportPoint;
-        if (!(controller_set1 || controller_set2 || controller_set3 || controller_set4))
+        if (!(controller_set3 || controller_set4))
         {
             if (!playerStop)
             {
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
     
     public bool is_Controller()
     {
-        return controller_set1 || controller_set2;
+        return controller_set3 || controller_set4;
     }
 
     public InputAction GetPlayerActionButtonNew()
