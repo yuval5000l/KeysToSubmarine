@@ -209,12 +209,7 @@ public class MissionManager : MonoBehaviour
         }
         time_left += bonus_time;
         score += pointsWorth;
-        Debug.Log(strategiessActive);
-        Debug.Log(stationScripts.Count);
-        Debug.Log(stationScripts[0].Count);
-        Debug.Log(stationsActive.Count);
         //printStationScript();
-        //Debug.Log(stationScripts.Count);
     }
 
     private void printStationScript()
@@ -230,12 +225,10 @@ public class MissionManager : MonoBehaviour
     }
     private void ActivateStation(StationScript strategy)
     {
-        Debug.Log("Before Adding to stationsActive");
         if (!strategy.getStationActiveState())
         {
             strategy.setMissionIndex(0);
             stationsActive.Add(strategy); // Station Active
-            Debug.Log("Adding to stationsActive");
         }
     }
     public void AddTime(float bonus_time)
@@ -252,12 +245,10 @@ public class MissionManager : MonoBehaviour
     private void ActivateBatch()
     {
         int temp = strategiessActive;
-        Debug.Log(strategiessActive);
         for (int i = temp; i < MaxStrategiesAtTime; i++)
         {
             foreach (StationScript station in stationScripts[i])
             {
-                Debug.Log("Activating Batch");
                 ActivateStation(station);
             }
             strategiessActive += 1;
