@@ -2261,7 +2261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: controller_set3
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770637, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: player_action_button
@@ -11461,13 +11461,13 @@ MonoBehaviour:
   GM: {fileID: 97783157}
   timer_text: {fileID: 2027799594}
   score_text: {fileID: 943208466}
-  missionsToWinTarget: 28
+  missionsToWinTarget: 27
   time_left: 90
   indicator: {fileID: 256428754}
   Orb: {fileID: 1270291840}
   GreenScreen: {fileID: 0}
   Noise: {fileID: 2036527677}
-  GreenVignette1: {fileID: 0}
+  GreenVignette1: {fileID: 1573286277}
   GreenVignette2: {fileID: 1573286276}
   stations: []
   MaxStrategiesAtTime: 3

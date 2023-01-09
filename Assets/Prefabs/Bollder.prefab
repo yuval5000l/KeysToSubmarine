@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.21698111, g: 0.017399432, b: 0.019062873, a: 1}
+  m_Color: {r: 0.47042096, g: 0.015723169, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
   players_action_key: 
   players_in_station: []
   station_active: 0
-  mission_index: 0
-  press_in_a_row: 0
+  always_active: 0
+  points_award: 0
   missionManager: {fileID: 0}
   stationPopup: {fileID: 0}
   maximalTime: 0.25

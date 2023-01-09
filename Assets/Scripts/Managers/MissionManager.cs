@@ -47,9 +47,13 @@ public class MissionManager : MonoBehaviour
     private bool isGameFinsihed = false;
     private int strategiessActive = 0;
 
+    private GameObject ScoreIndicatorPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
+        ScoreIndicatorPrefab = Resources.Load("ScoreIndicator") as GameObject;
+        //ScoreIndicatorPrefab = ScoreIndicatorPrefabhelper.GetComponent<ScoreIndicator>();
         refillStrategies();
         refillStations();
         updateText();
@@ -144,7 +148,6 @@ public class MissionManager : MonoBehaviour
         {
             refillStrategies();
         }
-        //if (stationScripts.Count != 0)
         else if (stationScripts.Count != 0)
         {
             ChooseStratgies();
@@ -173,6 +176,16 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+
+    private void MakeScoreIndicator(Vector3 stationPos)
+    {
+        //Debug.Log("HERE");
+        //GameObject scoreobj = Instantiate(ScoreIndicatorPrefab);
+        ScoreIndicator scoreind = Instantiate(ScoreIndicatorPrefab).GetComponent<ScoreIndicator>();
+        scoreind.transform.position = stationPos;
+        scoreind.orb_loc = Orb.transform.localPosition;
+    }
+
     public void missionDone(float bonus_time, int pointsWorth)
     {
         //printStationScript();
@@ -190,34 +203,41 @@ public class MissionManager : MonoBehaviour
                     stationsActive.Remove(station);
                     station_to_remove = station;
                     strategy_to_remove = strategy;
+                    if (score > 0 || time_left > 0)
+                    {
+                        MakeScoreIndicator(station_to_remove.transform.localPosition);
+                    }
                 }
             }
-            if (station_to_remove != null)
+                if (station_to_remove != null)
+                {
+                    strategy.Remove(station_to_remove);
+                    station_to_remove = null;
+                }
+            
+        }
+            if (strategy_to_remove != null && strategy_to_remove.Count == 0)
             {
-                strategy.Remove(station_to_remove);
-                station_to_remove = null;
+                stationScripts.Remove(strategy_to_remove);
+                if (ReadAsBatch)
+                {
+                    strategiessActive -= 1;
+                }
             }
-        }
-        if (strategy_to_remove != null && strategy_to_remove.Count == 0)
-        {
-            stationScripts.Remove(strategy_to_remove);
-            if (ReadAsBatch)
+            else if (!ReadAsBatch)
             {
-                strategiessActive -= 1;
+                ActivateStation(strategy_to_remove[0]);
             }
-        }
-        else if (!ReadAsBatch)
-        {
-            ActivateStation(strategy_to_remove[0]);
-        }
-        time_left += bonus_time;
-        score += pointsWorth;
-        //Debug.Log(strategiessActive);
-        //Debug.Log(stationScripts.Count);
-        //Debug.Log(stationScripts[0].Count);
+            time_left += bonus_time;
+            score += pointsWorth;
+            //Debug.Log(strategiessActive);
+            //Debug.Log(stationScripts.Count);
+            //Debug.Log(stationScripts[0].Count);
 
-        //printStationScript();
+            //printStationScript();
+        
     }
+
 
     private void printStationScript()
     {
