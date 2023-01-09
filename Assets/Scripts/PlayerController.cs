@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
@@ -45,17 +45,31 @@ public class PlayerController : MonoBehaviour
     private Material default_material;
     private Material radio_active_material;
     // Start is called before the first frame update
+    [SerializeField] private Image radioActiveIndicator;
+    [SerializeField] private RectTransform RT;
+    [SerializeField] private Camera mCamera;
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
         levelsOfRadioActivity = new bool[] {false,false,false};
+        radioActiveIndicator = Instantiate(Resources.Load<Image>("Image")) as Image;
+        radioActiveIndicator.transform.position = Vector3.zero;
+        radioActiveIndicator.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
+        radioActiveIndicator.rectTransform.position = new Vector3(2.7f,1f,0f);
+
+        radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
+        // radioActiveIndicator.rectTransform.localPosition = RectTransformUtility.WorldToScreenPoint(mCamera,gameObject.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 pos = gameObject.transform.position;
+        Vector2 viewportPoint = Camera.main.WorldToViewportPoint(pos);
+        radioActiveIndicator.rectTransform.anchorMin = viewportPoint;
+        radioActiveIndicator.rectTransform.anchorMax = viewportPoint;
         if (!(controller_set1 || controller_set2 || controller_set3 || controller_set4))
         {
             if (!playerStop)
@@ -80,10 +94,7 @@ public class PlayerController : MonoBehaviour
                 movement.y = 0f;
             }
             AnimationIdle();
-            //if (Input.GetButton("J1A"))
-            //{
-            //    Debug.Log("YAS");
-            //}
+
         }
         if (controller_set4)
         {
@@ -98,14 +109,12 @@ public class PlayerController : MonoBehaviour
                 movement.y = 0f;
             }
             AnimationIdle();
-            //if (Input.GetButton("J2A"))
-            //{
-            //    Debug.Log("YAS2");
-            //}
+
         }
         if (radio_active_state)
         {
-            radioActivity += 4 * 1f * Time.deltaTime;
+            radioActivity += 4 * 1f * Time.deltaTime * 60f;
+            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0001f;
             checkRadioActivity();
         }
     }
@@ -273,7 +282,7 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
             }
         }
-        //Debug.Log(deg);
+
     }
     public void AnimationPush(Vector3 otherlocalLocation)
     {
@@ -329,8 +338,9 @@ public class PlayerController : MonoBehaviour
         {
             if (radioActivity > 0)
             {
-                radioActivity -= 50;
-                if (radioActivity < 0)
+                radioActivity -= 50 * Time.deltaTime * 60;
+                radioActiveIndicator.fillAmount -= 12.5f * 240f * Time.deltaTime * 0.0001f;              
+            if (radioActivity < 0)
                 {
                     radioActivity = 0;
                 }
@@ -370,51 +380,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //void Awake()
-    //{
-    //controls = new Player2Controls();
-    //controls_1 = new Player1Controls();
-    //if (controller_set1)
-    //{
-    //    EnableController1();
-    //}
-    //else if (controller_set2)
-    //{
-    //    EnableController2();
-    //}
-
-    //}
-    //public void EnableController1()
-    //{
-    //    //controls.Gameplay.Action.performed += ctx => Simple();
-    //    player_action_button_new = controls_1.Gameplay.Action;
-    //    controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-    //    controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-    //    //Debug.Log(controls.Gameplay.Move.GetType());
-    //    Debug.Log("Player1");
-    //}
-    //public void EnableController2()
-    //{
-    //    //controls.Gameplay.Action.performed += ctx => Simple();
-    //    player_action_button_new = controls.Gameplay.Action;
-    //    controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-    //    controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-    //    //Debug.Log(controls.Gameplay.Move.GetType());
-    //    Debug.Log("Player2");
-
-    //}
-    //void Simple()
-    //{
-    //    //Debug.Log("HEY");
-    //}
-
-    //private void OnEnable()
-    //{
-    //    controls.Gameplay.Enable();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    controls.Gameplay.Disable();
-    //}
 }
