@@ -90,7 +90,10 @@ public class ShowerStation : StationScript
                 gameObject.tag = "ActiveShower";
                 timeHeld += Time.deltaTime;
                 timeWindowToPress = 0;
-                indicator.transform.localScale = new Vector3((timeHeld)*1f, indicator.transform.localScale.y);
+                if (!always_active)
+                {
+                    indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
+                }
                 if (door && door_activated)
                 {
                     door.OpenDoor();
@@ -108,18 +111,18 @@ public class ShowerStation : StationScript
                 }
             }
        }
-       foreach(var action_key in players_controller_in_station)
-        {
-            if (action_key.Item2 == true)
-            {
-                station_animation.SetTrigger("StartShower");
-                gameObject.tag = "ActiveShower";
-                timeHeld += Time.deltaTime;
-                indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
-                timeWindowToPress = 0;
+       //foreach(var action_key in players_controller_in_station)
+       // {
+       //     if (action_key.Item2 == true)
+       //     {
+       //         station_animation.SetTrigger("StartShower");
+       //         gameObject.tag = "ActiveShower";
+       //         timeHeld += Time.deltaTime;
+       //         indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
+       //         timeWindowToPress = 0;
 
-            }
-        }
+       //     }
+       // }
         if (!always_active && timeHeld >= holdTime)
         {
             station_animation.SetTrigger("EndShower");
