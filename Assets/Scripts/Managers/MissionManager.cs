@@ -265,7 +265,7 @@ public class MissionManager : MonoBehaviour
         else if (stationsActive.Count < MaxStrategiesAtTime)
         {
             int diceResult = (int)rnd.Next(stationScripts.Count);
-            if (stationScripts[diceResult].Count > 0)
+            if (stationScripts[diceResult].Count > 0 && !stationsActive.Contains(stationScripts[diceResult][0]))
             {
                 ActivateStation(stationScripts[diceResult][0]);
             }
