@@ -33,6 +33,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
     [SerializeField] private int MaxStrategiesAtTime = 3;
     [SerializeField] private bool ReadAsBatch = false;
+    [SerializeField] private bool refillBatch = false;
     // A Random directory
     //[SerializeField] private bool Manual;
     //private int numActiveStations = 0;
@@ -97,6 +98,7 @@ public class MissionManager : MonoBehaviour
                 stationScripts.Add(new_list);
             }
         }
+        stationScripts.Remove(stationScripts[stationScripts.Count - 1]);
 
     }
 
@@ -137,11 +139,16 @@ public class MissionManager : MonoBehaviour
         }
 
         //rollTheDice();
-        if (stationScripts.Count != 0)
+        if (ReadAsBatch && MaxStrategiesAtTime > stationScripts.Count && refillBatch)
+        {
+            refillStrategies();
+        }
+        //if (stationScripts.Count != 0)
+        else if (stationScripts.Count != 0)
         {
             ChooseStratgies();
         }
-        if (stationScripts.Count == MaxStrategiesAtTime)
+        else if (stationScripts.Count == MaxStrategiesAtTime)
         {
             refillStrategies();
         }
@@ -219,10 +226,8 @@ public class MissionManager : MonoBehaviour
     private void ActivateStation(StationScript strategy)
     {
         strategy.setMissionIndex(0);
-        if (!ReadAsBatch)
-        {
-            stationsActive.Add(strategy); // Station Active
-        }
+        stationsActive.Add(strategy); // Station Active
+        
     }
     public void AddTime(float bonus_time)
     {
@@ -252,13 +257,12 @@ public class MissionManager : MonoBehaviour
     {
         if (ReadAsBatch)
         {
-            if (strategiessActive < MaxStrategiesAtTime)
+            while (strategiessActive < MaxStrategiesAtTime && MaxStrategiesAtTime <= stationScripts.Count)
             {
                 ActivateBatch();
             }
         }
         else if (stationsActive.Count < MaxStrategiesAtTime)
-        //while (stationsActive.Count < MaxStationsAtTime)
         {
             int diceResult = (int)rnd.Next(stationScripts.Count);
             if (stationScripts[diceResult].Count > 0)
@@ -301,5 +305,9 @@ public class MissionManager : MonoBehaviour
     private void printMissionInfo(int mission_index, int station_index)
     {
         //Debug.Log("Go to the "+ stationsNames[station_index]  + " Station"  + " And " + missionsExplanation[mission_index]);
+    }
+
+    private void printDebugStationsActive()
+    {
     }
 }
