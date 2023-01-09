@@ -6302,6 +6302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenOrb_0100
       objectReference: {fileID: 0}
+    - target: {fileID: 3651071450768536891, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
+      propertyPath: m_TagString
+      value: RadioActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
 --- !u!1 &1270291840 stripped
@@ -6393,6 +6397,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: always_active
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
@@ -9431,7 +9439,8 @@ MonoBehaviour:
   GreenVignette1: {fileID: 0}
   GreenVignette2: {fileID: 0}
   stations: []
-  MaxStationsAtTime: 5
+  MaxStrategiesAtTime: 3
+  ReadAsBatch: 0
 --- !u!1 &1967353464
 GameObject:
   m_ObjectHideFlags: 0
