@@ -1017,7 +1017,8 @@ MonoBehaviour:
   GreenVignette1: {fileID: 0}
   GreenVignette2: {fileID: 0}
   stations: []
-  MaxStationsAtTime: 3
+  MaxStrategiesAtTime: 3
+  ReadAsBatch: 0
 --- !u!4 &252611916
 Transform:
   m_ObjectHideFlags: 0
@@ -1536,9 +1537,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
---- !u!4 &497209503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+--- !u!224 &497209503 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
   m_PrefabInstance: {fileID: 497209502}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &542162778
@@ -1883,9 +1884,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
---- !u!4 &547164667 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+--- !u!224 &547164667 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
   m_PrefabInstance: {fileID: 547164666}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &558114307
@@ -2234,9 +2235,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
---- !u!4 &711883106 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+--- !u!224 &711883106 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
   m_PrefabInstance: {fileID: 711883105}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &841097554
@@ -3927,7 +3928,7 @@ GameObject:
   - component: {fileID: 1320347970}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5716,9 +5717,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
---- !u!4 &1773548005 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1939331252252770624, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+--- !u!224 &1773548005 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
   m_PrefabInstance: {fileID: 1773548004}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1777685081
@@ -6998,10 +6999,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 497209503}
   - {fileID: 547164667}
   - {fileID: 711883106}
   - {fileID: 1773548005}
-  - {fileID: 497209503}
   m_Father: {fileID: 403451936}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

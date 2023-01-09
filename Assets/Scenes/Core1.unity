@@ -920,7 +920,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &369877721
 GameObject:
@@ -963,7 +963,8 @@ MonoBehaviour:
   GreenVignette1: {fileID: 0}
   GreenVignette2: {fileID: 0}
   stations: []
-  MaxStationsAtTime: 3
+  MaxStrategiesAtTime: 3
+  ReadAsBatch: 0
 --- !u!4 &369877723
 Transform:
   m_ObjectHideFlags: 0
@@ -1694,7 +1695,7 @@ GameObject:
   - component: {fileID: 764660837}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
