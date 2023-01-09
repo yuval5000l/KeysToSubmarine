@@ -13,7 +13,7 @@ public class LeverStation : StationScript
     //[SerializeField] private bool alwaysActive;
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private GameObject stationExplainer;
-    new void Start()
+    void Awake()
     {
         base.Start();
         missions.Add(getAllKeysDown);

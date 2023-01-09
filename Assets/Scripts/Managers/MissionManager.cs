@@ -73,9 +73,10 @@ public class MissionManager : MonoBehaviour
                         }
                         else
                         {
+                            //ActivateStation(station);
                             stationsActive.Add(station);
                             station.activatePopup();
-                        }   
+                        }
                     }
                 }
             }
@@ -225,9 +226,12 @@ public class MissionManager : MonoBehaviour
     }
     private void ActivateStation(StationScript strategy)
     {
-        strategy.setMissionIndex(0);
-        stationsActive.Add(strategy); // Station Active
-        
+        if (!strategy.getStationActiveState())
+        {
+            strategy.setMissionIndex(0);
+            stationsActive.Add(strategy); // Station Active
+
+        }
     }
     public void AddTime(float bonus_time)
     {
@@ -264,6 +268,10 @@ public class MissionManager : MonoBehaviour
         }
         else if (stationsActive.Count < MaxStrategiesAtTime)
         {
+            if (stationScripts.Count < MaxStrategiesAtTime)
+            {
+                refillStations();
+            }
             int diceResult = (int)rnd.Next(stationScripts.Count);
             if (stationScripts[diceResult].Count > 0 && !stationsActive.Contains(stationScripts[diceResult][0]))
             {

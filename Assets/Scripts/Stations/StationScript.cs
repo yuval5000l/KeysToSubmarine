@@ -293,30 +293,32 @@ public class StationScript : MonoBehaviour
         {
             //Debug.Log("Player Touched");
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
-            if (player.is_Controller())
+            if (!players_in_station.Contains(player))
             {
-                //Debug.Log("Player with controller");
-                int counter = players_controller_in_station.Count;
-                player_action_controller.Add(player.GetPlayerActionButtonNew());
-                player_action_controller[counter] = player.GetPlayerActionButtonNew();
-                players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
-                //Debug.Log("Counter = " + counter);
-                if (player_action_controller[counter] != null)
+                if (player.is_Controller())
                 {
-                    player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
-                    //player_action.performed += ctx => action_key_pressed = true;
-                    player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+                    //Debug.Log("Player with controller");
+                    int counter = players_controller_in_station.Count;
+                    player_action_controller.Add(player.GetPlayerActionButtonNew());
+                    player_action_controller[counter] = player.GetPlayerActionButtonNew();
+                    players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
+                    //Debug.Log("Counter = " + counter);
+                    if (player_action_controller[counter] != null)
+                    {
+                        player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
+                        //player_action.performed += ctx => action_key_pressed = true;
+                        player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+
+                    }
 
                 }
-
+                else
+                {
+                    players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
+                }
+                players_in_station.Add(player);
             }
-            else
-            {
-                players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
-            }
-            players_in_station.Add(player);
         }
-        
     }
     
     
@@ -400,13 +402,27 @@ public class StationScript : MonoBehaviour
     public void activatePopup()
     {
         //playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
-        stationPopup.SetActive(true);
+        if (stationPopup) 
+        {
+            stationPopup.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("There isn't any station PopUp for this station");
+        }
     }
 
     public void deActivatePopup()
     {
         //playersForMission.text = "";
-        stationPopup.SetActive(false);
+        if (stationPopup)
+        {
+            stationPopup.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("There isn't any station PopUp for this station");
+        }
     }
     
     public bool hasPlayersInStation()

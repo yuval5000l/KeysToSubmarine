@@ -21,7 +21,7 @@ public class CodeStation : StationScript
     private List<KeyCode> keys_pressed = new List<KeyCode>();
     private bool door_activated = true;
 
-    new void Start()
+    void Awake()
     {
         base.Start();
         missions.Add(pressNKeyInARow);
@@ -71,17 +71,17 @@ public class CodeStation : StationScript
             timeWindowToPress = 0;
             keys_pressed.Clear();
         }
-        for (int i = 0; i < players_controller_in_station.Count; i++)
-        {
-            if (players_controller_in_station[i].Item2 == false)
-            {
-                check_pressed_once[i] = false;
-            }
-            else
-            {
-                check_pressed_once[i] = true;
-            }
-        }
+        //for (int i = 0; i < players_controller_in_station.Count; i++)
+        //{
+        //    if (players_controller_in_station[i].Item2 == false)
+        //    {
+        //        check_pressed_once[i] = false;
+        //    }
+        //    else
+        //    {
+        //        check_pressed_once[i] = true;
+        //    }
+        //}
         timeWindowToPress += Time.deltaTime;
     }
     // Bug - player can press multiple times and act like 3 players.
@@ -95,15 +95,15 @@ public class CodeStation : StationScript
                 keys_pressed.Add(action_key);
             }
         }
-        int counter = 0;
-        foreach (var action_key in players_controller_in_station) // For Controller
-        {
-            if (action_key.Item2 && check_pressed_once[counter] == false)
-            {
-                timeWindowToPress = 0;
-            }
-            counter++;
-        }
+        //int counter = 0;
+        //foreach (var action_key in players_controller_in_station) // For Controller
+        //{
+        //    if (action_key.Item2 && check_pressed_once[counter] == false)
+        //    {
+        //        timeWindowToPress = 0;
+        //    }
+        //    counter++;
+        //}
         if (keys_pressed.Count == missionsNumberOfPlayers[mission_index])
         {
             PlayerAnimationWork();
@@ -111,7 +111,6 @@ public class CodeStation : StationScript
             spriteR.sprite = states[press_in_a_row - 1];
             keys_pressed.Clear();
         }
-
 
         if (press_in_a_row == 5)
         {
