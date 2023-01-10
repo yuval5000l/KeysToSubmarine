@@ -10,10 +10,10 @@ public class LeverStation : StationScript
     [SerializeField] private Animator station_animation;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
-    [SerializeField] private bool alwaysActive;
+    //[SerializeField] private bool alwaysActive;
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private GameObject stationExplainer;
-    new void Start()
+    void Awake()
     {
         base.Start();
         missions.Add(getAllKeysDown);
@@ -32,7 +32,7 @@ public class LeverStation : StationScript
     {
 
         //temporary fix for presKeyInRow, needs better solution
-        if (station_active || alwaysActive)
+        if (station_active || always_active)
         {
             if (stationExplainer)
             {
@@ -116,7 +116,7 @@ public class LeverStation : StationScript
                 door.OpenDoor(DoorOpenTime);
             }
             
-            if (!alwaysActive) // otherwise they get points for opening the door ... 
+            if (!always_active) // otherwise they get points for opening the door ... 
             {
                 missionManager.missionDone(bonus_time, points_award);
             }

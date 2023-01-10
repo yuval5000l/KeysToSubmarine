@@ -9,7 +9,7 @@ public class OurEventHandler : MonoBehaviour
     [SerializeField] private static int NumberOfPlayers = 3;
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private NextLevelCanva nextlevel;
-    private static int levelNumber;
+    private static int levelNumber = 1;
     [SerializeField] private int MaxlevelNum = 3;
     // Start is called before the first frame update
     void Start()
@@ -72,8 +72,8 @@ public class OurEventHandler : MonoBehaviour
     }
     public void restartlevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //SceneManager.LoadScene("level " + levelNumber);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("level " + levelNumber);
         Time.timeScale = 1f;
     }
 }

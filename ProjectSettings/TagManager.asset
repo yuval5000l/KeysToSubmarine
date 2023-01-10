@@ -11,6 +11,8 @@ TagManager:
   - Boulder
   - ActiveShower
   - None
+  - Canvas
+  - AlwaysActiveStrategy
   layers:
   - Default
   - TransparentFX
