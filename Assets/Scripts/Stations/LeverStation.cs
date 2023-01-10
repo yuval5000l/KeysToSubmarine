@@ -24,6 +24,10 @@ public class LeverStation : StationScript
         }
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
         deActivatePopup();
+        if (always_active)
+        {
+            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+        }
 
     }
 
