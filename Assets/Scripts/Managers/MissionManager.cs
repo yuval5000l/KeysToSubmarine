@@ -49,9 +49,12 @@ public class MissionManager : MonoBehaviour
 
     private GameObject ScoreIndicatorPrefab;
 
+    private CameraZoom zoom;
+
     // Start is called before the first frame update
     void Start()
     {
+        zoom = FindObjectOfType<CameraZoom>();
         ScoreIndicatorPrefab = Resources.Load("ScoreIndicator") as GameObject;
         //ScoreIndicatorPrefab = ScoreIndicatorPrefabhelper.GetComponent<ScoreIndicator>();
         refillStrategies();
@@ -114,6 +117,36 @@ public class MissionManager : MonoBehaviour
             stations.Add(station);
         }
     }
+
+    private bool DoFinishAnimation()
+    {
+        zoom.ActivateZoom(Orb.transform.localPosition);
+        time_left = Mathf.Lerp(time_left, initial_time, Time.deltaTime);
+        return time_left >= (initial_time - 2);
+    }
+
+    private void updateIndicator()
+    {
+        // For Gadi
+        if (Noise != null)
+        {
+            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            float x = 0.5f + (time_left / initial_time) * 0.5f;
+            GreenVignette2.transform.localScale = new Vector3(x, x, x);
+        }
+        //
+        if (Orb != null)
+        {
+            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
+            Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
+        }
+        if (indicator)
+        {
+            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 16f, indicator.transform.localScale.y);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -126,12 +159,16 @@ public class MissionManager : MonoBehaviour
             time_left -= Time.deltaTime;
         }
         updateText();
-
+        updateIndicator();
         if (score >= missionsToWinTarget)
         {
             Debug.Log("You Win! You Win! You Win! You Win!");
-            isGameFinsihed = true;
-            GM.NextlevelCanvas();
+            if (DoFinishAnimation())
+            {
+                zoom.DeActivateZoom();
+                isGameFinsihed = true;
+                GM.NextlevelCanvas();
+            }
             return;
         }
         if (time_left <= 0 && time_left != -100f)
@@ -156,24 +193,7 @@ public class MissionManager : MonoBehaviour
         {
             refillStrategies();
         }
-        // For Gadi
-        if (Noise != null)
-        {
-            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
-            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
-            float x = 0.5f + (time_left / initial_time) * 0.5f;
-           GreenVignette2.transform.localScale = new Vector3(x, x, x);
-        }
-        //
-        if (Orb != null)
-        {
-            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
-            Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
-        }
-        if (indicator)
-        {
-            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 16f, indicator.transform.localScale.y);
-        }
+        
     }
 
 
