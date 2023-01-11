@@ -24,7 +24,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private float time_left = 30;
     [SerializeField] private GameObject indicator;
     [SerializeField] private GameObject Orb;
-    [SerializeField] private SpriteRenderer GreenScreen;
+    [SerializeField] private GameObject IndicatorForFix;
     [SerializeField] private SpriteRenderer Noise;
     [SerializeField] private SpriteRenderer GreenVignette1;
     [SerializeField] private GameObject GreenVignette2;
@@ -147,7 +147,11 @@ public class MissionManager : MonoBehaviour
         }
         if (indicator)
         {
-            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 16f, indicator.transform.localScale.y);
+            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, indicator.transform.localScale.y);
+        }
+        if (IndicatorForFix)
+        {
+            IndicatorForFix.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, IndicatorForFix.transform.localScale.y);
         }
     }
 
@@ -210,7 +214,7 @@ public class MissionManager : MonoBehaviour
         //GameObject scoreobj = Instantiate(ScoreIndicatorPrefab);
         ScoreIndicator scoreind = Instantiate(ScoreIndicatorPrefab).GetComponent<ScoreIndicator>();
         scoreind.transform.position = stationPos;
-        scoreind.orb_loc = Orb.transform.localPosition;
+        scoreind.orb_loc = IndicatorForFix.transform.localPosition;
     }
 
     public void missionDone(float bonus_time, int pointsWorth)
