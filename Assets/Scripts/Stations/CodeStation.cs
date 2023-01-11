@@ -8,7 +8,7 @@ public class CodeStation : StationScript
 {
     [SerializeField] private SpriteRenderer spriteR;
     [SerializeField] private Sprite idle;
-    [SerializeField] private Sprite HoverSprite;
+    [SerializeField] private Sprite HoverhtSprite;
     
     `
 
