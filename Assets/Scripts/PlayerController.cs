@@ -338,7 +338,7 @@ public class PlayerController : MonoBehaviour
 
     public void AnimationIdle()
     {
-        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKeyDown(player_action_button))
+        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKey(player_action_button))
         {
             animator.SetTrigger("idle");
             idle = true;

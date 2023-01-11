@@ -32,19 +32,27 @@ public class BollderStation : StationScript
             }
         }
 
-
+        foreach (PlayerController player in players_in_station)
+        {
+            if (Input.GetKey(player.GetPlayerActionButton()))
+            {
+                player.AnimationPush(Vector3.zero);
+            }
+        }
         if (station_active)
         {
+
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
-                missions[mission_index]();
                 // station_animation.SetTrigger("Hover");
+                missions[mission_index]();
+
             }
-            //else
-            //{
-            //    PlayerAnimationIdle();
-            //}
-        }
+        //else
+        //{
+        //    PlayerAnimationIdle();
+        //}
+    }
         else
         {
             PlayerAnimationIdle();
