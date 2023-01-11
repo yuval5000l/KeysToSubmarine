@@ -15,12 +15,14 @@ public class BollderStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         mission_index = 0;
         station_active = true;
+        numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        numOfPlayersIndicator[numberOfPlayers - 1].transform.position = transform.localPosition;
         pressKeysInARowCount = 0;
         if (rigi != null)
         {

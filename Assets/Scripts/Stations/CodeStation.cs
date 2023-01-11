@@ -23,19 +23,18 @@ public class CodeStation : StationScript
 
     void Awake()
     {
-        base.Start();
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         spriteR.sprite = idle;
-        stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-        deActivatePopup();
+    }
+    private new void Start()
+    {
+        base.Start();
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1f, 0);
         if (always_active)
         {
             numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
         }
-
-
     }
 
     // Update is called once per frame

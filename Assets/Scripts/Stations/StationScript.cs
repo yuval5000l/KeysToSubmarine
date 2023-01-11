@@ -58,7 +58,9 @@ public class StationScript : MonoBehaviour
             numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
 
         }
-
+        stationPopup = Instantiate(Resources.Load("RedBall")) as GameObject;
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+        stationPopup.SetActive(false);
         //numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
 
     }
@@ -416,7 +418,8 @@ public class StationScript : MonoBehaviour
         //playersForMission.text = "";
         if (stationPopup)
         {
-            stationPopup.SetActive(false);
+            stationPopup.GetComponent<PopUpController>().deActivatePopUp();
+            //stationPopup.SetActive(false);
             numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
 
         }

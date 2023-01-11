@@ -33,7 +33,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
     [SerializeField] private int MaxStrategiesAtTime = 3;
     [SerializeField] private bool ReadAsBatch = false;
-    [SerializeField] private bool refillBatch = false;
+    [SerializeField] private bool refillStrategy = false;
     // A Random directory
     //[SerializeField] private bool Manual;
     //private int numActiveStations = 0;
@@ -187,18 +187,19 @@ public class MissionManager : MonoBehaviour
         }
 
         //rollTheDice();
-        if (ReadAsBatch && MaxStrategiesAtTime > stationScripts.Count && refillBatch)
+        //if (ReadAsBatch && (MaxStrategiesAtTime > stationScripts.Count) && refillBatch)
+        //{
+        //    refillStrategies();
+        //}
+        if (stationScripts.Count == MaxStrategiesAtTime && refillStrategy)
         {
             refillStrategies();
         }
-        else if (stationScripts.Count != 0)
+        if (stationScripts.Count != 0 )
         {
             ChooseStratgies();
         }
-        else if (stationScripts.Count == MaxStrategiesAtTime)
-        {
-            refillStrategies();
-        }
+        
         
     }
 
