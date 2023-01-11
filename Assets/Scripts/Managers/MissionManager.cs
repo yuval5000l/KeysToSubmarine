@@ -22,9 +22,9 @@ public class MissionManager : MonoBehaviour
     
     // Timer
     [SerializeField] private float time_left = 30;
-    [SerializeField] private GameObject indicator;
+    [SerializeField] private GameObject TimeIndicator;
     [SerializeField] private GameObject Orb;
-    [SerializeField] private GameObject IndicatorForFix;
+    [SerializeField] private GameObject ScoreIndicator;
     [SerializeField] private SpriteRenderer Noise;
     [SerializeField] private SpriteRenderer GreenVignette1;
     [SerializeField] private GameObject GreenVignette2;
@@ -145,13 +145,13 @@ public class MissionManager : MonoBehaviour
             float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
             Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         }
-        if (indicator)
+        if (TimeIndicator)
         {
-            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, indicator.transform.localScale.y);
+            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, TimeIndicator.transform.localScale.y);
         }
-        if (IndicatorForFix)
+        if (ScoreIndicator)
         {
-            IndicatorForFix.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, IndicatorForFix.transform.localScale.y);
+            ScoreIndicator.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, ScoreIndicator.transform.localScale.y);
         }
     }
 
@@ -214,7 +214,7 @@ public class MissionManager : MonoBehaviour
         //GameObject scoreobj = Instantiate(ScoreIndicatorPrefab);
         ScoreIndicator scoreind = Instantiate(ScoreIndicatorPrefab).GetComponent<ScoreIndicator>();
         scoreind.transform.position = stationPos;
-        scoreind.orb_loc = IndicatorForFix.transform.localPosition;
+        scoreind.orb_loc = ScoreIndicator.transform.localPosition;
     }
 
     public void missionDone(float bonus_time, int pointsWorth)
