@@ -10,6 +10,7 @@ public class CodeStation : StationScript
     [SerializeField] private Sprite idle;
     [SerializeField] private Sprite HoverhtSprite;
     
+    
     `
 
 
