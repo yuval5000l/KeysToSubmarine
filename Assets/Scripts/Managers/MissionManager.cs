@@ -120,7 +120,10 @@ public class MissionManager : MonoBehaviour
 
     private bool DoFinishAnimation()
     {
-        zoom.ActivateZoom(Orb.transform.localPosition);
+        if (zoom)
+        {
+            zoom.ActivateZoom(Orb.transform.localPosition);
+        }
         time_left = Mathf.Lerp(time_left, initial_time, Time.deltaTime);
         return time_left >= (initial_time - 2);
     }
@@ -165,7 +168,10 @@ public class MissionManager : MonoBehaviour
             Debug.Log("You Win! You Win! You Win! You Win!");
             if (DoFinishAnimation())
             {
-                zoom.DeActivateZoom();
+                if (zoom)
+                {
+                    zoom.DeActivateZoom();
+                }
                 isGameFinsihed = true;
                 GM.NextlevelCanvas();
             }

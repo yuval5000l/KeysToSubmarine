@@ -50,11 +50,7 @@ public class StationScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        //if (points_award ==null)
-        //{
-        //    points_award = 0;
-            
-        //}
+        
         for (int i = 0; i < 4; i++)
         {
             numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
@@ -63,8 +59,8 @@ public class StationScript : MonoBehaviour
 
         }
 
-        numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
-        
+        //numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -84,6 +80,7 @@ public class StationScript : MonoBehaviour
                  
             }
         }
+
         timeWindowToPress += Time.deltaTime;
     }
 
@@ -405,6 +402,8 @@ public class StationScript : MonoBehaviour
         if (stationPopup) 
         {
             stationPopup.SetActive(true);
+            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+
         }
         else
         {
@@ -418,6 +417,8 @@ public class StationScript : MonoBehaviour
         if (stationPopup)
         {
             stationPopup.SetActive(false);
+            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
+
         }
         else
         {

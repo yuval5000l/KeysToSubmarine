@@ -30,7 +30,12 @@ public class CodeStation : StationScript
         stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
         deActivatePopup();
-        
+        if (always_active)
+        {
+            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+        }
+
+
     }
 
     // Update is called once per frame
