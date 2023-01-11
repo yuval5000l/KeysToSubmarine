@@ -418,10 +418,12 @@ public class StationScript : MonoBehaviour
         //playersForMission.text = "";
         if (stationPopup)
         {
+            if(!always_active)
+            {
             stationPopup.GetComponent<PopUpController>().deActivatePopUp();
             //stationPopup.SetActive(false);
             numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
-
+            }
         }
         else
         {
