@@ -127,3 +127,6 @@ MonoBehaviour:
   coli: {fileID: 3660377504622347142}
   sprite: {fileID: 2634894880941143837}
   anim: {fileID: 0}
+  always_open: 0
+  numOfStations: 1
+  permanent_changes: 0

@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d652ee44fe5001a47a07700700cab8b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -141,15 +141,14 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller_set1: 0
-  controller_set2: 0
   controller_set3: 0
   controller_set4: 0
   animator: {fileID: 736046353}
   rb: {fileID: 1939331252252770638}
   moveSpeed: 1
-  debug_Text: {fileID: 0}
   radioActivity: 0
+  radioActiveIndicator: {fileID: 0}
+  mCamera: {fileID: 0}
 --- !u!70 &9155494576261838045
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
