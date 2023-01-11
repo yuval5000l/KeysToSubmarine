@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image radioActiveIndicator;
     //[SerializeField] private RectTransform RT;
     [SerializeField] private Camera mCamera;
+    List<Rigidbody2D> playersITouch = new List<Rigidbody2D>();
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -130,6 +131,15 @@ public class PlayerController : MonoBehaviour
             radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0003f;
             checkRadioActivity();
         }
+
+        if (Input.GetKeyDown(player_action_button))
+        {
+            foreach (Rigidbody2D rb in playersITouch)
+            {
+                rb.AddForce(movement * moveSpeed * 20f, ForceMode2D.Impulse);
+            }
+        }
+        
     }
 
     private void movement_keyboard()
@@ -424,5 +434,28 @@ public class PlayerController : MonoBehaviour
     public string getColor()
     {
         return color;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (!playersITouch.Contains(rb))
+            {
+                playersITouch.Add(collision.gameObject.GetComponent<Rigidbody2D>());
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (playersITouch.Contains(rb))
+            {
+                playersITouch.Remove(collision.gameObject.GetComponent<Rigidbody2D>());
+            }
+        }
     }
 }
