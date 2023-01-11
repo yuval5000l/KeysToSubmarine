@@ -222,6 +222,26 @@ public class PlayerController : MonoBehaviour
 
     // Switching Keys
 
+    public List<KeyCode> getListControls()
+    {
+        List<KeyCode> a = new List<KeyCode>();
+        a.Add(up_button);
+        a.Add(down_button);
+        a.Add(left_button);
+        a.Add(right_button);
+        a.Add(player_action_button);
+        return a;
+    }
+
+    public void updateListControls(List<KeyCode> new_controls)
+    {
+        setUpKey(new_controls[0]);
+        setDownKey(new_controls[1]);
+        setLeftKey(new_controls[2]);
+        setRightKey(new_controls[3]);
+        setActionKey(new_controls[4]);
+    }
+
     public void setUpKey(KeyCode new_key)
     {
         up_button = new_key;

@@ -11519,7 +11519,7 @@ MonoBehaviour:
   stations: []
   MaxStrategiesAtTime: 3
   ReadAsBatch: 1
-  refillBatch: 0
+  refillStrategy: 0
 --- !u!1 &1967353464
 GameObject:
   m_ObjectHideFlags: 0

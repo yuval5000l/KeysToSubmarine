@@ -128,6 +128,7 @@ public class MissionManager : MonoBehaviour
         return time_left >= (initial_time - 2);
     }
 
+
     private void updateIndicator()
     {
         // For Gadi
@@ -182,8 +183,7 @@ public class MissionManager : MonoBehaviour
             isGameFinsihed = true;
 
             Debug.Log("You Lose! You Lose! You Lose! You Lose!");
-            Time.timeScale = 0f;
-            SceneManager.LoadScene("EndScreenLost");
+            GM.GameOver(Orb);
         }
 
         //rollTheDice();
