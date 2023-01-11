@@ -79,6 +79,19 @@ public class PlayerController : MonoBehaviour
         }
         if (controller_set3)
         {
+            if (Input.anyKey)
+            {
+                //foreach (string name in Input.GetJoystickNames())
+                //{
+                //    Debug.Log(name);
+                //}
+                Event e = Event.current;
+                //if (e != null && e.isKey)
+                //{
+                //    Debug.Log("Detected key code: " + e.keyCode);
+                //}
+            }
+
             if (player_action_button != KeyCode.Joystick1Button0)
             {
                 player_action_button = KeyCode.Joystick1Button0;

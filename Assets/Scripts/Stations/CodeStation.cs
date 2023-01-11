@@ -17,7 +17,7 @@ public class CodeStation : StationScript
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
     [SerializeField] private GameObject stationExplainer;
-
+    [SerializeField] private int pressToFinish = 5;
     private List<KeyCode> keys_pressed = new List<KeyCode>();
     private bool door_activated = true;
 
@@ -116,12 +116,12 @@ public class CodeStation : StationScript
             keys_pressed.Clear();
         }
 
-        if (press_in_a_row == 5)
+        if (press_in_a_row == pressToFinish)
         {
             spriteR.sprite = states[press_in_a_row - 1];
             station_active = false;
             deActivatePopup();
-            if (press_in_a_row == 5)
+            if (press_in_a_row == pressToFinish)
             {
                 station_active = false;
 
