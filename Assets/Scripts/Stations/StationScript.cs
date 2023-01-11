@@ -56,10 +56,12 @@ public class StationScript : MonoBehaviour
             numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
             numOfPlayersIndicator[i].SetActive(false);
             numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-
         }
-        stationPopup = Instantiate(Resources.Load("RedBall")) as GameObject;
+        stationPopup = Instantiate(Resources.Load("AdvancedRedBall")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+
+        stationPopup.GetComponent<PopUpWithPlayersController>().setNumOfChildren(numberOfPlayers);
         stationPopup.SetActive(false);
         //numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
 
@@ -315,8 +317,10 @@ public class StationScript : MonoBehaviour
                 {
                     players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
                 }
+                stationPopup.GetComponent<PopUpWithPlayersController>().setTriggerToChild(player.getColor());
                 players_in_station.Add(player);
             }
+            
         }
     }
     
@@ -347,6 +351,8 @@ public class StationScript : MonoBehaviour
                 {
                     players_action_key.Remove(player.GetPlayerActionButton());
                 }
+                stationPopup.GetComponent<PopUpWithPlayersController>().setTriggerToChild("Un" + player.getColor());
+
                 players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
                 player.AnimationIdle();
@@ -354,6 +360,7 @@ public class StationScript : MonoBehaviour
                 {
                     playerz.cancelForceStop();
                 }
+
             }
         }
         
@@ -404,7 +411,7 @@ public class StationScript : MonoBehaviour
         if (stationPopup) 
         {
             stationPopup.SetActive(true);
-            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
         }
         else
@@ -420,9 +427,9 @@ public class StationScript : MonoBehaviour
         {
             if(!always_active)
             {
-            stationPopup.GetComponent<PopUpController>().deActivatePopUp();
+            stationPopup.GetComponent<PopUpWithPlayersController>().deActivatePopUp();
             //stationPopup.SetActive(false);
-            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
             }
         }
         else

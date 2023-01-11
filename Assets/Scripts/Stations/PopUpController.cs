@@ -5,10 +5,11 @@ using UnityEngine;
 public class PopUpController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Animator maAnimator;
+    [SerializeField] private Animator maAnimator;
+    private string color = "None";
     void Start()
     {
-        maAnimator = GetComponent<Animator>();
+        //maAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,5 +26,14 @@ public class PopUpController : MonoBehaviour
     public void DeActivate()
     {
         gameObject.SetActive(false);
+    }
+
+    public string getColor()
+    {
+        return color;
+    }
+    public void setColor(string c)
+    {
+        color = c;
     }
 }

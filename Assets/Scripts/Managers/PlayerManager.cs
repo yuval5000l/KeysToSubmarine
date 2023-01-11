@@ -10,11 +10,13 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string[] colors = new string[4] {"Pink", "Blue", "Orange", "Yellow"};
         players_in_game = gameManager.getNumOfPlayers();
         int i = 0;
         foreach(PlayerController player in GetComponentsInChildren<PlayerController>())
         {
             players[i] = player;
+            player.setColor(colors[i]);
             if (players_in_game <= i)
             {
                 player.gameObject.SetActive(false);

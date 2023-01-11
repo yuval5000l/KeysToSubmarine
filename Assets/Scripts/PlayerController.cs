@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private KeyCode player_action_button = KeyCode.R;
     [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
-
+    private string color;
     //[SerializeField] private bool controller_set1 = false;
     //[SerializeField] private bool controller_set2 = false;
     [SerializeField] private bool controller_set3 = false;
@@ -417,5 +417,12 @@ public class PlayerController : MonoBehaviour
             radioActiveIndicator.fillAmount = 0;
         }
     }
-
+    public void setColor(string name)
+    {
+        color = name;
+    }
+    public string getColor()
+    {
+        return color;
+    }
 }
