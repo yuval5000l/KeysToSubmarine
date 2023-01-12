@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool action_pressed;
 
-    private InputManager action_b;
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -67,22 +66,9 @@ public class PlayerController : MonoBehaviour
 
         radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
 
-        action_b.GetComponent<InputManager>();
-        // radioActiveIndicator.rectTransform.localPosition = RectTransformUtility.WorldToScreenPoint(mCamera,gameObject.transform.position);
-        //var action = new InputAction(binding: "ActionB");
-        //Debug.Log(action);
-        //action.started += _ => Press(true);
-        //action.performed += _ => Press(false);
-        //action.canceled += _ => Press(false);
+
     }
-    //private void OnEnable()
-    //{
-    //    action.Enable();
-    //}
-    //private void OnDisable()
-    //{
-    //    action.Disable();
-    //}
+
     public void OnMove(InputValue value)
     {
         Vector2 movement_tmp = value.Get<Vector2>();
@@ -116,37 +102,6 @@ public class PlayerController : MonoBehaviour
         AnimationIdle();
 
     }
-    //public void OnMove(InputValue value)
-    //{
-    //    Vector2 movement_tmp = value.Get<Vector2>();
-    //    //movement = movement_tmp;
-    //    if (movement_tmp.x > RunAnimationJoystickThreshold)
-    //    {
-    //        movement.x = 1;
-    //    }
-    //    else if (movement_tmp.x < -RunAnimationJoystickThreshold)
-    //    {
-    //        movement.x = -1;
-    //    }
-    //    else
-    //    {
-    //        movement.x = 0;
-    //    }
-    //    if (movement_tmp.y > RunAnimationJoystickThreshold)
-    //    {
-    //        movement.y = 1;
-    //    }
-    //    else if (movement_tmp.y < -RunAnimationJoystickThreshold)
-    //    {
-    //        movement.y = -1;
-    //    }
-    //    else
-    //    {
-    //        movement.y = 0;
-    //    }
-    //    AnimationIdle();
-
-    //}
 
     private void OnActionB(InputValue value)
     {
@@ -162,17 +117,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    //private void OnActionB()
-    //{
-    //    Debug.Log("Hey");
-    //}
 
-
-    //private void Press(bool action_b)
-    //{
-    //Debug.Log("YAS");
-    //action_pressed = action_b;
-    //}
 
     // Update is called once per frame
     void Update()
@@ -190,18 +135,7 @@ public class PlayerController : MonoBehaviour
         }
         if (controller_set3)
         {
-            if (Input.anyKey)
-            {
-                //foreach (string name in Input.GetJoystickNames())
-                //{
-                //    Debug.Log(name);
-                //}
-                Event e = Event.current;
-                //if (e != null && e.isKey)
-                //{
-                //    Debug.Log("Detected key code: " + e.keyCode);
-                //}
-            }
+
 
             if (player_action_button != KeyCode.Joystick1Button0)
             {
