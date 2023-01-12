@@ -24,7 +24,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private float time_left = 30;
     [SerializeField] private GameObject TimeIndicator;
     [SerializeField] private GameObject Orb;
-    [SerializeField] private GameObject ScoreIndicator;
+    [SerializeField] private GameObject ScoreIndicatorBottom;
     [SerializeField] private SpriteRenderer Noise;
     [SerializeField] private SpriteRenderer GreenVignette1;
     [SerializeField] private GameObject GreenVignette2;
@@ -145,13 +145,13 @@ public class MissionManager : MonoBehaviour
             float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
             Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         }
-        if (TimeIndicator)
+        if (TimeIndicator != null)
         {
             TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, TimeIndicator.transform.localScale.y);
         }
-        if (ScoreIndicator)
+        if (ScoreIndicatorBottom != null)
         {
-            ScoreIndicator.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, ScoreIndicator.transform.localScale.y);
+            ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, ScoreIndicatorBottom.transform.localScale.y);
         }
     }
 
@@ -210,11 +210,15 @@ public class MissionManager : MonoBehaviour
 
     private void MakeScoreIndicator(Vector3 stationPos)
     {
-        //Debug.Log("HERE");
-        //GameObject scoreobj = Instantiate(ScoreIndicatorPrefab);
-        ScoreIndicator scoreind = Instantiate(ScoreIndicatorPrefab).GetComponent<ScoreIndicator>();
-        scoreind.transform.position = stationPos;
-        scoreind.orb_loc = ScoreIndicator.transform.localPosition;
+        if (ScoreIndicatorBottom != null)
+        {
+            //Debug.Log("HERE");
+            //GameObject scoreobj = Instantiate(ScoreIndicatorPrefab);
+            ScoreIndicator scoreind = Instantiate(ScoreIndicatorPrefab).GetComponent<ScoreIndicator>();
+            scoreind.transform.position = stationPos;
+            scoreind.orb_loc = ScoreIndicatorBottom.transform.localPosition;
+        }
+        
     }
 
     public void missionDone(float bonus_time, int pointsWorth)
