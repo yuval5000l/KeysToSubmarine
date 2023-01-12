@@ -32,6 +32,17 @@ public class LeverStation : StationScript
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || always_active)
         {
+            foreach (PlayerController player in players_in_station)
+            {
+                if (Input.GetKey(player.GetPlayerActionButton()))
+                {
+                    player.AnimationWork(Vector3.zero);
+                }
+                else
+                {
+                    player.StopAnimationWork(Vector3.zero);
+                }
+            }
             if (stationExplainer)
             {
                 stationExplainer.SetActive(true);
@@ -104,7 +115,7 @@ public class LeverStation : StationScript
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //Debug.Log("Station getAllKeysDown() Mission Accomplished with " + missionsNumberOfPlayers[mission_index].ToString() + " Players");
-            PlayerAnimationWork();
+            //PlayerAnimationWork();
             station_active = false; 
             deActivatePopup();
             station_animation.SetTrigger("pullLever");

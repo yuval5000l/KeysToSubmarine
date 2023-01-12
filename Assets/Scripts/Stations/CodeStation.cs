@@ -8,12 +8,7 @@ public class CodeStation : StationScript
 {
     [SerializeField] private SpriteRenderer spriteR;
     [SerializeField] private Sprite idle;
-    [SerializeField] private Sprite HoverhtSprite;
-    
-    
-    
-    `
-
+    [SerializeField] private Sprite HoverSprite;
 
     [SerializeField] private Sprite[] states;
     List<bool> check_pressed_once = new List<bool>() { false, false, false, false };

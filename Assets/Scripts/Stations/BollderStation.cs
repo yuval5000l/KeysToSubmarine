@@ -32,16 +32,20 @@ public class BollderStation : StationScript
             }
         }
 
-        foreach (PlayerController player in players_in_station)
-        {
-            if (Input.GetKey(player.GetPlayerActionButton()))
-            {
-                player.AnimationPush(Vector3.zero);
-            }
-        }
+        
         if (station_active)
         {
-
+            foreach (PlayerController player in players_in_station)
+            {
+                if (Input.GetKey(player.GetPlayerActionButton()))
+                {
+                    player.AnimationPush(Vector3.zero);
+                }
+                else
+                {
+                    player.StopAnimationPush(Vector3.zero);
+                }
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 // station_animation.SetTrigger("Hover");
@@ -72,14 +76,14 @@ public class BollderStation : StationScript
     }
     
     
-    private void PlayerAnimationPush()
-    {
-        Vector3 loc = gameObject.transform.localPosition;
-        foreach (PlayerController player in players_in_station)
-        {
-            player.AnimationPush(loc);
-        }
-    }
+    //private void PlayerAnimationPush()
+    //{
+    //    Vector3 loc = gameObject.transform.localPosition;
+    //    foreach (PlayerController player in players_in_station)
+    //    {
+    //        player.AnimationPush(loc);
+    //    }
+    //}
     private void getAllKeysDown()
     {
 
@@ -103,7 +107,7 @@ public class BollderStation : StationScript
         }
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
-            PlayerAnimationPush();
+            //PlayerAnimationPush();
             pressKeysInARowCount = 0;
             rigi.bodyType = RigidbodyType2D.Dynamic;
         }

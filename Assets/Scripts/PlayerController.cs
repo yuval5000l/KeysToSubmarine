@@ -289,8 +289,38 @@ public class PlayerController : MonoBehaviour
     public void AnimationWork(Vector3 otherlocalLocation)
     {
         //PlayerDirectionAnimation(otherlocalLocation);
-        animator.SetTrigger("work");
+        animator.SetBool("work", true);
     }
+    public void StopAnimationWork(Vector3 otherlocalLocation)
+    {
+        //PlayerDirectionAnimation(otherlocalLocation);
+        animator.SetBool("work", false);
+    }
+    public void AnimationPush(Vector3 otherlocalLocation)
+    {
+        //PlayerDirectionAnimation(otherlocalLocation);
+        animator.SetBool("push", true);
+    }
+    public void StopAnimationPush(Vector3 otherlocalLocation)
+    {
+        //PlayerDirectionAnimation(otherlocalLocation);
+        animator.SetBool("push", false);
+    }
+
+
+    public void AnimationIdle()
+    {
+        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKey(player_action_button))
+        {
+            animator.SetTrigger("idle");
+            idle = true;
+        }
+        else
+        {
+            idle = false;
+        }
+    }
+
     private void PlayerDirectionAnimation(Vector3 otherlocalLocation)
     {
         float x1 = transform.localPosition.x;
@@ -302,7 +332,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Run_Down");
         }
-        else if(deg > -0.75 && deg <= 0.75f)
+        else if (deg > -0.75 && deg <= 0.75f)
         {
             animator.SetTrigger("Run_Right");
             if (!looking_right)
@@ -310,9 +340,9 @@ public class PlayerController : MonoBehaviour
                 looking_right = true;
                 transform.rotation = new Quaternion(transform.rotation.x, 90, transform.rotation.z, transform.rotation.w);
             }
-            
+
         }
-        else if(deg > 0.75f && deg <= 2.25f)
+        else if (deg > 0.75f && deg <= 2.25f)
         {
             animator.SetTrigger("Run_Up");
         }
@@ -327,27 +357,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    public void AnimationPush(Vector3 otherlocalLocation)
-    {
-        //PlayerDirectionAnimation(otherlocalLocation);
-        if (!idle)
-        {
-            animator.SetTrigger("push");
-        }
-    }
 
-    public void AnimationIdle()
-    {
-        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKey(player_action_button))
-        {
-            animator.SetTrigger("idle");
-            idle = true;
-        }
-        else
-        {
-            idle = false;
-        }
-    }
     public void ForceStop()
     {
         rb.velocity = Vector2.zero;

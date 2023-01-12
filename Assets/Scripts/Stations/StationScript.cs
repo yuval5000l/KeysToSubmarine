@@ -356,6 +356,8 @@ public class StationScript : MonoBehaviour
                 players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
                 player.AnimationIdle();
+                player.StopAnimationWork(Vector3.zero);
+                player.StopAnimationPush(Vector3.zero);
                 foreach (PlayerController playerz in players_in_station)
                 {
                     playerz.cancelForceStop();

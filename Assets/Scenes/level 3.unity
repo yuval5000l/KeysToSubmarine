@@ -1699,11 +1699,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1967353465}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
       propertyPath: m_LocalScale.y
@@ -1727,15 +1727,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1755,11 +1755,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
---- !u!4 &680175280 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2459571091746736389, guid: 9bf7eae72b67fe644a28e50590688e11, type: 3}
-  m_PrefabInstance: {fileID: 680175279}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &683790403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,7 +2312,7 @@ Transform:
   - {fileID: 683790405}
   - {fileID: 355802152}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864990808
 GameObject:
@@ -2762,7 +2757,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 785336213329140361, guid: 8dc02551c63f51a45a674490f182432d, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 785336213329140361, guid: 8dc02551c63f51a45a674490f182432d, type: 3}
       propertyPath: m_LocalScale.x
@@ -3535,7 +3530,7 @@ Transform:
   m_Children:
   - {fileID: 1821499771}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093632242
 GameObject:
@@ -4374,7 +4369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 3d6757ad52312024f82182c82b163f68, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 3d6757ad52312024f82182c82b163f68, type: 3}
       propertyPath: m_LocalScale.x
@@ -5497,7 +5492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8367441750604999884, guid: ab05254cbb7f2374f84c21baf9af3f84, type: 3}
       propertyPath: m_LocalScale.y
-      value: -2.4522507
+      value: -2.9120476
       objectReference: {fileID: 0}
     - target: {fileID: 8367441750604999884, guid: ab05254cbb7f2374f84c21baf9af3f84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5505,7 +5500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8367441750604999884, guid: ab05254cbb7f2374f84c21baf9af3f84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.608
+      value: -2.07
       objectReference: {fileID: 0}
     - target: {fileID: 8367441750604999884, guid: ab05254cbb7f2374f84c21baf9af3f84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6077,7 +6072,6 @@ Transform:
   - {fileID: 441914284}
   - {fileID: 67129830}
   - {fileID: 290024596}
-  - {fileID: 680175280}
   m_Father: {fileID: 97783156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
