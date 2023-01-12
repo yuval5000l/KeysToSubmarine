@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool controller_set4 = false;
 
     private float RunAnimationThreshold = 0.1f;
+    private float RunAnimationJoystickThreshold = 0.3f;
 
     [SerializeField] private Animator animator;
 
@@ -49,6 +50,10 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private RectTransform RT;
     [SerializeField] private Camera mCamera;
     List<Rigidbody2D> playersITouch = new List<Rigidbody2D>();
+
+    [SerializeField] private bool action_pressed;
+
+    private InputManager action_b;
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -61,8 +66,113 @@ public class PlayerController : MonoBehaviour
         radioActiveIndicator.rectTransform.position = new Vector3(2.7f,1f,0f);
 
         radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
+
+        action_b.GetComponent<InputManager>();
         // radioActiveIndicator.rectTransform.localPosition = RectTransformUtility.WorldToScreenPoint(mCamera,gameObject.transform.position);
+        //var action = new InputAction(binding: "ActionB");
+        //Debug.Log(action);
+        //action.started += _ => Press(true);
+        //action.performed += _ => Press(false);
+        //action.canceled += _ => Press(false);
     }
+    //private void OnEnable()
+    //{
+    //    action.Enable();
+    //}
+    //private void OnDisable()
+    //{
+    //    action.Disable();
+    //}
+    public void OnMove(InputValue value)
+    {
+        Debug.Log("HERE");
+        Vector2 movement_tmp = value.Get<Vector2>();
+        //movement = movement_tmp;
+        if (movement_tmp.x > RunAnimationJoystickThreshold)
+        {
+            movement.x = 1;
+        }
+        else if (movement_tmp.x < -RunAnimationJoystickThreshold)
+        {
+            movement.x = -1;
+        }
+        else
+        {
+            movement.x = 0;
+        }
+        if (movement_tmp.y > RunAnimationJoystickThreshold)
+        {
+            movement.y = 1;
+        }
+        else if (movement_tmp.y < -RunAnimationJoystickThreshold)
+        {
+            movement.y = -1;
+        }
+        else
+        {
+            movement.y = 0;
+        }
+        AnimationIdle();
+
+    }
+    //public void OnMove(InputValue value)
+    //{
+    //    Vector2 movement_tmp = value.Get<Vector2>();
+    //    //movement = movement_tmp;
+    //    if (movement_tmp.x > RunAnimationJoystickThreshold)
+    //    {
+    //        movement.x = 1;
+    //    }
+    //    else if (movement_tmp.x < -RunAnimationJoystickThreshold)
+    //    {
+    //        movement.x = -1;
+    //    }
+    //    else
+    //    {
+    //        movement.x = 0;
+    //    }
+    //    if (movement_tmp.y > RunAnimationJoystickThreshold)
+    //    {
+    //        movement.y = 1;
+    //    }
+    //    else if (movement_tmp.y < -RunAnimationJoystickThreshold)
+    //    {
+    //        movement.y = -1;
+    //    }
+    //    else
+    //    {
+    //        movement.y = 0;
+    //    }
+    //    AnimationIdle();
+
+    //}
+
+    private void OnActionB(InputValue value)
+    {
+        Debug.Log("Hey");
+        if (value.isPressed)
+        {
+            Debug.Log("Action");
+            action_pressed = true;
+        }
+        else
+        {
+            Debug.Log("ActionCanceled");
+            action_pressed = false;
+
+        }
+    }
+    //private void OnActionB()
+    //{
+    //    Debug.Log("Hey");
+    //}
+
+
+    //private void Press(bool action_b)
+    //{
+    //Debug.Log("YAS");
+    //action_pressed = action_b;
+    //}
 
     // Update is called once per frame
     void Update()
@@ -75,7 +185,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!playerStop)
             {
-                movement_keyboard();
+                //movement_keyboard();
             }
         }
         if (controller_set3)
