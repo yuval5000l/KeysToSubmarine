@@ -91,15 +91,11 @@ public class MainMenuScript : MonoBehaviour
     //    fade_out.settrigger("fadeout");
     //}
 
-    //public void ReturnToMainMenu()
-    //{
-    //    MainMenu.SetActive(true);
-    //    mainMenuActive = true;
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
 
-    //    Time.timeScale = 0f;
-    //    PauseMenu.isGamePaused = true;
-
-    //}
+    }
     public void QuitGame()
     {
         Time.timeScale = 1f;
