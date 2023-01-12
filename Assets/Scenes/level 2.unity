@@ -3386,7 +3386,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 563979701123739583, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_DefaultActionMap
-      value: 2f984175-7858-472a-98fe-e04d180285f5
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 563979701123739583, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_DefaultControlScheme
@@ -3446,11 +3446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939331252252770626, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941845087669689841, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3484,8 +3480,7 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4941845087669689841, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
 --- !u!224 &547164667 stripped
 RectTransform:

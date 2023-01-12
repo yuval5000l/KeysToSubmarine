@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour
     //}
     public void OnMove(InputValue value)
     {
-        Debug.Log("HERE");
         Vector2 movement_tmp = value.Get<Vector2>();
         //movement = movement_tmp;
+
         if (movement_tmp.x > RunAnimationJoystickThreshold)
         {
             movement.x = 1;
@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             movement.y = 0;
         }
+
         AnimationIdle();
 
     }
@@ -149,15 +150,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnActionB(InputValue value)
     {
-        Debug.Log("Hey");
         if (value.isPressed)
         {
-            Debug.Log("Action");
+            Debug.Log("Pressed");
             action_pressed = true;
         }
         else
         {
-            Debug.Log("ActionCanceled");
+            Debug.Log("UnPressed");
             action_pressed = false;
 
         }
