@@ -50,7 +50,9 @@ public class MissionManager : MonoBehaviour
     private GameObject ScoreIndicatorPrefab;
 
     private CameraZoom zoom;
-
+    private bool hold_time = false;
+    private int hold_time_count = 3;
+    private float hold_time_counter = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -160,6 +162,18 @@ public class MissionManager : MonoBehaviour
     {
         if (isGameFinsihed)
         {
+            if (hold_time)
+            {
+                hold_time_counter += Time.deltaTime;
+                if (hold_time_count <= hold_time_counter)
+                {
+                    hold_time_counter = 0;
+                    Time.timeScale = 1f;
+                    hold_time = false;
+
+                    GM.NextlevelCanvas();
+                }
+            }
             return;
         }
         if (time_left != -100f)
@@ -177,8 +191,16 @@ public class MissionManager : MonoBehaviour
                 {
                     zoom.DeActivateZoom();
                 }
+                else
+                {
+                    hold_time = true;
+                }
                 isGameFinsihed = true;
-                GM.NextlevelCanvas();
+                if (!hold_time)
+                {
+                    Time.timeScale = 0f;
+                    GM.NextlevelCanvas();
+                }
             }
             return;
         }
