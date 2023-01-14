@@ -4782,7 +4782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.46
+      value: -11.04
       objectReference: {fileID: 0}
     - target: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6679,7 +6679,7 @@ GameObject:
   - component: {fileID: 1800442660}
   - component: {fileID: 1800442659}
   m_Layer: 0
-  m_Name: Black tutorial screens
+  m_Name: "\u05D2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6726,7 +6726,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: db772c96150bbce44b4a7085dfe32d21, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b539a03e19358d4c8b650845f20a646, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

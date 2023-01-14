@@ -99,11 +99,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.006
+      value: -0.007999998
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.473
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -144,6 +144,10 @@ PrefabInstance:
     - target: {fileID: 2631997939039525228, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_Name
       value: PersonCounter-Hollow_Enter_0109 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631997939039525228, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7696555617085296216, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: maAnimator
@@ -191,11 +195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.161
+      value: 0.098000005
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.412
+      value: 0.306
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -236,6 +240,10 @@ PrefabInstance:
     - target: {fileID: 2631997939039525228, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_Name
       value: PersonCounter-Hollow_Enter_0109 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631997939039525228, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7696555617085296216, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: maAnimator
@@ -371,11 +379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.162
+      value: -0.106
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.412
+      value: 0.306
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -383,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999998
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalRotation.x
@@ -395,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.000597994
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -407,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.069
       objectReference: {fileID: 0}
     - target: {fileID: 2631997939039525227, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -416,6 +424,10 @@ PrefabInstance:
     - target: {fileID: 2631997939039525228, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: m_Name
       value: PersonCounter-Hollow_Enter_0109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631997939039525228, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7696555617085296216, guid: 36dae3721e5bfd9448a1f6db3c9d0e68, type: 3}
       propertyPath: maAnimator
