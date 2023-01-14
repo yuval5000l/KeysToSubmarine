@@ -4984,8 +4984,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 0b0dfea7fc84e0f4db8865be79a3c21b, type: 2}
     - target: {fileID: 563979701123739583, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 563979701123739583, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: Keyboard1
       objectReference: {fileID: 0}
     - target: {fileID: 563979701123739583, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
       propertyPath: m_NeverAutoSwitchControlSchemes
@@ -7201,7 +7205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1224890348
 RectTransform:
   m_ObjectHideFlags: 0
