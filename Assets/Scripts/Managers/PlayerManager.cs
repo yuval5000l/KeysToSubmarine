@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,13 +15,20 @@ public class PlayerManager : MonoBehaviour
         string[] colors = new string[4] {"Pink", "Blue", "Orange", "Yellow"};
         players_in_game = gameManager.getNumOfPlayers();
         int i = 0;
-        foreach(PlayerController player in GetComponentsInChildren<PlayerController>())
+        InputDevice[] inp = new InputDevice[1];
+        inp[0] = Keyboard.current;
+        foreach (PlayerController player in GetComponentsInChildren<PlayerController>())
         {
             players[i] = player;
             player.setColor(colors[i]);
             if (players_in_game <= i)
             {
                 player.gameObject.SetActive(false);
+            }
+            else
+            {
+                PlayerInput inputya = player.GetComponent<PlayerInput>();
+                inputya.SwitchCurrentControlScheme("keyboard"+(i+1).ToString(), inp);
             }
             i += 1;
         }
@@ -49,38 +58,42 @@ public class PlayerManager : MonoBehaviour
     public void UpdatePlayers(int numPlayers)
     {
         players_in_game = numPlayers;
-        foreach(PlayerController player in players)
+
+        foreach (PlayerController player in players)
         {
             player.gameObject.SetActive(true);
+            
+            //InputSystem.SetDeviceUsage(InputDevice)
         }
-    }
-    public bool UpdatePlayerControls(int player_num, List<KeyCode> new_controls)
-    {
-        if (new_controls.Count != 5 || player_num < 0 || player_num > 3)
-        {
-            return false;
-        }
-        foreach (PlayerController player in players)
-        {
-            foreach(KeyCode key in player.getListControls())
-            {
-                if (new_controls.Contains(key))
-                {
-                    return false;
-                }
-            }
-        }
-        players[player_num].updateListControls(new_controls);
-        return true;
-    }
 
-    public List<List<KeyCode>> GetPlayersControls()
-    {
-        List<List<KeyCode>> playersControls= new List<List<KeyCode>>(4);
-        foreach (PlayerController player in players)
-        {
-            playersControls.Add(player.getListControls());
-        }
-        return playersControls;
     }
+    //    public bool UpdatePlayerControls(int player_num, List<KeyCode> new_controls)
+    //    {
+    //        if (new_controls.Count != 5 || player_num < 0 || player_num > 3)
+    //        {
+    //            return false;
+    //        }
+    //        foreach (PlayerController player in players)
+    //        {
+    //            foreach(KeyCode key in player.getListControls())
+    //            {
+    //                if (new_controls.Contains(key))
+    //                {
+    //                    return false;
+    //                }
+    //            }
+    //        }
+    //        players[player_num].updateListControls(new_controls);
+    //        return true;
+    //    }
+
+    //    public List<List<KeyCode>> GetPlayersControls()
+    //    {
+    //        List<List<KeyCode>> playersControls= new List<List<KeyCode>>(4);
+    //        foreach (PlayerController player in players)
+    //        {
+    //            playersControls.Add(player.getListControls());
+    //        }
+    //        return playersControls;
+    //    }
 }

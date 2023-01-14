@@ -8,47 +8,41 @@ public class PlayerController : MonoBehaviour
 {
 
     // KeyCodes For Movement And Action
-    [SerializeField] private KeyCode up_button = KeyCode.W;
-    [SerializeField] private KeyCode down_button = KeyCode.S;
-    [SerializeField] private KeyCode left_button = KeyCode.A;
-    [SerializeField] private KeyCode right_button = KeyCode.D;
-
-    [SerializeField] private KeyCode player_action_button = KeyCode.R;
-    [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
     private string color;
-    //[SerializeField] private bool controller_set1 = false;
-    //[SerializeField] private bool controller_set2 = false;
-    [SerializeField] private bool controller_set3 = false;
-    [SerializeField] private bool controller_set4 = false;
 
-    private float RunAnimationThreshold = 0.1f;
 
+    
+    // Animation
     [SerializeField] private Animator animator;
-
-    //Player1Controls controls_1;
-    //Player2Controls controls;
-
+    private float RunAnimationThreshold = 0.1f;
+    private float RunAnimationJoystickThreshold = 0.3f;
+    private bool looking_right = false;
+    private bool idle = true;
 
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
-    //[SerializeField] private TMP_Text debug_Text;
     private Vector2 movement;
+
+    //[SerializeField] private TMP_Text debug_Text;
+
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
-    private bool looking_right = false;
-    private bool idle = true;
-    private bool playerStop = false;
-
     private bool radio_active_state = false;
     private SpriteRenderer sprite;
     private Material default_material;
     private Material radio_active_material;
-    // Start is called before the first frame update
     [SerializeField] private Image radioActiveIndicator;
-    //[SerializeField] private RectTransform RT;
+
+
+
     [SerializeField] private Camera mCamera;
     List<Rigidbody2D> playersITouch = new List<Rigidbody2D>();
+    private int frames_for_one_time_press = 1;
+    private int frame_counter_for_one_time_press = 0;
+    private bool action_pressed;
+    private bool one_time_action_pressed;
+
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -59,96 +53,23 @@ public class PlayerController : MonoBehaviour
         radioActiveIndicator.transform.position = Vector3.zero;
         radioActiveIndicator.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
         radioActiveIndicator.rectTransform.position = new Vector3(2.7f,1f,0f);
-
         radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
-        // radioActiveIndicator.rectTransform.localPosition = RectTransformUtility.WorldToScreenPoint(mCamera,gameObject.transform.position);
+
+
+        //Debug.Log(inputya.devices);
+        //inputya.SwitchCurrentControlScheme("keyboard2");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMove(InputValue value)
     {
-        Vector2 pos = gameObject.transform.position;
-        Vector2 viewportPoint = Camera.main.WorldToViewportPoint(pos);
-        radioActiveIndicator.rectTransform.anchorMin = viewportPoint;
-        radioActiveIndicator.rectTransform.anchorMax = viewportPoint;
-        if (!(controller_set3 || controller_set4))
-        {
-            if (!playerStop)
-            {
-                movement_keyboard();
-            }
-        }
-        if (controller_set3)
-        {
-            if (Input.anyKey)
-            {
-                //foreach (string name in Input.GetJoystickNames())
-                //{
-                //    Debug.Log(name);
-                //}
-                Event e = Event.current;
-                //if (e != null && e.isKey)
-                //{
-                //    Debug.Log("Detected key code: " + e.keyCode);
-                //}
-            }
+        Vector2 movement_tmp = value.Get<Vector2>();
+        //movement = movement_tmp;
 
-            if (player_action_button != KeyCode.Joystick1Button0)
-            {
-                player_action_button = KeyCode.Joystick1Button0;
-            }
-            movement.x = Input.GetAxis("J1Horizontal");
-            movement.y = -Input.GetAxis("J1Vertical");
-            if (Mathf.Abs(movement.x) < 0.3f)
-            {
-                movement.x = 0f;
-            }
-            if (Mathf.Abs(movement.y) < 0.3f)
-            {
-                movement.y = 0f;
-            }
-            AnimationIdle();
-
-        }
-        if (controller_set4)
-        {
-            movement.x = Input.GetAxis("J2Horizontal");
-            movement.y = -Input.GetAxis("J2Vertical");
-            if (Mathf.Abs(movement.x ) < 0.3f)
-            {
-                movement.x = 0f;
-            }
-            if (Mathf.Abs(movement.y) < 0.3f)
-            {
-                movement.y = 0f;
-            }
-            AnimationIdle();
-
-        }
-        if (radio_active_state)
-        {
-            radioActivity += 4 * 1f * Time.deltaTime * 60f;
-            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0003f;
-            checkRadioActivity();
-        }
-
-        if (Input.GetKeyDown(player_action_button))
-        {
-            foreach (Rigidbody2D rb in playersITouch)
-            {
-                rb.AddForce(movement * moveSpeed * 20f, ForceMode2D.Impulse);
-            }
-        }
-        
-    }
-
-    private void movement_keyboard()
-    {
-        if (Input.GetKey(right_button))
+        if (movement_tmp.x > RunAnimationJoystickThreshold)
         {
             movement.x = 1;
         }
-        else if (Input.GetKey(left_button))
+        else if (movement_tmp.x < -RunAnimationJoystickThreshold)
         {
             movement.x = -1;
         }
@@ -156,11 +77,11 @@ public class PlayerController : MonoBehaviour
         {
             movement.x = 0;
         }
-        if (Input.GetKey(up_button))
+        if (movement_tmp.y > RunAnimationJoystickThreshold)
         {
             movement.y = 1;
         }
-        else if (Input.GetKey(down_button))
+        else if (movement_tmp.y < -RunAnimationJoystickThreshold)
         {
             movement.y = -1;
         }
@@ -168,8 +89,77 @@ public class PlayerController : MonoBehaviour
         {
             movement.y = 0;
         }
+
         AnimationIdle();
+
     }
+
+    private void OnActionB(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            //Debug.Log("Pressed");
+            action_pressed = true;
+            one_time_action_pressed = true;
+        }
+        else
+        {
+            //Debug.Log("UnPressed");
+            action_pressed = false;
+        }
+    }
+    public bool playerPressed()
+    {
+        return action_pressed;
+    }
+
+    public bool playerPressedOneTime()
+    {
+        return one_time_action_pressed;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (one_time_action_pressed)
+        {
+            if (frame_counter_for_one_time_press >= frames_for_one_time_press)
+            {
+                frame_counter_for_one_time_press = 0;
+                one_time_action_pressed = false;
+            }
+            else
+            {
+                frame_counter_for_one_time_press++;
+            }
+
+        }
+
+        Vector2 pos = gameObject.transform.position;
+        Vector2 viewportPoint = Camera.main.WorldToViewportPoint(pos);
+        radioActiveIndicator.rectTransform.anchorMin = viewportPoint;
+        radioActiveIndicator.rectTransform.anchorMax = viewportPoint;
+        AnimationIdle();
+        
+        if (radio_active_state)
+        {
+            radioActivity += 4 * 1f * Time.deltaTime * 60f;
+            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0003f;
+            checkRadioActivity();
+        }
+
+        //if (action_pressed) ButtHead
+        //{
+        //    foreach (Rigidbody2D rb in playersITouch)
+        //    {
+        //        rb.AddForce(movement * moveSpeed * 20f, ForceMode2D.Impulse);
+        //    }
+        //}
+
+    }
+
+
 
     private void AnimationDecideState()
     {
@@ -222,69 +212,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public KeyCode GetPlayerActionButton()
-    {
-        return player_action_button;
-    }
-    
-    public bool is_Controller()
-    {
-        return controller_set3 || controller_set4;
-    }
-
-    public InputAction GetPlayerActionButtonNew()
-    {
-        return player_action_button_new;
-    }
-
-    public KeyCode[] GetKeys()
-    {
-        KeyCode[] arr_keys = { up_button, down_button, left_button, right_button, player_action_button };
-        return arr_keys;
-    }
-
-    // Switching Keys
-
-    public List<KeyCode> getListControls()
-    {
-        List<KeyCode> a = new List<KeyCode>();
-        a.Add(up_button);
-        a.Add(down_button);
-        a.Add(left_button);
-        a.Add(right_button);
-        a.Add(player_action_button);
-        return a;
-    }
-
-    public void updateListControls(List<KeyCode> new_controls)
-    {
-        setUpKey(new_controls[0]);
-        setDownKey(new_controls[1]);
-        setLeftKey(new_controls[2]);
-        setRightKey(new_controls[3]);
-        setActionKey(new_controls[4]);
-    }
-
-    public void setUpKey(KeyCode new_key)
-    {
-        up_button = new_key;
-    }
-    public void setDownKey(KeyCode new_key)
-    {
-        down_button = new_key;
-    }
-    public void setRightKey(KeyCode new_key)
-    {
-        right_button = new_key;
-    }
-    public void setLeftKey(KeyCode new_key)
-    {
-        left_button = new_key;
-    }
-    public void setActionKey(KeyCode new_key)
-    {
-        player_action_button = new_key;
-    }
 
     public void AnimationWork(Vector3 otherlocalLocation)
     {
@@ -310,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     public void AnimationIdle()
     {
-        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKey(player_action_button))
+        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !animator.GetBool("work") && !animator.GetBool("push"))
         {
             animator.SetTrigger("idle");
             idle = true;
@@ -361,19 +288,15 @@ public class PlayerController : MonoBehaviour
     public void ForceStop()
     {
         rb.velocity = Vector2.zero;
-        //playerStop = true;
     }
 
-    public void cancelForceStop()
-    {
-        playerStop = false;
-    }
+
 
     void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Holdable")
         {
-            if(Input.GetKey(player_action_button))
+            if(action_pressed)
             {
                other.transform.position = gameObject.transform.position + new Vector3(0f,-0.5f,0f); 
             }
@@ -468,4 +391,98 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+
+
+    //private void movement_keyboard()
+    //{
+    //    if (Input.GetKey(right_button))
+    //    {
+    //        movement.x = 1;
+    //    }
+    //    else if (Input.GetKey(left_button))
+    //    {
+    //        movement.x = -1;
+    //    }
+    //    else
+    //    {
+    //        movement.x = 0;
+    //    }
+    //    if (Input.GetKey(up_button))
+    //    {
+    //        movement.y = 1;
+    //    }
+    //    else if (Input.GetKey(down_button))
+    //    {
+    //        movement.y = -1;
+    //    }
+    //    else
+    //    {
+    //        movement.y = 0;
+    //    }
+    //    AnimationIdle();
+    //}
+    //public KeyCode GetPlayerActionButton()
+    //{
+    //    return player_action_button;
+    //}
+
+    //public bool is_Controller()
+    //{
+    //    return controller_set3 || controller_set4;
+    //}
+
+    //public InputAction GetPlayerActionButtonNew()
+    //{
+    //    return player_action_button_new;
+    //}
+
+    //public KeyCode[] GetKeys()
+    //{
+    //    KeyCode[] arr_keys = { up_button, down_button, left_button, right_button, player_action_button };
+    //    return arr_keys;
+    //}
+
+    //// Switching Keys
+
+    //public List<KeyCode> getListControls()
+    //{
+    //    List<KeyCode> a = new List<KeyCode>();
+    //    a.Add(up_button);
+    //    a.Add(down_button);
+    //    a.Add(left_button);
+    //    a.Add(right_button);
+    //    a.Add(player_action_button);
+    //    return a;
+    //}
+
+    //public void updateListControls(List<KeyCode> new_controls)
+    //{
+    //    setUpKey(new_controls[0]);
+    //    setDownKey(new_controls[1]);
+    //    setLeftKey(new_controls[2]);
+    //    setRightKey(new_controls[3]);
+    //    setActionKey(new_controls[4]);
+    //}
+
+    //public void setUpKey(KeyCode new_key)
+    //{
+    //    up_button = new_key;
+    //}
+    //public void setDownKey(KeyCode new_key)
+    //{
+    //    down_button = new_key;
+    //}
+    //public void setRightKey(KeyCode new_key)
+    //{
+    //    right_button = new_key;
+    //}
+    //public void setLeftKey(KeyCode new_key)
+    //{
+    //    left_button = new_key;
+    //}
+    //public void setActionKey(KeyCode new_key)
+    //{
+    //    player_action_button = new_key;
+    //}
 }

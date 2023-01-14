@@ -80,9 +80,9 @@ public class ShowerStation : StationScript
 
     private void HoldKey()
     {
-        foreach ( var action_key in players_action_key)
+        foreach (PlayerController player in players_in_station)
         {
-            if (Input.GetKey(action_key))
+            if (player.playerPressed())
             {
                 station_animation.SetTrigger("StartShower");
                 gameObject.tag = "ActiveShower";
@@ -108,19 +108,10 @@ public class ShowerStation : StationScript
                     door_activated = true;
                 }
             }
-       }
-       //foreach(var action_key in players_controller_in_station)
-       // {
-       //     if (action_key.Item2 == true)
-       //     {
-       //         station_animation.SetTrigger("StartShower");
-       //         gameObject.tag = "ActiveShower";
-       //         timeHeld += Time.deltaTime;
-       //         indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
-       //         timeWindowToPress = 0;
+        }
 
-       //     }
-       // }
+
+
         if (!always_active && timeHeld >= holdTime)
         {
             station_animation.SetTrigger("EndShower");
