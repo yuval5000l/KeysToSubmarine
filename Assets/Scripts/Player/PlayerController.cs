@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
         radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
 
 
+        //Debug.Log(inputya.devices);
+        //inputya.SwitchCurrentControlScheme("keyboard2");
     }
 
     public void OnMove(InputValue value)
