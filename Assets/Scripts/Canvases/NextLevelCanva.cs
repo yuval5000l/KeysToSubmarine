@@ -12,7 +12,7 @@ public class NextLevelCanva : MonoBehaviour
     void Start()
     {
         playerManager = FindObjectOfType<PlayerManager>().GetComponent<PlayerManager>();
-        playersControl = playerManager.GetPlayersControls();
+        //playersControl = playerManager.GetPlayersControls();
     }
 
     // Update is called once per frame

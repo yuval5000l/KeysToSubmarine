@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LeverStation : StationScript
 {
-
-    List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
+    List<PlayerController> players_pressed = new List<PlayerController>();
+    //List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Animator station_animation;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
@@ -34,7 +34,7 @@ public class LeverStation : StationScript
         {
             foreach (PlayerController player in players_in_station)
             {
-                if (Input.GetKey(player.GetPlayerActionButton()))
+                if (player.playerPressedOneTime())
                 {
                     player.AnimationWork(Vector3.zero);
                 }
@@ -67,21 +67,12 @@ public class LeverStation : StationScript
             PlayerAnimationIdle();
         }
 
-        for (int i = 0; i < players_controller_in_station.Count; i++)
-        {
-            if (players_controller_in_station[i].Item2 == false)
-            {
-                check_pressed_once[i] = false;
-            }
-            else
-            {
-                check_pressed_once[i] = true;
-            }
-        }
+
         if (timeWindowToPress >= maximalTime)
         {
             timeWindowToPress = 0;
             pressKeysInARowCount = 0;
+            players_pressed.Clear();
         }
         timeWindowToPress += Time.deltaTime;
 
@@ -90,25 +81,26 @@ public class LeverStation : StationScript
 
     private void getAllKeysDown()
     {
-        foreach (var action_key in players_action_key)
-        {
-            if (Input.GetKeyDown(action_key))
-            {
-                pressKeysInARowCount += 1;
-                timeWindowToPress = 0;
-            }
-
-        }
-        //int counter = 0;
-        //foreach (var action_key in players_controller_in_station) // For Controller
+        //foreach (var action_key in players_action_key)
         //{
-        //    if (action_key.Item2 && check_pressed_once[counter] == false)
+        //    if (Input.GetKeyDown(action_key))
         //    {
         //        pressKeysInARowCount += 1;
         //        timeWindowToPress = 0;
         //    }
-        //    counter++;
+
         //}
+        foreach (PlayerController player in players_in_station) // For Controller
+        {
+            if (player.playerPressedOneTime() && !players_pressed.Contains(player))
+            {
+                pressKeysInARowCount += 1;
+                timeWindowToPress = 0;
+                players_pressed.Add(player);
+            }
+
+
+        }
         int points = (int)(missionsNumberOfPlayers[mission_index] + 1) / 2;
 
 
@@ -130,11 +122,23 @@ public class LeverStation : StationScript
                 missionManager.missionDone(bonus_time, points_award);
             }
             pressKeysInARowCount = 0;
+            
         }
         else
         {
             PlayerAnimationIdle();
         }
     }
-    
+
+    public void StopAnim()
+    {
+        foreach (PlayerController player in players_in_station)
+        {
+            player.StopAnimationWork(Vector3.zero);
+            Debug.Log(player);
+
+        }
+        players_pressed.Clear();
+    }
+
 }

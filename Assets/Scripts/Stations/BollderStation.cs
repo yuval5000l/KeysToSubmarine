@@ -32,12 +32,12 @@ public class BollderStation : StationScript
             }
         }
 
-        
+
         if (station_active)
         {
             foreach (PlayerController player in players_in_station)
             {
-                if (Input.GetKey(player.GetPlayerActionButton()))
+                if (player.playerPressed())
                 {
                     player.AnimationPush(Vector3.zero);
                 }
@@ -52,59 +52,27 @@ public class BollderStation : StationScript
                 missions[mission_index]();
 
             }
-        //else
-        //{
-        //    PlayerAnimationIdle();
-        //}
-    }
-        else
-        {
-            PlayerAnimationIdle();
-        }
-        
-        for (int i = 0; i < players_controller_in_station.Count; i++)
-        {
-            if (players_controller_in_station[i].Item2 == false)
-            {
-                check_pressed_once[i] = false;
-            }
             else
             {
-                check_pressed_once[i] = true;
+                PlayerAnimationIdle();
             }
+
         }
     }
     
     
-    //private void PlayerAnimationPush()
-    //{
-    //    Vector3 loc = gameObject.transform.localPosition;
-    //    foreach (PlayerController player in players_in_station)
-    //    {
-    //        player.AnimationPush(loc);
-    //    }
-    //}
+
     private void getAllKeysDown()
     {
 
-        foreach (var action_key in players_action_key)
+        foreach (PlayerController player in players_in_station)
         {
-            if (Input.GetKey(action_key))
+            if (player.playerPressed())
             {
                 pressKeysInARowCount += 1;
             }
         }
         
-        int counter = 0;
-        foreach (var action_key in players_controller_in_station) // For Controller
-        {
-            if (action_key.Item2)
-            {
-                pressKeysInARowCount += 1;
-                timeWindowToPress = 0;
-            }
-            counter++;
-        }
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
             //PlayerAnimationPush();

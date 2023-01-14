@@ -4,38 +4,50 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-public class PlayerController : MonoBehaviour
+public class OldPlayerController : MonoBehaviour
 {
 
     // KeyCodes For Movement And Action
+    [SerializeField] private KeyCode up_button = KeyCode.W;
+    [SerializeField] private KeyCode down_button = KeyCode.S;
+    [SerializeField] private KeyCode left_button = KeyCode.A;
+    [SerializeField] private KeyCode right_button = KeyCode.D;
+
+    [SerializeField] private KeyCode player_action_button = KeyCode.R;
+    [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
     private string color;
+    //[SerializeField] private bool controller_set1 = false;
+    //[SerializeField] private bool controller_set2 = false;
+    [SerializeField] private bool controller_set3 = false;
+    [SerializeField] private bool controller_set4 = false;
 
-
-    
-    // Animation
-    [SerializeField] private Animator animator;
     private float RunAnimationThreshold = 0.1f;
     private float RunAnimationJoystickThreshold = 0.3f;
-    private bool looking_right = false;
-    private bool idle = true;
+
+    [SerializeField] private Animator animator;
+
+    //Player1Controls controls_1;
+    //Player2Controls controls;
+
 
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
-    private Vector2 movement;
-
     //[SerializeField] private TMP_Text debug_Text;
-
+    private Vector2 movement;
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
+    private bool looking_right = false;
+    private bool idle = true;
+    
+
     private bool radio_active_state = false;
     private SpriteRenderer sprite;
     private Material default_material;
     private Material radio_active_material;
+    // Start is called before the first frame update
     [SerializeField] private Image radioActiveIndicator;
-
-
-
+    //[SerializeField] private RectTransform RT;
     [SerializeField] private Camera mCamera;
     List<Rigidbody2D> playersITouch = new List<Rigidbody2D>();
     private int frames_for_one_time_press = 1;
@@ -147,17 +159,44 @@ public class PlayerController : MonoBehaviour
             checkRadioActivity();
         }
 
-        //if (action_pressed) ButtHead
-        //{
-        //    foreach (Rigidbody2D rb in playersITouch)
-        //    {
-        //        rb.AddForce(movement * moveSpeed * 20f, ForceMode2D.Impulse);
-        //    }
-        //}
+        if (action_pressed)
+        {
+            foreach (Rigidbody2D rb in playersITouch)
+            {
+                rb.AddForce(movement * moveSpeed * 20f, ForceMode2D.Impulse);
+            }
+        }
 
     }
 
-
+    private void movement_keyboard()
+    {
+        if (Input.GetKey(right_button))
+        {
+            movement.x = 1;
+        }
+        else if (Input.GetKey(left_button))
+        {
+            movement.x = -1;
+        }
+        else
+        {
+            movement.x = 0;
+        }
+        if (Input.GetKey(up_button))
+        {
+            movement.y = 1;
+        }
+        else if (Input.GetKey(down_button))
+        {
+            movement.y = -1;
+        }
+        else
+        {
+            movement.y = 0;
+        }
+        AnimationIdle();
+    }
 
     private void AnimationDecideState()
     {
@@ -210,6 +249,69 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public KeyCode GetPlayerActionButton()
+    {
+        return player_action_button;
+    }
+    
+    public bool is_Controller()
+    {
+        return controller_set3 || controller_set4;
+    }
+
+    public InputAction GetPlayerActionButtonNew()
+    {
+        return player_action_button_new;
+    }
+
+    public KeyCode[] GetKeys()
+    {
+        KeyCode[] arr_keys = { up_button, down_button, left_button, right_button, player_action_button };
+        return arr_keys;
+    }
+
+    // Switching Keys
+
+    public List<KeyCode> getListControls()
+    {
+        List<KeyCode> a = new List<KeyCode>();
+        a.Add(up_button);
+        a.Add(down_button);
+        a.Add(left_button);
+        a.Add(right_button);
+        a.Add(player_action_button);
+        return a;
+    }
+
+    public void updateListControls(List<KeyCode> new_controls)
+    {
+        setUpKey(new_controls[0]);
+        setDownKey(new_controls[1]);
+        setLeftKey(new_controls[2]);
+        setRightKey(new_controls[3]);
+        setActionKey(new_controls[4]);
+    }
+
+    public void setUpKey(KeyCode new_key)
+    {
+        up_button = new_key;
+    }
+    public void setDownKey(KeyCode new_key)
+    {
+        down_button = new_key;
+    }
+    public void setRightKey(KeyCode new_key)
+    {
+        right_button = new_key;
+    }
+    public void setLeftKey(KeyCode new_key)
+    {
+        left_button = new_key;
+    }
+    public void setActionKey(KeyCode new_key)
+    {
+        player_action_button = new_key;
+    }
 
     public void AnimationWork(Vector3 otherlocalLocation)
     {
@@ -294,7 +396,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "Holdable")
         {
-            if(action_pressed)
+            if(Input.GetKey(player_action_button))
             {
                other.transform.position = gameObject.transform.position + new Vector3(0f,-0.5f,0f); 
             }
@@ -389,98 +491,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-
-
-    //private void movement_keyboard()
-    //{
-    //    if (Input.GetKey(right_button))
-    //    {
-    //        movement.x = 1;
-    //    }
-    //    else if (Input.GetKey(left_button))
-    //    {
-    //        movement.x = -1;
-    //    }
-    //    else
-    //    {
-    //        movement.x = 0;
-    //    }
-    //    if (Input.GetKey(up_button))
-    //    {
-    //        movement.y = 1;
-    //    }
-    //    else if (Input.GetKey(down_button))
-    //    {
-    //        movement.y = -1;
-    //    }
-    //    else
-    //    {
-    //        movement.y = 0;
-    //    }
-    //    AnimationIdle();
-    //}
-    //public KeyCode GetPlayerActionButton()
-    //{
-    //    return player_action_button;
-    //}
-
-    //public bool is_Controller()
-    //{
-    //    return controller_set3 || controller_set4;
-    //}
-
-    //public InputAction GetPlayerActionButtonNew()
-    //{
-    //    return player_action_button_new;
-    //}
-
-    //public KeyCode[] GetKeys()
-    //{
-    //    KeyCode[] arr_keys = { up_button, down_button, left_button, right_button, player_action_button };
-    //    return arr_keys;
-    //}
-
-    //// Switching Keys
-
-    //public List<KeyCode> getListControls()
-    //{
-    //    List<KeyCode> a = new List<KeyCode>();
-    //    a.Add(up_button);
-    //    a.Add(down_button);
-    //    a.Add(left_button);
-    //    a.Add(right_button);
-    //    a.Add(player_action_button);
-    //    return a;
-    //}
-
-    //public void updateListControls(List<KeyCode> new_controls)
-    //{
-    //    setUpKey(new_controls[0]);
-    //    setDownKey(new_controls[1]);
-    //    setLeftKey(new_controls[2]);
-    //    setRightKey(new_controls[3]);
-    //    setActionKey(new_controls[4]);
-    //}
-
-    //public void setUpKey(KeyCode new_key)
-    //{
-    //    up_button = new_key;
-    //}
-    //public void setDownKey(KeyCode new_key)
-    //{
-    //    down_button = new_key;
-    //}
-    //public void setRightKey(KeyCode new_key)
-    //{
-    //    right_button = new_key;
-    //}
-    //public void setLeftKey(KeyCode new_key)
-    //{
-    //    left_button = new_key;
-    //}
-    //public void setActionKey(KeyCode new_key)
-    //{
-    //    player_action_button = new_key;
-    //}
 }
