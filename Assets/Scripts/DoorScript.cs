@@ -15,10 +15,13 @@ public class DoorScript : MonoBehaviour
     private Color default_color;
     private int counter_stations = 0;
     private bool door_open = false;
+    private bool[] stationsList;
 
+    private float triggerTimer = 0f;
     private void Awake()
     {
         int counter = 0;
+        stationsList = new bool[numOfStations];
         foreach(SpriteRenderer sprite1 in  GetComponentsInChildren<SpriteRenderer>())
         {
             if (counter > 0)
@@ -28,14 +31,29 @@ public class DoorScript : MonoBehaviour
             }
             counter++;
         }
+        for(int i = 0; i < numOfStations; i++)
+        {
+            stationsList[i] = false;
+        }
         if (cables.Count != 0)
         {
             default_color = cables[0].color;
         }
 
     }
-    void update()
+    void Update()
     {
+        triggerTimer += Time.deltaTime;
+
+        if (triggerTimer >= 0.25f)
+        {
+            triggerTimer = 0f;
+            for(int i = 0; i < numOfStations; i++)
+            {
+                stationsList[i] = false;
+            }
+            counter_stations = 0;
+        }
     }
     public bool DoorState()
     {
@@ -54,12 +72,16 @@ public class DoorScript : MonoBehaviour
         {
             sprite1.color = default_color;
         }
+        for(int i = 0; i < numOfStations; i++)
+        {
+            stationsList[i] = false;
+        }
     }
     
     public IEnumerator CloseDoorIn(float xSec)
     {
         yield return new WaitForSeconds(xSec);
-        //anim.Settrigger("CloseOpenDoor")
+        anim.SetTrigger("CloseOpenDoor");
 
         coli.enabled = true;
         sprite.enabled = true;
@@ -76,13 +98,23 @@ public class DoorScript : MonoBehaviour
     
     public void OpenDoor(float xSeconds = 1)
     {
-        //anim.Settrigger("OpenDoor")
+        anim.SetTrigger("Red Door Opening");
+        stationsList[counter_stations] = true;
         counter_stations++;
+        bool openFlag = true;
+        triggerTimer = 0f;
         //Debug.Log(counter_stations);
-
-        if (always_open)
+        for(int i = 0; i < numOfStations; i++)
         {
-            if (counter_stations == numOfStations)
+
+            if(!stationsList[i])
+            {
+                openFlag = false;
+            }
+        }
+        if(openFlag)
+        {
+            if (always_open)
             {
                 coli.enabled = false;
                 sprite.enabled = false;
@@ -92,15 +124,11 @@ public class DoorScript : MonoBehaviour
                     sprite1.color = new Color(1f, 1f, 1f, 1f);
                 }
             }
-        }
-        else
-        {
-            if (counter_stations == numOfStations)
+            else
             {
                 StartCoroutine(OpenDoorFor(xSeconds));
             }
         }
-
     }
     
     public IEnumerator OpenDoorFor(float xSeconds)
