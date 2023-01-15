@@ -16,7 +16,7 @@ public class DoorScript : MonoBehaviour
     private int counter_stations = 0;
     private bool door_open = false;
     private bool[] stationsList;
-
+    private float time = 0f;
     private float triggerTimer = 0f;
     private void Awake()
     {
@@ -27,7 +27,6 @@ public class DoorScript : MonoBehaviour
             if (counter > 0)
             {
                 cables.Add(sprite1);
-
             }
             counter++;
         }
@@ -62,16 +61,19 @@ public class DoorScript : MonoBehaviour
     public void CloseDoor()
     {
         //Debug.Log("CloseDoor()");
+        anim.SetTrigger("Door_OH");
+        anim.SetTrigger("Door_H");
+        anim.SetTrigger("Door_C");
 
         coli.enabled = true;
-        sprite.enabled = true;
+        //sprite.enabled = true;
         //anim.Settrigger("CloseDoor")
         counter_stations = 0;
         door_open = false;
-        foreach (SpriteRenderer sprite1 in cables)
-        {
-            sprite1.color = default_color;
-        }
+        //foreach (SpriteRenderer sprite1 in cables)
+        //{
+        //    sprite1.color = default_color;
+        //}
         for(int i = 0; i < numOfStations; i++)
         {
             stationsList[i] = false;
@@ -81,7 +83,7 @@ public class DoorScript : MonoBehaviour
     public IEnumerator CloseDoorIn(float xSec)
     {
         yield return new WaitForSeconds(xSec);
-        anim.SetTrigger("CloseOpenDoor");
+        //anim.SetTrigger("CloseOpenDoor");
 
         coli.enabled = true;
         sprite.enabled = true;
@@ -98,13 +100,14 @@ public class DoorScript : MonoBehaviour
     
     public void OpenDoor(float xSeconds = 1)
     {
-        anim.SetTrigger("Red Door Opening");
+        
         stationsList[counter_stations] = true;
         counter_stations++;
         bool openFlag = true;
         triggerTimer = 0f;
+        time = xSeconds;
         //Debug.Log(counter_stations);
-        for(int i = 0; i < numOfStations; i++)
+        for (int i = 0; i < numOfStations; i++)
         {
 
             if(!stationsList[i])
@@ -114,34 +117,47 @@ public class DoorScript : MonoBehaviour
         }
         if(openFlag)
         {
-            if (always_open)
-            {
-                coli.enabled = false;
-                sprite.enabled = false;
-                door_open = true;
-                foreach (SpriteRenderer sprite1 in cables)
-                {
-                    sprite1.color = new Color(1f, 1f, 1f, 1f);
-                }
-            }
-            else
-            {
-                StartCoroutine(OpenDoorFor(xSeconds));
-            }
+            anim.SetTrigger("Door_H");
+            anim.SetTrigger("Door_HO");
+            anim.SetTrigger("Door_O");
+            //if (always_open)
+            //{
+            //    coli.enabled = false;
+            //    sprite.enabled = false;
+            //    door_open = true;
+            //    foreach (SpriteRenderer sprite1 in cables)
+            //    {
+            //        sprite1.color = new Color(1f, 1f, 1f, 1f);
+            //    }
+            //}
+            //else
+            //{
+            //    StartCoroutine(OpenDoorFor(xSeconds));
+            //}
         }
     }
-    
+    public void ReallyOpenDoor()
+    {
+        coli.enabled = false;
+        //sprite.enabled = false;
+        door_open = true;
+        if (!always_open)
+        {
+            StartCoroutine(OpenDoorFor(time));
+        }
+        
+    }
     public IEnumerator OpenDoorFor(float xSeconds)
     {
 
-        coli.enabled = false;
-        sprite.enabled = false;
-        door_open = true;
+        //coli.enabled = false;
+        //sprite.enabled = false;
+        //door_open = true;
         //anim.Settrigger("OpenDoor")
-        foreach (SpriteRenderer sprite1 in cables)
-        {
-            sprite1.color = new Color(1f, 1f, 1f, 1f);
-        }
+        //foreach (SpriteRenderer sprite1 in cables)
+        //{
+        //    sprite1.color = new Color(1f, 1f, 1f, 1f);
+        //}
         yield return new WaitForSeconds(xSeconds);
         CloseDoor();
     }
