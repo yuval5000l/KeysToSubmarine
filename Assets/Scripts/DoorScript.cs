@@ -58,6 +58,7 @@ public class DoorScript : MonoBehaviour
     {
         return door_open;
     }
+
     public void CloseDoor()
     {
         //Debug.Log("CloseDoor()");
@@ -86,7 +87,7 @@ public class DoorScript : MonoBehaviour
         //anim.SetTrigger("CloseOpenDoor");
 
         coli.enabled = true;
-        sprite.enabled = true;
+        //sprite.enabled = true;
     }
     
     public void StopTouchDoor()
