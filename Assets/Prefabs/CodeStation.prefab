@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9037751452991745273}
   m_LocalRotation: {x: 0, y: -0.9991428, z: 0, w: 0.041396096}
   m_LocalPosition: {x: 4.13, y: -2.58, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,15 +109,6 @@ MonoBehaviour:
   stationPopup: {fileID: 0}
   maximalTime: 0.25
   numberOfPlayers: 1
-  spriteR: {fileID: 9037751452991745275}
-  idle: {fileID: 21300000, guid: 5a4c67f21ed671044961eef40f47dbbb, type: 3}
-  HoverSprite: {fileID: 21300000, guid: 235b13f96dd05294384445932170aafd, type: 3}
-  states:
-  - {fileID: 21300000, guid: 758c841778c4e0748897cb576a255947, type: 3}
-  - {fileID: 21300000, guid: efa6ddb9a24811848b89ee176a3bc5fb, type: 3}
-  - {fileID: 21300000, guid: daf6d44e6820b264f8ff3b28a194279b, type: 3}
-  - {fileID: 21300000, guid: db9e7747c25e09747b80617183d76abd, type: 3}
-  - {fileID: 21300000, guid: 75ebfd8a0d915344b8fabcce61fbb461, type: 3}
   MaAnimator: {fileID: 928782072575093499}
   bonus_time: 1
   door: {fileID: 0}
