@@ -60,17 +60,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d6f97189-6987-43b2-bc86-04305760bb9b",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ActionB",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3e2928ce-df07-4790-9955-66f626c70464",
                     "path": "<Keyboard>/b",
                     "interactions": "",

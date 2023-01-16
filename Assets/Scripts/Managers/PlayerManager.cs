@@ -8,6 +8,10 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private OurEventHandler gameManager;
     private PlayerController[] players = new PlayerController[4];
+    private bool[] players_assigned_controllers = new bool[4] { false, false, false, false };
+    private List<InputDevice> players_devices = new List<InputDevice>();
+    private List<int> players_nums = new List<int>();
+
     private int players_in_game = 2;
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,6 @@ public class PlayerManager : MonoBehaviour
             {
                 PlayerInput inputya = player.GetComponent<PlayerInput>();
                 inputya.SwitchCurrentControlScheme("keyboard" + (i + 1).ToString(), inp);
-
             }
             i += 1;
         }
@@ -47,6 +50,42 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddPlayer(InputDevice inp, int num)
+    {
+        InputDevice[] inp2 = new InputDevice[1];
+        inp2[0] = inp;
+        for (int i =0; i < 3; i++) 
+        {
+            if (!players_assigned_controllers[i])
+            {
+                players_assigned_controllers[i] = true;
+                PlayerInput inputya = players[i].GetComponent<PlayerInput>();
+                if (inp == Keyboard.current)
+                {
+                    inputya.SwitchCurrentControlScheme("keyboard" + (i + 1).ToString(), inp);
+                }
+                else
+                {
+                    inputya.SwitchCurrentControlScheme("Gamepad", inp);
+                }
+
+            }
+        }
+    }
+    public void RemovePlayer(InputDevice inp, int num)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (players_devices[i] == inp && players_nums[i] == num)
+            {
+                players_assigned_controllers[i] = false;
+                players_devices.RemoveAt(i);
+                players_nums.RemoveAt(i);
+                return;
+            }
+        }
     }
     //public void AddPlayer()
     //{

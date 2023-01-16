@@ -21,10 +21,10 @@ public class AssignPlayers : MonoBehaviour
     int[] player_num_default = new int[3] { 0, 1, 2 };
     private bool mainMenuActive = true;
     private int num_players = 0;
-    private KeyCode player_1_action = KeyCode.Q;
-    private KeyCode player_2_action = KeyCode.Space;
-    private KeyCode player_3_action = KeyCode.B;
-    private KeyCode player_4_action = KeyCode.M;
+    //private KeyCode player_1_action = KeyCode.Q;
+    //private KeyCode player_2_action = KeyCode.Space;
+    //private KeyCode player_3_action = KeyCode.B;
+    //private KeyCode player_4_action = KeyCode.M;
     //[SerializeField] private bool action_gamepad1 = false;
     [SerializeField] private bool action_spacebar = false;
     [SerializeField] private bool action_B = false;
@@ -90,7 +90,6 @@ public class AssignPlayers : MonoBehaviour
             players_devices_num.Add(num);
             AddPlayerAnimation();
         }
-        
     }
     private void RemovePlayer(InputDevice inp, int num)
     {

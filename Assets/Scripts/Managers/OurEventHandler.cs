@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.InputSystem;
 
 public class OurEventHandler : MonoBehaviour
 {
@@ -10,6 +10,9 @@ public class OurEventHandler : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private NextLevelCanva nextlevel;
     private List<PlayerController> players = new List<PlayerController>();
+    private List<InputDevice> player_devices = new List<InputDevice>();
+    private List<int> player_nums = new List<int>();
+
     private int players_in_game = 0;
     private static int levelNumber = 1;
     [SerializeField] private int MaxlevelNum = 3;
@@ -47,16 +50,25 @@ public class OurEventHandler : MonoBehaviour
             }
         }
     }
-    public void AddPlayer(PlayerController player)
+
+    public void AddPlayer(InputDevice inp, int num)
     {
-        if (players.Count < 3)
-        {
-            players.Add(player);
-        }
+        playerManager.AddPlayer(inp, num);
+        //if (players.Count < 3)
+        //{
+        //    players.Add(player);
+        //}
     }
-    public void RemovePlayer(PlayerController player)
+    public void RemovePlayer(InputDevice inp, int num)
     {
-        players.Remove(player);
+        for (int i = 0 ; i < player_devices.Count; i++) 
+        { 
+            if (player_devices[i] == inp && player_nums[i] == num)
+            {
+                playerManager.RemovePlayer(inp, num);
+            }
+        }
+        //players.Remove(player);
     }
     public int getPlayersInGame()
     {
