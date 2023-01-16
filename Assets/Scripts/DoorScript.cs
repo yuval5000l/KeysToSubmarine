@@ -86,12 +86,15 @@ public class DoorScript : MonoBehaviour
 
     public void CloseDoor()
     {
-        anim.SetTrigger("Door_OH");
-        anim.SetTrigger("Door_H");
-        anim.SetTrigger("Door_C");
+        if (!door_idle_open_time)
+        {
+            anim.SetTrigger("Door_OH");
+            anim.SetTrigger("Door_H");
+            anim.SetTrigger("Door_C");
 
-        coli.enabled = true;
-        door_open = false;
+            coli.enabled = true;
+            door_open = false;
+        }
     }
     public void StopOpenDoor(GameObject obj)
     {
