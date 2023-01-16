@@ -37,7 +37,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void AddPlayer()
     {
-        gameManager.AddPlayer();
+        //gameManager.AddPlayer();
         num_players = gameManager.getNumOfPlayers();
         num_players_text.text = num_players.ToString();
 
@@ -45,7 +45,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void RemovePlayer()
     {
-        gameManager.RemovePlayer();
+        //gameManager.RemovePlayer();
         num_players = gameManager.getNumOfPlayers();
         num_players_text.text = num_players.ToString();
 

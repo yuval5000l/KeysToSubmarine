@@ -246,6 +246,105 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "AssignPlayerMap",
+            "id": "35ed430b-e208-4b22-8fb1-1792839af963",
+            "actions": [
+                {
+                    "name": "Keyboard1",
+                    "type": "Button",
+                    "id": "314db267-bfe3-4bb0-ae67-6273711962d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Keyboard2",
+                    "type": "Button",
+                    "id": "bc88acd6-5717-409e-8e85-1a51eb470f8b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Keyboard3",
+                    "type": "Button",
+                    "id": "9fa7c705-85da-4b19-ad25-eca852a78293",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GamePad1",
+                    "type": "Button",
+                    "id": "8beb7467-981b-40ae-b93a-26e98f508dda",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "17ceb715-92cd-4ed6-8ae7-ea90871edb4c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57eb16ac-9d9e-4a5f-9182-db15a8fc9ddf",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2db23719-51db-4bc0-81ce-a7c5995afe2d",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Keyboard3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a9de516-74e2-4317-9d3e-c801cd22042b",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GamePad1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4af23fd0-cc92-42e2-9abf-3c8dbd182da2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GamePad1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
@@ -286,6 +385,22 @@
             "name": "Keyboard3",
             "bindingGroup": "Keyboard3",
             "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "AssignPlayer",
+            "bindingGroup": "AssignPlayer",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
                 {
                     "devicePath": "<Keyboard>",
                     "isOptional": true,
