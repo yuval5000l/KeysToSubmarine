@@ -9,7 +9,6 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private TMP_Text num_players_text;
     [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
-    private bool mainMenuActive = true;
     private int num_players;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +30,22 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("ChooseNumPlayers");
     }
 
+    public void To1()
+    {
+        SceneManager.LoadScene("1");
+    }
+    public void To2()
+    {
+        SceneManager.LoadScene("2");
+    }
+    public void To3()
+    {
+        SceneManager.LoadScene("3");
+    }
+    public void ToJanitorSelect()
+    {
+        SceneManager.LoadScene("Janitor select");
+    }
     public void ToLore()
     {
         SceneManager.LoadScene("Lore");
@@ -51,46 +66,17 @@ public class MainMenuScript : MonoBehaviour
 
     }
 
-    public bool getMainMenuActive()
-    {
-        return mainMenuActive;
-    }
     // Update is called once per frame
     void Update()
     {
-        //if (Input.anyKey)
-        //{
-        //    if (startPage)
-        //    {
-        //        startPage = false;
-        //        //GoToLore();
-        //    }
-        //}
     }
 
-    //public void GoToLore()
-    //{
-    //    mainmenu.setactive(false);
-    //    lore.setactive(true);
-    //}
 
-    //public void gotomainmenu()
-    //{
-    //    mainmenu.setactive(true);
-    //    lore.setactive(false);
-    //    startpage = true;
-
-    //}
-    //public void gototutorial()
-    //{
-    //    lore.setactive(false);
-    //    tutorial.setactive(true);
-    //}
-    //public void startanimation()
-    //{
-    //    fade_out.settrigger("fadeout");
-    //}
-
+    public void Resume()
+    {
+        MainMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("StartScreen");
