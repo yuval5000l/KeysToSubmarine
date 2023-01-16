@@ -43,18 +43,18 @@ public class StationScript : MonoBehaviour
 
     //[SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
-    protected GameObject[] numOfPlayersIndicator = new GameObject[4];
+    //protected GameObject[] numOfPlayersIndicator = new GameObject[4];
 
     // Start is called before the first frame update
     protected void Start()
     {
         
-        for (int i = 0; i < 4; i++)
-        {
-            numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
-            numOfPlayersIndicator[i].SetActive(false);
-            numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-        }
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
+        //    numOfPlayersIndicator[i].SetActive(false);
+        //    numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
+        //}
         stationPopup = Instantiate(Resources.Load("AdvancedRedBall")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);

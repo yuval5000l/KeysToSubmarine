@@ -6,13 +6,9 @@ using UnityEngine;
 public class CodeStation : StationScript
 
 {
-    [SerializeField] private SpriteRenderer spriteR;
-    [SerializeField] private Sprite idle;
-    [SerializeField] private Sprite HoverSprite;
 
-    [SerializeField] private Sprite[] states;
     List<PlayerController> players_pressed = new List<PlayerController>();
-
+    [SerializeField] private Animator MaAnimator;
     [SerializeField] private float bonus_time = 1f;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
@@ -24,7 +20,6 @@ public class CodeStation : StationScript
     {
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        spriteR.sprite = idle;
     }
     private new void Start()
     {
@@ -32,7 +27,7 @@ public class CodeStation : StationScript
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1f, 0);
         if (always_active)
         {
-            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
         }
     }
 
@@ -42,22 +37,33 @@ public class CodeStation : StationScript
         //temporary fix for presKeyInRow, needs better solution
         if (station_active)
         {
+            foreach (PlayerController player in players_in_station)
+            {
+                if (player.playerPressedOneTime() && !players_pressed.Contains(player))
+                {
+                    player.AnimationWork(Vector3.zero);
+                }
+            }
             if (stationExplainer)
             {
                 stationExplainer.SetActive(true);
             }
+            if (players_in_station.Count > 0)
+            {
+                MaAnimator.SetBool("Idle", false);
+                MaAnimator.SetBool("Hover", true);
+            }
+            else
+            {
+                MaAnimator.SetBool("Idle", true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
-                if (press_in_a_row == 0)
-                {
-                    spriteR.sprite = HoverSprite;
-                }
                 missions[mission_index]();
             }
             else
             {
                 PlayerAnimationIdle();
-                spriteR.sprite = idle;
             }
         }
         else
@@ -67,7 +73,6 @@ public class CodeStation : StationScript
                 stationExplainer.SetActive(false);
             }
             PlayerAnimationIdle();
-            spriteR.sprite = idle;
         }
         if (timeWindowToPress >= maximalTime)
         {
@@ -93,13 +98,15 @@ public class CodeStation : StationScript
         {
             PlayerAnimationWork();
             press_in_a_row += 1;
-            spriteR.sprite = states[press_in_a_row - 1];
+            MaAnimator.SetTrigger("Press");
+            MaAnimator.SetBool("Idle", true);
+            MaAnimator.SetBool("Hover", false);
+
             players_pressed.Clear();
         }
 
         if (press_in_a_row == pressToFinish)
         {
-            spriteR.sprite = states[press_in_a_row - 1];
             station_active = false;
             deActivatePopup();
             if (press_in_a_row == pressToFinish)
@@ -111,7 +118,7 @@ public class CodeStation : StationScript
             }
             if (door && door_activated)
             {
-                door.OpenDoor(DoorOpenTime);
+                door.OpenDoor(gameObject, DoorOpenTime);
                 door_activated = false;
             }
         }
@@ -121,7 +128,6 @@ public class CodeStation : StationScript
     public override void setMissionIndex(int i)
     {
         mission_index = i;
-        spriteR.sprite = idle;
         station_active = true;
         activatePopup();
     }
