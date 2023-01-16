@@ -12,7 +12,7 @@ public class CodeStation : StationScript
 
     [SerializeField] private Sprite[] states;
     List<PlayerController> players_pressed = new List<PlayerController>();
-
+    [SerializeField] private Animator MaAnimator;
     [SerializeField] private float bonus_time = 1f;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
@@ -24,7 +24,7 @@ public class CodeStation : StationScript
     {
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        spriteR.sprite = idle;
+        //spriteR.sprite = idle;
     }
     private new void Start()
     {
@@ -46,18 +46,29 @@ public class CodeStation : StationScript
             {
                 stationExplainer.SetActive(true);
             }
+            if (players_in_station.Count > 0)
+            {
+                //spriteR.sprite = HoverSprite;
+                MaAnimator.SetBool("Idle", false);
+                MaAnimator.SetBool("Hover", true);
+            }
+            else
+            {
+                MaAnimator.SetBool("Idle", true);
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
-                if (press_in_a_row == 0)
-                {
-                    spriteR.sprite = HoverSprite;
-                }
+                //if (press_in_a_row == 0)
+                //{
+
+                //}
                 missions[mission_index]();
             }
             else
             {
                 PlayerAnimationIdle();
-                spriteR.sprite = idle;
+                //MaAnimator.SetTrigger("idle");
+                //spriteR.sprite = idle;
             }
         }
         else
@@ -67,7 +78,7 @@ public class CodeStation : StationScript
                 stationExplainer.SetActive(false);
             }
             PlayerAnimationIdle();
-            spriteR.sprite = idle;
+            //spriteR.sprite = idle;
         }
         if (timeWindowToPress >= maximalTime)
         {
@@ -93,7 +104,11 @@ public class CodeStation : StationScript
         {
             PlayerAnimationWork();
             press_in_a_row += 1;
-            spriteR.sprite = states[press_in_a_row - 1];
+            MaAnimator.SetTrigger("Press");
+            MaAnimator.SetBool("Idle", true);
+            MaAnimator.SetBool("Hover", false);
+
+            //spriteR.sprite = states[press_in_a_row - 1];
             players_pressed.Clear();
         }
 
