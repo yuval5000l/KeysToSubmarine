@@ -47,10 +47,10 @@ public class AssignPlayers : MonoBehaviour
         players_input = GetComponent<PlayerInput>();
         players_input.SwitchCurrentControlScheme("AssignPlayer");
         players_input.SwitchCurrentActionMap("AssignPlayerMap");
-        var myAction = new InputAction(binding: "<Keyboard>/#(g)");
-        myAction.performed += ((action) => Debug.Log($"Button {action.ToString()} pressed!"));
-        myAction.Enable();
-        myAction1 = myAction;
+        //var myAction = new InputAction(binding: "<Keyboard>/#(g)");
+        //myAction.performed += ((action) => Debug.Log($"Button {action.ToString()} pressed!"));
+        //myAction.Enable();
+        //myAction1 = myAction;
         //InputSystem.onAnyButtonPress.CallOnce(ctrl => Debug.Log($"Button {ctrl} was pressed"));
     //}
 }
@@ -61,7 +61,7 @@ public class AssignPlayers : MonoBehaviour
 
     private void AddPlayer(string name, string num)
     {
-
+        //gameManager
     }
     private void RemovePlayer(string name, string num)
     {
