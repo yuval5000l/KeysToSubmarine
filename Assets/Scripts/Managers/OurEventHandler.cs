@@ -54,7 +54,10 @@ public class OurEventHandler : MonoBehaviour
             }
         }
     }
-
+    public void ClearLists()
+    {
+        playerManager.ClearLists();
+    }
     public void AddPlayer(InputDevice inp, int num)
     {
         playerManager.AddToLists(inp, num);

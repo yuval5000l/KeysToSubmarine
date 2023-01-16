@@ -36,17 +36,9 @@ public class AssignPlayers : MonoBehaviour
         players_input = GetComponent<PlayerInput>();
         players_input.SwitchCurrentControlScheme("AssignPlayer");
         players_input.SwitchCurrentActionMap("AssignPlayerMap");
-        //var myAction = new InputAction(binding: "<Keyboard>/#(g)");
-        //myAction.performed += ((action) => Debug.Log($"Button {action.ToString()} pressed!"));
-        //myAction.Enable();
-        //myAction1 = myAction;
-        //InputSystem.onAnyButtonPress.CallOnce(ctrl => Debug.Log($"Button {ctrl} was pressed"));
-    //}
-}
-    //private void OnEnable()
-    //{
-    //    myAction1.Enable();
-    //}
+        gameManager.ClearLists();
+
+    }
     private void AddPlayerAnimation()
     {
         //Color goodColor = new Color(1f, 1f, 1f, 1f);
@@ -246,8 +238,6 @@ public class AssignPlayers : MonoBehaviour
                     }
                 }
             }
-            //gameManager.Setlevel(1);
-            //gameManager.Nextlevel(-1);
             gameManager.Nextlevel(-1);
         }
     }
