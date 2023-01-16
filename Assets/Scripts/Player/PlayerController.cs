@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private bool[] levelsOfRadioActivity;
     private bool radio_active_state = false;
     private SpriteRenderer sprite;
+    private SpriteRenderer shadow_sprite;
+    private int behind_counter = 0;
     private Material default_material;
     private Material radio_active_material;
     [SerializeField] private Image radioActiveIndicator;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        shadow_sprite = GetComponentInChildren<SpriteRenderer>();
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
         levelsOfRadioActivity = new bool[] {false,false,false};
@@ -299,7 +302,15 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Border")
+        {
+            sprite.sortingOrder = 1;
+            shadow_sprite.sortingOrder = 1;
+            behind_counter += 1;
+        }
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -336,6 +347,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Border")
+        {
+            behind_counter -= 1;
+            if (behind_counter == 0)
+            {
+                sprite.sortingOrder = 4;
+                shadow_sprite.sortingOrder = 3;
+            }   
+        }
+    }
     void checkRadioActivity()
     {
         if(radioActivity >= 10000 && !levelsOfRadioActivity[2])

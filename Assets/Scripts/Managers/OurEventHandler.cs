@@ -9,6 +9,8 @@ public class OurEventHandler : MonoBehaviour
     [SerializeField] private static int NumberOfPlayers = 3;
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private NextLevelCanva nextlevel;
+    private List<PlayerController> players = new List<PlayerController>();
+    private int players_in_game = 0;
     private static int levelNumber = 1;
     [SerializeField] private int MaxlevelNum = 3;
     private CameraZoom zoom;
@@ -45,21 +47,25 @@ public class OurEventHandler : MonoBehaviour
             }
         }
     }
-    public void AddPlayer()
+    public void AddPlayer(PlayerController player)
     {
-        if (NumberOfPlayers < 4)
+        if (players.Count < 3)
         {
-            NumberOfPlayers += 1;
+            players.Add(player);
         }
     }
-    public void RemovePlayer()
+    public void RemovePlayer(PlayerController player)
     {
-        if (NumberOfPlayers > 2)
-        {
-            NumberOfPlayers -= 1;
-        }
+        players.Remove(player);
     }
-
+    public int getPlayersInGame()
+    {
+        return players_in_game;
+    }
+    public void setPlayersInGame(int num)
+    {
+        players_in_game+= num;
+    }
     public void Setlevel(int numlevel)
     {
         levelNumber = numlevel;

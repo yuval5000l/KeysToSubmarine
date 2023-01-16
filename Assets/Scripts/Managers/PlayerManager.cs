@@ -16,6 +16,10 @@ public class PlayerManager : MonoBehaviour
         players_in_game = gameManager.getNumOfPlayers();
         int i = 0;
         InputDevice[] inp = new InputDevice[1];
+        foreach (InputDevice device in InputSystem.devices)
+        {
+
+        }
         inp[0] = Keyboard.current;
         foreach (PlayerController player in GetComponentsInChildren<PlayerController>())
         {
