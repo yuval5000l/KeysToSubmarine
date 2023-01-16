@@ -19,6 +19,7 @@ public class DoorScript : MonoBehaviour
     private bool[] stationsList;
     private float time = 0f;
     private float triggerTimer = 0f;
+    private bool half_open = false;
     private void Awake()
     {
         int counter = 0;
@@ -55,14 +56,33 @@ public class DoorScript : MonoBehaviour
             }
             counter_stations = 0;
         }
-        if (tiles_active.Count >= numOfStations)
+        if (tiles_active.Count == 0 && half_open)
+        {
+            anim.SetTrigger("Door_C");
+            half_open = false;
+        }
+        else if (tiles_active.Count < numOfStations && tiles_active.Count > 0)
+        {
+            if (!half_open)
+            {
+                anim.SetTrigger("Door_H");
+                half_open = true;
+            }
+        }
+        else if (tiles_active.Count >= numOfStations)
         {
             if (!door_open && !door_idle_open_time)
             {
-                anim.SetTrigger("Door_H");
+                if (!half_open)
+                {
+                    anim.SetTrigger("Door_H");
+                }
+                else
+                {
+                    half_open = true;
+                }
                 anim.SetTrigger("Door_HO");
                 anim.SetTrigger("Door_O");
-
             }
             door_open = true;
             door_idle_open_time = true;
@@ -89,7 +109,6 @@ public class DoorScript : MonoBehaviour
             anim.SetTrigger("Door_OH");
             anim.SetTrigger("Door_H");
             anim.SetTrigger("Door_C");
-
             coli.enabled = true;
             door_open = false;
         }
