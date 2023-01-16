@@ -11,10 +11,12 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private bool always_open = false;
     [SerializeField] private int numOfStations = 1;
     [SerializeField] private bool permanent_changes = false;
+    private List<GameObject> tiles_active = new List<GameObject>();
     private List<SpriteRenderer> cables = new List<SpriteRenderer>();
     private Color default_color;
     private int counter_stations = 0;
     private bool door_open = false;
+    private bool door_idle_open_time = false;
     private bool[] stationsList;
     private float time = 0f;
     private float triggerTimer = 0f;
@@ -53,6 +55,29 @@ public class DoorScript : MonoBehaviour
             }
             counter_stations = 0;
         }
+        if (tiles_active.Count >= numOfStations)
+        {
+            if (!door_open && !door_idle_open_time)
+            {
+                //Debug.Log("HERE");
+                anim.SetTrigger("Door_H");
+                anim.SetTrigger("Door_HO");
+                anim.SetTrigger("Door_O");
+                //coli.enabled = false;
+
+            }
+            door_open = true;
+            door_idle_open_time = true;
+
+        }
+        else if (door_idle_open_time)
+        {
+            if (!always_open)
+            {
+                StartCoroutine(OpenDoorFor(time));
+            }
+            door_idle_open_time = false;
+        }
     }
     public bool DoorState()
     {
@@ -61,33 +86,21 @@ public class DoorScript : MonoBehaviour
 
     public void CloseDoor()
     {
-        //Debug.Log("CloseDoor()");
         anim.SetTrigger("Door_OH");
         anim.SetTrigger("Door_H");
         anim.SetTrigger("Door_C");
 
         coli.enabled = true;
-        //sprite.enabled = true;
-        //anim.Settrigger("CloseDoor")
-        counter_stations = 0;
         door_open = false;
-        //foreach (SpriteRenderer sprite1 in cables)
-        //{
-        //    sprite1.color = default_color;
-        //}
-        for(int i = 0; i < numOfStations; i++)
-        {
-            stationsList[i] = false;
-        }
     }
-    
+    public void StopOpenDoor(GameObject obj)
+    {
+        tiles_active.Remove(obj);
+    }
     public IEnumerator CloseDoorIn(float xSec)
     {
         yield return new WaitForSeconds(xSec);
-        //anim.SetTrigger("CloseOpenDoor");
-
         coli.enabled = true;
-        //sprite.enabled = true;
     }
     
     public void StopTouchDoor()
@@ -96,69 +109,24 @@ public class DoorScript : MonoBehaviour
         {
             counter_stations--;
         }
-        //Debug.Log(counter_stations);
     }
     
-    public void OpenDoor(float xSeconds = 1)
+    public void OpenDoor(GameObject obj, float xSeconds = 1)
     {
-        
-        stationsList[counter_stations] = true;
-        counter_stations++;
-        bool openFlag = true;
-        triggerTimer = 0f;
-        time = xSeconds;
-        //Debug.Log(counter_stations);
-        for (int i = 0; i < numOfStations; i++)
+        if (tiles_active.Contains(obj))
         {
 
-            if(!stationsList[i])
-            {
-                openFlag = false;
-            }
+            return;
         }
-        if(openFlag)
-        {
-            anim.SetTrigger("Door_H");
-            anim.SetTrigger("Door_HO");
-            anim.SetTrigger("Door_O");
-            //if (always_open)
-            //{
-            //    coli.enabled = false;
-            //    sprite.enabled = false;
-            //    door_open = true;
-            //    foreach (SpriteRenderer sprite1 in cables)
-            //    {
-            //        sprite1.color = new Color(1f, 1f, 1f, 1f);
-            //    }
-            //}
-            //else
-            //{
-            //    StartCoroutine(OpenDoorFor(xSeconds));
-            //}
-        }
+        tiles_active.Add(obj);
+        time = xSeconds;
     }
     public void ReallyOpenDoor()
     {
         coli.enabled = false;
-        //sprite.enabled = false;
-        door_open = true;
-        if (!always_open)
-        {
-            StartCoroutine(OpenDoorFor(time));
-        }
-        
     }
     public IEnumerator OpenDoorFor(float xSeconds)
     {
-
-        //coli.enabled = false;
-        //sprite.enabled = false;
-        //door_open = true;
-        //anim.Settrigger("OpenDoor")
-        //foreach (SpriteRenderer sprite1 in cables)
-        //{
-        //    sprite1.color = new Color(1f, 1f, 1f, 1f);
-        //}
         yield return new WaitForSeconds(xSeconds);
         CloseDoor();
     }

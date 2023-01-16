@@ -20,7 +20,7 @@ public class LeverStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         if (always_active)
         {
-            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
         }
 
     }
@@ -114,7 +114,7 @@ public class LeverStation : StationScript
             if (door != null)
             {
                 // door.OpenDoor();
-                door.OpenDoor(DoorOpenTime);
+                door.OpenDoor(gameObject, DoorOpenTime);
             }
             
             if (!always_active) // otherwise they get points for opening the door ... 

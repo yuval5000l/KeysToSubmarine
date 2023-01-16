@@ -118,6 +118,15 @@ public class PlayerController : MonoBehaviour
         return one_time_action_pressed;
     }
 
+
+    public void get_on_tile()
+    {
+        rb.AddForce(Vector2.up* 1f, ForceMode2D.Impulse);
+    }
+    public void get_off_tile()
+    {
+        rb.AddForce(Vector2.down * 1f, ForceMode2D.Impulse);
+    }
     // Update is called once per frame
     void Update()
     {

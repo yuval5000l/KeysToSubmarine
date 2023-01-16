@@ -94,7 +94,7 @@ public class ShowerStation : StationScript
                 }
                 if (door && door_activated)
                 {
-                    door.OpenDoor();
+                    door.OpenDoor(gameObject);
                     door_activated = false;
                 }
             }

@@ -27,7 +27,7 @@ public class CodeStation : StationScript
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1f, 0);
         if (always_active)
         {
-            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
         }
     }
 
@@ -118,7 +118,7 @@ public class CodeStation : StationScript
             }
             if (door && door_activated)
             {
-                door.OpenDoor(DoorOpenTime);
+                door.OpenDoor(gameObject, DoorOpenTime);
                 door_activated = false;
             }
         }
