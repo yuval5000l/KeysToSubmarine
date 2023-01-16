@@ -132,6 +132,10 @@ public class AssignPlayers : MonoBehaviour
                 action_gamepad1 = true;
             }
         }
+        else
+        {
+            Debug.Log(InputSystem.GetDevice<InputDevice>());
+        }
     }
     void Update()
     {

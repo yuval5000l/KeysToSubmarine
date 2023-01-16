@@ -266,7 +266,7 @@
                     "id": "bc88acd6-5717-409e-8e85-1a51eb470f8b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -275,7 +275,7 @@
                     "id": "9fa7c705-85da-4b19-ad25-eca852a78293",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -284,7 +284,7 @@
                     "id": "8beb7467-981b-40ae-b93a-26e98f508dda",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
