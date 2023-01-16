@@ -16,10 +16,14 @@ public class PlayerManager : MonoBehaviour
         players_in_game = gameManager.getNumOfPlayers();
         int i = 0;
         InputDevice[] inp = new InputDevice[1];
-        foreach (InputDevice device in InputSystem.devices)
-        {
-
-        }
+        //foreach (InputDevice device in InputSystem.devices)
+        //{
+        //    Debug.Log(device);
+            //if (device == Keyboard.current)
+            //{
+            //    Debug.Log("HERE"); WORKS!
+            //}
+        //}
         inp[0] = Keyboard.current;
         foreach (PlayerController player in GetComponentsInChildren<PlayerController>())
         {
@@ -32,7 +36,8 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 PlayerInput inputya = player.GetComponent<PlayerInput>();
-                inputya.SwitchCurrentControlScheme("keyboard"+(i+1).ToString(), inp);
+                inputya.SwitchCurrentControlScheme("keyboard" + (i + 1).ToString(), inp);
+
             }
             i += 1;
         }
