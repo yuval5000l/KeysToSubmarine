@@ -18,7 +18,6 @@ public class AssignPlayers : MonoBehaviour
     [SerializeField] List<InputDevice> players_devices = new List<InputDevice>();
     List<int> players_devices_num = new List<int>();
     List<int> player_num = new List<int>();
-    int[] player_num_default = new int[3] { 0, 1, 2 };
     private bool mainMenuActive = true;
     private int num_players = 0;
     //private KeyCode player_1_action = KeyCode.Q;
@@ -231,16 +230,6 @@ public class AssignPlayers : MonoBehaviour
     }
     void Update()
     {
-        //InputSystem.onEvent.Where(e => e.HasButtonPress())
-        //.CallOnce(eventPtr =>
-        //{
-        //    foreach (var button in l.eventPtr.GetAllButtonPresses())
-        //        Debug.Log($"Button {button} was pressed");
-        //});
-        //InputSystem.onAnyButtonPress.Call();
-        //m_ButtonPressListener = InputSystem.onAnyButtonPress;
-        //Debug.Log(m_ButtonPressListener);
-        //Debug.Log(InputSystem.onAnyButtonPress.ToString());
         if (players_devices.Count == gameManager.getNumOfPlayers())
         {
             button.enabled = true;
@@ -252,78 +241,7 @@ public class AssignPlayers : MonoBehaviour
             button.image.color = new Color(1f, 1f, 1f, 0.2f);
         }
 
-        //if (num_players == 0)
-        //{
-        //    if (Input.GetKeyDown(player_1_action))
-        //    {
-        //        num_players += 1;
-        //        player1.color = new Color(1f, 1f, 1f, 1f);
-        //    }
-        //}
-        //else if (num_players == 1)
-        //{
-        //    if (Input.GetKeyDown(player_2_action))
-        //    {
-        //        num_players += 1;
-        //        player2.color = new Color(1f, 1f, 1f, 1f);
-        //    }
-        //    if (Input.GetKeyDown(player_1_action))
-        //    {
-        //        num_players -= 1;
-        //        player1.color = new Color(1f, 1f, 1f, 0.5f);
-        //    }
-        //}
-        //else if (num_players == 2)
-        //{
-        //    if (Input.GetKeyDown(player_3_action))
-        //    {
-        //        num_players += 1;
-        //        player3.color = new Color(1f, 1f, 1f, 1f);
-        //    }
-        //    if (Input.GetKeyDown(player_2_action))
-        //    {
-        //        num_players -= 1;
-        //        player2.color = new Color(1f, 1f, 1f, 0.5f);
-        //    }
-        //}
-        //else if (num_players == 3)
-        //{
-        //    if (Input.GetKeyDown(player_4_action))
-        //    {
-        //        num_players += 1;
-        //    }
-        //    if (Input.GetKeyDown(player_3_action))
-        //    {
-        //        num_players -= 1;
-        //        player3.color = new Color(1f, 1f, 1f, 0.5f);
-        //    }
-        //}
-        //else if (num_players == 3)
-        //{
-        //    if (Input.GetKeyDown(player_4_action))
-        //    {
-        //        num_players -= 1;
-        //    }
-        //}
-        //if (num_players >= 2)
-        //{
-        //    button.enabled = true;
-        //    button.image.color = new Color(1f, 1f, 1f, 1f);
-
-        //    while (num_players > gameManager.getNumOfPlayers())
-        //    {
-        //        gameManager.AddPlayer();
-        //    }
-        //    while (num_players < gameManager.getNumOfPlayers())
-        //    {
-        //        gameManager.RemovePlayer();
-        //    }
-        //}
-        //else
-        //{
-        //    button.enabled = false;
-        //    button.image.color = new Color(1f, 1f, 1f, 0.2f);
-        //}
+        
         num_players_text.text = num_players.ToString();
 
 
@@ -331,8 +249,18 @@ public class AssignPlayers : MonoBehaviour
 
     public void StartGame()
     {
-        if(num_players >= 2)
+        if(num_players == 3)
         {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (player_num[j] == i)
+                    {
+                        gameManager.AddPlayer(players_devices[j], players_devices_num[j]);
+                    }
+                }
+            }
             gameManager.Setlevel(1);
             gameManager.Nextlevel(-1);
         }
