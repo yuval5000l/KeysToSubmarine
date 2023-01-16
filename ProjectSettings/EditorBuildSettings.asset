@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/PreviousScenes/SampleSceneFida.unity
     guid: e3ab96e1b664fb144ac85bb495c3dce3
   - enabled: 1
-    path: Assets/Scenes/Screens/EndScreenLost.unity
+    path: Assets/Scenes/Screens/Dead.unity
     guid: e2b6bd20277b4cf48969b7ee96811801
   - enabled: 1
-    path: Assets/Scenes/Screens/EndScreenWon.unity
+    path: Assets/Scenes/Screens/Success.unity
     guid: c8e04afd494b41c4d9552924a9338285
   - enabled: 0
     path: 
@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Screens/ChooseNumPlayers.unity
     guid: 187875a9b1d5a4e43b23f8a7b28fbf1f
   - enabled: 1
-    path: Assets/Scenes/Screens/Lore.unity
+    path: Assets/Scenes/Screens/3.unity
     guid: 6b877d9299c5f474c9be3a2aa8111041
   - enabled: 1
     path: Assets/Scenes/PreviousScenes/Oldlevel 1.unity
