@@ -409,10 +409,14 @@ MonoBehaviour:
   num_players_text: {fileID: 1313214655}
   gameManager: {fileID: 1101982306}
   MainMenu: {fileID: 1938675026}
-  player1: {fileID: 916122563}
-  player2: {fileID: 21461389}
-  player3: {fileID: 816023214}
+  players_animators:
+  - {fileID: 916122563}
+  - {fileID: 21461389}
+  - {fileID: 816023214}
   button: {fileID: 1556529065}
+  action_spacebar: 0
+  action_B: 0
+  action_Q: 0
 --- !u!114 &155792856
 MonoBehaviour:
   m_ObjectHideFlags: 0
