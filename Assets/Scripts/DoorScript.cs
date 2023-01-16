@@ -6,8 +6,7 @@ public class DoorScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Collider2D coli;
-    [SerializeField] private SpriteRenderer sprite;
-    [SerializeField] private Animator anim;
+    private Animator anim;
     [SerializeField] private bool always_open = false;
     [SerializeField] private int numOfStations = 1;
     [SerializeField] private bool permanent_changes = false;
@@ -40,6 +39,7 @@ public class DoorScript : MonoBehaviour
         {
             default_color = cables[0].color;
         }
+        anim = GetComponent<Animator>();
 
     }
     void Update()
@@ -59,11 +59,9 @@ public class DoorScript : MonoBehaviour
         {
             if (!door_open && !door_idle_open_time)
             {
-                //Debug.Log("HERE");
                 anim.SetTrigger("Door_H");
                 anim.SetTrigger("Door_HO");
                 anim.SetTrigger("Door_O");
-                //coli.enabled = false;
 
             }
             door_open = true;
@@ -118,7 +116,6 @@ public class DoorScript : MonoBehaviour
     {
         if (tiles_active.Contains(obj))
         {
-
             return;
         }
         tiles_active.Add(obj);

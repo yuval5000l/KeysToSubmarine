@@ -8,7 +8,7 @@ public class CodeStation : StationScript
 {
 
     List<PlayerController> players_pressed = new List<PlayerController>();
-    [SerializeField] private Animator MaAnimator;
+    private Animator MaAnimator;
     [SerializeField] private float bonus_time = 1f;
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
@@ -20,6 +20,7 @@ public class CodeStation : StationScript
     {
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
+        MaAnimator.GetComponent<Animator>();
     }
     private new void Start()
     {
