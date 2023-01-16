@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
     private bool idle = true;
 
     // In charge of speed & stuff
+    [Header("Player Speed")]
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
     private Vector2 movement;
 
     //[SerializeField] private TMP_Text debug_Text;
-
+    [Header("Player RadioActive")]
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
     private bool radio_active_state = false;
@@ -48,7 +50,6 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
-        shadow_sprite = GetComponentInChildren<SpriteRenderer>();
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
         levelsOfRadioActivity = new bool[] {false,false,false};
@@ -62,7 +63,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(inputya.devices);
         //inputya.SwitchCurrentControlScheme("keyboard2");
     }
+    private void Start()
+    {
+        shadow_sprite = GetComponentsInChildren<SpriteRenderer>()[1];
 
+    }
     public void OnMove(InputValue value)
     {
         Vector2 movement_tmp = value.Get<Vector2>();
@@ -307,7 +312,9 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Border")
         {
             sprite.sortingOrder = 1;
-            shadow_sprite.sortingOrder = 1;
+            shadow_sprite.enabled = false;
+            //shadow_sprite.sortingOrder = 1;
+
             behind_counter += 1;
         }
     }
@@ -355,8 +362,10 @@ public class PlayerController : MonoBehaviour
             if (behind_counter == 0)
             {
                 sprite.sortingOrder = 4;
-                shadow_sprite.sortingOrder = 3;
-            }   
+                shadow_sprite.enabled = true;
+
+                //shadow_sprite.sortingOrder = 3;
+            }
         }
     }
     void checkRadioActivity()

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7009798666736024982}
   - component: {fileID: 7009798666736024981}
   - component: {fileID: 7009798666736024980}
+  - component: {fileID: 3697992421184581975}
+  - component: {fileID: 7967479587017359419}
   m_Layer: 0
   m_Name: Orange Door - Side
   m_TagString: Untagged
@@ -105,3 +107,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3697992421184581975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009798666736025003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee813820ef07264995920dc74d639ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coli: {fileID: 7967479587017359419}
+  always_open: 0
+  numOfStations: 1
+  permanent_changes: 0
+--- !u!61 &7967479587017359419
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009798666736025003}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008977413, y: 0.035908327}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.48, y: 1.48}
+    newSize: {x: 1.48, y: 1.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.097527504, y: 0.6900157}
+  m_EdgeRadius: 0

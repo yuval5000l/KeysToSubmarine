@@ -20,7 +20,7 @@ public class CodeStation : StationScript
     {
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        MaAnimator.GetComponent<Animator>();
+        MaAnimator = GetComponent<Animator>();
     }
     private new void Start()
     {
@@ -56,6 +56,7 @@ public class CodeStation : StationScript
             }
             else
             {
+                MaAnimator.SetBool("Hover", false);
                 MaAnimator.SetBool("Idle", true);
             }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])

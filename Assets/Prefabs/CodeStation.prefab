@@ -109,12 +109,11 @@ MonoBehaviour:
   stationPopup: {fileID: 0}
   maximalTime: 0.25
   numberOfPlayers: 1
-  MaAnimator: {fileID: 928782072575093499}
   bonus_time: 1
   door: {fileID: 0}
   DoorOpenTime: 1
   stationExplainer: {fileID: 0}
-  pressToFinish: 5
+  pressToFinish: 1
 --- !u!61 &7771450217512601900
 BoxCollider2D:
   m_ObjectHideFlags: 0

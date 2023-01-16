@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3374112897978173740}
   - component: {fileID: 3374112897978173741}
   - component: {fileID: 3374112897978173738}
+  - component: {fileID: 5150390969764817679}
+  - component: {fileID: 3273015471199183560}
   m_Layer: 0
   m_Name: Red Door - Side
   m_TagString: Untagged
@@ -105,3 +107,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!61 &5150390969764817679
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374112897978173739}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.015331507, y: 0.015331507}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.48, y: 1.48}
+    newSize: {x: 1.48, y: 1.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.13082647, y: 0.77475023}
+  m_EdgeRadius: 0
+--- !u!114 &3273015471199183560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374112897978173739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee813820ef07264995920dc74d639ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coli: {fileID: 5150390969764817679}
+  always_open: 0
+  numOfStations: 1
+  permanent_changes: 0
