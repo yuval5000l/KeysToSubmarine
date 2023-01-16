@@ -15,6 +15,7 @@ TagManager:
   - AlwaysActiveStrategy
   - HUD
   - PressTile
+  - Border
   layers:
   - Default
   - TransparentFX
