@@ -2207,7 +2207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1199352479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2285,7 +2285,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1265958083}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2922,6 +2922,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 720103561}
+    - target: {fileID: 5041760102205139815, guid: 703795ede13468a4ebf66728e861409e, type: 3}
+      propertyPath: numberOfSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5041760102205139816, guid: 703795ede13468a4ebf66728e861409e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6706,6 +6710,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1355499926}
+    - target: {fileID: 3449618226828433861, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
+      propertyPath: numberOfSeconds
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3449618226828433862, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6767,6 +6775,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 720103561}
+    - target: {fileID: 5041760102205139815, guid: 703795ede13468a4ebf66728e861409e, type: 3}
+      propertyPath: numberOfSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5041760102205139816, guid: 703795ede13468a4ebf66728e861409e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6899,11 +6911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7489627298047732248, guid: ace898c77dfdfa44289668bf865cc280, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2238308
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 7489627298047732248, guid: ace898c77dfdfa44289668bf865cc280, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1678126
+      value: -2.18
       objectReference: {fileID: 0}
     - target: {fileID: 7489627298047732248, guid: ace898c77dfdfa44289668bf865cc280, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6944,6 +6956,10 @@ PrefabInstance:
     - target: {fileID: 7489627298047732253, guid: ace898c77dfdfa44289668bf865cc280, type: 3}
       propertyPath: m_Name
       value: Orange Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489627298047732254, guid: ace898c77dfdfa44289668bf865cc280, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace898c77dfdfa44289668bf865cc280, type: 3}
