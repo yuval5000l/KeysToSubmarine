@@ -134,4 +134,13 @@ public class CodeStation : StationScript
         activatePopup();
     }
 
+    public void StopAnim()
+    {
+        foreach (PlayerController player in players_in_station)
+        {
+            player.StopAnimationWork(Vector3.zero);
+        }
+        players_pressed.Clear();
+    }
+
 }

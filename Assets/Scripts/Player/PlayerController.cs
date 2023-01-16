@@ -312,8 +312,8 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Border")
         {
             sprite.sortingOrder = 1;
-            shadow_sprite.enabled = false;
-            //shadow_sprite.sortingOrder = 1;
+            //shadow_sprite.enabled = false;
+            shadow_sprite.sortingOrder = 0;
 
             behind_counter += 1;
         }
@@ -362,9 +362,9 @@ public class PlayerController : MonoBehaviour
             if (behind_counter == 0)
             {
                 sprite.sortingOrder = 4;
-                shadow_sprite.enabled = true;
+                //shadow_sprite.enabled = true;
 
-                //shadow_sprite.sortingOrder = 3;
+                shadow_sprite.sortingOrder = 3;
             }
         }
     }

@@ -18,10 +18,7 @@ public class LeverStation : StationScript
         base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        if (always_active)
-        {
-            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
-        }
+
 
     }
 
@@ -120,6 +117,7 @@ public class LeverStation : StationScript
             if (!always_active) // otherwise they get points for opening the door ... 
             {
                 missionManager.missionDone(bonus_time, points_award);
+                
             }
             pressKeysInARowCount = 0;
             
@@ -135,8 +133,6 @@ public class LeverStation : StationScript
         foreach (PlayerController player in players_in_station)
         {
             player.StopAnimationWork(Vector3.zero);
-            Debug.Log(player);
-
         }
         players_pressed.Clear();
     }

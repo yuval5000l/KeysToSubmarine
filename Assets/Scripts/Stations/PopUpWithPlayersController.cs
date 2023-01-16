@@ -17,7 +17,10 @@ public class PopUpWithPlayersController : MonoBehaviour
         //    i++;
         //}
     }
-
+    public void withoutRedBall()
+    {
+        children[0].SetActive(false);
+    }
     public void setNumOfChildren(int num)
     {
         numOfchildren = num;

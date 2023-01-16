@@ -14,7 +14,7 @@ public class OurEventHandler : MonoBehaviour
     private List<int> player_nums = new List<int>();
 
     private int players_in_game = 0;
-    private static int levelNumber = 1;
+    private static int levelNumber = 0;
     [SerializeField] private int MaxlevelNum = 3;
     private CameraZoom zoom;
     private bool game_over = false;

@@ -15,6 +15,10 @@ public class BollderStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         mission_index = 0;
         station_active = true;
+        stationPopup.SetActive(true);
+        stationPopup.GetComponent<PopUpWithPlayersController>().withoutRedBall();
+        stationPopup.transform.position = gameObject.transform.position;
+        stationPopup.transform.SetParent(gameObject.transform);
         //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
