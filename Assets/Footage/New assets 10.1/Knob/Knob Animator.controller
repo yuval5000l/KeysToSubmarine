@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 07faf0bb51f5a4a8198d90e3f6d97528, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4c2fcbd628fcd448aad5d3792fe69357, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -61,7 +61,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 5PIN Animator
+  m_Name: Knob Animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Idle
@@ -141,7 +141,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16c5f03370e4f49aabb203877d055e86, type: 2}
+  m_Motion: {fileID: 7400000, guid: d6f8ea1bdba9b4b95bfa7148a80946bd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -219,7 +219,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 164910c1c740e4872b3c1a47b82e7db7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9da8057b9d75c4f15a915921987a49f2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
