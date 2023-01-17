@@ -9,10 +9,9 @@ using System;
 
 public class AssignPlayers : MonoBehaviour
 {
-    [SerializeField] private TMP_Text num_players_text;
     [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
-    [SerializeField] private SpriteRenderer[] players_animators = new SpriteRenderer[3];
+    [SerializeField] private Animator[] players_animators = new Animator[3];
     [SerializeField] private Button button;
     
     [SerializeField] List<InputDevice> players_devices = new List<InputDevice>();
@@ -20,14 +19,8 @@ public class AssignPlayers : MonoBehaviour
     List<int> player_num = new List<int>();
     private bool mainMenuActive = true;
     private int num_players = 0;
-    //private KeyCode player_1_action = KeyCode.Q;
-    //private KeyCode player_2_action = KeyCode.Space;
-    //private KeyCode player_3_action = KeyCode.B;
-    //private KeyCode player_4_action = KeyCode.M;
-    //[SerializeField] private bool action_gamepad1 = false;
-    [SerializeField] private bool action_spacebar = false;
-    [SerializeField] private bool action_B = false;
-    [SerializeField] private bool action_Q = false;
+    
+
     private PlayerInput players_input;
 
     private IObservable<InputControl> m_ButtonPressListener;
@@ -38,29 +31,17 @@ public class AssignPlayers : MonoBehaviour
     {
         num_players = gameManager.getPlayersInGame();
         num_players = 0;
-        if (num_players_text != null)
-        {
-            num_players_text.text = num_players.ToString();
-        }
         button.image.color = new Color(1f, 1f, 1f, 0.2f);
         button.enabled = false;
         players_input = GetComponent<PlayerInput>();
         players_input.SwitchCurrentControlScheme("AssignPlayer");
         players_input.SwitchCurrentActionMap("AssignPlayerMap");
-        //var myAction = new InputAction(binding: "<Keyboard>/#(g)");
-        //myAction.performed += ((action) => Debug.Log($"Button {action.ToString()} pressed!"));
-        //myAction.Enable();
-        //myAction1 = myAction;
-        //InputSystem.onAnyButtonPress.CallOnce(ctrl => Debug.Log($"Button {ctrl} was pressed"));
-    //}
-}
-    //private void OnEnable()
-    //{
-    //    myAction1.Enable();
-    //}
+        gameManager.ClearLists();
+
+    }
     private void AddPlayerAnimation()
     {
-        Color goodColor = new Color(1f, 1f, 1f, 1f);
+        //Color goodColor = new Color(1f, 1f, 1f, 1f);
         int cur_num = 0;
         for (int i =0; i < 3; i++)
         {
@@ -68,7 +49,7 @@ public class AssignPlayers : MonoBehaviour
             {
                 player_num.Add(i);
                 cur_num = i;
-                players_animators[cur_num].color = goodColor;
+                players_animators[cur_num].SetBool("Choosen", true);
                 return;
             }
         }
@@ -76,7 +57,7 @@ public class AssignPlayers : MonoBehaviour
     private void RemovePlayerAnimation(int counter)
     {
         Color maColor = new Color(1f, 1f, 1f, 0.5f);
-        players_animators[player_num[counter]].color = maColor;
+        players_animators[player_num[counter]].SetBool("Choosen", false);
         player_num.RemoveAt(counter);
 
     }
@@ -241,15 +222,11 @@ public class AssignPlayers : MonoBehaviour
             button.image.color = new Color(1f, 1f, 1f, 0.2f);
         }
 
-        
-        num_players_text.text = num_players.ToString();
-
-
     }
 
     public void StartGame()
     {
-        if(num_players == 3)
+        if(players_devices.Count == 3)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -261,7 +238,6 @@ public class AssignPlayers : MonoBehaviour
                     }
                 }
             }
-            gameManager.Setlevel(1);
             gameManager.Nextlevel(-1);
         }
     }
@@ -278,16 +254,20 @@ public class AssignPlayers : MonoBehaviour
     {
         //gameManager.AddPlayer();
         //num_players = gameManager.getNumOfPlayers();
-        num_players_text.text = num_players.ToString();
     }
     public void RemovePlayer()
     {
         //gameManager.RemovePlayer();
         //num_players = gameManager.getNumOfPlayers();
-        num_players_text.text = num_players.ToString();
 
     }
 
+    public void returnTo3()
+    {
+        SceneManager.LoadScene("3");
+        button.enabled = true;
+        button.image.color = new Color(1f, 1f, 1f, 1f);
+    }
     public bool getMainMenuActive()
     {
         return mainMenuActive;

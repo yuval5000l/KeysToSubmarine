@@ -15,12 +15,14 @@ public class CodeStation : StationScript
     [SerializeField] private GameObject stationExplainer;
     [SerializeField] private int pressToFinish = 5;
     private bool door_activated = true;
+    private AudioSource StationSound;
 
     void Awake()
     {
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         MaAnimator = GetComponent<Animator>();
+        StationSound = GetComponent<AudioSource>();
     }
     private new void Start()
     {
@@ -100,6 +102,7 @@ public class CodeStation : StationScript
         {
             PlayerAnimationWork();
             press_in_a_row += 1;
+            StationSound.Play();
             MaAnimator.SetTrigger("Press");
             MaAnimator.SetBool("Idle", true);
             MaAnimator.SetBool("Hover", false);
@@ -132,6 +135,15 @@ public class CodeStation : StationScript
         mission_index = i;
         station_active = true;
         activatePopup();
+    }
+
+    public void StopAnim()
+    {
+        foreach (PlayerController player in players_in_station)
+        {
+            player.StopAnimationWork(Vector3.zero);
+        }
+        players_pressed.Clear();
     }
 
 }

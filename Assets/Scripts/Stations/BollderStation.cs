@@ -7,7 +7,7 @@ public class BollderStation : StationScript
     // Start is called before the first frame update
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Rigidbody2D rigi;
-
+    private AudioSource StationSound;
     new void Start()
     {
         base.Start();
@@ -15,6 +15,11 @@ public class BollderStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         mission_index = 0;
         station_active = true;
+        stationPopup.SetActive(true);
+        stationPopup.GetComponent<PopUpWithPlayersController>().withoutRedBall();
+        stationPopup.transform.position = gameObject.transform.position;
+        stationPopup.transform.SetParent(gameObject.transform);
+        StationSound = GetComponent<AudioSource>();
         //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
@@ -78,6 +83,11 @@ public class BollderStation : StationScript
             //PlayerAnimationPush();
             pressKeysInARowCount = 0;
             rigi.bodyType = RigidbodyType2D.Dynamic;
+            StationSound.Play();
+        }
+        else
+        {
+            StationSound.Pause();
         }
     }
 }

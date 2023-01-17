@@ -49,19 +49,13 @@ public class StationScript : MonoBehaviour
     protected void Start()
     {
         
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
-        //    numOfPlayersIndicator[i].SetActive(false);
-        //    numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-        //}
+
         stationPopup = Instantiate(Resources.Load("AdvancedRedBall")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+        //stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
 
         stationPopup.GetComponent<PopUpWithPlayersController>().setNumOfChildren(numberOfPlayers);
         stationPopup.SetActive(false);
-        //numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
 
     }
 

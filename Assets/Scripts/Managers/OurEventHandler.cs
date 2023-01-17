@@ -14,12 +14,15 @@ public class OurEventHandler : MonoBehaviour
     private List<int> player_nums = new List<int>();
 
     private int players_in_game = 0;
-    private static int levelNumber = 1;
+    private static int levelNumber = 0;
     [SerializeField] private int MaxlevelNum = 3;
     private CameraZoom zoom;
     private bool game_over = false;
     private GameObject orb;
     private float counter = 2;
+    private bool tutorial = true;
+    private static int counter_tut = 0;
+    private string[] tutlevels = new string[4] { "Machines", "Doors", "CleaningCarts", "Radioactive" };
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,7 @@ public class OurEventHandler : MonoBehaviour
         if (nameAndNum[0] == "level")
         {
             levelNumber = int.Parse(nameAndNum[1]);
+            tutorial = false;
         }
     }
 
@@ -50,10 +54,13 @@ public class OurEventHandler : MonoBehaviour
             }
         }
     }
-
+    public void ClearLists()
+    {
+        playerManager.ClearLists();
+    }
     public void AddPlayer(InputDevice inp, int num)
     {
-        playerManager.AddPlayer(inp, num);
+        playerManager.AddToLists(inp, num);
         //if (players.Count < 3)
         //{
         //    players.Add(player);
@@ -85,6 +92,18 @@ public class OurEventHandler : MonoBehaviour
 
     public void Nextlevel(int numlevel = 0)
     {
+        if (tutorial)
+        {
+            counter_tut += numlevel + 1;
+            if (counter_tut == 4)
+            {
+                tutorial = false;
+                Nextlevel();
+                return;
+            }
+            SceneManager.LoadScene(tutlevels[counter_tut]);
+            return;
+        }
         levelNumber += numlevel + 1;
         if (levelNumber >= MaxlevelNum)
         {
@@ -100,6 +119,12 @@ public class OurEventHandler : MonoBehaviour
     public void NextlevelCanvas()
     {
         Time.timeScale = 0f;
+
+        if (tutorial)
+        {
+            Nextlevel();
+            return;
+        }
         nextlevel.gameObject.SetActive(true);
     }
     public int getNumOfPlayers()

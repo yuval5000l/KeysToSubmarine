@@ -17,7 +17,7 @@ public class ShowerStation : StationScript
     private float timeHeld = 0;
     private bool door_activated = true;
     [SerializeField] private GameObject stationExplainer;
-
+    private AudioSource ShowerSound;
 
 
 
@@ -28,6 +28,7 @@ public class ShowerStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         gameObject.tag = "None";
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1.5f,0);
+        ShowerSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class ShowerStation : StationScript
             pressKeysInARowCount = 0;
             timeHeld = 0;
             indicator.transform.localScale = new Vector3((timeHeld) * 1f, indicator.transform.localScale.y);
-            station_animation.SetTrigger("EndShower");
+            //station_animation.SetTrigger("EndShower");
         }
         //temporary fix for presKeyInRow, needs better solution
         if (station_active || always_active)
@@ -52,11 +53,16 @@ public class ShowerStation : StationScript
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
-                station_animation.SetTrigger("Touched");
+                station_animation.SetBool("Touched", true);
+                station_animation.SetBool("idle", false);
+
             }
             else
             {
-                station_animation.SetTrigger("idle");
+                station_animation.SetBool("EndShower", true);
+                station_animation.SetBool("StartShower", false);
+                station_animation.SetBool("Touched", false);
+                station_animation.SetBool("idle", true);
             }
         }
         else
@@ -65,7 +71,10 @@ public class ShowerStation : StationScript
             {
                 stationExplainer.SetActive(false);
             }
-            station_animation.SetTrigger("idle");
+            station_animation.SetBool("StartShower", false);
+            station_animation.SetBool("Touched", false);
+            station_animation.SetBool("EndShower", false);
+            station_animation.SetBool("idle", true);
         }
         timeWindowToPress += Time.deltaTime;
         if (door && door.DoorState())
@@ -84,7 +93,9 @@ public class ShowerStation : StationScript
         {
             if (player.playerPressed())
             {
-                station_animation.SetTrigger("StartShower");
+                station_animation.SetBool("StartShower", true);
+                station_animation.SetBool("EndShower", false);
+                ShowerSound.Play();
                 gameObject.tag = "ActiveShower";
                 timeHeld += Time.deltaTime;
                 timeWindowToPress = 0;
@@ -100,6 +111,7 @@ public class ShowerStation : StationScript
             }
             else
             {
+                ShowerSound.Pause();
                 timeHeld = 0;
                 gameObject.tag = "None";
                 if (door & !door_activated)
@@ -107,6 +119,8 @@ public class ShowerStation : StationScript
                     door.StopTouchDoor();
                     door_activated = true;
                 }
+                station_animation.SetBool("StartShower", false);
+                station_animation.SetBool("EndShower", true);
             }
         }
 
@@ -114,7 +128,7 @@ public class ShowerStation : StationScript
 
         if (!always_active && timeHeld >= holdTime)
         {
-            station_animation.SetTrigger("EndShower");
+            //station_animation.SetTrigger("EndShower");
             timeHeld = 0;
             gameObject.tag = "None";
             station_active = false;

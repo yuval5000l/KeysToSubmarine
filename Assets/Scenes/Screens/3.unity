@@ -975,7 +975,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 155792850}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: nextAfterLore
+        m_MethodName: To2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1260,7 +1260,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 155792850}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: nextAfterLore
+        m_MethodName: ToJanitorSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

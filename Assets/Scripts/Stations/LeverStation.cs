@@ -13,15 +13,14 @@ public class LeverStation : StationScript
     //[SerializeField] private bool alwaysActive;
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private GameObject stationExplainer;
+    private AudioSource StationSound;
+
     void Awake()
     {
         base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        if (always_active)
-        {
-            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
-        }
+        StationSound = GetComponent<AudioSource>();
 
     }
 
@@ -111,6 +110,7 @@ public class LeverStation : StationScript
             station_active = false; 
             deActivatePopup();
             station_animation.SetTrigger("pullLever");
+            StationSound.Play();
             if (door != null)
             {
                 // door.OpenDoor();
@@ -120,6 +120,7 @@ public class LeverStation : StationScript
             if (!always_active) // otherwise they get points for opening the door ... 
             {
                 missionManager.missionDone(bonus_time, points_award);
+                
             }
             pressKeysInARowCount = 0;
             
@@ -135,8 +136,6 @@ public class LeverStation : StationScript
         foreach (PlayerController player in players_in_station)
         {
             player.StopAnimationWork(Vector3.zero);
-            Debug.Log(player);
-
         }
         players_pressed.Clear();
     }
