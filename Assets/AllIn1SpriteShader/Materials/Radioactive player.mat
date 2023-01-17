@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
   m_ValidKeywords:
   - DOODLE_ON
-  - GLOW_ON
+  - GLOWTEX_ON
   - OUTBASE8DIR_ON
   - OUTBASE_ON
   m_InvalidKeywords: []
@@ -127,7 +127,7 @@ Material:
     - _GhostTransparency: 0
     - _GlitchAmount: 1.7
     - _GlitchSize: 1.09
-    - _Glow: 0.5
+    - _Glow: 33
     - _GlowGlobal: 1
     - _GradBlend: 1
     - _GradBoostX: 1.2

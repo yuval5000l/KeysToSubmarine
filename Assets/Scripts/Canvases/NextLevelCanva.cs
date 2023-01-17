@@ -12,16 +12,16 @@ public class NextLevelCanva : MonoBehaviour
     void Start()
     {
         playerManager = FindObjectOfType<PlayerManager>().GetComponent<PlayerManager>();
-        playersControl = playerManager.GetPlayersControls();
+        //playersControl = playerManager.GetPlayersControls();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(playersControl[0][4]) || Input.GetKey(playersControl[1][4]) || Input.GetKey(playersControl[2][4]) || Input.GetKey(playersControl[3][4]))
-        {
-            NextLevel();
-        }
+        //if (Input.GetKey(playersControl[0][4]) || Input.GetKey(playersControl[1][4]) || Input.GetKey(playersControl[2][4]) || Input.GetKey(playersControl[3][4]))
+        //{
+        //    NextLevel();
+        //}
     }
 
     public void NextLevel()

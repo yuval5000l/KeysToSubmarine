@@ -15,14 +15,18 @@ public class BollderStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         mission_index = 0;
         station_active = true;
-        numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+        stationPopup.SetActive(true);
+        stationPopup.GetComponent<PopUpWithPlayersController>().withoutRedBall();
+        stationPopup.transform.position = gameObject.transform.position;
+        stationPopup.transform.SetParent(gameObject.transform);
+        //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        numOfPlayersIndicator[numberOfPlayers - 1].transform.position = transform.localPosition;
+        //numOfPlayersIndicator[numberOfPlayers - 1].transform.position = transform.localPosition;
         pressKeysInARowCount = 0;
         if (rigi != null)
         {
@@ -32,78 +36,50 @@ public class BollderStation : StationScript
             }
         }
 
-        foreach (PlayerController player in players_in_station)
-        {
-            if (Input.GetKey(player.GetPlayerActionButton()))
-            {
-                player.AnimationPush(Vector3.zero);
-            }
-        }
+
         if (station_active)
         {
-
+            foreach (PlayerController player in players_in_station)
+            {
+                if (player.playerPressed())
+                {
+                    player.AnimationPush(Vector3.zero);
+                }
+                else
+                {
+                    player.StopAnimationPush(Vector3.zero);
+                }
+            }
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
                 // station_animation.SetTrigger("Hover");
                 missions[mission_index]();
 
             }
-        //else
-        //{
-        //    PlayerAnimationIdle();
-        //}
-    }
-        else
-        {
-            PlayerAnimationIdle();
-        }
-        
-        for (int i = 0; i < players_controller_in_station.Count; i++)
-        {
-            if (players_controller_in_station[i].Item2 == false)
-            {
-                check_pressed_once[i] = false;
-            }
             else
             {
-                check_pressed_once[i] = true;
+                PlayerAnimationIdle();
             }
+
         }
     }
     
     
-    private void PlayerAnimationPush()
-    {
-        Vector3 loc = gameObject.transform.localPosition;
-        foreach (PlayerController player in players_in_station)
-        {
-            player.AnimationPush(loc);
-        }
-    }
+
     private void getAllKeysDown()
     {
 
-        foreach (var action_key in players_action_key)
+        foreach (PlayerController player in players_in_station)
         {
-            if (Input.GetKey(action_key))
+            if (player.playerPressed())
             {
                 pressKeysInARowCount += 1;
             }
         }
         
-        int counter = 0;
-        foreach (var action_key in players_controller_in_station) // For Controller
-        {
-            if (action_key.Item2)
-            {
-                pressKeysInARowCount += 1;
-                timeWindowToPress = 0;
-            }
-            counter++;
-        }
         if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
         {
-            PlayerAnimationPush();
+            //PlayerAnimationPush();
             pressKeysInARowCount = 0;
             rigi.bodyType = RigidbodyType2D.Dynamic;
         }

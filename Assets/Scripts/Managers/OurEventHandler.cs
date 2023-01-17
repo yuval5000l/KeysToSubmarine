@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.InputSystem;
 
 public class OurEventHandler : MonoBehaviour
 {
     [SerializeField] private static int NumberOfPlayers = 3;
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private NextLevelCanva nextlevel;
-    private static int levelNumber = 1;
+    private List<PlayerController> players = new List<PlayerController>();
+    private List<InputDevice> player_devices = new List<InputDevice>();
+    private List<int> player_nums = new List<int>();
+
+    private int players_in_game = 0;
+    private static int levelNumber = 0;
     [SerializeField] private int MaxlevelNum = 3;
     private CameraZoom zoom;
     private bool game_over = false;
     private GameObject orb;
     private float counter = 2;
+    private bool tutorial = true;
+    private static int counter_tut = 0;
+    private string[] tutlevels = new string[4] { "Machines", "Doors", "CleaningCarts", "Radioactive" };
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +32,7 @@ public class OurEventHandler : MonoBehaviour
         if (nameAndNum[0] == "level")
         {
             levelNumber = int.Parse(nameAndNum[1]);
+            tutorial = false;
         }
     }
 
@@ -45,21 +54,37 @@ public class OurEventHandler : MonoBehaviour
             }
         }
     }
-    public void AddPlayer()
+    public void ClearLists()
     {
-        if (NumberOfPlayers < 4)
-        {
-            NumberOfPlayers += 1;
-        }
+        playerManager.ClearLists();
     }
-    public void RemovePlayer()
+    public void AddPlayer(InputDevice inp, int num)
     {
-        if (NumberOfPlayers > 2)
-        {
-            NumberOfPlayers -= 1;
-        }
+        playerManager.AddToLists(inp, num);
+        //if (players.Count < 3)
+        //{
+        //    players.Add(player);
+        //}
     }
-
+    public void RemovePlayer(InputDevice inp, int num)
+    {
+        for (int i = 0 ; i < player_devices.Count; i++) 
+        { 
+            if (player_devices[i] == inp && player_nums[i] == num)
+            {
+                playerManager.RemovePlayer(inp, num);
+            }
+        }
+        //players.Remove(player);
+    }
+    public int getPlayersInGame()
+    {
+        return players_in_game;
+    }
+    public void setPlayersInGame(int num)
+    {
+        players_in_game+= num;
+    }
     public void Setlevel(int numlevel)
     {
         levelNumber = numlevel;
@@ -67,6 +92,18 @@ public class OurEventHandler : MonoBehaviour
 
     public void Nextlevel(int numlevel = 0)
     {
+        if (tutorial)
+        {
+            counter_tut += numlevel + 1;
+            if (counter_tut == 4)
+            {
+                tutorial = false;
+                Nextlevel();
+                return;
+            }
+            SceneManager.LoadScene(tutlevels[counter_tut]);
+            return;
+        }
         levelNumber += numlevel + 1;
         if (levelNumber >= MaxlevelNum)
         {
@@ -82,6 +119,12 @@ public class OurEventHandler : MonoBehaviour
     public void NextlevelCanvas()
     {
         Time.timeScale = 0f;
+
+        if (tutorial)
+        {
+            Nextlevel();
+            return;
+        }
         nextlevel.gameObject.SetActive(true);
     }
     public int getNumOfPlayers()

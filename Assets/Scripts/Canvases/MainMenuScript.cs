@@ -9,7 +9,6 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private TMP_Text num_players_text;
     [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
-    private bool mainMenuActive = true;
     private int num_players;
     // Start is called before the first frame update
     void Start()
@@ -31,13 +30,29 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("ChooseNumPlayers");
     }
 
+    public void To1()
+    {
+        SceneManager.LoadScene("1");
+    }
+    public void To2()
+    {
+        SceneManager.LoadScene("2");
+    }
+    public void To3()
+    {
+        SceneManager.LoadScene("3");
+    }
+    public void ToJanitorSelect()
+    {
+        SceneManager.LoadScene("Janitor select");
+    }
     public void ToLore()
     {
         SceneManager.LoadScene("Lore");
     }
     public void AddPlayer()
     {
-        gameManager.AddPlayer();
+        //gameManager.AddPlayer();
         num_players = gameManager.getNumOfPlayers();
         num_players_text.text = num_players.ToString();
 
@@ -45,61 +60,28 @@ public class MainMenuScript : MonoBehaviour
     }
     public void RemovePlayer()
     {
-        gameManager.RemovePlayer();
+        //gameManager.RemovePlayer();
         num_players = gameManager.getNumOfPlayers();
         num_players_text.text = num_players.ToString();
 
     }
 
-    public bool getMainMenuActive()
-    {
-        return mainMenuActive;
-    }
     // Update is called once per frame
     void Update()
     {
-        //if (Input.anyKey)
-        //{
-        //    if (startPage)
-        //    {
-        //        startPage = false;
-        //        //GoToLore();
-        //    }
-        //}
     }
 
-    //public void GoToLore()
-    //{
-    //    mainmenu.setactive(false);
-    //    lore.setactive(true);
-    //}
 
-    //public void gotomainmenu()
-    //{
-    //    mainmenu.setactive(true);
-    //    lore.setactive(false);
-    //    startpage = true;
+    public void Resume()
+    {
+        MainMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
 
-    //}
-    //public void gototutorial()
-    //{
-    //    lore.setactive(false);
-    //    tutorial.setactive(true);
-    //}
-    //public void startanimation()
-    //{
-    //    fade_out.settrigger("fadeout");
-    //}
-
-    //public void ReturnToMainMenu()
-    //{
-    //    MainMenu.SetActive(true);
-    //    mainMenuActive = true;
-
-    //    Time.timeScale = 0f;
-    //    PauseMenu.isGamePaused = true;
-
-    //}
+    }
     public void QuitGame()
     {
         Time.timeScale = 1f;

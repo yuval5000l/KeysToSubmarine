@@ -13,8 +13,6 @@ public class StationScript : MonoBehaviour
     
     [SerializeField] protected List<PlayerController> players_in_station; // List that holds all the current players
 
-    /*[SerializeField]*/ protected List<Tuple<PlayerController, bool>> players_controller_in_station = new List<Tuple<PlayerController, bool>>();
-
     
     // Is Station Active
     [SerializeField] protected bool station_active = false; // Checks if the station is active (has a mission)
@@ -45,25 +43,19 @@ public class StationScript : MonoBehaviour
 
     //[SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
-    protected GameObject[] numOfPlayersIndicator = new GameObject[4];
+    //protected GameObject[] numOfPlayersIndicator = new GameObject[4];
 
     // Start is called before the first frame update
     protected void Start()
     {
         
-        for (int i = 0; i < 4; i++)
-        {
-            numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
-            numOfPlayersIndicator[i].SetActive(false);
-            numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-        }
+
         stationPopup = Instantiate(Resources.Load("AdvancedRedBall")) as GameObject;
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+        //stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
 
         stationPopup.GetComponent<PopUpWithPlayersController>().setNumOfChildren(numberOfPlayers);
         stationPopup.SetActive(false);
-        //numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
 
     }
 
@@ -296,27 +288,8 @@ public class StationScript : MonoBehaviour
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
             if (!players_in_station.Contains(player))
             {
-                if (player.is_Controller())
-                {
-                    //Debug.Log("Player with controller");
-                    int counter = players_controller_in_station.Count;
-                    player_action_controller.Add(player.GetPlayerActionButtonNew());
-                    player_action_controller[counter] = player.GetPlayerActionButtonNew();
-                    players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
-                    //Debug.Log("Counter = " + counter);
-                    if (player_action_controller[counter] != null)
-                    {
-                        player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
-                        //player_action.performed += ctx => action_key_pressed = true;
-                        player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
-
-                    }
-
-                }
-                else
-                {
-                    players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
-                }
+                
+                //players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
                 stationPopup.GetComponent<PopUpWithPlayersController>().setTriggerToChild(player.getColor());
                 players_in_station.Add(player);
             }
@@ -332,34 +305,17 @@ public class StationScript : MonoBehaviour
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
             if (players_in_station.Contains(player))
             {
-                if (player.is_Controller())
-                {
-                    int location = 0;
-                    int counter = 0;
-                    foreach(Tuple<PlayerController, bool> playera in players_controller_in_station)
-                    {
-                        if (playera.Item1 == player)
-                        {
-                            player_action_controller.Remove(player_action_controller[counter]);
-                            location = counter;
-                        }
-                        counter++;
-                    }
-                    players_controller_in_station.Remove(players_controller_in_station[location]);
-                }
-                else
-                {
-                    players_action_key.Remove(player.GetPlayerActionButton());
-                }
+               
+                
+                //players_action_key.Remove(player.GetPlayerActionButton());
                 stationPopup.GetComponent<PopUpWithPlayersController>().setTriggerToChild("Un" + player.getColor());
 
                 players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
                 player.AnimationIdle();
-                foreach (PlayerController playerz in players_in_station)
-                {
-                    playerz.cancelForceStop();
-                }
+                player.StopAnimationWork(Vector3.zero);
+                player.StopAnimationPush(Vector3.zero);
+
 
             }
         }

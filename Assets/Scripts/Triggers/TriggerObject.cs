@@ -18,7 +18,7 @@ public class TriggerObject : MonoBehaviour
     {
         if (players_in_station.Count >= numOfPlayers)
         {
-            door.OpenDoor(0.1f);
+            door.OpenDoor(gameObject, 0.1f);
         }
     }
 

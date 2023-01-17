@@ -6,63 +6,121 @@ public class DoorScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Collider2D coli;
-    [SerializeField] private SpriteRenderer sprite;
-    [SerializeField] private Animator anim;
+    private Animator anim;
     [SerializeField] private bool always_open = false;
     [SerializeField] private int numOfStations = 1;
     [SerializeField] private bool permanent_changes = false;
+    private List<GameObject> tiles_active = new List<GameObject>();
     private List<SpriteRenderer> cables = new List<SpriteRenderer>();
     private Color default_color;
     private int counter_stations = 0;
     private bool door_open = false;
-
+    private bool door_idle_open_time = false;
+    private bool[] stationsList;
+    private float time = 0f;
+    private float triggerTimer = 0f;
+    private bool half_open = false;
     private void Awake()
     {
         int counter = 0;
+        stationsList = new bool[numOfStations];
         foreach(SpriteRenderer sprite1 in  GetComponentsInChildren<SpriteRenderer>())
         {
             if (counter > 0)
             {
                 cables.Add(sprite1);
-
             }
             counter++;
+        }
+        for(int i = 0; i < numOfStations; i++)
+        {
+            stationsList[i] = false;
         }
         if (cables.Count != 0)
         {
             default_color = cables[0].color;
         }
+        anim = GetComponent<Animator>();
 
     }
-    void update()
+    void Update()
     {
+        triggerTimer += Time.deltaTime;
+
+        if (triggerTimer >= 0.25f)
+        {
+            triggerTimer = 0f;
+            for(int i = 0; i < numOfStations; i++)
+            {
+                stationsList[i] = false;
+            }
+            counter_stations = 0;
+        }
+        if (tiles_active.Count == 0 && half_open)
+        {
+            anim.SetTrigger("Door_C");
+            half_open = false;
+        }
+        else if (tiles_active.Count < numOfStations && tiles_active.Count > 0)
+        {
+            if (!half_open)
+            {
+                anim.SetTrigger("Door_H");
+                half_open = true;
+            }
+        }
+        else if (tiles_active.Count >= numOfStations)
+        {
+            if (!door_open && !door_idle_open_time)
+            {
+                if (!half_open)
+                {
+                    anim.SetTrigger("Door_H");
+                }
+                else
+                {
+                    half_open = true;
+                }
+                anim.SetTrigger("Door_HO");
+                anim.SetTrigger("Door_O");
+            }
+            door_open = true;
+            door_idle_open_time = true;
+
+        }
+        else if (door_idle_open_time)
+        {
+            if (!always_open)
+            {
+                StartCoroutine(OpenDoorFor(time));
+            }
+            door_idle_open_time = false;
+        }
     }
     public bool DoorState()
     {
         return door_open;
     }
+
     public void CloseDoor()
     {
-        //Debug.Log("CloseDoor()");
-
-        coli.enabled = true;
-        sprite.enabled = true;
-        //anim.Settrigger("CloseDoor")
-        counter_stations = 0;
-        door_open = false;
-        foreach (SpriteRenderer sprite1 in cables)
+        if (!door_idle_open_time)
         {
-            sprite1.color = default_color;
+            anim.SetTrigger("Door_OH");
+            anim.SetTrigger("Door_H");
+            anim.SetTrigger("Door_C");
+            coli.enabled = true;
+            door_open = false;
         }
     }
-    
+    public void StopOpenDoor(GameObject obj)
+    {
+        tiles_active.Remove(obj);
+    }
     public IEnumerator CloseDoorIn(float xSec)
     {
         yield return new WaitForSeconds(xSec);
-        //anim.Settrigger("CloseOpenDoor")
-
         coli.enabled = true;
-        sprite.enabled = true;
     }
     
     public void StopTouchDoor()
@@ -71,49 +129,23 @@ public class DoorScript : MonoBehaviour
         {
             counter_stations--;
         }
-        //Debug.Log(counter_stations);
     }
     
-    public void OpenDoor(float xSeconds = 1)
+    public void OpenDoor(GameObject obj, float xSeconds = 1)
     {
-        //anim.Settrigger("OpenDoor")
-        counter_stations++;
-        //Debug.Log(counter_stations);
-
-        if (always_open)
+        if (tiles_active.Contains(obj))
         {
-            if (counter_stations == numOfStations)
-            {
-                coli.enabled = false;
-                sprite.enabled = false;
-                door_open = true;
-                foreach (SpriteRenderer sprite1 in cables)
-                {
-                    sprite1.color = new Color(1f, 1f, 1f, 1f);
-                }
-            }
+            return;
         }
-        else
-        {
-            if (counter_stations == numOfStations)
-            {
-                StartCoroutine(OpenDoorFor(xSeconds));
-            }
-        }
-
+        tiles_active.Add(obj);
+        time = xSeconds;
     }
-    
+    public void ReallyOpenDoor()
+    {
+        coli.enabled = false;
+    }
     public IEnumerator OpenDoorFor(float xSeconds)
     {
-
-        coli.enabled = false;
-        sprite.enabled = false;
-        door_open = true;
-        //anim.Settrigger("OpenDoor")
-        foreach (SpriteRenderer sprite1 in cables)
-        {
-            sprite1.color = new Color(1f, 1f, 1f, 1f);
-        }
         yield return new WaitForSeconds(xSeconds);
         CloseDoor();
     }
