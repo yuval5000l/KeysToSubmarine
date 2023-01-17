@@ -17,7 +17,7 @@ public class ShowerStation : StationScript
     private float timeHeld = 0;
     private bool door_activated = true;
     [SerializeField] private GameObject stationExplainer;
-
+    private AudioSource ShowerSound;
 
 
 
@@ -28,6 +28,7 @@ public class ShowerStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         gameObject.tag = "None";
         stationPopup.transform.position = gameObject.transform.position + new Vector3(0,1.5f,0);
+        ShowerSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -94,7 +95,7 @@ public class ShowerStation : StationScript
             {
                 station_animation.SetBool("StartShower", true);
                 station_animation.SetBool("EndShower", false);
-
+                ShowerSound.Play();
                 gameObject.tag = "ActiveShower";
                 timeHeld += Time.deltaTime;
                 timeWindowToPress = 0;
@@ -110,6 +111,7 @@ public class ShowerStation : StationScript
             }
             else
             {
+                ShowerSound.Pause();
                 timeHeld = 0;
                 gameObject.tag = "None";
                 if (door & !door_activated)
