@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class BetweenStations : MonoBehaviour
 {
+    [SerializeField] private BorderScript upperBorder;
+    [SerializeField] private BorderScript lowerBorder;
+    private bool slideOut = false; 
     [SerializeField] private GameObject panel;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +18,6 @@ public class BetweenStations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void Resume()
     {
@@ -26,5 +28,11 @@ public class BetweenStations : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("StartScreen");
+    }
+
+    public void SlideOut()
+    {
+        upperBorder.SlideOut();
+        lowerBorder.SlideOut();
     }
 }
