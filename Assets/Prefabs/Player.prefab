@@ -8,12 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1939331252252770624}
+  - component: {fileID: 5391177832459099973}
   - component: {fileID: 1939331252252770625}
   - component: {fileID: 1939331252252770638}
   - component: {fileID: 1939331252252770637}
   - component: {fileID: 9155494576261838045}
   - component: {fileID: 736046353}
+  - component: {fileID: 1043178664116818209}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -21,21 +22,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1939331252252770624
-Transform:
+--- !u!224 &5391177832459099973
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939331252252770626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.48, y: 1.51, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -6.48, y: 1.51}
+  m_SizeDelta: {x: 148, y: 143}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1939331252252770625
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d652ee44fe5001a47a07700700cab8b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -135,15 +141,14 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller_set1: 0
-  controller_set2: 0
   controller_set3: 0
   controller_set4: 0
   animator: {fileID: 736046353}
   rb: {fileID: 1939331252252770638}
   moveSpeed: 1
-  debug_Text: {fileID: 0}
   radioActivity: 0
+  radioActiveIndicator: {fileID: 0}
+  mCamera: {fileID: 0}
 --- !u!70 &9155494576261838045
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,7 +158,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1939331252252770626}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e423f3cca2060b44193a1ad8d1a6f222, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -180,3 +185,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!222 &1043178664116818209
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939331252252770626}
+  m_CullTransparentMesh: 1

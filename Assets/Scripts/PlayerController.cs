@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private KeyCode player_action_button = KeyCode.R;
     [SerializeField] private UnityEngine.InputSystem.InputAction player_action_button_new;
-
-    [SerializeField] private bool controller_set1 = false;
-    [SerializeField] private bool controller_set2 = false;
+    private string color;
+    //[SerializeField] private bool controller_set1 = false;
+    //[SerializeField] private bool controller_set2 = false;
     [SerializeField] private bool controller_set3 = false;
     [SerializeField] private bool controller_set4 = false;
 
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // In charge of speed & stuff
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private TMP_Text debug_Text;
+    //[SerializeField] private TMP_Text debug_Text;
     private Vector2 movement;
     [SerializeField] private float radioActivity = 0f;
     private bool[] levelsOfRadioActivity;
@@ -45,18 +45,33 @@ public class PlayerController : MonoBehaviour
     private Material default_material;
     private Material radio_active_material;
     // Start is called before the first frame update
+    [SerializeField] private Image radioActiveIndicator;
+    //[SerializeField] private RectTransform RT;
+    [SerializeField] private Camera mCamera;
+    List<Rigidbody2D> playersITouch = new List<Rigidbody2D>();
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
         levelsOfRadioActivity = new bool[] {false,false,false};
+        radioActiveIndicator = Instantiate(Resources.Load<Image>("Image")) as Image;
+        radioActiveIndicator.transform.position = Vector3.zero;
+        radioActiveIndicator.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
+        radioActiveIndicator.rectTransform.position = new Vector3(2.7f,1f,0f);
+
+        radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
+        // radioActiveIndicator.rectTransform.localPosition = RectTransformUtility.WorldToScreenPoint(mCamera,gameObject.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!(controller_set1 || controller_set2 || controller_set3 || controller_set4))
+        Vector2 pos = gameObject.transform.position;
+        Vector2 viewportPoint = Camera.main.WorldToViewportPoint(pos);
+        radioActiveIndicator.rectTransform.anchorMin = viewportPoint;
+        radioActiveIndicator.rectTransform.anchorMax = viewportPoint;
+        if (!(controller_set3 || controller_set4))
         {
             if (!playerStop)
             {
@@ -65,6 +80,19 @@ public class PlayerController : MonoBehaviour
         }
         if (controller_set3)
         {
+            if (Input.anyKey)
+            {
+                //foreach (string name in Input.GetJoystickNames())
+                //{
+                //    Debug.Log(name);
+                //}
+                Event e = Event.current;
+                //if (e != null && e.isKey)
+                //{
+                //    Debug.Log("Detected key code: " + e.keyCode);
+                //}
+            }
+
             if (player_action_button != KeyCode.Joystick1Button0)
             {
                 player_action_button = KeyCode.Joystick1Button0;
@@ -80,10 +108,7 @@ public class PlayerController : MonoBehaviour
                 movement.y = 0f;
             }
             AnimationIdle();
-            //if (Input.GetButton("J1A"))
-            //{
-            //    Debug.Log("YAS");
-            //}
+
         }
         if (controller_set4)
         {
@@ -98,16 +123,23 @@ public class PlayerController : MonoBehaviour
                 movement.y = 0f;
             }
             AnimationIdle();
-            //if (Input.GetButton("J2A"))
-            //{
-            //    Debug.Log("YAS2");
-            //}
+
         }
         if (radio_active_state)
         {
-            radioActivity += 4 * 1f * Time.deltaTime;
+            radioActivity += 4 * 1f * Time.deltaTime * 60f;
+            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0003f;
             checkRadioActivity();
         }
+
+        if (Input.GetKeyDown(player_action_button))
+        {
+            foreach (Rigidbody2D rb in playersITouch)
+            {
+                rb.AddForce(movement * moveSpeed * 20f, ForceMode2D.Impulse);
+            }
+        }
+        
     }
 
     private void movement_keyboard()
@@ -197,7 +229,7 @@ public class PlayerController : MonoBehaviour
     
     public bool is_Controller()
     {
-        return controller_set1 || controller_set2;
+        return controller_set3 || controller_set4;
     }
 
     public InputAction GetPlayerActionButtonNew()
@@ -212,6 +244,26 @@ public class PlayerController : MonoBehaviour
     }
 
     // Switching Keys
+
+    public List<KeyCode> getListControls()
+    {
+        List<KeyCode> a = new List<KeyCode>();
+        a.Add(up_button);
+        a.Add(down_button);
+        a.Add(left_button);
+        a.Add(right_button);
+        a.Add(player_action_button);
+        return a;
+    }
+
+    public void updateListControls(List<KeyCode> new_controls)
+    {
+        setUpKey(new_controls[0]);
+        setDownKey(new_controls[1]);
+        setLeftKey(new_controls[2]);
+        setRightKey(new_controls[3]);
+        setActionKey(new_controls[4]);
+    }
 
     public void setUpKey(KeyCode new_key)
     {
@@ -273,7 +325,7 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
             }
         }
-        //Debug.Log(deg);
+
     }
     public void AnimationPush(Vector3 otherlocalLocation)
     {
@@ -286,7 +338,7 @@ public class PlayerController : MonoBehaviour
 
     public void AnimationIdle()
     {
-        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKeyDown(player_action_button))
+        if (Mathf.Abs(rb.velocity.x) <= RunAnimationThreshold && Mathf.Abs(rb.velocity.y) <= RunAnimationThreshold && !Input.GetKey(player_action_button))
         {
             animator.SetTrigger("idle");
             idle = true;
@@ -329,8 +381,9 @@ public class PlayerController : MonoBehaviour
         {
             if (radioActivity > 0)
             {
-                radioActivity -= 50;
-                if (radioActivity < 0)
+                radioActivity -= 50 * Time.deltaTime * 60;
+                radioActiveIndicator.fillAmount -= 12.5f * 240f * Time.deltaTime * 0.0003f;              
+            if (radioActivity < 0)
                 {
                     radioActivity = 0;
                 }
@@ -347,74 +400,62 @@ public class PlayerController : MonoBehaviour
         {
             levelsOfRadioActivity[2] = true;
             Destroy(gameObject);
+            Destroy(radioActiveIndicator);
         }
         else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
         {
             moveSpeed = moveSpeed / 2;
             levelsOfRadioActivity[1] = true;
+            radioActiveIndicator.fillAmount = 0;
         }
         else if (radioActivity >= 3333 && !levelsOfRadioActivity[0])
         {
             moveSpeed = moveSpeed / 2;
             levelsOfRadioActivity[0] = true;
+            radioActiveIndicator.fillAmount = 0;
         }
         else if(3333 <= radioActivity && radioActivity <6666 && levelsOfRadioActivity[1])
         {
             moveSpeed = moveSpeed * 2;
             levelsOfRadioActivity[1] = false;
+            radioActiveIndicator.fillAmount = 0;
         }
         else if(radioActivity < 3333 && levelsOfRadioActivity[0])
         {
             moveSpeed = moveSpeed * 2;
             levelsOfRadioActivity[0] = false;
+            radioActiveIndicator.fillAmount = 0;
         }
     }
+    public void setColor(string name)
+    {
+        color = name;
+    }
+    public string getColor()
+    {
+        return color;
+    }
 
-    //void Awake()
-    //{
-    //controls = new Player2Controls();
-    //controls_1 = new Player1Controls();
-    //if (controller_set1)
-    //{
-    //    EnableController1();
-    //}
-    //else if (controller_set2)
-    //{
-    //    EnableController2();
-    //}
-
-    //}
-    //public void EnableController1()
-    //{
-    //    //controls.Gameplay.Action.performed += ctx => Simple();
-    //    player_action_button_new = controls_1.Gameplay.Action;
-    //    controls_1.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-    //    controls_1.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-    //    //Debug.Log(controls.Gameplay.Move.GetType());
-    //    Debug.Log("Player1");
-    //}
-    //public void EnableController2()
-    //{
-    //    //controls.Gameplay.Action.performed += ctx => Simple();
-    //    player_action_button_new = controls.Gameplay.Action;
-    //    controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-    //    controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-    //    //Debug.Log(controls.Gameplay.Move.GetType());
-    //    Debug.Log("Player2");
-
-    //}
-    //void Simple()
-    //{
-    //    //Debug.Log("HEY");
-    //}
-
-    //private void OnEnable()
-    //{
-    //    controls.Gameplay.Enable();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    controls.Gameplay.Disable();
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (!playersITouch.Contains(rb))
+            {
+                playersITouch.Add(collision.gameObject.GetComponent<Rigidbody2D>());
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (playersITouch.Contains(rb))
+            {
+                playersITouch.Remove(collision.gameObject.GetComponent<Rigidbody2D>());
+            }
+        }
+    }
 }

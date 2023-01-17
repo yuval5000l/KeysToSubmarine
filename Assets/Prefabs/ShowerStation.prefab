@@ -198,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 2216415087479973868}
   m_LocalRotation: {x: 0, y: 0, z: -0.00014830478, w: 1}
   m_LocalPosition: {x: -3.57, y: 2.98, z: 0}
-  m_LocalScale: {x: 0.98314387, y: 0.8806608, z: 0.5}
+  m_LocalScale: {x: 0.7409033, y: 0.6636714, z: 0.37680313}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2216415086897726426}
@@ -325,8 +325,8 @@ MonoBehaviour:
   players_action_key: 
   players_in_station: []
   station_active: 0
-  mission_index: 0
-  press_in_a_row: 0
+  always_active: 0
+  points_award: 0
   missionManager: {fileID: 0}
   stationPopup: {fileID: 0}
   maximalTime: 0.25
@@ -334,6 +334,9 @@ MonoBehaviour:
   holdTime: 1
   indicator: {fileID: 2216415086897726427}
   station_animation: {fileID: 517266596}
+  bonus_time: 1.5
+  door: {fileID: 0}
+  stationExplainer: {fileID: 0}
 --- !u!95 &517266596
 Animator:
   serializedVersion: 5

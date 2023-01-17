@@ -21,20 +21,24 @@ public class CodeStation : StationScript
     [SerializeField] private DoorScript door;
     [SerializeField] private float DoorOpenTime = 1.0f;
     [SerializeField] private GameObject stationExplainer;
-
+    [SerializeField] private int pressToFinish = 5;
     private List<KeyCode> keys_pressed = new List<KeyCode>();
     private bool door_activated = true;
 
-    new void Start()
+    void Awake()
     {
-        base.Start();
         missions.Add(pressNKeyInARow);
         missionsNumberOfPlayers.Add(numberOfPlayers);
         spriteR.sprite = idle;
-        stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-        deActivatePopup();
-        
+    }
+    private new void Start()
+    {
+        base.Start();
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1f, 0);
+        if (always_active)
+        {
+            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -75,17 +79,17 @@ public class CodeStation : StationScript
             timeWindowToPress = 0;
             keys_pressed.Clear();
         }
-        for (int i = 0; i < players_controller_in_station.Count; i++)
-        {
-            if (players_controller_in_station[i].Item2 == false)
-            {
-                check_pressed_once[i] = false;
-            }
-            else
-            {
-                check_pressed_once[i] = true;
-            }
-        }
+        //for (int i = 0; i < players_controller_in_station.Count; i++)
+        //{
+        //    if (players_controller_in_station[i].Item2 == false)
+        //    {
+        //        check_pressed_once[i] = false;
+        //    }
+        //    else
+        //    {
+        //        check_pressed_once[i] = true;
+        //    }
+        //}
         timeWindowToPress += Time.deltaTime;
     }
     // Bug - player can press multiple times and act like 3 players.
@@ -99,15 +103,15 @@ public class CodeStation : StationScript
                 keys_pressed.Add(action_key);
             }
         }
-        int counter = 0;
-        foreach (var action_key in players_controller_in_station) // For Controller
-        {
-            if (action_key.Item2 && check_pressed_once[counter] == false)
-            {
-                timeWindowToPress = 0;
-            }
-            counter++;
-        }
+        //int counter = 0;
+        //foreach (var action_key in players_controller_in_station) // For Controller
+        //{
+        //    if (action_key.Item2 && check_pressed_once[counter] == false)
+        //    {
+        //        timeWindowToPress = 0;
+        //    }
+        //    counter++;
+        //}
         if (keys_pressed.Count == missionsNumberOfPlayers[mission_index])
         {
             PlayerAnimationWork();
@@ -116,13 +120,12 @@ public class CodeStation : StationScript
             keys_pressed.Clear();
         }
 
-
-        if (press_in_a_row == 5)
+        if (press_in_a_row == pressToFinish)
         {
             spriteR.sprite = states[press_in_a_row - 1];
             station_active = false;
             deActivatePopup();
-            if (press_in_a_row == 5)
+            if (press_in_a_row == pressToFinish)
             {
                 station_active = false;
 

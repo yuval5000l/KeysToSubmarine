@@ -50,21 +50,21 @@ public class StationScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        //if (points_award ==null)
-        //{
-        //    points_award = 0;
-            
-        //}
+        
         for (int i = 0; i < 4; i++)
         {
             numOfPlayersIndicator[i] = Instantiate(Resources.Load((i + 1).ToString() + "Person_01")) as GameObject;
             numOfPlayersIndicator[i].SetActive(false);
             numOfPlayersIndicator[i].transform.position = gameObject.transform.position + new Vector3(0, 1, 0);
-
         }
+        stationPopup = Instantiate(Resources.Load("AdvancedRedBall")) as GameObject;
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
 
-        numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
-        
+        stationPopup.GetComponent<PopUpWithPlayersController>().setNumOfChildren(numberOfPlayers);
+        stationPopup.SetActive(false);
+        //numOfPlayersIndicator[numberOfPlayers-1].SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -84,6 +84,7 @@ public class StationScript : MonoBehaviour
                  
             }
         }
+
         timeWindowToPress += Time.deltaTime;
     }
 
@@ -293,30 +294,34 @@ public class StationScript : MonoBehaviour
         {
             //Debug.Log("Player Touched");
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
-            if (player.is_Controller())
+            if (!players_in_station.Contains(player))
             {
-                //Debug.Log("Player with controller");
-                int counter = players_controller_in_station.Count;
-                player_action_controller.Add(player.GetPlayerActionButtonNew());
-                player_action_controller[counter] = player.GetPlayerActionButtonNew();
-                players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
-                //Debug.Log("Counter = " + counter);
-                if (player_action_controller[counter] != null)
+                if (player.is_Controller())
                 {
-                    player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
-                    //player_action.performed += ctx => action_key_pressed = true;
-                    player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+                    //Debug.Log("Player with controller");
+                    int counter = players_controller_in_station.Count;
+                    player_action_controller.Add(player.GetPlayerActionButtonNew());
+                    player_action_controller[counter] = player.GetPlayerActionButtonNew();
+                    players_controller_in_station.Add(new Tuple<PlayerController, bool>(player, false));
+                    //Debug.Log("Counter = " + counter);
+                    if (player_action_controller[counter] != null)
+                    {
+                        player_action_controller[counter].started += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, true);
+                        //player_action.performed += ctx => action_key_pressed = true;
+                        player_action_controller[counter].canceled += ctx => players_controller_in_station[counter] = new Tuple<PlayerController, bool>(players_controller_in_station[counter].Item1, false);
+
+                    }
 
                 }
-
+                else
+                {
+                    players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
+                }
+                stationPopup.GetComponent<PopUpWithPlayersController>().setTriggerToChild(player.getColor());
+                players_in_station.Add(player);
             }
-            else
-            {
-                players_action_key.Add(player.GetPlayerActionButton()); // There must be a better way
-            }
-            players_in_station.Add(player);
+            
         }
-        
     }
     
     
@@ -346,6 +351,8 @@ public class StationScript : MonoBehaviour
                 {
                     players_action_key.Remove(player.GetPlayerActionButton());
                 }
+                stationPopup.GetComponent<PopUpWithPlayersController>().setTriggerToChild("Un" + player.getColor());
+
                 players_in_station.Remove(player);
                 press_in_a_row = 0; // NOICE
                 player.AnimationIdle();
@@ -353,6 +360,7 @@ public class StationScript : MonoBehaviour
                 {
                     playerz.cancelForceStop();
                 }
+
             }
         }
         
@@ -400,13 +408,34 @@ public class StationScript : MonoBehaviour
     public void activatePopup()
     {
         //playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
-        stationPopup.SetActive(true);
+        if (stationPopup) 
+        {
+            stationPopup.SetActive(true);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
+
+        }
+        else
+        {
+            Debug.Log("There isn't any station PopUp for this station");
+        }
     }
 
     public void deActivatePopup()
     {
         //playersForMission.text = "";
-        stationPopup.SetActive(false);
+        if (stationPopup)
+        {
+            if(!always_active)
+            {
+            stationPopup.GetComponent<PopUpWithPlayersController>().deActivatePopUp();
+            //stationPopup.SetActive(false);
+            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
+            }
+        }
+        else
+        {
+            Debug.Log("There isn't any station PopUp for this station");
+        }
     }
     
     public bool hasPlayersInStation()

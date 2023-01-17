@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7afe3cc930739fc478e452593311ec6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
   players_action_key: 
   players_in_station: []
   station_active: 0
-  mission_index: 0
-  press_in_a_row: 0
+  always_active: 0
+  points_award: 0
   missionManager: {fileID: 0}
   stationPopup: {fileID: 0}
   maximalTime: 0.25
@@ -121,6 +121,7 @@ MonoBehaviour:
   door: {fileID: 0}
   DoorOpenTime: 1
   stationExplainer: {fileID: 0}
+  pressToFinish: 5
 --- !u!60 &5350649873979931604
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -197,10 +198,10 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.6133957, y: 1.228404}
-  - {x: -0.022149086, y: 1.0699878}
-  - {x: 0.81952, y: 0.72894907}
+  - {x: -0.022149086, y: 1.1136475}
+  - {x: 0.8508133, y: 0.89111423}
   - {x: 0.48214912, y: -1.3711162}
-  - {x: -0.85116863, y: -1.0417624}
+  - {x: -0.89497894, y: -1.2288756}
   - {x: -0.6319885, y: 1.2110357}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}

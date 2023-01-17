@@ -15,12 +15,14 @@ public class BollderStation : StationScript
         missionsNumberOfPlayers.Add(numberOfPlayers);
         mission_index = 0;
         station_active = true;
+        numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        numOfPlayersIndicator[numberOfPlayers - 1].transform.position = transform.localPosition;
         pressKeysInARowCount = 0;
         if (rigi != null)
         {
@@ -30,19 +32,27 @@ public class BollderStation : StationScript
             }
         }
 
-
+        foreach (PlayerController player in players_in_station)
+        {
+            if (Input.GetKey(player.GetPlayerActionButton()))
+            {
+                player.AnimationPush(Vector3.zero);
+            }
+        }
         if (station_active)
         {
+
             if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
             {
-                missions[mission_index]();
                 // station_animation.SetTrigger("Hover");
+                missions[mission_index]();
+
             }
-            //else
-            //{
-            //    PlayerAnimationIdle();
-            //}
-        }
+        //else
+        //{
+        //    PlayerAnimationIdle();
+        //}
+    }
         else
         {
             PlayerAnimationIdle();

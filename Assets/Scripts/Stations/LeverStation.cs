@@ -13,17 +13,15 @@ public class LeverStation : StationScript
     //[SerializeField] private bool alwaysActive;
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private GameObject stationExplainer;
-    new void Start()
+    void Awake()
     {
         base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        if (stationPopup == null)
+        if (always_active)
         {
-            stationPopup = Instantiate(Resources.Load("LightBulb")) as GameObject;
+            numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
         }
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-        deActivatePopup();
 
     }
 

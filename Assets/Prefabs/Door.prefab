@@ -95,7 +95,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 8415134283173520219}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e423f3cca2060b44193a1ad8d1a6f222, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -127,3 +127,6 @@ MonoBehaviour:
   coli: {fileID: 3660377504622347142}
   sprite: {fileID: 2634894880941143837}
   anim: {fileID: 0}
+  always_open: 0
+  numOfStations: 1
+  permanent_changes: 0

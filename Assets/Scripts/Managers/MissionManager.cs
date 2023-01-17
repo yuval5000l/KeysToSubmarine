@@ -22,9 +22,9 @@ public class MissionManager : MonoBehaviour
     
     // Timer
     [SerializeField] private float time_left = 30;
-    [SerializeField] private GameObject indicator;
+    [SerializeField] private GameObject TimeIndicator;
     [SerializeField] private GameObject Orb;
-    [SerializeField] private SpriteRenderer GreenScreen;
+    [SerializeField] private GameObject ScoreIndicator;
     [SerializeField] private SpriteRenderer Noise;
     [SerializeField] private SpriteRenderer GreenVignette1;
     [SerializeField] private GameObject GreenVignette2;
@@ -33,6 +33,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private List<StationScript> stations = new List<StationScript>();
     [SerializeField] private int MaxStrategiesAtTime = 3;
     [SerializeField] private bool ReadAsBatch = false;
+    [SerializeField] private bool refillStrategy = false;
     // A Random directory
     //[SerializeField] private bool Manual;
     //private int numActiveStations = 0;
@@ -44,11 +45,18 @@ public class MissionManager : MonoBehaviour
     private List<StationScript> stationsActive = new List<StationScript>();
     private float initial_time;
     private bool isGameFinsihed = false;
-    
+    private int strategiessActive = 0;
+
+    private GameObject ScoreIndicatorPrefab;
+
+    private CameraZoom zoom;
 
     // Start is called before the first frame update
     void Start()
     {
+        zoom = FindObjectOfType<CameraZoom>();
+        ScoreIndicatorPrefab = Resources.Load("ScoreIndicator") as GameObject;
+        //ScoreIndicatorPrefab = ScoreIndicatorPrefabhelper.GetComponent<ScoreIndicator>();
         refillStrategies();
         refillStations();
         updateText();
@@ -66,8 +74,16 @@ public class MissionManager : MonoBehaviour
                 {
                     if ((!stationsActive.Contains(station) && !station.isAlwaysActive()))
                     {
-                        stationsActive.Add(station);
-                        station.activatePopup();
+                        if (ReadAsBatch)
+                        {
+                            ActivateBatch();
+                        }
+                        else
+                        {
+                            //ActivateStation(station);
+                            stationsActive.Add(station);
+                            station.activatePopup();
+                        }
                     }
                 }
             }
@@ -90,6 +106,7 @@ public class MissionManager : MonoBehaviour
                 stationScripts.Add(new_list);
             }
         }
+        stationScripts.Remove(stationScripts[stationScripts.Count - 1]);
 
     }
 
@@ -100,6 +117,44 @@ public class MissionManager : MonoBehaviour
             stations.Add(station);
         }
     }
+
+    private bool DoFinishAnimation()
+    {
+        if (zoom)
+        {
+            zoom.ActivateZoom(Orb.transform.localPosition);
+        }
+        time_left = Mathf.Lerp(time_left, initial_time, Time.deltaTime);
+        return time_left >= (initial_time - 2);
+    }
+
+
+    private void updateIndicator()
+    {
+        // For Gadi
+        if (Noise != null)
+        {
+            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+            float x = 0.5f + (time_left / initial_time) * 0.5f;
+            GreenVignette2.transform.localScale = new Vector3(x, x, x);
+        }
+        //
+        if (Orb != null)
+        {
+            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
+            Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
+        }
+        if (TimeIndicator)
+        {
+            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, TimeIndicator.transform.localScale.y);
+        }
+        if (ScoreIndicator)
+        {
+            ScoreIndicator.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, ScoreIndicator.transform.localScale.y);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -112,12 +167,19 @@ public class MissionManager : MonoBehaviour
             time_left -= Time.deltaTime;
         }
         updateText();
-
+        updateIndicator();
         if (score >= missionsToWinTarget)
         {
             Debug.Log("You Win! You Win! You Win! You Win!");
-            isGameFinsihed = true;
-            GM.NextlevelCanvas();
+            if (DoFinishAnimation())
+            {
+                if (zoom)
+                {
+                    zoom.DeActivateZoom();
+                }
+                isGameFinsihed = true;
+                GM.NextlevelCanvas();
+            }
             return;
         }
         if (time_left <= 0 && time_left != -100f)
@@ -125,37 +187,34 @@ public class MissionManager : MonoBehaviour
             isGameFinsihed = true;
 
             Debug.Log("You Lose! You Lose! You Lose! You Lose!");
-            Time.timeScale = 0f;
-            SceneManager.LoadScene("EndScreenLost");
+            GM.GameOver(Orb);
         }
 
         //rollTheDice();
-        if (stationScripts.Count != 0)
-        {
-            ChooseStratgies();
-        }
-        if (stationScripts.Count == MaxStrategiesAtTime)
+        //if (ReadAsBatch && (MaxStrategiesAtTime > stationScripts.Count) && refillBatch)
+        //{
+        //    refillStrategies();
+        //}
+        if (stationScripts.Count == MaxStrategiesAtTime && refillStrategy)
         {
             refillStrategies();
         }
-        // For Gadi
-        if (Noise != null)
+        if (stationScripts.Count != 0 )
         {
-            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
-            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
-            float x = 0.5f + (time_left / initial_time) * 0.5f;
-           GreenVignette2.transform.localScale = new Vector3(x, x, x);
+            ChooseStratgies();
         }
-        //
-        if (Orb != null)
-        {
-            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
-            Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
-        }
-        if (indicator)
-        {
-            indicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 16f, indicator.transform.localScale.y);
-        }
+        
+        
+    }
+
+
+    private void MakeScoreIndicator(Vector3 stationPos)
+    {
+        //Debug.Log("HERE");
+        //GameObject scoreobj = Instantiate(ScoreIndicatorPrefab);
+        ScoreIndicator scoreind = Instantiate(ScoreIndicatorPrefab).GetComponent<ScoreIndicator>();
+        scoreind.transform.position = stationPos;
+        scoreind.orb_loc = ScoreIndicator.transform.localPosition;
     }
 
     public void missionDone(float bonus_time, int pointsWorth)
@@ -163,6 +222,9 @@ public class MissionManager : MonoBehaviour
         //printStationScript();
         StationScript station_to_remove = null;
         List<StationScript> strategy_to_remove = null;
+        //Debug.Log(stationScripts[0][0]);
+        //Debug.Log(stationsActive.Count);
+
         foreach (List<StationScript> strategy in stationScripts)
         {
             foreach (StationScript station in strategy)
@@ -172,27 +234,41 @@ public class MissionManager : MonoBehaviour
                     stationsActive.Remove(station);
                     station_to_remove = station;
                     strategy_to_remove = strategy;
+                    if (score > 0 || time_left > 0)
+                    {
+                        MakeScoreIndicator(station_to_remove.transform.localPosition);
+                    }
                 }
             }
-            if (station_to_remove != null)
+                if (station_to_remove != null)
+                {
+                    strategy.Remove(station_to_remove);
+                    station_to_remove = null;
+                }
+            
+        }
+            if (strategy_to_remove != null && strategy_to_remove.Count == 0)
             {
-                strategy.Remove(station_to_remove);
-                station_to_remove = null;
+                stationScripts.Remove(strategy_to_remove);
+                if (ReadAsBatch)
+                {
+                    strategiessActive -= 1;
+                }
             }
-        }
-        if (strategy_to_remove != null && strategy_to_remove.Count == 0)
-        {
-            stationScripts.Remove(strategy_to_remove);
-        }
-        else if (!ReadAsBatch)
-        {
-            ActivateStation(strategy_to_remove[0]);
-        }
-        time_left += bonus_time;
-        score += pointsWorth;
-        //printStationScript();
-        //Debug.Log(stationScripts.Count);
+            else if (!ReadAsBatch)
+            {
+                ActivateStation(strategy_to_remove[0]);
+            }
+            time_left += bonus_time;
+            score += pointsWorth;
+            //Debug.Log(strategiessActive);
+            //Debug.Log(stationScripts.Count);
+            //Debug.Log(stationScripts[0].Count);
+
+            //printStationScript();
+        
     }
+
 
     private void printStationScript()
     {
@@ -207,8 +283,12 @@ public class MissionManager : MonoBehaviour
     }
     private void ActivateStation(StationScript strategy)
     {
-        strategy.setMissionIndex(0);
-        stationsActive.Add(strategy); // Station Active
+        if (!strategy.getStationActiveState())
+        {
+            strategy.setMissionIndex(0);
+            stationsActive.Add(strategy); // Station Active
+
+        }
     }
     public void AddTime(float bonus_time)
     {
@@ -223,23 +303,34 @@ public class MissionManager : MonoBehaviour
 
     private void ActivateBatch()
     {
-        foreach(StationScript station in stationScripts[0])
+        int temp = strategiessActive;
+        for (int i = temp; i < MaxStrategiesAtTime; i++)
         {
-            ActivateStation(station);
+            foreach (StationScript station in stationScripts[i])
+            {
+                ActivateStation(station);
+            }
+            strategiessActive += 1;
         }
     }
 
     private void ChooseStratgies()
     {
-        if (stationsActive.Count < MaxStrategiesAtTime)
-        //while (stationsActive.Count < MaxStationsAtTime)
+        if (ReadAsBatch)
         {
-            int diceResult = (int)rnd.Next(stationScripts.Count);
-            if (ReadAsBatch)
+            while (strategiessActive < MaxStrategiesAtTime && MaxStrategiesAtTime <= stationScripts.Count)
             {
                 ActivateBatch();
             }
-            else if (stationScripts[diceResult].Count > 0)
+        }
+        else if (stationsActive.Count < MaxStrategiesAtTime)
+        {
+            if (stationScripts.Count < MaxStrategiesAtTime)
+            {
+                refillStations();
+            }
+            int diceResult = (int)rnd.Next(stationScripts.Count);
+            if (stationScripts[diceResult].Count > 0 && !stationsActive.Contains(stationScripts[diceResult][0]))
             {
                 ActivateStation(stationScripts[diceResult][0]);
             }
@@ -279,5 +370,9 @@ public class MissionManager : MonoBehaviour
     private void printMissionInfo(int mission_index, int station_index)
     {
         //Debug.Log("Go to the "+ stationsNames[station_index]  + " Station"  + " And " + missionsExplanation[mission_index]);
+    }
+
+    private void printDebugStationsActive()
+    {
     }
 }

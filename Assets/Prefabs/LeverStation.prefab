@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3943577113499008745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.8, y: -2.36, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.38125, y: 0.38125, z: 0.38125}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,8 +103,8 @@ MonoBehaviour:
   players_action_key: 
   players_in_station: []
   station_active: 0
-  mission_index: 0
-  press_in_a_row: 0
+  always_active: 0
+  points_award: 0
   missionManager: {fileID: 0}
   stationPopup: {fileID: 0}
   maximalTime: 0.25
@@ -112,7 +112,6 @@ MonoBehaviour:
   station_animation: {fileID: 747443521}
   door: {fileID: 0}
   DoorOpenTime: 0
-  alwaysActive: 0
   bonus_time: 1.5
   stationExplainer: {fileID: 0}
 --- !u!61 &120271504988597064
@@ -174,7 +173,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0118358135, y: 0.013522625}
+  m_Offset: {x: -0.06652698, y: 0.046337247}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -185,5 +184,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2729554, y: 1.1823559}
+  m_Size: {x: 1.5792248, y: 1.2479851}
   m_EdgeRadius: 0.088
