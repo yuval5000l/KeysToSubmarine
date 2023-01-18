@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/SoundFX.meta
 guid: 34b7dcfd21c8e09478a00d5d00f436be
+========
+guid: fe63c3b8fac25b649859d4b45745f02e
+>>>>>>>> f516518e8dc15189dd1f098ec0ae8a418d00cd0a:Assets/Scenes/Screens/Tutorial screens/Buttons.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
