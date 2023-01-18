@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1108506384019305999, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013584157466061528, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674751861998454289, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008744, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -76,9 +88,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: StationSound
+      value: 
+      objectReference: {fileID: 7679602702536425348}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: points_award
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: yellowOrbFade
+      value: 
+      objectReference: {fileID: 5486298614901465939}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: missionManager
       value: 
@@ -87,5 +107,24 @@ PrefabInstance:
       propertyPath: numberOfPlayers
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+      propertyPath: yellowOrbAppear
+      value: 
+      objectReference: {fileID: 6272966791018221466}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+--- !u!82 &5486298614901465939 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3013584157466061528, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+  m_PrefabInstance: {fileID: 7345750696851474827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6272966791018221466 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3674751861998454289, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+  m_PrefabInstance: {fileID: 7345750696851474827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7679602702536425348 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1108506384019305999, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
+  m_PrefabInstance: {fileID: 7345750696851474827}
+  m_PrefabAsset: {fileID: 0}

@@ -15,7 +15,7 @@ public class CodeStation : StationScript
     [SerializeField] private GameObject stationExplainer;
     [SerializeField] private int pressToFinish = 5;
     private bool door_activated = true;
-    private AudioSource StationSound;
+    [SerializeField] private AudioSource StationSound;
 
     void Awake()
     {
@@ -27,7 +27,7 @@ public class CodeStation : StationScript
     private new void Start()
     {
         base.Start();
-        stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1f, 0);
+        //stationPopup.transform.position = gameObject.transform.position + new Vector3(0, 1f, 0);
         if (always_active)
         {
             //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);

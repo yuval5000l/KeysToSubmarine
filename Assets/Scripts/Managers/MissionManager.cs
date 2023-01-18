@@ -44,6 +44,7 @@ public class MissionManager : MonoBehaviour
     //[SerializeField] private List<string> missionsExplanation = new List<string>();
     private List<StationScript> stationsActive = new List<StationScript>();
     private float initial_time;
+    private float OrbInitialScale;
     private bool isGameFinsihed = false;
     private int strategiessActive = 0;
 
@@ -64,6 +65,10 @@ public class MissionManager : MonoBehaviour
         updateText();
         addActiveStations();
         initial_time = time_left;
+        if (Orb)
+        {
+            OrbInitialScale = Orb.transform.localScale.x;
+        }
     }
 
     private void addActiveStations()
@@ -133,6 +138,10 @@ public class MissionManager : MonoBehaviour
 
     private void updateIndicator()
     {
+        if (time_left > initial_time)
+        {
+            initial_time = time_left;
+        }
         // For Gadi
         if (Noise != null)
         {
@@ -144,7 +153,8 @@ public class MissionManager : MonoBehaviour
         //
         if (Orb != null)
         {
-            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + 0.1f;
+            
+            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + OrbInitialScale;
             Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         }
         if (TimeIndicator != null)

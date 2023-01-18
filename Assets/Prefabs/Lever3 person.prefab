@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5486298614901465939, guid: 879e1ae93c705b441af5d39e027e4fa0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6001960384399865698, guid: 879e1ae93c705b441af5d39e027e4fa0, type: 3}
       propertyPath: m_Name
       value: Lever3 person
@@ -62,6 +66,14 @@ PrefabInstance:
     - target: {fileID: 6001960384399865726, guid: 879e1ae93c705b441af5d39e027e4fa0, type: 3}
       propertyPath: numberOfPlayers
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272966791018221466, guid: 879e1ae93c705b441af5d39e027e4fa0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7679602702536425348, guid: 879e1ae93c705b441af5d39e027e4fa0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7518965732812140910, guid: 879e1ae93c705b441af5d39e027e4fa0, type: 3}

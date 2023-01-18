@@ -7,7 +7,7 @@ public class BetweenStations : MonoBehaviour
 {
     [SerializeField] private BorderScript upperBorder;
     [SerializeField] private BorderScript lowerBorder;
-    private bool slideOut = false; 
+    private bool slideOut = false;
     [SerializeField] private GameObject panel;
     // Start is called before the first frame update
     void Start()

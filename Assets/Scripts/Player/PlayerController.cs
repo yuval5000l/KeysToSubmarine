@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private int frame_counter_for_one_time_press = 0;
     private bool action_pressed;
     private bool one_time_action_pressed;
-
+    [SerializeField] private AudioSource breathing;
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -258,6 +258,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("idle");
             idle = true;
+
         }
         else
         {
