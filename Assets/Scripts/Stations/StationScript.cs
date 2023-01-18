@@ -352,8 +352,9 @@ public class StationScript : MonoBehaviour
         if (!station_active)
         {
             station_active = true;
-            activatePopup();
         }
+        activatePopup();
+
     }
 
     public bool getStationActiveState()
@@ -368,12 +369,11 @@ public class StationScript : MonoBehaviour
 
     public void activatePopup()
     {
-        //playersForMission.text = missionsNumberOfPlayers[mission_index].ToString() + " Players";
-        if (stationPopup) 
+        if (stationPopup != null) 
         {
             stationPopup.SetActive(true);
+            stationPopup.GetComponent<PopUpWithPlayersController>().ActivatePopUps();
             yellowOrbAppear.Play();
-            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
         }
         else
@@ -389,10 +389,8 @@ public class StationScript : MonoBehaviour
         {
             if(!always_active)
             {
-            stationPopup.GetComponent<PopUpWithPlayersController>().deActivatePopUp();
-            yellowOrbFade.Play();
-            //stationPopup.SetActive(false);
-            //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
+                stationPopup.GetComponent<PopUpWithPlayersController>().deActivatePopUp();
+                yellowOrbFade.Play();
             }
         }
         else
