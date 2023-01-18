@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PreviousScenes/level 3.unity
     guid: 92a026b9c51338b46a84ea0537fdfe1c
   - enabled: 1
-    path: Assets/Scenes/level 2.unity
+    path: Assets/Scenes/Oldlevel 2.unity
     guid: e559f9d22541aea458af03c691410f0d
   - enabled: 1
     path: Assets/Scenes/PreviousScenes/ChooseNumPlayers.unity
