@@ -8,6 +8,7 @@ public class BollderStation : StationScript
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Rigidbody2D rigi;
     [SerializeField] private AudioSource StationSound;
+    private float soundLoop = 0f;
     new void Start()
     {
         base.Start();
@@ -27,6 +28,7 @@ public class BollderStation : StationScript
     // Update is called once per frame
     void Update()
     {
+        soundLoop += Time.deltaTime;
         //numOfPlayersIndicator[numberOfPlayers - 1].transform.position = transform.localPosition;
         pressKeysInARowCount = 0;
         if (rigi != null)
@@ -36,7 +38,7 @@ public class BollderStation : StationScript
                 rigi.bodyType = RigidbodyType2D.Static;
             }
         }
-
+        
 
         if (station_active)
         {
@@ -61,7 +63,10 @@ public class BollderStation : StationScript
             {
                 PlayerAnimationIdle();
             }
-
+        if(soundLoop >= 2.5f)
+        {
+            soundLoop = 0f;
+        }
         }
     }
     
@@ -83,7 +88,11 @@ public class BollderStation : StationScript
             //PlayerAnimationPush();
             pressKeysInARowCount = 0;
             rigi.bodyType = RigidbodyType2D.Dynamic;
-            StationSound.Play();
+            if(soundLoop >= 2.5f)
+            {
+
+                StationSound.Play();
+            }
         }
         else
         {
