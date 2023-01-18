@@ -40,6 +40,8 @@ public class MissionManager : MonoBehaviour
 
     // TODO Make a weighted probability. TODO Make a list of stations with stations.
     private List<List<StationScript>> stationScripts = new List<List<StationScript>>();
+    private List<List<StationScript>> stationScriptsReadOnly = new List<List<StationScript>>();
+
     //[SerializeField] private List<string> stationsNames = new List<string>();
     //[SerializeField] private List<string> missionsExplanation = new List<string>();
     private List<StationScript> stationsActive = new List<StationScript>();
@@ -60,6 +62,7 @@ public class MissionManager : MonoBehaviour
         zoom = FindObjectOfType<CameraZoom>();
         ScoreIndicatorPrefab = Resources.Load("ScoreIndicator") as GameObject;
         //ScoreIndicatorPrefab = ScoreIndicatorPrefabhelper.GetComponent<ScoreIndicator>();
+        refillStrategiesReadOnly();
         refillStrategies();
         refillStations();
         updateText();
@@ -70,7 +73,25 @@ public class MissionManager : MonoBehaviour
             OrbInitialScale = Orb.transform.localScale.x;
         }
     }
-
+    private void refillStrategiesReadOnly()
+    {
+        foreach (Transform strategy in gameObject.transform)
+        {
+            List<StationScript> new_list = new List<StationScript>();
+            if (strategy.GetComponent<StationScript>() == null)
+            {
+                foreach (StationScript station in strategy.GetComponentsInChildren<StationScript>())
+                {
+                    new_list.Add(station);
+                }
+            }
+            if (new_list.Count > 0 && !stationScripts.Contains(new_list))
+            {
+                stationScriptsReadOnly.Add(new_list);
+            }
+        }
+        stationScriptsReadOnly.Remove(stationScriptsReadOnly[stationScriptsReadOnly.Count - 1]);
+    }
     private void addActiveStations()
     {
         foreach (List<StationScript> strategy in stationScripts)
@@ -96,25 +117,39 @@ public class MissionManager : MonoBehaviour
             }
         }
     }
+
+    private bool checkIfstrategyInGame(List<StationScript> strategies)
+    {
+        foreach(List<StationScript> strategies2 in stationScripts)
+        {
+            foreach(StationScript strategy in strategies2)
+            {
+                if (strategies.Contains(strategy))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     private void refillStrategies()
     {
-        foreach(Transform strategy in gameObject.transform)
+        foreach(List<StationScript> strategies in stationScriptsReadOnly)
         {
             List<StationScript> new_list = new List<StationScript>();
-            if (strategy.GetComponent<StationScript>() == null)
+            if (!checkIfstrategyInGame(strategies))
             {
-                foreach (StationScript station in strategy.GetComponentsInChildren<StationScript>())
+                foreach (StationScript station in strategies)
                 {
                     new_list.Add(station);
                 }
+                if (new_list.Count > 0 && !stationScripts.Contains(new_list))
+                {
+                    stationScripts.Add(new_list);
+                }
             }
-            if (new_list.Count > 0 && !stationScripts.Contains(new_list))
-            {
-                stationScripts.Add(new_list);
-            }
+            
         }
-        stationScripts.Remove(stationScripts[stationScripts.Count - 1]);
-        Debug.Log(stationScripts.Count);
 
     }
 
@@ -252,11 +287,9 @@ public class MissionManager : MonoBehaviour
 
     public void missionDone(float bonus_time, int pointsWorth)
     {
-        //printStationScript();
         StationScript station_to_remove = null;
         List<StationScript> strategy_to_remove = null;
-        //Debug.Log(stationScripts[0][0]);
-        //Debug.Log(stationsActive.Count);
+
 
         foreach (List<StationScript> strategy in stationScripts)
         {
@@ -280,20 +313,25 @@ public class MissionManager : MonoBehaviour
                 }
             
         }
-            if (strategy_to_remove != null && strategy_to_remove.Count == 0)
+        if (strategy_to_remove != null && strategy_to_remove.Count == 0)
+        {
+            if (ReadAsBatch)
             {
-                stationScripts.Remove(strategy_to_remove);
-                if (ReadAsBatch)
-                {
-                    strategiessActive -= 1;
-                }
+                strategiessActive -= 1;
             }
-            else if (!ReadAsBatch)
-            {
-                ActivateStation(strategy_to_remove[0]);
-            }
-            time_left += bonus_time;
-            score += pointsWorth;
+            //else if(refillStrategy)
+            //{
+            //    foreach(List<StationScript> stationScripts)
+            //}
+            stationScripts.Remove(strategy_to_remove);
+
+        }
+        else if (!ReadAsBatch)
+        {
+            ActivateStation(strategy_to_remove[0]);
+        }
+        time_left += bonus_time;
+        score += pointsWorth;
             //Debug.Log(strategiessActive);
             //Debug.Log(stationScripts.Count);
             //Debug.Log(stationScripts[0].Count);

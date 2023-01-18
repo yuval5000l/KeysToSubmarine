@@ -7,6 +7,7 @@ public class PopUpWithPlayersController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject[] children = new GameObject[4];
     private int numOfchildren = 3;
+    private bool redball = true;
     void Awake()
     {
 
@@ -20,6 +21,7 @@ public class PopUpWithPlayersController : MonoBehaviour
     public void withoutRedBall()
     {
         children[0].SetActive(false);
+        redball = false;
     }
     public void setNumOfChildren(int num)
     {
@@ -82,6 +84,14 @@ public class PopUpWithPlayersController : MonoBehaviour
         {
             obj.GetComponent<PopUpController>().deActivatePopUp();
         }
+    }
+    public void ActivatePopUps()
+    {
+        if (redball)
+        {
+            children[0].SetActive(true);
+        }
+        setNumOfChildren(numOfchildren);
     }
     // Update is called once per frame
     void Update()

@@ -17,7 +17,10 @@ public class PopUpController : MonoBehaviour
     {
         
     }
-
+    public void ActivatePopUp()
+    {
+        gameObject.SetActive(true);
+    }
     public void deActivatePopUp()
     {
         maAnimator.SetTrigger("Finish");
