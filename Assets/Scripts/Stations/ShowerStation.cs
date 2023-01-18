@@ -17,7 +17,7 @@ public class ShowerStation : StationScript
     private float timeHeld = 0;
     private bool door_activated = true;
     [SerializeField] private GameObject stationExplainer;
-    private AudioSource ShowerSound;
+    [SerializeField] private AudioSource ShowerSound;
 
 
 
