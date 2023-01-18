@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6841302553793853593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.83, y: 0.14, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -176,3 +176,7 @@ MonoBehaviour:
   always_open: 0
   numOfStations: 1
   permanent_changes: 0
+  doorClose: {fileID: 0}
+  doorHalfClose: {fileID: 0}
+  doorHalfOpen: {fileID: 0}
+  doorOpen: {fileID: 0}
