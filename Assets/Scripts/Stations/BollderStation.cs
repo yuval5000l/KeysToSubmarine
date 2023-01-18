@@ -65,7 +65,7 @@ public class BollderStation : StationScript
                 PlayerAnimationIdle();
             }
         }
-        Debug.Log(StationSound.isPlaying);
+        //Debug.Log(StationSound.isPlaying);
 
     }
     

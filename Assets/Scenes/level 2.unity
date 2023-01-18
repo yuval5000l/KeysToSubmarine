@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: points_award
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: missionManager
@@ -1153,6 +1153,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: bonus_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
       objectReference: {fileID: 1714297682}
@@ -1856,7 +1860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320948657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.64, y: -4.03, z: 0}
+  m_LocalPosition: {x: -8.64, y: -4.3510003, z: 0}
   m_LocalScale: {x: 0, y: 0.38474998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3375,7 +3379,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629986537477770122, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: bonus_time
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 629986537477770122, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: points_award
@@ -4555,7 +4559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002717449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.2, z: -0.074644506}
+  m_LocalPosition: {x: 0, y: -4.521, z: -0.074644506}
   m_LocalScale: {x: 0.9254465, y: 0.9254465, z: 0.9254465}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6457,6 +6461,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: bonus_time
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: points_award
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
       objectReference: {fileID: 1714297682}
@@ -7046,7 +7058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467530822}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8.62, y: -4.0516, z: 0}
+  m_LocalPosition: {x: 8.62, y: -4.451, z: 0}
   m_LocalScale: {x: 0, y: 0.46611997, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8315,10 +8327,10 @@ MonoBehaviour:
   timer_text: {fileID: 2045759623}
   score_text: {fileID: 1037844423}
   missionsToWinTarget: 20
-  time_left: 20
+  time_left: 25
   TimeIndicator: {fileID: 1467530822}
   Orb: {fileID: 600486389}
-  ScoreIndicatorBottom: {fileID: 0}
+  ScoreIndicatorBottom: {fileID: 320948657}
   Noise: {fileID: 1309477626}
   GreenVignette1: {fileID: 1299655341}
   GreenVignette2: {fileID: 1299655339}
@@ -9080,7 +9092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 267, y: -964}
+  m_AnchoredPosition: {x: 267, y: -996}
   m_SizeDelta: {x: 467.67, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045759623

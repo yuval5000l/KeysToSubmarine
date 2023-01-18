@@ -194,11 +194,11 @@ public class MissionManager : MonoBehaviour
         }
         if (TimeIndicator != null)
         {
-            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, TimeIndicator.transform.localScale.y);
+            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 7.4f, TimeIndicator.transform.localScale.y);
         }
         if (ScoreIndicatorBottom != null)
         {
-            ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, ScoreIndicatorBottom.transform.localScale.y);
+            ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 7.4f, ScoreIndicatorBottom.transform.localScale.y);
         }
     }
 

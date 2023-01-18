@@ -442,7 +442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &67981382
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3136,7 +3136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &498777731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7784,7 +7784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382812645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.64, y: -4.03, z: 0}
+  m_LocalPosition: {x: -8.64, y: -4.43, z: 0}
   m_LocalScale: {x: 0, y: 0.38474998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8151,7 +8151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449031907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.2, z: -0.074644506}
+  m_LocalPosition: {x: -0.011, y: -4.49, z: -0.074644506}
   m_LocalScale: {x: 0.9254465, y: 0.9254465, z: 0.9254465}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9656,7 +9656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1872505591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10441,7 +10441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063007659}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8.62, y: -4.0516, z: 0}
+  m_LocalPosition: {x: 8.62, y: -4.48, z: 0}
   m_LocalScale: {x: 0, y: 0.46611997, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11331,7 +11331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 666868805289996686, guid: 36ca64d4c62440c4c9aed5d4a9bee2f0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 666868805289996687, guid: 36ca64d4c62440c4c9aed5d4a9bee2f0, type: 3}
       propertyPath: m_SortingLayer
@@ -11380,7 +11380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2364927903237509382, guid: ed46ce1f1407e8f4c9f1b4c177a3998a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.38
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2364927903237509382, guid: ed46ce1f1407e8f4c9f1b4c177a3998a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11429,7 +11429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036781568792427008, guid: dfd357fd186919149abe8bc6f6c440d5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6036781568792427010, guid: dfd357fd186919149abe8bc6f6c440d5, type: 3}
       propertyPath: m_RootOrder
