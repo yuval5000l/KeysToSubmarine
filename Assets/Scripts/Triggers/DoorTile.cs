@@ -9,6 +9,8 @@ public class DoorTile : MonoBehaviour
     private Animator MaAnimator;    
     private bool check_player_pressed = false;
     private PlayerController player = null;
+    [SerializeField] AudioSource steppedOn;
+    [SerializeField] AudioSource colliderEnter;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class DoorTile : MonoBehaviour
     {
         if (coll.tag == "Player")
         {
+            colliderEnter.Play();
             if (player == null)
             {
                 MaAnimator.SetBool("Idle", false);
@@ -54,6 +57,7 @@ public class DoorTile : MonoBehaviour
             else if (coll.gameObject.GetComponent<PlayerController>() == player)
             {
                 player_pressed();
+                steppedOn.Play();
             }
         }
 

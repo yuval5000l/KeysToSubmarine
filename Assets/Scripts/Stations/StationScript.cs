@@ -46,6 +46,7 @@ public class StationScript : MonoBehaviour
     [SerializeField] protected int numberOfPlayers;
     [SerializeField] protected AudioSource yellowOrbAppear;
     [SerializeField] protected AudioSource yellowOrbFade;
+    [SerializeField] protected AudioSource colliderSound;
     //protected GameObject[] numOfPlayersIndicator = new GameObject[4];
 
     // Start is called before the first frame update
@@ -287,6 +288,7 @@ public class StationScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D colider) {
         if (colider.gameObject.tag == "Player" && players_in_station.Count < missionsNumberOfPlayers[mission_index])
         {
+            colliderSound.Play();
             //Debug.Log("Player Touched");
             PlayerController player = colider.gameObject.GetComponent<PlayerController>();
             if (!players_in_station.Contains(player))
