@@ -189,8 +189,7 @@ public class MissionManager : MonoBehaviour
         //
         if (Orb != null)
         {
-            
-            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + OrbInitialScale;
+            float scaleForOrb = (1 - (time_left / initial_time)) * 1f + OrbInitialScale;
             Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         }
         if (TimeIndicator != null)
