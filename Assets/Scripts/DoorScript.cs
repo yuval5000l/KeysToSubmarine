@@ -60,7 +60,7 @@ public class DoorScript : MonoBehaviour
             }
             counter_stations = 0;
         }
-        if (tiles_active.Count == 0 && half_open)
+        if (tiles_active.Count == 0 && half_open && !door_idle_open_time)
         {
             anim.SetTrigger("Door_C");
             half_open = false;
@@ -90,7 +90,9 @@ public class DoorScript : MonoBehaviour
             }
             door_open = true;
             door_idle_open_time = true;
-
+            coli.enabled = false;
+            //Debug.Log("HERE");
+            
         }
         else if (door_idle_open_time)
         {

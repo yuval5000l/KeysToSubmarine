@@ -6,6 +6,7 @@ using UnityEngine;
 public class CodeStation : StationScript
 
 {
+    [SerializeField] private AudioSource StationSound;
 
     List<PlayerController> players_pressed = new List<PlayerController>();
     private Animator MaAnimator;
@@ -15,7 +16,6 @@ public class CodeStation : StationScript
     [SerializeField] private GameObject stationExplainer;
     [SerializeField] private int pressToFinish = 5;
     private bool door_activated = true;
-    [SerializeField] private AudioSource StationSound;
 
     void Awake()
     {
