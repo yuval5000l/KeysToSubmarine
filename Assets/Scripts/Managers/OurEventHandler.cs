@@ -50,7 +50,7 @@ public class OurEventHandler : MonoBehaviour
             if (counter <= 0)
             {
                 Time.timeScale = 0f;
-                SceneManager.LoadScene("EndScreenLost");
+                SceneManager.LoadScene("Dead");
             }
         }
     }
