@@ -14,13 +14,14 @@ public class LeverStation : StationScript
     [SerializeField] private float bonus_time = 1.5f;
     [SerializeField] private GameObject stationExplainer;
     [SerializeField] private AudioSource StationSound;
+    private bool isPlaying = false;
 
     void Awake()
     {
         base.Start();
         missions.Add(getAllKeysDown);
         missionsNumberOfPlayers.Add(numberOfPlayers);
-        StationSound = GetComponent<AudioSource>();
+        // StationSound = GetComponent<AudioSource>();
 
     }
 
@@ -110,7 +111,11 @@ public class LeverStation : StationScript
             station_active = false; 
             deActivatePopup();
             station_animation.SetTrigger("pullLever");
-            StationSound.Play();
+            if(!isPlaying)
+            {
+                StationSound.Play();
+                isPlaying = true;
+            }
             if (door != null)
             {
                 // door.OpenDoor();

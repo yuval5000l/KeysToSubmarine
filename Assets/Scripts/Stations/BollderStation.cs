@@ -21,7 +21,7 @@ public class BollderStation : StationScript
         stationPopup.GetComponent<PopUpWithPlayersController>().withoutRedBall();
         stationPopup.transform.position = gameObject.transform.position;
         stationPopup.transform.SetParent(gameObject.transform);
-        StationSound = GetComponent<AudioSource>();
+
         //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
@@ -65,6 +65,8 @@ public class BollderStation : StationScript
                 PlayerAnimationIdle();
             }
         }
+        Debug.Log(StationSound.isPlaying);
+
     }
     
     
@@ -87,7 +89,6 @@ public class BollderStation : StationScript
             rigi.bodyType = RigidbodyType2D.Dynamic;
             if (!isPlaying)
             {
-
                 StationSound.Play();
                 isPlaying = true;
             }
@@ -96,6 +97,7 @@ public class BollderStation : StationScript
         else
         {
             isPlaying = false;
+            StationSound.Pause();
         }
     }
 }
