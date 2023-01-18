@@ -10,6 +10,10 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private bool always_open = false;
     [SerializeField] private int numOfStations = 1;
     [SerializeField] private bool permanent_changes = false;
+    [SerializeField] private AudioSource doorClose;
+    [SerializeField] private AudioSource doorHalfClose;
+    [SerializeField] private AudioSource doorHalfOpen;
+    [SerializeField] private AudioSource doorOpen;
     private List<GameObject> tiles_active = new List<GameObject>();
     private List<SpriteRenderer> cables = new List<SpriteRenderer>();
     private Color default_color;

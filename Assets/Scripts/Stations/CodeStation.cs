@@ -15,7 +15,7 @@ public class CodeStation : StationScript
     [SerializeField] private GameObject stationExplainer;
     [SerializeField] private int pressToFinish = 5;
     private bool door_activated = true;
-    private AudioSource StationSound;
+    [SerializeField] private AudioSource StationSound;
 
     void Awake()
     {

@@ -34,6 +34,7 @@ public class StationScript : MonoBehaviour
 
     
     [SerializeField] protected GameObject stationPopup;
+
     protected float timeWindowToPress = 0;
     //replaces the variable "count" in pressNKeysInARow
     protected int pressKeysInARowCount = 0;
@@ -43,6 +44,8 @@ public class StationScript : MonoBehaviour
 
     //[SerializeField] protected TMP_Text playersForMission; 
     [SerializeField] protected int numberOfPlayers;
+    [SerializeField] protected AudioSource yellowOrbAppear;
+    [SerializeField] protected AudioSource yellowOrbFade;
     //protected GameObject[] numOfPlayersIndicator = new GameObject[4];
 
     // Start is called before the first frame update
@@ -367,6 +370,7 @@ public class StationScript : MonoBehaviour
         if (stationPopup) 
         {
             stationPopup.SetActive(true);
+            yellowOrbAppear.Play();
             //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
         }
@@ -384,6 +388,7 @@ public class StationScript : MonoBehaviour
             if(!always_active)
             {
             stationPopup.GetComponent<PopUpWithPlayersController>().deActivatePopUp();
+            yellowOrbFade.Play();
             //stationPopup.SetActive(false);
             //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(false);
             }

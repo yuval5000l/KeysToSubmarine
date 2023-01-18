@@ -7,7 +7,7 @@ public class BollderStation : StationScript
     // Start is called before the first frame update
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Rigidbody2D rigi;
-    private AudioSource StationSound;
+    [SerializeField] private AudioSource StationSound;
     new void Start()
     {
         base.Start();
