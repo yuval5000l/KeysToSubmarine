@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Scenes/level 5.unity
     guid: d9dffbf8554d95947b59e9df95137d1d
   - enabled: 1
-    path: Assets/Scenes/OldLevel1.unity
+    path: Assets/Scenes/PreviousScenes/OldLevel1.unity
     guid: df9032f3c7acc8746817eed37f43e081
   - enabled: 1
     path: Assets/Scenes/Screens/1.unity
@@ -72,7 +72,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial scenes/Machines.unity
     guid: c19717e22a6a42a498ffd30b2719c424
   - enabled: 1
-    path: Assets/Scenes/level 1.unity
+    path: Assets/Scenes/PreviousScenes/OLDOLDlevel 1.unity
     guid: 2f2642b0997152e4485c7af4d866daef
+  - enabled: 1
+    path: Assets/Scenes/level 1.unity
+    guid: af59eeef0dc03e0499de13d6315acb93
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 33ce6074d363e974f96a5b930a32086b, type: 2}

@@ -108,12 +108,13 @@ public class MissionManager : MonoBehaviour
                     new_list.Add(station);
                 }
             }
-            if (new_list.Count > 0)
+            if (new_list.Count > 0 && !stationScripts.Contains(new_list))
             {
                 stationScripts.Add(new_list);
             }
         }
         stationScripts.Remove(stationScripts[stationScripts.Count - 1]);
+        Debug.Log(stationScripts.Count);
 
     }
 
@@ -222,11 +223,7 @@ public class MissionManager : MonoBehaviour
             GM.GameOver(Orb);
         }
 
-        //rollTheDice();
-        //if (ReadAsBatch && (MaxStrategiesAtTime > stationScripts.Count) && refillBatch)
-        //{
-        //    refillStrategies();
-        //}
+
         if (stationScripts.Count == MaxStrategiesAtTime && refillStrategy)
         {
             refillStrategies();
@@ -350,6 +347,18 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+    private bool checkIfStationsActive(List<StationScript> lst)
+    {
+        foreach( StationScript station in lst)
+        {
+            if (station.getStationActiveState())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void ChooseStratgies()
     {
         if (ReadAsBatch)
@@ -366,7 +375,7 @@ public class MissionManager : MonoBehaviour
                 refillStations();
             }
             int diceResult = (int)rnd.Next(stationScripts.Count);
-            if (stationScripts[diceResult].Count > 0 && !stationsActive.Contains(stationScripts[diceResult][0]))
+            if (stationScripts[diceResult].Count > 0 && checkIfStationsActive(stationScripts[diceResult]))
             {
                 ActivateStation(stationScripts[diceResult][0]);
             }
