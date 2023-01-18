@@ -367,7 +367,8 @@ public class MissionManager : MonoBehaviour
 
     private void updateText()
     {
-        timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
+
+        timer_text.text = time_left.ToString("00.0");
         score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
     }
 
