@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private TMP_Text debug_Text;
     [Header("Player RadioActive")]
     [SerializeField] private float radioActivity = 0f;
-    private bool[] levelsOfRadioActivity;
+    // private bool[] levelsOfRadioActivity;
     private bool radio_active_state = false;
     private SpriteRenderer sprite;
     private SpriteRenderer shadow_sprite;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
-        levelsOfRadioActivity = new bool[] {false,false,false};
+        // levelsOfRadioActivity = new bool[] {false,false,false};
         radioActiveIndicator = Instantiate(Resources.Load<Image>("Image")) as Image;
         radioActiveIndicator.transform.position = Vector3.zero;
         radioActiveIndicator.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
@@ -371,36 +371,35 @@ public class PlayerController : MonoBehaviour
     }
     void checkRadioActivity()
     {
-        if(radioActivity >= 10000 && !levelsOfRadioActivity[2])
+        if(radioActivity >= 10000)
         {
-            levelsOfRadioActivity[2] = true;
             Destroy(gameObject);
             Destroy(radioActiveIndicator);
         }
-        else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
-        {
-            moveSpeed = moveSpeed / 2;
-            levelsOfRadioActivity[1] = true;
-            radioActiveIndicator.fillAmount = 0;
-        }
-        else if (radioActivity >= 3333 && !levelsOfRadioActivity[0])
-        {
-            moveSpeed = moveSpeed / 2;
-            levelsOfRadioActivity[0] = true;
-            radioActiveIndicator.fillAmount = 0;
-        }
-        else if(3333 <= radioActivity && radioActivity <6666 && levelsOfRadioActivity[1])
-        {
-            moveSpeed = moveSpeed * 2;
-            levelsOfRadioActivity[1] = false;
-            radioActiveIndicator.fillAmount = 0;
-        }
-        else if(radioActivity < 3333 && levelsOfRadioActivity[0])
-        {
-            moveSpeed = moveSpeed * 2;
-            levelsOfRadioActivity[0] = false;
-            radioActiveIndicator.fillAmount = 0;
-        }
+        // else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
+        // {
+        //     moveSpeed = moveSpeed / 2;
+        //     levelsOfRadioActivity[1] = true;
+        //     radioActiveIndicator.fillAmount = 0;
+        // }
+        // else if (radioActivity >= 3333 && !levelsOfRadioActivity[0])
+        // {
+        //     moveSpeed = moveSpeed / 2;
+        //     levelsOfRadioActivity[0] = true;
+        //     radioActiveIndicator.fillAmount = 0;
+        // }
+        // else if(3333 <= radioActivity && radioActivity <6666 && levelsOfRadioActivity[1])
+        // {
+        //     moveSpeed = moveSpeed * 2;
+        //     levelsOfRadioActivity[1] = false;
+        //     radioActiveIndicator.fillAmount = 0;
+        // }
+        // else if(radioActivity < 3333 && levelsOfRadioActivity[0])
+        // {
+        //     moveSpeed = moveSpeed * 2;
+        //     levelsOfRadioActivity[0] = false;
+        //     radioActiveIndicator.fillAmount = 0;
+        // }
     }
     public void setColor(string name)
     {

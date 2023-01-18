@@ -8,6 +8,8 @@ public class BollderStation : StationScript
     List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Rigidbody2D rigi;
     [SerializeField] private AudioSource StationSound;
+    private float soundLoop = 0f;
+    private bool isPlaying = false;
     new void Start()
     {
         base.Start();
@@ -19,7 +21,7 @@ public class BollderStation : StationScript
         stationPopup.GetComponent<PopUpWithPlayersController>().withoutRedBall();
         stationPopup.transform.position = gameObject.transform.position;
         stationPopup.transform.SetParent(gameObject.transform);
-        StationSound = GetComponent<AudioSource>();
+
         //numOfPlayersIndicator[numberOfPlayers - 1].SetActive(true);
 
     }
@@ -36,7 +38,7 @@ public class BollderStation : StationScript
                 rigi.bodyType = RigidbodyType2D.Static;
             }
         }
-
+        
 
         if (station_active)
         {
@@ -59,10 +61,12 @@ public class BollderStation : StationScript
             }
             else
             {
+                isPlaying = false;
                 PlayerAnimationIdle();
             }
-
         }
+        //Debug.Log(StationSound.isPlaying);
+
     }
     
     
@@ -83,10 +87,16 @@ public class BollderStation : StationScript
             //PlayerAnimationPush();
             pressKeysInARowCount = 0;
             rigi.bodyType = RigidbodyType2D.Dynamic;
-            StationSound.Play();
+            if (!isPlaying)
+            {
+                StationSound.Play();
+                isPlaying = true;
+            }
         }
+
         else
         {
+            isPlaying = false;
             StationSound.Pause();
         }
     }

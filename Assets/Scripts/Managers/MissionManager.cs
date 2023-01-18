@@ -189,17 +189,16 @@ public class MissionManager : MonoBehaviour
         //
         if (Orb != null)
         {
-            
             float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + OrbInitialScale;
             Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
         }
         if (TimeIndicator != null)
         {
-            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 1.6f, TimeIndicator.transform.localScale.y);
+            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 7.4f, TimeIndicator.transform.localScale.y);
         }
         if (ScoreIndicatorBottom != null)
         {
-            ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 1.6f, ScoreIndicatorBottom.transform.localScale.y);
+            ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 7.4f, ScoreIndicatorBottom.transform.localScale.y);
         }
     }
 
@@ -368,7 +367,8 @@ public class MissionManager : MonoBehaviour
 
     private void updateText()
     {
-        timer_text.text = "Timer: " + time_left.ToString("0.00") + " Seconds";
+
+        timer_text.text = time_left.ToString("00.0");
         score_text.text = "Score: " + score.ToString() + "/" + missionsToWinTarget.ToString();
     }
 
