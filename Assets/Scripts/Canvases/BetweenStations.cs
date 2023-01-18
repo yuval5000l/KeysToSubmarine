@@ -7,12 +7,16 @@ public class BetweenStations : MonoBehaviour
 {
     [SerializeField] private BorderScript upperBorder;
     [SerializeField] private BorderScript lowerBorder;
+    [SerializeField] private AudioSource gameMusic;
+    [SerializeField] private AudioSource menuMusic;  
     private bool slideOut = false;
     [SerializeField] private GameObject panel;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 0f;
+        menuMusic.Play();
+        
     }
 
     // Update is called once per frame
@@ -28,11 +32,16 @@ public class BetweenStations : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("StartScreen");
+
     }
 
     public void SlideOut()
     {
         upperBorder.SlideOut();
         lowerBorder.SlideOut();
+        gameMusic.Play();
+        menuMusic.Stop();
     }
+
+
 }
