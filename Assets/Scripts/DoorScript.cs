@@ -72,6 +72,15 @@ public class DoorScript : MonoBehaviour
                 anim.SetTrigger("Door_H");
                 half_open = true;
             }
+            if (door_open)
+            {
+                if (!always_open)
+                {
+                    StartCoroutine(OpenDoorFor(time));
+                }
+                door_idle_open_time = false;
+                door_open = false;
+            }
         }
         else if (tiles_active.Count >= numOfStations)
         {
