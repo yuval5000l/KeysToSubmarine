@@ -62,7 +62,7 @@ public class CodeStation : StationScript
                 MaAnimator.SetBool("Hover", false);
                 MaAnimator.SetBool("Idle", true);
             }
-            if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
+            if (players_in_station.Count >= missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
             }

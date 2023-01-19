@@ -7304,6 +7304,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperBorder: {fileID: 0}
   lowerBorder: {fileID: 0}
+  gameMusic: {fileID: 0}
+  menuMusic: {fileID: 0}
   panel: {fileID: 1193965395}
 --- !u!114 &1318664408
 MonoBehaviour:
@@ -10472,7 +10474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1790959300
 RectTransform:
   m_ObjectHideFlags: 0
