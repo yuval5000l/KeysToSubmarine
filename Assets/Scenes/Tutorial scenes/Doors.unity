@@ -1681,8 +1681,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 8.585447, y: -3.3419557}
-  - {x: -9.48999, y: -3.3314059}
-  - {x: -9.48275, y: 3.4863052}
+  - {x: -8.641057, y: -3.1798105}
+  - {x: -8.6034975, y: 3.425667}
   - {x: 8.73095, y: 3.5155635}
   - {x: 8.688559, y: -3.5155635}
   m_AdjacentStartPoint: {x: 0, y: 0}
@@ -1891,6 +1891,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1208360030}
+    - target: {fileID: 3449618226828433861, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
+      propertyPath: numberOfSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3449618226828433862, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2189,7 +2193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1199352479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5005,6 +5009,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 456354257}
+    - target: {fileID: 3449618226828433861, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
+      propertyPath: numberOfSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3449618226828433862, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5075,6 +5083,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1997059689}
+    - target: {fileID: 3449618226828433861, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
+      propertyPath: numberOfSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3449618226828433862, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5439,6 +5451,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1208360030}
+    - target: {fileID: 3449618226828433861, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
+      propertyPath: numberOfSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3449618226828433862, guid: cf7afa14b6808ba4b84269320b6a89d6, type: 3}
       propertyPath: m_RootOrder
       value: 2
