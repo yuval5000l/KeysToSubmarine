@@ -10,8 +10,8 @@ public class ScoreIndicator : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Vector3 dir = transform.localPosition - new Vector3(orb_loc.x, orb_loc.y, 0);
-        rb.AddForce(-dir * 0.00005f * 3f, ForceMode2D.Impulse);
+        Vector3 dir = (transform.localPosition - new Vector3(orb_loc.x, orb_loc.y, 0)).normalized;
+        rb.AddForce(-dir * Time.deltaTime * 0.005f, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
