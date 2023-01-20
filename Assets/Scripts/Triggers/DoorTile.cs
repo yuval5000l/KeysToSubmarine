@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorTile : MonoBehaviour
 {
-    [SerializeField] private int numberOfSeconds = 5;
+    [SerializeField] private float numberOfSeconds = 5;
     [SerializeField] private DoorScript door;
     private Animator MaAnimator;    
     private bool check_player_pressed = false;
