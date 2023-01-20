@@ -328,7 +328,7 @@ MonoBehaviour:
   - {fileID: 1926760246}
   - {fileID: 1749679537}
   - {fileID: 362643434}
-  button: {fileID: 0}
+  button: {fileID: 1526460253}
 --- !u!114 &155792856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,7 +1489,7 @@ RectTransform:
   m_Children:
   - {fileID: 1374837399}
   m_Father: {fileID: 1938675029}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1774,7 +1774,7 @@ RectTransform:
   m_Children:
   - {fileID: 981193578}
   m_Father: {fileID: 1938675029}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2640,8 +2640,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1489316129}
   - {fileID: 1526460252}
+  - {fileID: 1489316129}
   m_Father: {fileID: 155792854}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
