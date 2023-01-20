@@ -24,9 +24,12 @@ public class DoorScript : MonoBehaviour
     private float time = 0f;
     private float triggerTimer = 0f;
     [SerializeField] private bool half_open = false;
-    private bool opening_door = false;
+    //private bool opening_door = false;
     private float timer = 0;
     private bool Re_open = false;
+
+
+
     private void Awake()
     {
         int counter = 0;
@@ -159,7 +162,7 @@ public class DoorScript : MonoBehaviour
         //{
         //    Re_open = true;
         //}
-        opening_door = true;
+        //opening_door = true;
         yield return new WaitForSeconds(xSeconds);
         CloseDoor();
     }
