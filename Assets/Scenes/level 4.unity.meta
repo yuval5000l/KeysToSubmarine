@@ -1,5 +1,10 @@
 fileFormatVersion: 2
-guid: 4c136a430e6e87f4391e5e88bbde308f
+<<<<<<<< HEAD:Assets/Scenes/Tutorial scenes/Example 1.unity.meta
+guid: df7f56473aeda124385c25af80e52df8
+========
+guid: 6c185f3d88431405d9358f73402f57ea
+folderAsset: yes
+>>>>>>>> origin/Gadi's_New_Branch_03:Assets/Footage/New assets 10.1/Door/Orange/Surface.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
