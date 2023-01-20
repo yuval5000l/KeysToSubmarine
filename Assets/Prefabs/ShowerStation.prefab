@@ -301,7 +301,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25, y: -1.1}
+  m_Offset: {x: 0.5, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -312,7 +312,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.6}
+  m_Size: {x: 1.2, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &2216415087479973847
 MonoBehaviour:
@@ -326,15 +326,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fd1705425fda04cb257f62bfbb1cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players_action_key: 
+  missionManager: {fileID: 0}
   players_in_station: []
   station_active: 0
   always_active: 0
   points_award: 0
-  missionManager: {fileID: 0}
+  numberOfPlayers: 1
   stationPopup: {fileID: 0}
   maximalTime: 0.25
-  numberOfPlayers: 1
   yellowOrbAppear: {fileID: 4429454277866146049}
   yellowOrbFade: {fileID: 2823990295337103200}
   colliderSound: {fileID: 3496586188984516793}
