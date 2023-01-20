@@ -9,6 +9,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private TMP_Text num_players_text;
     [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
+    // [SerializeField] private AudioSource menuMusic;
     private int num_players;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class MainMenuScript : MonoBehaviour
         {
             num_players_text.text = num_players.ToString();
         }
+        // menuMusic.Play();
     }
     public void StartGame()
     {

@@ -7304,6 +7304,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperBorder: {fileID: 0}
   lowerBorder: {fileID: 0}
+  gameMusic: {fileID: 0}
+  menuMusic: {fileID: 0}
   panel: {fileID: 1193965395}
 --- !u!114 &1318664408
 MonoBehaviour:
