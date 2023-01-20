@@ -1804,7 +1804,7 @@ Transform:
   - {fileID: 2092373679}
   - {fileID: 900875564}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &495013214
 PrefabInstance:
@@ -3339,8 +3339,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1057157404}
   - {fileID: 1420644074}
+  - {fileID: 963228561}
   - {fileID: 1347320925}
   - {fileID: 615923622}
   - {fileID: 1387963158}
@@ -3649,6 +3649,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955559286}
   m_CullTransparentMesh: 1
+--- !u!4 &963228561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6219520341116521097, guid: 703795ede13468a4ebf66728e861409e, type: 3}
+  m_PrefabInstance: {fileID: 1712145870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &968140112 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
@@ -3991,11 +3996,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1057157404 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5041760102205139816, guid: 703795ede13468a4ebf66728e861409e, type: 3}
-  m_PrefabInstance: {fileID: 1712145870}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1061234665
 GameObject:
   m_ObjectHideFlags: 0
@@ -4948,7 +4948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 3d6757ad52312024f82182c82b163f68, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 3d6757ad52312024f82182c82b163f68, type: 3}
       propertyPath: m_LocalScale.x
@@ -8956,7 +8956,7 @@ MonoBehaviour:
   timer_text: {fileID: 2027799594}
   score_text: {fileID: 943208466}
   missionsToWinTarget: 20
-  time_left: 10
+  time_left: 20
   TimeIndicator: {fileID: 0}
   Orb: {fileID: 1270291840}
   ScoreIndicatorBottom: {fileID: 0}
@@ -9359,7 +9359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7816293562221954209, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_LocalScale.x
