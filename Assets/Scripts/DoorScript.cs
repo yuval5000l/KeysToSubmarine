@@ -14,7 +14,7 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private AudioSource doorHalfClose;
     [SerializeField] private AudioSource doorHalfOpen;
     [SerializeField] private AudioSource doorOpen;
-    private List<GameObject> tiles_active = new List<GameObject>();
+    [SerializeField] private List<GameObject> tiles_active = new List<GameObject>();
     private List<SpriteRenderer> cables = new List<SpriteRenderer>();
     private Color default_color;
     private int counter_stations = 0;
@@ -23,7 +23,13 @@ public class DoorScript : MonoBehaviour
     private bool[] stationsList;
     private float time = 0f;
     private float triggerTimer = 0f;
-    private bool half_open = false;
+    [SerializeField] private bool half_open = false;
+    //private bool opening_door = false;
+    private float timer = 0;
+    private bool Re_open = false;
+
+
+
     private void Awake()
     {
         int counter = 0;
@@ -60,7 +66,14 @@ public class DoorScript : MonoBehaviour
             }
             counter_stations = 0;
         }
-        if (tiles_active.Count == 0 && half_open && !door_idle_open_time)
+
+        if (door_open && !always_open)
+        {
+            OpenDoorFor();
+        }
+        //Debug.Log(tiles_active.Count);
+        //Debug.Log(half_open);
+        if (tiles_active.Count == 0 && half_open && !door_open)
         {
             anim.SetTrigger("Door_C");
             half_open = false;
@@ -75,33 +88,22 @@ public class DoorScript : MonoBehaviour
         }
         else if (tiles_active.Count >= numOfStations)
         {
-            if (!door_open && !door_idle_open_time)
+            timer = 0;
+            if (!door_open)
             {
                 if (!half_open)
                 {
                     anim.SetTrigger("Door_H");
-                }
-                else
-                {
                     half_open = true;
                 }
                 anim.SetTrigger("Door_HO");
                 anim.SetTrigger("Door_O");
             }
             door_open = true;
-            door_idle_open_time = true;
             coli.enabled = false;
             //Debug.Log("HERE");
-            
         }
-        else if (door_idle_open_time)
-        {
-            if (!always_open)
-            {
-                StartCoroutine(OpenDoorFor(time));
-            }
-            door_idle_open_time = false;
-        }
+
     }
     public bool DoorState()
     {
@@ -110,14 +112,18 @@ public class DoorScript : MonoBehaviour
 
     public void CloseDoor()
     {
-        if (!door_idle_open_time)
+        if (!door_idle_open_time && !Re_open)
         {
             anim.SetTrigger("Door_OH");
             anim.SetTrigger("Door_H");
-            anim.SetTrigger("Door_C");
             coli.enabled = true;
             door_open = false;
+            //opening_door = false;
         }
+        //if (Re_open)
+        //{
+        //    Re_open = false;
+        //}
     }
     public void StopOpenDoor(GameObject obj)
     {
@@ -150,10 +156,24 @@ public class DoorScript : MonoBehaviour
     {
         coli.enabled = false;
     }
-    public IEnumerator OpenDoorFor(float xSeconds)
+    public IEnumerator OpenDoorFor2(float xSeconds)
     {
+        //if (opening_door)
+        //{
+        //    Re_open = true;
+        //}
+        //opening_door = true;
         yield return new WaitForSeconds(xSeconds);
         CloseDoor();
+    }
+
+    public void OpenDoorFor()
+    {
+        timer += Time.deltaTime;
+        if (timer >= time)
+        {
+            CloseDoor();
+        }
     }
 
 }

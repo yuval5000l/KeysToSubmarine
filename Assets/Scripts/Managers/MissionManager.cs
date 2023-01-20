@@ -284,6 +284,19 @@ public class MissionManager : MonoBehaviour
         
     }
 
+    public IEnumerator MakeScoreIndicatorEnumerator(Vector3 stationPos, float xSeconds)
+    {
+
+        if (xSeconds == 0)
+        {
+            MakeScoreIndicator(stationPos);
+            yield break;
+        }
+        yield return new WaitForSeconds(xSeconds);
+        MakeScoreIndicator(stationPos);
+
+    }
+
     public void missionDone(float bonus_time, int pointsWorth)
     {
         StationScript station_to_remove = null;
@@ -299,9 +312,13 @@ public class MissionManager : MonoBehaviour
                     stationsActive.Remove(station);
                     station_to_remove = station;
                     strategy_to_remove = strategy;
-                    if (score > 0 || time_left > 0)
+                    if (pointsWorth > 0 || bonus_time > 0)
                     {
-                        MakeScoreIndicator(station_to_remove.transform.localPosition);
+                        for (int i = 0; i < pointsWorth; i++)
+                        {
+                            float t = ((float) i) * 0.25f;
+                            StartCoroutine(MakeScoreIndicatorEnumerator(station_to_remove.transform.localPosition, t));
+                        }
                     }
                 }
             }

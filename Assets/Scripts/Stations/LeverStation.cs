@@ -47,7 +47,7 @@ public class LeverStation : StationScript
             {
                 stationExplainer.SetActive(true);
             }
-            if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
+            if (players_in_station.Count >= missionsNumberOfPlayers[mission_index])
             {
                 missions[mission_index]();
                 station_animation.SetTrigger("Hover");

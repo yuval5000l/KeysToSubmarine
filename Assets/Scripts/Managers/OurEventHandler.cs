@@ -107,7 +107,7 @@ public class OurEventHandler : MonoBehaviour
         levelNumber += numlevel + 1;
         if (levelNumber >= MaxlevelNum)
         {
-            SceneManager.LoadScene("EndScreenWon");
+            SceneManager.LoadScene("Success");
         }
         else
         {
