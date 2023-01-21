@@ -8,6 +8,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1164811126, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164811126, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164811126, guid: 28ad506da49736b43b00463693c91164, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164811126, guid: 28ad506da49736b43b00463693c91164, type: 3}
       propertyPath: m_Constraints
       value: 6
       objectReference: {fileID: 0}

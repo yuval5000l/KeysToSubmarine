@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
+    // Constants
+    private float radioActiveDeathLim = 10000;
 
     // KeyCodes For Movement And Action
     private string color;
@@ -161,8 +163,8 @@ public class PlayerController : MonoBehaviour
         
         if (radio_active_state)
         {
-            radioActivity += 4 * 1f * Time.deltaTime * 60f;
-            radioActiveIndicator.fillAmount += 240f * Time.deltaTime * 0.0003f;
+            radioActivity += 10 * 1f * Time.deltaTime * 60f;
+            radioActiveIndicator.fillAmount += 230f * Time.deltaTime * 0.0003f;
             checkRadioActivity();
         }
 
@@ -371,7 +373,7 @@ public class PlayerController : MonoBehaviour
     }
     void checkRadioActivity()
     {
-        if(radioActivity >= 10000)
+        if(radioActivity >= radioActiveDeathLim)
         {
             Destroy(gameObject);
             Destroy(radioActiveIndicator);

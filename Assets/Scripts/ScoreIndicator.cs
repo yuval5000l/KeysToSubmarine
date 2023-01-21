@@ -6,12 +6,13 @@ public class ScoreIndicator : MonoBehaviour
 {
     public Vector2 orb_loc;
     private Rigidbody2D rb;
+    [SerializeField] private float speed = 0.0009f;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Vector3 dir = (transform.localPosition - new Vector3(orb_loc.x, orb_loc.y, 0)).normalized;
-        rb.AddForce(-dir * Time.deltaTime * 0.005f, ForceMode2D.Impulse);
+        rb.AddForce(-dir * speed, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
