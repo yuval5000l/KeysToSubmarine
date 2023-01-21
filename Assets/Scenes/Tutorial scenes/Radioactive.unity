@@ -1849,6 +1849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3651071450768536890, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536891, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_Name
       value: GreenOrb_0100 (2)
@@ -4901,6 +4905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperBorder: {fileID: 0}
   lowerBorder: {fileID: 0}
+  gameMusic: {fileID: 0}
+  menuMusic: {fileID: 0}
   panel: {fileID: 1304993139}
 --- !u!114 &1242015005
 MonoBehaviour:
@@ -5841,6 +5847,10 @@ PrefabInstance:
     - target: {fileID: 3651071450768536889, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651071450768536890, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536891, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_Name
@@ -7751,6 +7761,10 @@ PrefabInstance:
     - target: {fileID: 3651071450768536889, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651071450768536890, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536891, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_Name
