@@ -42,11 +42,11 @@ EditorBuildSettings:
     path: Assets/Scenes/PreviousScenes/nave easier level 4.unity
     guid: d3efd3958372db343865a1be5aa735a7
   - enabled: 1
-    path: Assets/Scenes/level 4.unity
+    path: Assets/Scenes/level 8.unity
     guid: 8c85c0b8dda10d147ab700a85c9d75d1
-  - enabled: 1
-    path: Assets/Scenes/level 5.unity
-    guid: d9dffbf8554d95947b59e9df95137d1d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/PreviousScenes/OldLevel1.unity
     guid: df9032f3c7acc8746817eed37f43e081
@@ -80,5 +80,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level 2.unity
     guid: 6a89cd6fec810644faca24557bda6409
+  - enabled: 1
+    path: Assets/Scenes/Nave Easy And Nice, FINALY/Trio York.unity
+    guid: c88ca939a404a2341b8236ea6bff5a79
+  - enabled: 1
+    path: Assets/Scenes/level 5.unity
+    guid: 53f86f14398218242af54887a58fb134
+  - enabled: 1
+    path: Assets/Scenes/level 4.unity
+    guid: df7f56473aeda124385c25af80e52df8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 33ce6074d363e974f96a5b930a32086b, type: 2}
