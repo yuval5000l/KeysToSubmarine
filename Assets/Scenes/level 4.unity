@@ -4081,7 +4081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: points_award
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
@@ -4230,7 +4230,7 @@ PrefabInstance:
       objectReference: {fileID: 858982254}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: points_award
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: yellowOrbFade
@@ -4900,7 +4900,7 @@ PrefabInstance:
       objectReference: {fileID: 1006645410}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: points_award
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: yellowOrbFade
@@ -8095,7 +8095,7 @@ PrefabInstance:
       objectReference: {fileID: 1243684837}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: points_award
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: yellowOrbFade
@@ -8634,7 +8634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: points_award
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
