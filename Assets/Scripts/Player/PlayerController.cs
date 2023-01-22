@@ -471,6 +471,7 @@ public class PlayerController : MonoBehaviour
 
     public void destroyPlayer()
     {
+        GetComponentInParent<PlayerManager>().updatePlayerDied();
         Destroy(gameObject);
         Destroy(radioActiveIndicator);
     }

@@ -158,8 +158,13 @@ public class OurEventHandler : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void GameOver(List<GameObject> Orbs)
+    public void GameOver(List<GameObject> Orbs = null)
     {
+        if (orbs == null)
+        {
+            SceneManager.LoadScene("Dead");
+            return;
+        }
         orbs = Orbs;
         game_over = true;
     }
