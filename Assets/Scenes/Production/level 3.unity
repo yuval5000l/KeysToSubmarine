@@ -2520,11 +2520,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536889, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.39
+      value: 3.404
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536889, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36
+      value: -0.244
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536889, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3564,7 +3564,7 @@ Transform:
   m_GameObject: {fileID: 1198322018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.3760002, y: -0.79300004, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 255716681}
@@ -5758,7 +5758,8 @@ MonoBehaviour:
   missionsToWinTarget: 6
   time_left: 20
   TimeIndicator: {fileID: 2145472610}
-  Orb: {fileID: 919945530}
+  Orbs:
+  - {fileID: 919945530}
   ScoreIndicatorBottom: {fileID: 798168382}
   Noise: {fileID: 1885417656}
   GreenVignette1: {fileID: 274126940}

@@ -84,7 +84,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Nave Easy And Nice, FINALY/Trio York.unity
     guid: c88ca939a404a2341b8236ea6bff5a79
   - enabled: 0
-    path: Assets/Scenes/Production/old level 4.unity
+    path: Assets/Scenes/level 5.unity
     guid: 53f86f14398218242af54887a58fb134
   - enabled: 1
     path: Assets/Scenes/Old Levels/old level 4.unity
@@ -119,5 +119,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/level 12.unity
     guid: f426fdf98ccbfd146ba885062b098d9b
+  - enabled: 1
+    path: Assets/Scenes/Screens/ChooselevelsScreen.unity
+    guid: 23b3fe4dc3bfc8e4ba8bebb093caecae
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 33ce6074d363e974f96a5b930a32086b, type: 2}

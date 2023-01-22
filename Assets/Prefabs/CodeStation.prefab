@@ -104,24 +104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b519ea1b6f76841924f342b3db1b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players_action_key: 
+  missionManager: {fileID: 0}
   players_in_station: []
   station_active: 0
   always_active: 0
   points_award: 0
-  missionManager: {fileID: 0}
+  numberOfPlayers: 1
   stationPopup: {fileID: 0}
   maximalTime: 0.25
-  numberOfPlayers: 1
   yellowOrbAppear: {fileID: 5427879245119475477}
   yellowOrbFade: {fileID: 4413039170487643789}
   colliderSound: {fileID: 8168244971463801106}
+  StationSound: {fileID: 8179654761882462293}
   bonus_time: 1
   door: {fileID: 0}
   DoorOpenTime: 1
   stationExplainer: {fileID: 0}
   pressToFinish: 1
-  StationSound: {fileID: 8179654761882462293}
 --- !u!61 &7771450217512601900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -493,7 +492,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c844eb856b732754c8ecf8b4dd16d330, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

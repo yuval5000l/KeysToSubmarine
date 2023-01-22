@@ -23,7 +23,7 @@ public class MissionManager : MonoBehaviour
     // Timer
     [SerializeField] private float time_left = 30;
     [SerializeField] private GameObject TimeIndicator;
-    [SerializeField] private GameObject Orb;
+    [SerializeField] private List<GameObject> Orbs = new List<GameObject>();
     [SerializeField] private GameObject ScoreIndicatorBottom;
     [SerializeField] private SpriteRenderer Noise;
     [SerializeField] private SpriteRenderer GreenVignette1;
@@ -46,7 +46,7 @@ public class MissionManager : MonoBehaviour
     //[SerializeField] private List<string> missionsExplanation = new List<string>();
     private List<StationScript> stationsActive = new List<StationScript>();
     private float initial_time;
-    private float OrbInitialScale;
+    private List<float> OrbsInitialScale = new List<float>();
     private bool isGameFinsihed = false;
     private int strategiessActive = 0;
 
@@ -68,9 +68,12 @@ public class MissionManager : MonoBehaviour
         updateText();
         addActiveStations();
         initial_time = time_left;
-        if (Orb)
+        if (Orbs.Count !=0)
         {
-            OrbInitialScale = Orb.transform.localScale.x;
+            foreach(GameObject orb in Orbs)
+            {
+                OrbsInitialScale.Add(orb.transform.localScale.x);
+            }
         }
     }
     private void refillStrategiesReadOnly()
@@ -165,7 +168,7 @@ public class MissionManager : MonoBehaviour
     {
         if (zoom)
         {
-            zoom.ActivateZoom(Orb.transform.localPosition);
+            zoom.ActivateZoom(Orbs[0].transform.localPosition);
         }
         time_left = Mathf.Lerp(time_left, initial_time, Time.deltaTime);
         return time_left >= (initial_time - 2);
@@ -187,10 +190,14 @@ public class MissionManager : MonoBehaviour
             GreenVignette2.transform.localScale = new Vector3(x, x, x);
         }
         //
-        if (Orb != null)
+        if (Orbs.Count != 0)
         {
-            float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + OrbInitialScale;
-            Orb.transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
+            for (int i = 0; i < Orbs.Count; i++)
+            {
+                float scaleForOrb = (1 - (time_left / initial_time)) * 0.5f + OrbsInitialScale[i];
+                Orbs[i].transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
+
+            }
         }
         if (TimeIndicator != null)
         {
@@ -229,7 +236,7 @@ public class MissionManager : MonoBehaviour
         updateIndicator();
         if (score >= missionsToWinTarget)
         {
-            Debug.Log("You Win! You Win! You Win! You Win!");
+            //Debug.Log("You Win! You Win! You Win! You Win!");
             if (DoFinishAnimation())
             {
                 if (zoom)
@@ -253,8 +260,8 @@ public class MissionManager : MonoBehaviour
         {
             isGameFinsihed = true;
 
-            Debug.Log("You Lose! You Lose! You Lose! You Lose!");
-            GM.GameOver(Orb);
+            //Debug.Log("You Lose! You Lose! You Lose! You Lose!");
+            GM.GameOver(Orbs);
         }
 
 
