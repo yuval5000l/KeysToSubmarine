@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42211d49-698e-4b23-8d16-858928ec395a" name="Changes" comment="merged MainTemp into branch">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Nave Easy And Nice, FINALY/CartHell.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Nave Easy And Nice, FINALY/CartHell.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
+    <list default="true" id="42211d49-698e-4b23-8d16-858928ec395a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674210046501</updated>
-      <workItem from="1674210054221" duration="3739000" />
+      <workItem from="1674210054221" duration="4356000" />
     </task>
     <task id="LOCAL-00001" summary="merged MainTemp into branch">
       <created>1674309334223</created>
