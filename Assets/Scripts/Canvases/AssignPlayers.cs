@@ -238,7 +238,7 @@ public class AssignPlayers : MonoBehaviour
                     }
                 }
             }
-            gameManager.Nextlevel(num_level - 1);
+            gameManager.Nextlevel(- 1);
         }
     }
     public void nextAfterLore()

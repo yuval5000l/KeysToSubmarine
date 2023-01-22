@@ -20,6 +20,7 @@ public class ChooseLevelsScreen : MonoBehaviour
     private Vector2 hold_movement = Vector2.zero;
     private Vector2 movement = Vector2.zero;
     private int index = 0;
+    [SerializeField] int num_levels_in_game = 12;
     private int total_buttons = 22;
     private Transform[] levels = new Transform[30];
     void Start()
@@ -39,15 +40,19 @@ public class ChooseLevelsScreen : MonoBehaviour
             }
             
         }
+        for (int j = num_levels_in_game + 5; j < total_buttons; j++)
+        {
+            levels[j].gameObject.SetActive(false);   
+        }
         update_button(true);
     }
     private void update_index(int num)
     {
         update_button(false);
-        index = (index + num) % total_buttons;
+        index = (index + num) % (num_levels_in_game + 4);
         if (index < 0)
         {
-            index = total_buttons + index;
+            index =( num_levels_in_game + 4 )+ index;
         }
         update_button(true);
     }
@@ -153,7 +158,7 @@ public class ChooseLevelsScreen : MonoBehaviour
             GM.setTut(false);
             index = index - 3;
         }
-        Debug.Log(index);
+        //Debug.Log(index);
         GM.Setlevel(index);
         SceneManager.LoadScene("Janitor select");
 

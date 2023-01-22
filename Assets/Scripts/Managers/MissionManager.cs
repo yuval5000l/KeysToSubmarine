@@ -229,7 +229,7 @@ public class MissionManager : MonoBehaviour
         updateIndicator();
         if (score >= missionsToWinTarget)
         {
-            Debug.Log("You Win! You Win! You Win! You Win!");
+            //Debug.Log("You Win! You Win! You Win! You Win!");
             if (DoFinishAnimation())
             {
                 if (zoom)
@@ -253,7 +253,7 @@ public class MissionManager : MonoBehaviour
         {
             isGameFinsihed = true;
 
-            Debug.Log("You Lose! You Lose! You Lose! You Lose!");
+            //Debug.Log("You Lose! You Lose! You Lose! You Lose!");
             GM.GameOver(Orb);
         }
 

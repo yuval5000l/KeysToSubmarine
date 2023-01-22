@@ -92,7 +92,14 @@ public class OurEventHandler : MonoBehaviour
     }
     public void Setlevel(int numlevel)
     {
-        levelNumber = numlevel;
+        if (tutorial)
+        {
+            counter_tut = numlevel;
+        }
+        else
+        {
+            levelNumber = numlevel;
+        }
     }
     public int Getlevel()
     {
@@ -114,7 +121,6 @@ public class OurEventHandler : MonoBehaviour
             return;
         }
         levelNumber += numlevel + 1;
-        Debug.Log(levelNumber);
         if (levelNumber >= MaxlevelNum)
         {
             SceneManager.LoadScene("Success");
