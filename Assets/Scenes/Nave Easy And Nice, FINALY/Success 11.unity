@@ -1289,7 +1289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
@@ -2579,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: points_award
@@ -2797,7 +2797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
@@ -3369,7 +3369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
@@ -3717,7 +3717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: points_award
@@ -3819,7 +3819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
@@ -4459,7 +4459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
@@ -4949,7 +4949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9037751452991745277, guid: 1f70ec453f50a4f439304b9d37073189, type: 3}
       propertyPath: points_award
@@ -6413,7 +6413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: alwaysActive
