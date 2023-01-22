@@ -77,7 +77,10 @@ public class DoorScript : MonoBehaviour
         {
             anim.SetTrigger("Door_C");
             half_open = false;
-            doorClose.Play();
+            if (doorClose)
+            {
+                doorClose.Play();
+            }
         }
         else if (tiles_active.Count < numOfStations && tiles_active.Count > 0)
         {

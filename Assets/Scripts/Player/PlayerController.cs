@@ -79,11 +79,14 @@ public class PlayerController : MonoBehaviour
 
         if (movement_tmp.x > RunAnimationJoystickThreshold)
         {
-            movement.x = 1;
+            //movement.x = 1;
+            movement.x = movement_tmp.x;
         }
         else if (movement_tmp.x < -RunAnimationJoystickThreshold)
         {
-            movement.x = -1;
+            //movement.x = -1;
+            movement.x = movement_tmp.x;
+
         }
         else
         {
@@ -91,11 +94,14 @@ public class PlayerController : MonoBehaviour
         }
         if (movement_tmp.y > RunAnimationJoystickThreshold)
         {
-            movement.y = 1;
+            //movement.y = 1;
+            movement.y = movement_tmp.y;
+
         }
         else if (movement_tmp.y < -RunAnimationJoystickThreshold)
         {
-            movement.y = -1;
+            //movement.y = -1;
+            movement.y = movement_tmp.y;
         }
         else
         {

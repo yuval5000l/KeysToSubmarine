@@ -9628,7 +9628,8 @@ MonoBehaviour:
   missionsToWinTarget: 20
   time_left: 75
   TimeIndicator: {fileID: 2063007659}
-  Orb: {fileID: 2030901777}
+  Orbs:
+  - {fileID: 2030901777}
   ScoreIndicatorBottom: {fileID: 1382812645}
   Noise: {fileID: 326435366}
   GreenVignette1: {fileID: 33010916}

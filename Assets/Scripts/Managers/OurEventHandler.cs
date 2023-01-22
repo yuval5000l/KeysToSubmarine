@@ -18,7 +18,7 @@ public class OurEventHandler : MonoBehaviour
     [SerializeField] private int MaxlevelNum = 3;
     private CameraZoom zoom;
     private bool game_over = false;
-    private GameObject orb;
+    private List<GameObject> orbs = new List<GameObject>();
     private float counter = 2;
     private static bool tutorial = true;
     private static int counter_tut = 0;
@@ -42,10 +42,14 @@ public class OurEventHandler : MonoBehaviour
         if (game_over)
         {
             counter -= Time.deltaTime;
-            if (orb)
+            if (orbs.Count != 0)
             {
-                float x = orb.transform.localScale.x + orb.transform.localScale.x * 2 * Time.deltaTime;
-                orb.transform.localScale = new Vector3(x, x, x);
+                foreach (GameObject orb in orbs)
+                {
+                    float x = orb.transform.localScale.x + orb.transform.localScale.x * 2 * Time.deltaTime;
+                    orb.transform.localScale = new Vector3(x, x, x);
+                }
+                
             }
             if (counter <= 0)
             {
@@ -154,9 +158,9 @@ public class OurEventHandler : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void GameOver(GameObject Orb)
+    public void GameOver(List<GameObject> Orbs)
     {
-        orb = Orb;
+        orbs = Orbs;
         game_over = true;
     }
 }

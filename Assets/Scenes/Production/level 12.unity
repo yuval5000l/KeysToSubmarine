@@ -10460,6 +10460,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5391177832459099973, guid: 0f6d09aedace1294c96d70cf97a120e4, type: 3}
   m_PrefabInstance: {fileID: 1677757485}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1682577109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3651071450768536891, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
+  m_PrefabInstance: {fileID: 557621173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694771830
 GameObject:
   m_ObjectHideFlags: 0
@@ -11017,7 +11022,9 @@ MonoBehaviour:
   missionsToWinTarget: 30
   time_left: 30
   TimeIndicator: {fileID: 1467530822}
-  Orb: {fileID: 600486389}
+  Orbs:
+  - {fileID: 600486389}
+  - {fileID: 1682577109}
   ScoreIndicatorBottom: {fileID: 320948657}
   Noise: {fileID: 1309477626}
   GreenVignette1: {fileID: 1299655341}
