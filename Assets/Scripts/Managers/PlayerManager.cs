@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     private static bool[] players_assigned_controllers = new bool[4] { false, false, false, false };
     private static List<InputDevice> players_devices = new List<InputDevice>();
     private static List<int> players_nums = new List<int>();
-
+    private int player_dead = 0;
     private int players_in_game = 3;
     // Start is called before the first frame update
     void Start()

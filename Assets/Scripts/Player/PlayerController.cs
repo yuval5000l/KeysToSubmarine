@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource running;
     [SerializeField] private AudioSource fix;
     [SerializeField] private AudioSource push;
+
+    private bool stopPlayer = false;
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -247,7 +249,10 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.AddForce(movement * moveSpeed, ForceMode2D.Impulse);
+        if (!stopPlayer)
+        {
+            rb.AddForce(movement * moveSpeed, ForceMode2D.Impulse);
+        }
         if (!idle)
         {
             AnimationDecideState();
@@ -434,8 +439,9 @@ public class PlayerController : MonoBehaviour
     {
         if(radioActivity >= radioActiveDeathLim)
         {
-            Destroy(gameObject);
-            Destroy(radioActiveIndicator);
+            animator.Play("JanitorDeath");
+            stopPlayer = true;
+            movement = Vector2.zero; 
         }
         // else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
         // {
@@ -461,6 +467,12 @@ public class PlayerController : MonoBehaviour
         //     levelsOfRadioActivity[0] = false;
         //     radioActiveIndicator.fillAmount = 0;
         // }
+    }
+
+    public void destroyPlayer()
+    {
+        Destroy(gameObject);
+        Destroy(radioActiveIndicator);
     }
     public void setColor(string name)
     {
