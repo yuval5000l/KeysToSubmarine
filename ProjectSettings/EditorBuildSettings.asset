@@ -60,16 +60,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Production/Screens/Janitor select.unity
     guid: f93c7bf9ff732d348802d53f9af85555
   - enabled: 1
-    path: Assets/Scenes/Production/Tutorial scenes/CleaningCarts.unity
+    path: Assets/Scenes/Production/Tutorial levels/CleaningCarts.unity
     guid: 492a8b60a00dbee459522ca18ab7b2c2
   - enabled: 1
-    path: Assets/Scenes/Production/Tutorial scenes/Doors.unity
+    path: Assets/Scenes/Production/Tutorial levels/Doors.unity
     guid: d638b575520352b40874d08546698047
   - enabled: 1
-    path: Assets/Scenes/Production/Tutorial scenes/Radioactive.unity
+    path: Assets/Scenes/Production/Tutorial levels/Radioactive.unity
     guid: 565e4bfb6b560b546b56bda7610b4876
   - enabled: 1
-    path: Assets/Scenes/Production/Tutorial scenes/Machines.unity
+    path: Assets/Scenes/Production/Tutorial levels/Machines.unity
     guid: c19717e22a6a42a498ffd30b2719c424
   - enabled: 1
     path: Assets/Scenes/PreviousScenes/OLDOLDlevel 1.unity
@@ -90,7 +90,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Old Levels/old level 4.unity
     guid: df7f56473aeda124385c25af80e52df8
   - enabled: 1
-    path: Assets/Scenes/Production/Tutorial scenes/IDontKnowWhyItsHere/StartScreen.unity
+    path: Assets/Scenes/Production/Tutorial levels/IDontKnowWhyItsHere/StartScreen.unity
     guid: 58cbb855438d3df4e88ac144f3bdf92a
   - enabled: 1
     path: Assets/Scenes/Production/Levels/level 8.unity
