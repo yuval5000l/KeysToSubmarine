@@ -52,6 +52,16 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("Lore");
     }
+
+    public void ToLevelSelect()
+    {
+        SceneManager.LoadScene("ChooseLevelsScreen");
+    }
+
+    public void ToFirstLevel()
+    {
+        SceneManager.LoadScene("Machines");
+    }
     public void AddPlayer()
     {
         //gameManager.AddPlayer();

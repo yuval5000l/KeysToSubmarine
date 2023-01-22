@@ -5,10 +5,10 @@ using UnityEngine;
 public class BollderStation : StationScript
 {
     // Start is called before the first frame update
-    List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
+    //List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
     [SerializeField] private Rigidbody2D rigi;
     [SerializeField] private AudioSource StationSound;
-    private float soundLoop = 0f;
+    //private float soundLoop = 0f;
     private bool isPlaying = false;
     new void Start()
     {

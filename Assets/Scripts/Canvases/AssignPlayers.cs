@@ -19,7 +19,7 @@ public class AssignPlayers : MonoBehaviour
     List<int> player_num = new List<int>();
     private bool mainMenuActive = true;
     private int num_players = 0;
-    
+    private int num_level = 0;
 
     private PlayerInput players_input;
 
@@ -37,7 +37,7 @@ public class AssignPlayers : MonoBehaviour
         players_input.SwitchCurrentControlScheme("AssignPlayer");
         players_input.SwitchCurrentActionMap("AssignPlayerMap");
         gameManager.ClearLists();
-
+        num_level = gameManager.Getlevel();
     }
     private void AddPlayerAnimation()
     {
@@ -238,7 +238,7 @@ public class AssignPlayers : MonoBehaviour
                     }
                 }
             }
-            gameManager.Nextlevel(-1);
+            gameManager.Nextlevel(num_level - 1);
         }
     }
     public void nextAfterLore()
@@ -276,5 +276,10 @@ public class AssignPlayers : MonoBehaviour
     {
         Time.timeScale = 1f;
         Application.Quit();
+    }
+
+    public void ToLevelSelect()
+    {
+        SceneManager.LoadScene("ChooseLevelsScreen");
     }
 }

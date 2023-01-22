@@ -20,7 +20,7 @@ public class OurEventHandler : MonoBehaviour
     private bool game_over = false;
     private GameObject orb;
     private float counter = 2;
-    private bool tutorial = true;
+    private static bool tutorial = true;
     private static int counter_tut = 0;
     private string[] tutlevels = new string[4] { "Machines", "Doors", "CleaningCarts", "Radioactive" };
     // Start is called before the first frame update
@@ -53,6 +53,11 @@ public class OurEventHandler : MonoBehaviour
                 SceneManager.LoadScene("Dead");
             }
         }
+    }
+
+    public void setTut(bool tut)
+    {
+        tutorial = tut;
     }
     public void ClearLists()
     {
@@ -89,7 +94,10 @@ public class OurEventHandler : MonoBehaviour
     {
         levelNumber = numlevel;
     }
-
+    public int Getlevel()
+    {
+        return levelNumber;
+    }
     public void Nextlevel(int numlevel = 0)
     {
         if (tutorial)
@@ -98,6 +106,7 @@ public class OurEventHandler : MonoBehaviour
             if (counter_tut == 4)
             {
                 tutorial = false;
+                levelNumber = 0;
                 Nextlevel();
                 return;
             }
@@ -105,6 +114,7 @@ public class OurEventHandler : MonoBehaviour
             return;
         }
         levelNumber += numlevel + 1;
+        Debug.Log(levelNumber);
         if (levelNumber >= MaxlevelNum)
         {
             SceneManager.LoadScene("Success");
