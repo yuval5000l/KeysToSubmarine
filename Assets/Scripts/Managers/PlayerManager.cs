@@ -145,5 +145,12 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
-
+    public void updatePlayerDied()
+    {
+        player_dead++;
+        if (player_dead == 3)
+        {
+            gameManager.GameOver();
+        }
+    }
 }
