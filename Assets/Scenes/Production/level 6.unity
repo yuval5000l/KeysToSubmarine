@@ -10722,7 +10722,7 @@ MonoBehaviour:
   timer_text: {fileID: 2045759623}
   score_text: {fileID: 1037844423}
   missionsToWinTarget: 30
-  time_left: 50
+  time_left: 60
   TimeIndicator: {fileID: 1467530822}
   Orbs:
   - {fileID: 600486389}
