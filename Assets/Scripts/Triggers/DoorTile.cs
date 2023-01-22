@@ -7,7 +7,7 @@ public class DoorTile : MonoBehaviour
     [SerializeField] private float numberOfSeconds = 5;
     [SerializeField] private DoorScript door;
     private Animator MaAnimator;    
-    private bool check_player_pressed = false;
+    //private bool check_player_pressed = false;
     private List<PlayerController> players = new List<PlayerController>();
     private List<bool> players_pressed = new List<bool>();
     [SerializeField] AudioSource steppedOn;

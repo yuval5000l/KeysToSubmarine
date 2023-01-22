@@ -18,9 +18,9 @@ public class OurEventHandler : MonoBehaviour
     [SerializeField] private int MaxlevelNum = 3;
     private CameraZoom zoom;
     private bool game_over = false;
-    private GameObject orb;
+    private List<GameObject> orbs = new List<GameObject>();
     private float counter = 2;
-    private bool tutorial = true;
+    private static bool tutorial = true;
     private static int counter_tut = 0;
     private string[] tutlevels = new string[4] { "Machines", "Doors", "CleaningCarts", "Radioactive" };
     // Start is called before the first frame update
@@ -42,10 +42,14 @@ public class OurEventHandler : MonoBehaviour
         if (game_over)
         {
             counter -= Time.deltaTime;
-            if (orb)
+            if (orbs.Count != 0)
             {
-                float x = orb.transform.localScale.x + orb.transform.localScale.x * 2 * Time.deltaTime;
-                orb.transform.localScale = new Vector3(x, x, x);
+                foreach (GameObject orb in orbs)
+                {
+                    float x = orb.transform.localScale.x + orb.transform.localScale.x * 2 * Time.deltaTime;
+                    orb.transform.localScale = new Vector3(x, x, x);
+                }
+                
             }
             if (counter <= 0)
             {
@@ -53,6 +57,11 @@ public class OurEventHandler : MonoBehaviour
                 SceneManager.LoadScene("Dead");
             }
         }
+    }
+
+    public void setTut(bool tut)
+    {
+        tutorial = tut;
     }
     public void ClearLists()
     {
@@ -87,9 +96,19 @@ public class OurEventHandler : MonoBehaviour
     }
     public void Setlevel(int numlevel)
     {
-        levelNumber = numlevel;
+        if (tutorial)
+        {
+            counter_tut = numlevel;
+        }
+        else
+        {
+            levelNumber = numlevel;
+        }
     }
-
+    public int Getlevel()
+    {
+        return levelNumber;
+    }
     public void Nextlevel(int numlevel = 0)
     {
         if (tutorial)
@@ -98,6 +117,7 @@ public class OurEventHandler : MonoBehaviour
             if (counter_tut == 4)
             {
                 tutorial = false;
+                levelNumber = 0;
                 Nextlevel();
                 return;
             }
@@ -138,9 +158,9 @@ public class OurEventHandler : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void GameOver(GameObject Orb)
+    public void GameOver(List<GameObject> Orbs)
     {
-        orb = Orb;
+        orbs = Orbs;
         game_over = true;
     }
 }

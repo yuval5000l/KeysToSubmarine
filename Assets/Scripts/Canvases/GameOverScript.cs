@@ -24,6 +24,11 @@ public class GameOverScript : MonoBehaviour
     {
         GM.restartlevel();
     }
+    public void levelselect()
+    {
+        SceneManager.LoadScene("ChooselevelsScreen");
+
+    }
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("StartScreen");

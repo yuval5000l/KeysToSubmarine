@@ -61,6 +61,9 @@ public class StationScript : MonoBehaviour
 
         stationPopup.GetComponent<PopUpWithPlayersController>().setNumOfChildren(numberOfPlayers);
         stationPopup.SetActive(false);
+        yellowOrbAppear.playOnAwake = false;
+        yellowOrbFade.playOnAwake = false;
+        colliderSound.playOnAwake = false;
 
     }
 
