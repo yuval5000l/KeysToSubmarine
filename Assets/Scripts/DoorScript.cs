@@ -77,6 +77,7 @@ public class DoorScript : MonoBehaviour
         {
             anim.SetTrigger("Door_C");
             half_open = false;
+            doorClose.Play();
         }
         else if (tiles_active.Count < numOfStations && tiles_active.Count > 0)
         {
@@ -84,6 +85,7 @@ public class DoorScript : MonoBehaviour
             {
                 anim.SetTrigger("Door_H");
                 half_open = true;
+                doorHalfOpen.Play();
             }
         }
         else if (tiles_active.Count >= numOfStations)
@@ -95,9 +97,13 @@ public class DoorScript : MonoBehaviour
                 {
                     anim.SetTrigger("Door_H");
                     half_open = true;
+                    doorHalfOpen.Play();
+
                 }
                 anim.SetTrigger("Door_HO");
+                doorHalfOpen.Play();
                 anim.SetTrigger("Door_O");
+                doorOpen.Play();
             }
             door_open = true;
             coli.enabled = false;

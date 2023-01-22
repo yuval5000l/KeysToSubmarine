@@ -48,7 +48,9 @@ public class PlayerController : MonoBehaviour
     private int frame_counter_for_one_time_press = 0;
     private bool action_pressed;
     private bool one_time_action_pressed;
-    [SerializeField] private AudioSource breathing;
+    [SerializeField] private AudioSource running;
+    [SerializeField] private AudioSource fix;
+    [SerializeField] private AudioSource push;
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -193,6 +195,10 @@ public class PlayerController : MonoBehaviour
             if (x1 > 0)
             {
                 animator.SetTrigger("Run_Right");
+                if(!running.isPlaying)
+                {
+                    running.Play();
+                }
                 if (!looking_right)
                 {
                     looking_right = true;
@@ -202,6 +208,10 @@ public class PlayerController : MonoBehaviour
             else
             {
                 animator.SetTrigger("Run_Right");
+                if(!running.isPlaying)
+                {
+                    running.Play();
+                }
                 if (looking_right)
                 {
                     looking_right = false;
@@ -214,10 +224,18 @@ public class PlayerController : MonoBehaviour
             if (y1 > 0)
             {
                 animator.SetTrigger("Run_Up");
+                if(!running.isPlaying)
+                {
+                    running.Play();
+                }
             }
             else
             {
                 animator.SetTrigger("Run_Down");
+                if(!running.isPlaying)
+                {
+                    running.Play();
+                }
             }
         }
     }
@@ -236,21 +254,37 @@ public class PlayerController : MonoBehaviour
     {
         //PlayerDirectionAnimation(otherlocalLocation);
         animator.SetBool("work", true);
+        if(!fix.isPlaying)
+        {
+            fix.Play();
+        }
     }
     public void StopAnimationWork(Vector3 otherlocalLocation)
     {
         //PlayerDirectionAnimation(otherlocalLocation);
         animator.SetBool("work", false);
+        if(fix.isPlaying)
+        {
+            fix.Stop();
+        }
     }
     public void AnimationPush(Vector3 otherlocalLocation)
     {
         //PlayerDirectionAnimation(otherlocalLocation);
         animator.SetBool("push", true);
+        if(!push.isPlaying)
+        {
+            push.Play();
+        }
     }
     public void StopAnimationPush(Vector3 otherlocalLocation)
     {
         //PlayerDirectionAnimation(otherlocalLocation);
         animator.SetBool("push", false);
+        if(push.isPlaying)
+        {
+            push.Stop();
+        }
     }
 
 
@@ -260,7 +294,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("idle");
             idle = true;
-
+            if(running.isPlaying)
+            {
+                running.Stop();
+            }
         }
         else
         {
@@ -278,10 +315,18 @@ public class PlayerController : MonoBehaviour
         if (deg > -2.25f && deg <= -0.75f)
         {
             animator.SetTrigger("Run_Down");
+            if(!running.isPlaying)
+            {
+                running.Play();
+            }
         }
         else if (deg > -0.75 && deg <= 0.75f)
         {
             animator.SetTrigger("Run_Right");
+            if(!running.isPlaying)
+            {
+                running.Play();
+            }
             if (!looking_right)
             {
                 looking_right = true;
@@ -292,10 +337,18 @@ public class PlayerController : MonoBehaviour
         else if (deg > 0.75f && deg <= 2.25f)
         {
             animator.SetTrigger("Run_Up");
+            if(!running.isPlaying)
+            {
+                running.Play();
+            }
         }
         else
         {
             animator.SetTrigger("Run_Right");
+            if(!running.isPlaying)
+            {
+                running.Play();
+            }
             if (looking_right)
             {
                 looking_right = false;
