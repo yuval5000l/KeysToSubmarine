@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870cefda4d2164149bc60d5501fc31c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GM: {fileID: 0}
+  GM: {fileID: 97783157}
 --- !u!114 &491597276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3021,7 +3021,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2142718965
   m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &634885251
@@ -4302,7 +4302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536890, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_SortingOrder
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3651071450768536890, guid: ee86c99db1d49b14485748bc7e23e7dc, type: 3}
       propertyPath: m_SortingLayerID
@@ -7299,9 +7299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215daaa6c7bd8de42abf78bdca92d49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GM: {fileID: 0}
+  GM: {fileID: 97783157}
   pauseMenuUI: {fileID: 716922852}
-  MainMenu: {fileID: 0}
 --- !u!114 &1976603827
 MonoBehaviour:
   m_ObjectHideFlags: 0

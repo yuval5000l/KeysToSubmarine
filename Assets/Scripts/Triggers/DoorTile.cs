@@ -75,7 +75,7 @@ public class DoorTile : MonoBehaviour
 
             colliderEnter.Play();
             PlayerController player = coll.gameObject.GetComponent<PlayerController>();
-            Debug.Log(player.name + " Entered!");
+            //Debug.Log(player.name + " Entered!");
             if (!players.Contains(player))
             {
                 if (players.Count == 0)
@@ -110,6 +110,7 @@ public class DoorTile : MonoBehaviour
                     counter = i;
                 }
             }
+            //Debug.Log(player.name + " Out!");
 
             if (players_pressed[counter])
             {
@@ -117,6 +118,7 @@ public class DoorTile : MonoBehaviour
             }
             else
             {
+                players.RemoveAt(counter);
                 players_pressed.RemoveAt(counter);
                 if (players.Count == 0)
                 {

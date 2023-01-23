@@ -13,6 +13,8 @@ public class AssignPlayers : MonoBehaviour
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private Animator[] players_animators = new Animator[3]; // Pink, Blue, Orange
     [SerializeField] private Button button;
+    [SerializeField] private GameObject squareIndicator;
+
 
     [Header("ManyManyLists")]
     [SerializeField] List<GameObject> PinkStuff = new List<GameObject>(); // 
@@ -22,6 +24,7 @@ public class AssignPlayers : MonoBehaviour
     [SerializeField] List<GameObject> ChooseButtonsPink = new List<GameObject>(); // Space, Q, B, A
     [SerializeField] List<GameObject> ChooseButtonsBlue = new List<GameObject>(); // Space, Q, B, A
     [SerializeField] List<GameObject> ChooseButtonsOrange = new List<GameObject>(); // Space, Q, B, A
+    [SerializeField] List<GameObject> ChooseButtonsTemp = new List<GameObject>(); // Space, Q, B, A
 
     [SerializeField] List<InputDevice> players_devices = new List<InputDevice>();
     List<int> players_devices_num = new List<int>();
@@ -49,6 +52,8 @@ public class AssignPlayers : MonoBehaviour
         ChooseButtons.Add(ChooseButtonsPink);
         ChooseButtons.Add(ChooseButtonsBlue);
         ChooseButtons.Add(ChooseButtonsOrange);
+        ChooseButtons.Add(ChooseButtonsTemp);
+
         AddInitialStuff(PinkStuff);
         AddInitialStuff(BlueStuff);
         AddInitialStuff(OrangeStuff);
@@ -166,24 +171,31 @@ public class AssignPlayers : MonoBehaviour
             RemovePlayerStuff(device_num, player_num[counter]);
             for (int i = 0; i < ChooseButtons[player_num[counter]].Count; i++)
             {
-                if (counter == 2)
+
+                if (ChooseButtons[3][i].activeSelf)
                 {
-                    if (ChooseButtons[player_num[counter] - 1][i].activeSelf)
-                    {
-                        ChooseButtons[player_num[counter]][i].SetActive(true);
-                    }
+                    ChooseButtons[player_num[counter]][i].SetActive(true);
                 }
-                else
-                {
-                    if (ChooseButtons[player_num[counter] + 1][i].activeSelf)
-                    {
-                        ChooseButtons[player_num[counter]][i].SetActive(true);
-                    }
-                }
+                
             }
             RemovePlayerAnimation(counter);
             
         }
+    }
+    private void UpdateSquare()
+    {
+        squareIndicator.GetComponent<SpriteRenderer>().color = Color.green;
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (!player_num.Contains(i))
+            {
+                squareIndicator.transform.localPosition = players_animators[i].gameObject.transform.localPosition + Vector3.down *1.5f;
+                return;
+            }
+        }
+        squareIndicator.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0f);
+
     }
     void OnKeyboard1(InputValue inp) // Q
     {
@@ -304,7 +316,6 @@ public class AssignPlayers : MonoBehaviour
     {
         if (!inp.isPressed)
         {
-            //Debug.Log(InputSystem.GetDevice<InputDevice>().ToString().Substring(InputSystem.GetDevice<InputDevice>().ToString().Length-1));
             
                 if (!players_devices.Contains(InputSystem.GetDevice<InputDevice>()))
                 {
@@ -347,19 +358,9 @@ public class AssignPlayers : MonoBehaviour
                     RemovePlayerStuff(3, player_num[counter]);
                     for (int i = 0; i < ChooseButtons[player_num[counter]].Count; i++)
                     {
-                        if (counter == 2)
+                        if (ChooseButtons[3][i].activeSelf)
                         {
-                            if (ChooseButtons[player_num[counter] - 1][i].activeSelf)
-                            {
-                                ChooseButtons[player_num[counter]][i].SetActive(true);
-                            }
-                        }
-                        else
-                        {
-                            if (ChooseButtons[player_num[counter] + 1][i].activeSelf)
-                            {
-                                ChooseButtons[player_num[counter]][i].SetActive(true);
-                            }
+                            ChooseButtons[player_num[counter]][i].SetActive(true);
                         }
                     }
                     RemovePlayerAnimation(counter);
@@ -381,6 +382,7 @@ public class AssignPlayers : MonoBehaviour
             button.enabled = false;
             button.image.color = new Color(1f, 1f, 1f, 0.2f);
         }
+        UpdateSquare();
 
     }
 

@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class NextLevelCanva : MonoBehaviour
 {
     [SerializeField] private OurEventHandler GM;
-    private PlayerManager playerManager;
-    private List<List<KeyCode>> playersControl;
+    //private PlayerManager playerManager;
+    //private List<List<KeyCode>> playersControl;
     // Start is called before the first frame update
     void Start()
     {
-        playerManager = FindObjectOfType<PlayerManager>().GetComponent<PlayerManager>();
+        //playerManager = FindObjectOfType<PlayerManager>().GetComponent<PlayerManager>();
         GM = FindObjectOfType<OurEventHandler>().GetComponent<OurEventHandler>();
+        EventSystem.current.SetSelectedGameObject(null);
+        GameObject pauseFirstButton = GetComponentsInChildren<RectTransform>()[1].GetComponentsInChildren<RectTransform>()[1].gameObject;
+        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         //playersControl = playerManager.GetPlayersControls();
     }
 

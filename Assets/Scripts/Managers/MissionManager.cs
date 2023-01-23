@@ -72,7 +72,7 @@ public class MissionManager : MonoBehaviour
         {
             foreach(GameObject orb in Orbs)
             {
-                orb.GetComponent<SpriteRenderer>().sortingOrder = 20;
+                orb.GetComponent<SpriteRenderer>().sortingOrder = 19;
                 OrbsInitialScale.Add(orb.transform.localScale.x);
             }
         }
