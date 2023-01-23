@@ -9,7 +9,7 @@ public class BackGroundScript : MonoBehaviour
     
     private float num_seconds = 2f;
     private float timer = 0f;
-    private float mini_timer = 0f;
+    //private float mini_timer = 0f;
     // Start is called before the first frame update
     void Start()
     {
