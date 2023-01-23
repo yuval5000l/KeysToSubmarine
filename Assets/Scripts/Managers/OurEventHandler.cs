@@ -46,6 +46,7 @@ public class OurEventHandler : MonoBehaviour
             {
                 foreach (GameObject orb in orbs)
                 {
+                    orb.GetComponent<SpriteRenderer>().sortingOrder = 100;
                     float x = orb.transform.localScale.x + orb.transform.localScale.x * 2 * Time.deltaTime;
                     orb.transform.localScale = new Vector3(x, x, x);
                 }
