@@ -13,7 +13,13 @@ public class AssignPlayers : MonoBehaviour
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private Animator[] players_animators = new Animator[3];
     [SerializeField] private Button button;
-    
+
+    [Header("ManyManyLists")]
+    [SerializeField] List<GameObject> PinkStuff = new List<GameObject>(); // 
+    [SerializeField] List<GameObject> BlueStuff = new List<GameObject>();
+    [SerializeField] List<GameObject> OrangeStuff = new List<GameObject>();
+    [SerializeField] List<GameObject> ChooseButtons = new List<GameObject>(); // Space, Q, B, A
+
     [SerializeField] List<InputDevice> players_devices = new List<InputDevice>();
     List<int> players_devices_num = new List<int>();
     List<int> player_num = new List<int>();
@@ -23,7 +29,6 @@ public class AssignPlayers : MonoBehaviour
 
     private PlayerInput players_input;
 
-    private IObservable<InputControl> m_ButtonPressListener;
 
     private InputAction myAction1;
     // Start is called before the first frame update
@@ -38,6 +43,12 @@ public class AssignPlayers : MonoBehaviour
         players_input.SwitchCurrentActionMap("AssignPlayerMap");
         gameManager.ClearLists();
         num_level = gameManager.Getlevel();
+        foreach(Transform obj in PinkStuff[0].GetComponentsInChildren<Transform>())
+        {
+            PinkStuff.Add(obj.gameObject);
+        }
+        PinkStuff.RemoveAt(0);
+        PinkStuff.RemoveAt(0);
     }
     private void AddPlayerAnimation()
     {
@@ -90,7 +101,7 @@ public class AssignPlayers : MonoBehaviour
 
         }
     }
-    void OnKeyboard1(InputValue inp)
+    void OnKeyboard1(InputValue inp) // Q
     {
         if (!inp.isPressed)
         {
@@ -115,7 +126,7 @@ public class AssignPlayers : MonoBehaviour
             }
         }
     }
-    void OnKeyboard2(InputValue inp)
+    void OnKeyboard2(InputValue inp) // Space
     {
         if (!inp.isPressed)
         {
@@ -140,34 +151,37 @@ public class AssignPlayers : MonoBehaviour
             }
         }
     }
-    void OnKeyboard3(InputValue inp)
+    void OnKeyboard3(InputValue inp) // B
     {
         if (!inp.isPressed)
         {
-                int counter = -1;
-                for (int i = 0; i < players_devices.Count; i++)
+            int counter = -1;
+            for (int i = 0; i < players_devices.Count; i++)
+            {
+                if (players_devices[i] == InputSystem.GetDevice<InputDevice>())
                 {
-                    if (players_devices[i] == InputSystem.GetDevice<InputDevice>())
+                    if (players_devices_num[i] == 3)
                     {
-                        if (players_devices_num[i] == 3)
-                    {
-                            counter = i;
-                        }
-
+                        counter = i;
                     }
+
                 }
-                if (counter == -1)
-                {
-                    AddPlayer(Keyboard.current, 3);
-                }
-                else
-                {
-                    RemovePlayer(Keyboard.current, 3);
-                }
+            }
+            if (counter == -1)
+            {
+                AddPlayer(Keyboard.current, 3);
+                ChooseButtons[2].SetActive(false);
+
+            }
+            else
+            {
+                RemovePlayer(Keyboard.current, 3);
+                ChooseButtons[2].SetActive(true);
+            }
         }
     }
 
-    void OnGamePad1(InputValue inp)
+    void OnGamePad1(InputValue inp) // A
     {
         if (!inp.isPressed)
         {
@@ -205,8 +219,9 @@ public class AssignPlayers : MonoBehaviour
                         players_devices.Remove(InputSystem.GetDevice<InputDevice>());
                         players_devices_num.RemoveAt(counter);
                         RemovePlayerAnimation(counter);
+                    }
+
                 }
-            }
         }
     }
     void Update()
