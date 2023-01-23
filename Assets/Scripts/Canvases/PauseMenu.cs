@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GM = FindObjectOfType<OurEventHandler>().GetComponent<OurEventHandler>();
     }
 
     // Update is called once per frame

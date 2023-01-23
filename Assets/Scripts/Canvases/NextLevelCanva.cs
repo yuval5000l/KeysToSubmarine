@@ -12,6 +12,7 @@ public class NextLevelCanva : MonoBehaviour
     void Start()
     {
         playerManager = FindObjectOfType<PlayerManager>().GetComponent<PlayerManager>();
+        GM = FindObjectOfType<OurEventHandler>().GetComponent<OurEventHandler>();
         //playersControl = playerManager.GetPlayersControls();
     }
 
