@@ -25,72 +25,72 @@ public class MainMenuScript : MonoBehaviour
         }
         // menuMusic.Play();
     }
-    private void ChooseButton()
-    {
-        //buttons[index].onClick = Button.ButtonClickedEvent(true);
-    }
-    private void OnMove(InputValue value)
-    {
-        Vector2 movement_tmp = value.Get<Vector2>();
-        //Debug.Log(movement_tmp);
-        //if (movement_tmp != Vector2.zero)
-        //{
-        //    if (!move_pressed_x)
-        //    {
-        //        if (Mathf.Abs(movement_tmp.x) == 1)
-        //        {
-        //            movement.x = movement_tmp.x;
-        //            move_pressed_x = true;
-        //        }
-        //        else
-        //        {
-        //            move_pressed_x = false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        move_pressed_x = false;
-        //    }
-        //    if (!move_pressed_y)
-        //    {
-        //        if (Mathf.Abs(movement_tmp.y) == 1)
-        //        {
-        //            movement.y = -movement_tmp.y;
-        //            move_pressed_y = true;
+    //private void ChooseButton()
+    //{
+    //    //buttons[index].onClick = Button.ButtonClickedEvent(true);
+    //}
+    //private void OnMove(InputValue value)
+    //{
+    //    Vector2 movement_tmp = value.Get<Vector2>();
+    //    //Debug.Log(movement_tmp);
+    //    //if (movement_tmp != Vector2.zero)
+    //    //{
+    //    //    if (!move_pressed_x)
+    //    //    {
+    //    //        if (Mathf.Abs(movement_tmp.x) == 1)
+    //    //        {
+    //    //            movement.x = movement_tmp.x;
+    //    //            move_pressed_x = true;
+    //    //        }
+    //    //        else
+    //    //        {
+    //    //            move_pressed_x = false;
+    //    //        }
+    //    //    }
+    //    //    else
+    //    //    {
+    //    //        move_pressed_x = false;
+    //    //    }
+    //    //    if (!move_pressed_y)
+    //    //    {
+    //    //        if (Mathf.Abs(movement_tmp.y) == 1)
+    //    //        {
+    //    //            movement.y = -movement_tmp.y;
+    //    //            move_pressed_y = true;
 
-        //        }
-        //        else
-        //        {
-        //            move_pressed_y = false;
+    //    //        }
+    //    //        else
+    //    //        {
+    //    //            move_pressed_y = false;
 
-        //        }
-        //    }
-        //    else
-        //    {
-        //        move_pressed_y = false;
-        //    }
+    //    //        }
+    //    //    }
+    //    //    else
+    //    //    {
+    //    //        move_pressed_y = false;
+    //    //    }
 
-        //}
-        //else
-        //{
-        //    move_pressed_x = false;
-        //    move_pressed_y = false;
-        //}
-    }
-    private void OnChoose(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            ChooseButton();
-        }
-    }
-    private void OnBackButton(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            SceneManager.LoadScene("StartGame");
-        }
-    }
+    //    //}
+    //    //else
+    //    //{
+    //    //    move_pressed_x = false;
+    //    //    move_pressed_y = false;
+    //    //}
+    //}
+    //private void OnChoose(InputValue value)
+    //{
+    //    //if (value.isPressed)
+    //    //{
+    //    //    ChooseButton();
+    //    //}
+    //}
+    //private void OnBackButton(InputValue value)
+    //{
+    //    //if (value.isPressed)
+    //    //{
+    //    //    SceneManager.LoadScene("StartGame");
+    //    //}
+    //}
     public void StartGame()
     {
         gameManager.Setlevel(1);
