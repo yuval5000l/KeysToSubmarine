@@ -72,8 +72,10 @@ public class DoorTile : MonoBehaviour
     {
         if (coll.tag == "Player")
         {
+
             colliderEnter.Play();
             PlayerController player = coll.gameObject.GetComponent<PlayerController>();
+            Debug.Log(player.name + " Entered!");
             if (!players.Contains(player))
             {
                 if (players.Count == 0)
@@ -93,6 +95,7 @@ public class DoorTile : MonoBehaviour
 
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
 
@@ -102,20 +105,18 @@ public class DoorTile : MonoBehaviour
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             for (int i = 0; i < players.Count; i++)
             {
-                if (player = players[i])
+                if (player == players[i])
                 {
                     counter = i;
                 }
             }
-            Debug.Log(players_pressed.Count);
-            Debug.Log(players.Count);
+
             if (players_pressed[counter])
             {
                 player_unpressed(player, counter);
             }
             else
             {
-                players.RemoveAt(counter);
                 players_pressed.RemoveAt(counter);
                 if (players.Count == 0)
                 {

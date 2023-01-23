@@ -82,7 +82,7 @@ public class BollderStation : StationScript
             }
         }
         
-        if (pressKeysInARowCount == missionsNumberOfPlayers[mission_index])
+        if (pressKeysInARowCount >= missionsNumberOfPlayers[mission_index])
         {
             //PlayerAnimationPush();
             pressKeysInARowCount = 0;
