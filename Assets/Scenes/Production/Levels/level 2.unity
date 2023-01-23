@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3943577113499008757, guid: 1b9e8c5c474295f45a336bfecab3eb74, type: 3}
       propertyPath: points_award
@@ -583,6 +583,14 @@ PrefabInstance:
     - target: {fileID: 935368079180591982, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.779225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.547985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
@@ -1042,6 +1050,14 @@ PrefabInstance:
     - target: {fileID: 6974778040365719505, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.x
+      value: 1.307716
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.y
+      value: 1.307716
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: bonus_time
@@ -3834,6 +3850,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.x
+      value: 1.307716
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.y
+      value: 1.307716
+      objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: bonus_time
       value: 2
@@ -6135,6 +6159,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.779225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.547985
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
 --- !u!4 &1268132296 stripped
@@ -6539,9 +6571,17 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.x
+      value: 1.307716
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.y
+      value: 1.407716
+      objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: bonus_time
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: points_award
@@ -7928,6 +7968,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.x
+      value: 1.307716
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228289541411166011, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: m_Size.y
+      value: 1.307716
+      objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: bonus_time
       value: 2
@@ -8327,7 +8375,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629986537477770122, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: bonus_time
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 629986537477770122, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: points_award
@@ -8404,6 +8452,14 @@ PrefabInstance:
     - target: {fileID: 935368079180591982, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.979225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.647985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
@@ -9360,6 +9416,14 @@ PrefabInstance:
     - target: {fileID: 935368079180591982, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.779225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209170326840572757, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.47985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
