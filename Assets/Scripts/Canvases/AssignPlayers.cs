@@ -107,6 +107,8 @@ public class AssignPlayers : MonoBehaviour
         stuff[1].SetActive(Add);
         stuff[device_num + 2].SetActive(Add);
         stuff[device_num + 6].SetActive(Add);
+        stuff[stuff.Count -1].SetActive(Add);
+
     }
     private int AddPlayerAnimation()
     {
@@ -212,7 +214,10 @@ public class AssignPlayers : MonoBehaviour
                 RemovePlayer(Keyboard.current, 2, 1);
                 foreach (List<GameObject> lst in ChooseButtons)
                 {
-                    lst[1].SetActive(true);
+                    if (lst[3].activeSelf)
+                    {
+                        lst[1].SetActive(true);
+                    }
                 }
 
             }
@@ -238,15 +243,18 @@ public class AssignPlayers : MonoBehaviour
                 AddPlayer(Keyboard.current, 1, 0);
                 foreach (List<GameObject> lst in ChooseButtons)
                 {
-                    lst[0].SetActive(false);
+                        lst[0].SetActive(false);
                 }
             }
             else
             {
                 RemovePlayer(Keyboard.current, 1, 0);
                 foreach (List<GameObject> lst in ChooseButtons)
-                {
-                    lst[0].SetActive(true);
+                {                    
+                    if (lst[3].activeSelf)
+                    {
+                        lst[0].SetActive(true);
+                    }
                 }
 
             }
@@ -273,7 +281,7 @@ public class AssignPlayers : MonoBehaviour
                 AddPlayer(Keyboard.current, 3, 2);
                 foreach (List<GameObject> lst in ChooseButtons)
                 {
-                    lst[2].SetActive(false);
+                  lst[2].SetActive(false);
                 }
 
             }
@@ -282,7 +290,10 @@ public class AssignPlayers : MonoBehaviour
                 RemovePlayer(Keyboard.current, 3, 2);
                 foreach (List<GameObject> lst in ChooseButtons)
                 {
-                    lst[2].SetActive(true);
+                    if (lst[3].activeSelf)
+                    {
+                        lst[2].SetActive(true);
+                    }
                 }
             }
         }
