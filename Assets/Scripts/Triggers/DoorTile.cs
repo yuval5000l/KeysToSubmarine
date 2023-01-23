@@ -107,7 +107,8 @@ public class DoorTile : MonoBehaviour
                     counter = i;
                 }
             }
-            
+            Debug.Log(players_pressed.Count);
+            Debug.Log(players.Count);
             if (players_pressed[counter])
             {
                 player_unpressed(player, counter);
