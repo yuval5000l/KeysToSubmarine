@@ -16,6 +16,7 @@ public class BorderScript : MonoBehaviour
     {
         if(slideOut)
         {
+            GetComponent<SpriteRenderer>().sortingOrder = 21;
             gameObject.transform.localScale = gameObject.transform.localScale 
             - new Vector3(0, Time.deltaTime, 0);
         }
