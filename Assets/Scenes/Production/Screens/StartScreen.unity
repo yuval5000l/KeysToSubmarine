@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 53175022}
   - component: {fileID: 53175021}
   m_Layer: 0
-  m_Name: Play (1)
+  m_Name: Simulate Disaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +240,7 @@ RectTransform:
   m_Children:
   - {fileID: 1587190567}
   m_Father: {fileID: 1938675029}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -491,7 +491,7 @@ RectTransform:
   m_Children:
   - {fileID: 1357547305}
   m_Father: {fileID: 1938675029}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 1556529066}
   - component: {fileID: 1556529065}
   m_Layer: 0
-  m_Name: Play
+  m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1556529063}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1647469389
@@ -1589,8 +1589,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1556529064}
-  - {fileID: 680722357}
   - {fileID: 53175020}
+  - {fileID: 680722357}
   m_Father: {fileID: 155792854}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
