@@ -14,7 +14,7 @@ public class MainMenuScript : MonoBehaviour
     private List<Button> buttons = new List<Button>();
     // [SerializeField] private AudioSource menuMusic;
     private int num_players;
-    private int index = 0;
+    //private int index = 0;
     // Start is called before the first frame update
     void Start()
     {
