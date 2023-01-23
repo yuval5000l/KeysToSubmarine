@@ -163,25 +163,26 @@ public class AssignPlayers : MonoBehaviour
 
             players_devices.Remove(inp);
             players_devices_num.Remove(num);
-            RemovePlayerAnimation(counter);
-            RemovePlayerStuff(device_num, counter);
-            for (int i = 0; i < ChooseButtons[counter].Count; i++)
+            RemovePlayerStuff(device_num, player_num[counter]);
+            for (int i = 0; i < ChooseButtons[player_num[counter]].Count; i++)
             {
                 if (counter == 2)
                 {
-                    if (ChooseButtons[counter - 1][i].activeSelf)
+                    if (ChooseButtons[player_num[counter] - 1][i].activeSelf)
                     {
-                        ChooseButtons[counter][i].SetActive(true);
+                        ChooseButtons[player_num[counter]][i].SetActive(true);
                     }
                 }
                 else
                 {
-                    if (ChooseButtons[counter + 1][i].activeSelf)
+                    if (ChooseButtons[player_num[counter] + 1][i].activeSelf)
                     {
-                        ChooseButtons[counter][i].SetActive(true);
+                        ChooseButtons[player_num[counter]][i].SetActive(true);
                     }
                 }
             }
+            RemovePlayerAnimation(counter);
+            
         }
     }
     void OnKeyboard1(InputValue inp) // Q
@@ -343,26 +344,27 @@ public class AssignPlayers : MonoBehaviour
                     }
                     players_devices.Remove(InputSystem.GetDevice<InputDevice>());
                     players_devices_num.RemoveAt(counter);
-                    RemovePlayerAnimation(counter);
-                    RemovePlayerStuff(3, counter);
-                    for (int i = 0; i < ChooseButtons[counter].Count; i++)
+                    RemovePlayerStuff(3, player_num[counter]);
+                    for (int i = 0; i < ChooseButtons[player_num[counter]].Count; i++)
                     {
                         if (counter == 2)
                         {
-                            if (ChooseButtons[counter - 1][i].activeSelf)
+                            if (ChooseButtons[player_num[counter] - 1][i].activeSelf)
                             {
-                                ChooseButtons[counter][i].SetActive(true);
+                                ChooseButtons[player_num[counter]][i].SetActive(true);
                             }
                         }
                         else
                         {
-                            if (ChooseButtons[counter + 1][i].activeSelf)
+                            if (ChooseButtons[player_num[counter] + 1][i].activeSelf)
                             {
-                                ChooseButtons[counter][i].SetActive(true);
+                                ChooseButtons[player_num[counter]][i].SetActive(true);
                             }
                         }
                     }
-            }
+                    RemovePlayerAnimation(counter);
+
+                }
 
             }
         }
