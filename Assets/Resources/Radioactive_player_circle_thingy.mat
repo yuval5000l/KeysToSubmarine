@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Radioactive_player
+  m_Name: Radioactive_player_circle_thingy
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
   m_ValidKeywords:
   - DOODLE_ON
@@ -179,7 +179,7 @@ Material:
     - _OutlinePixelWidth: 1
     - _OutlineTexXSpeed: 10
     - _OutlineTexYSpeed: 0
-    - _OutlineWidth: 0.1
+    - _OutlineWidth: 0.01
     - _OverlayBlend: 1
     - _OverlayGlow: 1
     - _PinchUvAmount: 0

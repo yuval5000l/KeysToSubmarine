@@ -59,10 +59,10 @@ public class PlayerController : MonoBehaviour
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
         // levelsOfRadioActivity = new bool[] {false,false,false};
-        radioActiveIndicator = Instantiate(Resources.Load<Image>("Image")) as Image;
+        radioActiveIndicator = Instantiate(Resources.Load<Image>("RadioActivityCircleThingy")) as Image;
         radioActiveIndicator.transform.position = Vector3.zero;
         radioActiveIndicator.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
-        radioActiveIndicator.rectTransform.position = new Vector3(2.7f,1f,0f);
+        radioActiveIndicator.rectTransform.position = new Vector3(2.6f,0.72f,0f);
         radioActiveIndicator.rectTransform.localScale = new Vector3(0.3f,0.3f,0.3f);
 
 
