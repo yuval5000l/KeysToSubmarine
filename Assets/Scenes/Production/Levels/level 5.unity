@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 1967353466}
-  nextlevel: {fileID: 0}
+  nextlevel: {fileID: 491597275}
   MaxlevelNum: 5
 --- !u!1 &127757281
 GameObject:
@@ -3078,10 +3078,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 505443214}
-  - {fileID: 749988117}
   - {fileID: 1199490458}
   - {fileID: 2108003637}
+  - {fileID: 749988117}
+  - {fileID: 505443214}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
