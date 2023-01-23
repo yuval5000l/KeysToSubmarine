@@ -312,28 +312,48 @@ public class AssignPlayers : MonoBehaviour
                         }
                     int player_loc = AddPlayerAnimation();
                     AddPlayerStuff(3, player_loc);
-
+                    foreach(GameObject obj in ChooseButtons[player_loc])
+                    {
+                        obj.SetActive(false);
+                    }
                 }
             }
-                else
+            else
+            {
+                if (players_devices.Count > 0)
                 {
-                    if (players_devices.Count > 0)
+                    int counter = 0;
+                    for (int i = 0; i < players_devices.Count; i++)
                     {
-                        int counter = 0;
-                        for (int i = 0; i < players_devices.Count; i++)
+                        if (players_devices[i] == InputSystem.GetDevice<InputDevice>())
                         {
-                            if (players_devices[i] == InputSystem.GetDevice<InputDevice>())
+                            counter = i;
+                        }
+                    }
+                    players_devices.Remove(InputSystem.GetDevice<InputDevice>());
+                    players_devices_num.RemoveAt(counter);
+                    RemovePlayerAnimation(counter);
+                    RemovePlayerStuff(3, counter);
+                    for (int i = 0; i < ChooseButtons[counter].Count; i++)
+                    {
+                        if (counter == 2)
+                        {
+                            if (ChooseButtons[counter - 1][i].activeSelf)
                             {
-                                counter = i;
+                                ChooseButtons[counter][i].SetActive(true);
                             }
                         }
-                        players_devices.Remove(InputSystem.GetDevice<InputDevice>());
-                        players_devices_num.RemoveAt(counter);
-                        RemovePlayerAnimation(counter);
-                        RemovePlayerStuff(3, counter);
-                }
+                        else
+                        {
+                            if (ChooseButtons[counter + 1][i].activeSelf)
+                            {
+                                ChooseButtons[counter][i].SetActive(true);
+                            }
+                        }
+                    }
+            }
 
-                }
+            }
         }
     }
     void Update()
