@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class MainMenuScript : MonoBehaviour
@@ -9,6 +11,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private TMP_Text num_players_text;
     [SerializeField] private OurEventHandler gameManager;
     [SerializeField] private GameObject MainMenu;
+    private List<Button> buttons = new List<Button>();
     // [SerializeField] private AudioSource menuMusic;
     private int num_players;
     // Start is called before the first frame update
@@ -20,6 +23,69 @@ public class MainMenuScript : MonoBehaviour
             num_players_text.text = num_players.ToString();
         }
         // menuMusic.Play();
+    }
+
+    private void OnMove(InputValue value)
+    {
+        Vector2 movement_tmp = value.Get<Vector2>();
+        //Debug.Log(movement_tmp);
+        if (movement_tmp != Vector2.zero)
+        {
+            if (!move_pressed_x)
+            {
+                if (Mathf.Abs(movement_tmp.x) == 1)
+                {
+                    movement.x = movement_tmp.x;
+                    move_pressed_x = true;
+                }
+                else
+                {
+                    move_pressed_x = false;
+                }
+            }
+            else
+            {
+                move_pressed_x = false;
+            }
+            if (!move_pressed_y)
+            {
+                if (Mathf.Abs(movement_tmp.y) == 1)
+                {
+                    movement.y = -movement_tmp.y;
+                    move_pressed_y = true;
+
+                }
+                else
+                {
+                    move_pressed_y = false;
+
+                }
+            }
+            else
+            {
+                move_pressed_y = false;
+            }
+
+        }
+        else
+        {
+            move_pressed_x = false;
+            move_pressed_y = false;
+        }
+    }
+    private void OnChoose(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            ChooseLevel();
+        }
+    }
+    private void OnBackButton(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            SceneManager.LoadScene("StartGame");
+        }
     }
     public void StartGame()
     {
