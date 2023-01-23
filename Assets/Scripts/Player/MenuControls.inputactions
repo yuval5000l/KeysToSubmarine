@@ -69,6 +69,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4cbcd2ca-8ae1-404e-acbf-522a6e5f0b4d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MenuControls",
+                    "action": "Choose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d24b0c94-ea4d-472d-b168-a22b39591cb0",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -198,6 +209,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "54ddb1de-8488-48c8-89a2-d7189c17934a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MenuControls",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
