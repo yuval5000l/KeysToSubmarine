@@ -381,8 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 1967353466}
-  nextlevel: {fileID: 0}
-  MaxlevelNum: 5
+  nextlevel: {fileID: 992516046}
 --- !u!1 &127757281
 GameObject:
   m_ObjectHideFlags: 0

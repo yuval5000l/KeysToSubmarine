@@ -15,7 +15,7 @@ public class OurEventHandler : MonoBehaviour
 
     private int players_in_game = 0;
     private static int levelNumber = 0;
-    [SerializeField] private int MaxlevelNum = 3;
+    private int MaxlevelNum = 15;
     private CameraZoom zoom;
     private bool game_over = false;
     private List<GameObject> orbs = new List<GameObject>();
@@ -26,6 +26,10 @@ public class OurEventHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (nextlevel == null)
+        {
+            nextlevel = FindObjectOfType<NextLevelCanva>();
+        }
         zoom = FindObjectOfType<CameraZoom>();
         string sceneName = SceneManager.GetActiveScene().name;
         string[] nameAndNum = sceneName.Split(" ");

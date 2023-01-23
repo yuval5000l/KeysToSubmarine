@@ -6761,7 +6761,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 2013099240}
   nextlevel: {fileID: 1104684234}
-  MaxlevelNum: 6
 --- !u!4 &1898997692
 Transform:
   m_ObjectHideFlags: 0
@@ -7357,6 +7356,7 @@ MonoBehaviour:
   lowerBorder: {fileID: 0}
   gameMusic: {fileID: 0}
   menuMusic: {fileID: 0}
+  button: {fileID: 2095059082}
   panel: {fileID: 195461282}
 --- !u!114 &2014745549
 MonoBehaviour:

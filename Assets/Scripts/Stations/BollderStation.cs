@@ -53,7 +53,7 @@ public class BollderStation : StationScript
                     player.StopAnimationPush(Vector3.zero);
                 }
             }
-            if (players_in_station.Count == missionsNumberOfPlayers[mission_index])
+            if (players_in_station.Count >= missionsNumberOfPlayers[mission_index])
             {
                 // station_animation.SetTrigger("Hover");
                 missions[mission_index]();

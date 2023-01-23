@@ -8,12 +8,14 @@ public class BetweenStations : MonoBehaviour
     [SerializeField] private BorderScript upperBorder;
     [SerializeField] private BorderScript lowerBorder;
     [SerializeField] private AudioSource gameMusic;
-    [SerializeField] private AudioSource menuMusic;  
+    [SerializeField] private AudioSource menuMusic;
+    [SerializeField] private GameObject button;
     //private bool slideOut = false;
     [SerializeField] private GameObject panel;
     // Start is called before the first frame update
     void Start()
     {
+        button.SetActive(false);
         Time.timeScale = 0f;
         if (menuMusic != null)
         {
@@ -45,6 +47,9 @@ public class BetweenStations : MonoBehaviour
         gameMusic.Play();
         menuMusic.Stop();
     }
-
+    public void ButtonActive()
+    {
+        button.SetActive(true);
+    }
 
 }
