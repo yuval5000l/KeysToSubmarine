@@ -153,4 +153,8 @@ public class PlayerManager : MonoBehaviour
             gameManager.GameOver();
         }
     }
+    public PlayerController[] getPlayers()
+    {
+        return players;
+    }
 }

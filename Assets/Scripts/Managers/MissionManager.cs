@@ -243,6 +243,7 @@ public class MissionManager : MonoBehaviour
             //Debug.Log("You Win! You Win! You Win! You Win!");
             if (DoFinishAnimation())
             {
+
                 if (zoom)
                 {
                     zoom.DeActivateZoom();
@@ -255,6 +256,8 @@ public class MissionManager : MonoBehaviour
                 if (!hold_time)
                 {
                     Time.timeScale = 0f;
+                    GM.HealAllPlayers();
+
                     GM.NextlevelCanvas();
                 }
             }

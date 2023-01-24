@@ -65,6 +65,17 @@ public class OurEventHandler : MonoBehaviour
         }
     }
 
+    public void HealAllPlayers()
+    {
+        foreach(PlayerController player in playerManager.getPlayers())
+        {
+            if (player != null)
+            {
+                player.TotalHealRadioActive();
+            }
+        }
+    }
+
     public void setTut(bool tut)
     {
         tutorial = tut;

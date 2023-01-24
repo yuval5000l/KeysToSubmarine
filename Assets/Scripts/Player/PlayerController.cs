@@ -507,7 +507,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void TotalHealRadioActive()
+    {
+        radioActiveIndicator.fillAmount = 0f;
+        radioActivity = 0f;
+        sprite.material = default_material;
+        radio_active_state = false;
+        //Debug.Log("HEAL");
+    }
 
     //private void movement_keyboard()
     //{
