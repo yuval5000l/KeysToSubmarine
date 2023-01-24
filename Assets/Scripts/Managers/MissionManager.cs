@@ -180,6 +180,15 @@ public class MissionManager : MonoBehaviour
         return time_left >= (initial_time - 2);
     }
 
+    //private bool DoUnFinishAnimation()
+    //{
+    //    if (zoom)
+    //    {
+    //        zoom.DeActivateZoom();
+    //    }
+    //    time_left = Mathf.Lerp(time_left, initial_time, Time.deltaTime);
+    //    return time_left >= (initial_time - 2);
+    //}
 
     private void updateIndicator()
     {
