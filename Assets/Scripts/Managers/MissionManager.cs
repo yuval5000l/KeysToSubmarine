@@ -244,7 +244,7 @@ public class MissionManager : MonoBehaviour
                     Time.timeScale = 1f;
                     hold_time = false;
 
-                    //GM.NextlevelCanvas();
+                    GM.NextlevelCanvas();
                 }
             }
             return;
@@ -459,7 +459,7 @@ public class MissionManager : MonoBehaviour
         }
         else if (stationsActive.Count < MaxStrategiesAtTime)
         {
-            if (stationScripts.Count < MaxStrategiesAtTime)
+            if (stationScripts.Count < MaxStrategiesAtTime && refillStrategy)
             {
                 refillStations();
             }

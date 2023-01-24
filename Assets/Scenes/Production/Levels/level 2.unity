@@ -518,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 1747161040}
     - target: {fileID: 629986537477770122, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: station_active
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 629986537477770122, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}
       propertyPath: numberOfPlayers
@@ -3866,6 +3866,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: always_active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
       objectReference: {fileID: 1714297682}
@@ -3875,7 +3879,7 @@ PrefabInstance:
       objectReference: {fileID: 1747161040}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: station_active
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbAppear

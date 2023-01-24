@@ -93,7 +93,6 @@ public class MainMenuScript : MonoBehaviour
     //}
     public void StartGame()
     {
-        gameManager.Setlevel(1);
         gameManager.Nextlevel(-1);
 
     }
@@ -174,4 +173,6 @@ public class MainMenuScript : MonoBehaviour
     {
         Destroy(MenuMusic.instance);
     }
+
+
 }

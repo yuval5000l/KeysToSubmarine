@@ -1927,7 +1927,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   pauseMenuUI: {fileID: 258644833}
-  MainMenu: {fileID: 0}
 --- !u!114 &407145134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7172,7 +7171,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aec3165ae0b4043439f1485ee6400b7d, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.20905471, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.20905471, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

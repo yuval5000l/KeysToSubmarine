@@ -53,7 +53,10 @@ public class AssignPlayers : MonoBehaviour
         ChooseButtons.Add(ChooseButtonsBlue);
         ChooseButtons.Add(ChooseButtonsOrange);
         ChooseButtons.Add(ChooseButtonsTemp);
-
+        for (int i = 0; i < 3; i++)
+        {
+            players_animators[i].gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+        }
         AddInitialStuff(PinkStuff);
         AddInitialStuff(BlueStuff);
         AddInitialStuff(OrangeStuff);
@@ -126,6 +129,7 @@ public class AssignPlayers : MonoBehaviour
                 player_num.Add(i);
                 cur_num = i;
                 players_animators[cur_num].SetBool("Choosen", true);
+                players_animators[cur_num].gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
                 return cur_num;
             }
         }
@@ -135,6 +139,7 @@ public class AssignPlayers : MonoBehaviour
     {
         Color maColor = new Color(1f, 1f, 1f, 0.5f);
         players_animators[player_num[counter]].SetBool("Choosen", false);
+        players_animators[player_num[counter]].gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
         player_num.RemoveAt(counter);
 
     }
