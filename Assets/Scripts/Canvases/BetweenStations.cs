@@ -32,6 +32,11 @@ public class BetweenStations : MonoBehaviour
         //Time.timeScale = 1f;
         ButtonActive();
     }
+    public void ButtonActive()
+    {
+        button.enabled = true;
+        button.image.color = new Color(1f, 1f, 1f, 1f);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -55,10 +60,6 @@ public class BetweenStations : MonoBehaviour
         gameMusic.Play();
         menuMusic.Stop();
     }
-    public void ButtonActive()
-    {
-        button.enabled = true;
-        button.image.color = new Color(1f, 1f, 1f, 1f);
-    }
+    
 
 }
