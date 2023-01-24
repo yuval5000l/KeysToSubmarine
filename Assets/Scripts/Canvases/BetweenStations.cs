@@ -8,7 +8,6 @@ public class BetweenStations : MonoBehaviour
     [SerializeField] private BorderScript upperBorder;
     [SerializeField] private BorderScript lowerBorder;
     [SerializeField] private AudioSource gameMusic;
-    [SerializeField] private AudioSource menuMusic;
     [SerializeField] private Button button;
     //private bool slideOut = false;
     [SerializeField] private GameObject panel;
@@ -18,10 +17,6 @@ public class BetweenStations : MonoBehaviour
         button.enabled = false;
         button.image.color = new Color(1f, 1f, 1f, 0.2f);
         Time.timeScale = 0.000001f;
-        if (menuMusic != null)
-        {
-            menuMusic.Play();
-        }
         StartCoroutine(PauseWaitResume(2f));
     }
     private IEnumerator PauseWaitResume(float pauseDelay)
@@ -58,7 +53,6 @@ public class BetweenStations : MonoBehaviour
         upperBorder.SlideOut();
         lowerBorder.SlideOut();
         gameMusic.Play();
-        menuMusic.Stop();
     }
     
 
