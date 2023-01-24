@@ -230,7 +230,7 @@ public class MissionManager : MonoBehaviour
                     Time.timeScale = 1f;
                     hold_time = false;
 
-                    GM.NextlevelCanvas();
+                    //GM.NextlevelCanvas();
                 }
             }
             return;
@@ -363,14 +363,17 @@ public class MissionManager : MonoBehaviour
         {
             ActivateStation(strategy_to_remove[0]);
         }
-        time_left += bonus_time;
         score += pointsWorth;
-            //Debug.Log(strategiessActive);
-            //Debug.Log(stationScripts.Count);
-            //Debug.Log(stationScripts[0].Count);
+        if (score < missionsToWinTarget)
+        {
+            time_left += bonus_time;
+        }
+        //Debug.Log(strategiessActive);
+        //Debug.Log(stationScripts.Count);
+        //Debug.Log(stationScripts[0].Count);
 
-            //printStationScript();
-        
+        //printStationScript();
+
     }
 
 
