@@ -60,7 +60,10 @@ public class MissionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeIndicatorScript = TimeIndicator.GetComponent<TimeIndicatorScript>();
+        if (TimeIndicator != null)
+        {
+            timeIndicatorScript = TimeIndicator.GetComponent<TimeIndicatorScript>();
+        }
         zoom = FindObjectOfType<CameraZoom>();
         ScoreIndicatorPrefab = Resources.Load("ScoreIndicator") as GameObject;
         //ScoreIndicatorPrefab = ScoreIndicatorPrefabhelper.GetComponent<ScoreIndicator>();
