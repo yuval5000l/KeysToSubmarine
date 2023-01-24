@@ -187,15 +187,29 @@ public class MissionManager : MonoBehaviour
         {
             initial_time = time_left;
         }
-        // For Gadi
-        if (Noise != null)
+        if (time_left >= 0)
         {
-            Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
-            GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
-            float x = 0.5f + (time_left / initial_time) * 0.5f;
-            GreenVignette2.transform.localScale = new Vector3(x, x, x);
+            // For Gadi
+            if (Noise != null)
+            {
+                Noise.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+                GreenVignette1.color = new Color(1f, 1f, 1f, (1 - (time_left / initial_time)));
+                float x = 0.5f + (time_left / initial_time) * 0.5f;
+                GreenVignette2.transform.localScale = new Vector3(x, x, x);
+            }
+            //
+            
+
+            if (TimeIndicator != null)
+            {
+                timeIndicatorScript.updateTime(time_left, initial_time);
+                //TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 7.4f, TimeIndicator.transform.localScale.y);
+            }
+            if (ScoreIndicatorBottom != null)
+            {
+                ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 7.4f, ScoreIndicatorBottom.transform.localScale.y);
+            }
         }
-        //
         if (Orbs.Count != 0)
         {
             for (int i = 0; i < Orbs.Count; i++)
@@ -204,15 +218,6 @@ public class MissionManager : MonoBehaviour
                 Orbs[i].transform.localScale = new Vector3(scaleForOrb, scaleForOrb, scaleForOrb);
 
             }
-        }
-        if (TimeIndicator != null)
-        {
-            timeIndicatorScript.updateTime(time_left, initial_time);
-            //TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 7.4f, TimeIndicator.transform.localScale.y);
-        }
-        if (ScoreIndicatorBottom != null)
-        {
-            ScoreIndicatorBottom.transform.localScale = new Vector3((((float)score / (float)missionsToWinTarget)) * 7.4f, ScoreIndicatorBottom.transform.localScale.y);
         }
     }
 
