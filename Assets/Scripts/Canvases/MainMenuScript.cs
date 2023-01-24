@@ -169,4 +169,9 @@ public class MainMenuScript : MonoBehaviour
         Time.timeScale = 1f;
         Application.Quit();
     }
+    
+    public void destroyMusic()
+    {
+        Destroy(MenuMusic.instance);
+    }
 }
