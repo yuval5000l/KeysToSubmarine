@@ -29,6 +29,10 @@ public class OurEventHandler : MonoBehaviour
         if (nextlevel == null)
         {
             nextlevel = FindObjectOfType<NextLevelCanva>();
+            if (nextlevel != null)
+            {
+                nextlevel.GetComponent<NextLevelCanva>();
+            }
         }
         
         zoom = FindObjectOfType<CameraZoom>();
