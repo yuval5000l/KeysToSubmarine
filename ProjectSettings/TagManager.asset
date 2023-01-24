@@ -16,6 +16,7 @@ TagManager:
   - HUD
   - PressTile
   - Border
+  - TimerText
   layers:
   - Default
   - TransparentFX

@@ -564,7 +564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202802273}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.521, z: -0.074644506}
+  m_LocalPosition: {x: 0, y: -4.521, z: 0}
   m_LocalScale: {x: 0.9254465, y: 0.9254465, z: 0.9254465}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3765,7 +3765,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   pauseMenuUI: {fileID: 888253777}
-  MainMenu: {fileID: 0}
 --- !u!114 &1146592247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6615,6 +6614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2145472611}
   - component: {fileID: 2145472612}
+  - component: {fileID: 2145472613}
   m_Layer: 0
   m_Name: TimeIndicator
   m_TagString: Untagged
@@ -6689,6 +6689,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2145472613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145472610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b225ee0efc95744d810026130059d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orb_loc: {x: 0, y: 0}
+  speed: 0.0009
 --- !u!1001 &4743422328872044182
 PrefabInstance:
   m_ObjectHideFlags: 0

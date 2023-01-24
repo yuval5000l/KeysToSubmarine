@@ -30,6 +30,7 @@ public class OurEventHandler : MonoBehaviour
         {
             nextlevel = FindObjectOfType<NextLevelCanva>();
         }
+        
         zoom = FindObjectOfType<CameraZoom>();
         string sceneName = SceneManager.GetActiveScene().name;
         string[] nameAndNum = sceneName.Split(" ");

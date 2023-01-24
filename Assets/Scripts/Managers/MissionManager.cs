@@ -23,6 +23,7 @@ public class MissionManager : MonoBehaviour
     // Timer
     [SerializeField] private float time_left = 30;
     [SerializeField] private GameObject TimeIndicator;
+    private TimeIndicatorScript timeIndicatorScript;
     [SerializeField] private List<GameObject> Orbs = new List<GameObject>();
     [SerializeField] private GameObject ScoreIndicatorBottom;
     [SerializeField] private SpriteRenderer Noise;
@@ -59,6 +60,7 @@ public class MissionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeIndicatorScript = TimeIndicator.GetComponent<TimeIndicatorScript>();
         zoom = FindObjectOfType<CameraZoom>();
         ScoreIndicatorPrefab = Resources.Load("ScoreIndicator") as GameObject;
         //ScoreIndicatorPrefab = ScoreIndicatorPrefabhelper.GetComponent<ScoreIndicator>();
@@ -202,7 +204,8 @@ public class MissionManager : MonoBehaviour
         }
         if (TimeIndicator != null)
         {
-            TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 7.4f, TimeIndicator.transform.localScale.y);
+            timeIndicatorScript.updateTime(time_left, initial_time);
+            //TimeIndicator.transform.localScale = new Vector3((1 - (time_left / initial_time)) * 7.4f, TimeIndicator.transform.localScale.y);
         }
         if (ScoreIndicatorBottom != null)
         {

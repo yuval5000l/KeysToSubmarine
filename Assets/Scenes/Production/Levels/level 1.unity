@@ -1330,7 +1330,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 447604296}
   nextlevel: {fileID: 1389210879}
-  MaxlevelNum: 15
 --- !u!4 &160284563
 Transform:
   m_ObjectHideFlags: 0
@@ -6826,6 +6825,7 @@ MonoBehaviour:
   lowerBorder: {fileID: 67981384}
   gameMusic: {fileID: 1178110357}
   menuMusic: {fileID: 1178110358}
+  button: {fileID: 1991828331}
   panel: {fileID: 1834812476}
 --- !u!114 &1178110354
 MonoBehaviour:
@@ -7911,7 +7911,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 160284562}
   pauseMenuUI: {fileID: 1068892753}
-  MainMenu: {fileID: 0}
 --- !u!114 &1310683324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10632,6 +10631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2063007660}
   - component: {fileID: 2063007661}
+  - component: {fileID: 2063007662}
   m_Layer: 0
   m_Name: TimeIndicator
   m_TagString: Untagged
@@ -10706,6 +10706,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2063007662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063007659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c25a17f70fca24093a3b3fea5b2c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2073822328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 629986537477770134, guid: f747c09d803f34f4c809eb1a8dc890d6, type: 3}

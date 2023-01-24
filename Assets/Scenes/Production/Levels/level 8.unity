@@ -1155,7 +1155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 447604296}
   nextlevel: {fileID: 0}
-  MaxlevelNum: 4
 --- !u!4 &160284563
 Transform:
   m_ObjectHideFlags: 0
@@ -2066,7 +2065,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   pauseMenuUI: {fileID: 65184057}
-  MainMenu: {fileID: 0}
 --- !u!114 &368564234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4372,7 +4370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002717449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.521, z: -0.074644506}
+  m_LocalPosition: {x: 0, y: -4.521, z: 0}
   m_LocalScale: {x: 0.9254465, y: 0.9254465, z: 0.9254465}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7204,6 +7202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467530823}
   - component: {fileID: 1467530824}
+  - component: {fileID: 1467530825}
   m_Layer: 0
   m_Name: TimeIndicator
   m_TagString: Untagged
@@ -7278,6 +7277,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1467530825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467530822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c25a17f70fca24093a3b3fea5b2c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1510343667
 PrefabInstance:
   m_ObjectHideFlags: 0
