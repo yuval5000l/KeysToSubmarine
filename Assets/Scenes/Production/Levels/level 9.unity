@@ -729,7 +729,7 @@ PrefabInstance:
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 202515965}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: missionManager
       value: 
@@ -808,6 +808,11 @@ Transform:
 --- !u!82 &202515964 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6492827737364396177, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+  m_PrefabInstance: {fileID: 202515962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &202515965 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3203986477770561801, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
   m_PrefabInstance: {fileID: 202515962}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &202587705
@@ -2238,7 +2243,7 @@ PrefabInstance:
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 558952852}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: missionManager
       value: 
@@ -2317,6 +2322,11 @@ Transform:
 --- !u!82 &558952851 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6492827737364396177, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+  m_PrefabInstance: {fileID: 558952849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &558952852 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3203986477770561801, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
   m_PrefabInstance: {fileID: 558952849}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &568489875
@@ -3019,7 +3029,7 @@ PrefabInstance:
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 769468115}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: missionManager
       value: 
@@ -3090,6 +3100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+--- !u!82 &769468115 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3203986477770561801, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+  m_PrefabInstance: {fileID: 769468114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &780588015
 GameObject:
   m_ObjectHideFlags: 0
@@ -5942,7 +5957,7 @@ PrefabInstance:
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1285312537}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: missionManager
       value: 
@@ -6023,6 +6038,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 6492827737364396177, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
   m_PrefabInstance: {fileID: 1285312534}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1285312537 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3203986477770561801, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+  m_PrefabInstance: {fileID: 1285312534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1299655339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6093,8 +6113,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2142718965
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d0df856a5da8c48d8b76c335bb7e18a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6198,8 +6218,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2142718965
+  m_SortingLayer: 1
   m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 28775ea495dcb41dc8e63b5873f70de2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6254,7 +6274,7 @@ PrefabInstance:
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: yellowOrbFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1319823254}
     - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: missionManager
       value: 
@@ -6333,6 +6353,11 @@ Transform:
 --- !u!82 &1319823253 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6492827737364396177, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+  m_PrefabInstance: {fileID: 1319823251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1319823254 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3203986477770561801, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
   m_PrefabInstance: {fileID: 1319823251}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323427689
