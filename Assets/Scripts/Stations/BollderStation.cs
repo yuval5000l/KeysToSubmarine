@@ -5,7 +5,7 @@ using UnityEngine;
 public class BollderStation : StationScript
 {
     // Start is called before the first frame update
-    //List<bool> check_pressed_once = new List<bool>() { false,false,false,false};
+    List<bool> check_pressed_once = new List<bool>() { false, false, false, false };
     [SerializeField] private Rigidbody2D rigi;
     [SerializeField] private AudioSource StationSound;
     //private float soundLoop = 0f;
@@ -73,19 +73,40 @@ public class BollderStation : StationScript
 
     private void getAllKeysDown()
     {
-
-        foreach (PlayerController player in players_in_station)
+        for (int i = 0; i < players_in_station.Count; i++)
         {
-            if (player.playerPressed())
+            if (players_in_station[i].playerPressed())
+            {
+                check_pressed_once[i] = true;
+            }
+            else
+            {
+                check_pressed_once[i] = false;
+            }
+        }
+        for (int i = 0; i < players_in_station.Count; i++)
+        {
+            if (check_pressed_once[i])
             {
                 pressKeysInARowCount += 1;
             }
         }
-        
+            //foreach (PlayerController player in players_in_station)
+            //{
+            //    if (player.playerPressed())
+            //    {
+            //        pressKeysInARowCount += 1;
+            //    }
+            //    else
+            //    {
+
+            //    }
+            //}
+
         if (pressKeysInARowCount >= missionsNumberOfPlayers[mission_index])
         {
             //PlayerAnimationPush();
-            pressKeysInARowCount = 0;
+            //pressKeysInARowCount = 0;
             rigi.bodyType = RigidbodyType2D.Dynamic;
             if (!isPlaying)
             {

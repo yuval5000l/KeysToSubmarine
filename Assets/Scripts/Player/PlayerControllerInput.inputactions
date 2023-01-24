@@ -71,6 +71,17 @@
                 },
                 {
                     "name": "",
+                    "id": "08584df7-ac91-4e0e-9454-0edabbd49c38",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard1",
+                    "action": "ActionB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e1c452fa-f502-41a7-b049-ce2ac8723713",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
