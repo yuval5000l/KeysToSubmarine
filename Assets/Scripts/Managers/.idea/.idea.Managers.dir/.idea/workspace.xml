@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2470c13c-d00c-4875-96e2-92b7b007218b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Managers.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Managers.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OurEventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OurEventHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +10,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../Canvases/BetweenStations.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Canvases/NextLevelCanva.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/OurEventHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlayerManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -43,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674649024888</updated>
-      <workItem from="1674649034171" duration="2150000" />
+      <workItem from="1674649034171" duration="3465000" />
     </task>
     <servers />
   </component>
