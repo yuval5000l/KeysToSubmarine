@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 34112
+  controlID: 34876
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 34113
+  controlID: 34877
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 34114
+  controlID: 34878
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7a8d0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 28b2fcff3eb7fcffd6b8fcff92bafcff2cbcfcfff8bdfcff98bffcff36c1fcffd6c2fcff7ac4fcff84d4fcfff202fdff3603fdff7a03fdff1204fdff5604fdff9604fdffa213fdfff814fdff4215fdff8215fdffd015fdff1217fdff2417fdff8e18fdff8620fdff7637fdffea3afdff443bfdfff05afdff825bfdffe05bfdff2462fdffb89ffdff76c3fdffacc9fdff2acffdff2ed8fdff6ae1fdffdeeefdff7004feffc20afeff640ffeff0013feffae16feffc41cfeff7620feff9625feffd629feff182dfeff4e31feffca34feffd63efeff2052feff74c2feffcadbfeffd0e4feff0ce9feff70e9feff54f2feffac03ffff7204ffffd425ffff402effffd62fffff7438ffffc439ffff703bffff663dffffaa3dffff1857ffff4858ffffbc73ffff6c75fffff08effff1a92ffff74abffffe8adffff62b1ffff9ed1ffffe8d4ffff0ad7ffffa0e7ffffd8fafffff4ffffffc2b70000a6b80000a4c60000fcc6000040c70000ecc7000046c80000e2e100003ae200007ee2000056e300007ef40000d6f400001af50000c4f500001ef60000240701007c070100c00701007c1a0100d41a0100181b0100481c0100362f01008e2f0100d22f010088530100e05301002454010034630100ee630100186401004e640100e864010010650100a86601008c6701005c6801008c6f0100e66f01003e870100e4880200248a0200b6ad02003ac9020014cf02008ecf02008ed00200e8d002003e0c03000e130300e8190300663303000c3403002e340300
+      m_SelectedIDs: 86930300
+      m_LastClickedID: 234374
+      m_ExpandedIDs: 329efcff86a4fcff28b2fcff3eb7fcffd6b8fcff92bafcff2cbcfcfff8bdfcff98bffcff36c1fcffd6c2fcff7ac4fcff84d4fcfff202fdff3603fdff7a03fdff1204fdff5604fdff9604fdffa213fdfff814fdff4215fdff8215fdffd015fdff1217fdff2417fdff8e18fdff8620fdff7637fdffea3afdff443bfdfff05afdff825bfdffe05bfdff2462fdffb89ffdff76c3fdffacc9fdff2acffdff2ed8fdff6ae1fdffdeeefdff7004feffc20afeff640ffeff0013feffae16feffc41cfeff7620feff9625feffd629feff182dfeff4e31feffca34feffd63efeff2052feff74c2feffcadbfeffd0e4feff0ce9feff70e9feff54f2feffac03ffff7204ffffd425ffff402effffd62fffff7438ffffc439ffff703bffff663dffffaa3dffff1857ffff4858ffffbc73ffff6c75fffff08effff1a92ffff74abffffe8adffff62b1ffff9ed1ffffe8d4ffff0ad7ffffa0e7ffffd8fafffff4ffffffc2b70000a6b80000a4c60000fcc6000040c70000ecc7000046c80000e2e100003ae200007ee2000056e300007ef40000d6f400001af50000c4f500001ef60000240701007c070100c00701007c1a0100d41a0100181b0100481c0100362f01008e2f0100d22f010088530100e05301002454010034630100ee630100186401004e640100e864010010650100a86601008c6701005c6801008c6f0100e66f01003e870100e4880200248a0200b6ad02003ac9020014cf02008ecf02008ed00200e8d002003e0c03000e130300e8190300663303000c3403002e340300ca900300ee9003006293030086930300a0930300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1057,21 +1057,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Production/Screens
+    - Assets/Scenes/Production/Tutorial levels
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes/Production/Screens
+  - Assets/Scenes/Production/Tutorial levels
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Pc\Fidaa\GameDevJam\Tribal Campfire1\KeysToSubmarine
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 303}
-    m_SelectedIDs: d66e0000
-    m_LastClickedID: 28374
+    scrollPos: {x: 0, y: 331.79996}
+    m_SelectedIDs: dc6e0000
+    m_LastClickedID: 28380
     m_ExpandedIDs: 00000000bc6e0000be6e0000c06e0000c26e0000c46e0000c66e0000c86e0000ca6e0000cc6e0000ce6e0000d06e0000d26e0000d46e0000d66e0000d86e0000da6e0000dc6e0000de6e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1125,8 +1125,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7a8d0000
-    m_LastClickedInstanceID: 36218
+    m_SelectedInstanceIDs: 86930300
+    m_LastClickedInstanceID: 234374
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300002c790000f27400004a6b0000f2950000
     m_RenameOverlay:
@@ -1152,7 +1152,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 70.79996}
+    m_ScrollPosition: {x: 0, y: 4.7999573}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 303
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: BuildPlayerWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -1203,14 +1203,14 @@ MonoBehaviour:
     y: 0
     width: 431.2
     height: 627.60004
-  m_MinSize: {x: 640, y: 580}
+  m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1245,8 +1245,8 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 36218
-  m_LastVerticalScrollValue: 0
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 194.40002
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
