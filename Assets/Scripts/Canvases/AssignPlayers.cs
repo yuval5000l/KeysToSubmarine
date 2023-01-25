@@ -37,6 +37,8 @@ public class AssignPlayers : MonoBehaviour
 
 
     private InputAction myAction1;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -448,5 +450,9 @@ public class AssignPlayers : MonoBehaviour
     public void ToLevelSelect()
     {
         SceneManager.LoadScene("ChooseLevelsScreen");
+    }
+    public void ReAssign()
+    {
+        SceneManager.LoadScene("Janitor select");
     }
 }

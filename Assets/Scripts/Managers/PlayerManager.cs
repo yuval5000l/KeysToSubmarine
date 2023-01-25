@@ -32,11 +32,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void ClearLists()
-    {
-        players_devices.Clear();
-        players_nums.Clear();
-    }
+    
     private void setColors()
     {
         string[] colors = new string[4] { "Pink", "Blue", "Orange", "Yellow" };
@@ -108,7 +104,6 @@ if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 inputya.SwitchCurrentControlScheme("Gamepad", inp);
             }
-
         }
         
     }
@@ -126,7 +121,17 @@ if (Input.GetKeyDown(KeyCode.Alpha2))
             }
         }
     }
-    
+
+    public void ClearLists()
+    {
+        players_devices.Clear();
+        players_nums.Clear();
+        for (int i = 0; i < 4; i++)
+        {
+            players_assigned_controllers[i] = false;
+        }
+    }
+
     public void RemovePlayer(InputDevice inp, int num)
     {
         for (int i = 0; i < 3; i++)
