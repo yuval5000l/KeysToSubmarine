@@ -696,8 +696,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperBorder: {fileID: 0}
   lowerBorder: {fileID: 0}
-  gameMusic: {fileID: 0}
-  menuMusic: {fileID: 0}
   button: {fileID: 434026447}
   panel: {fileID: 1787198855}
 --- !u!114 &215265581
@@ -4676,6 +4674,10 @@ PrefabInstance:
       propertyPath: missionManager
       value: 
       objectReference: {fileID: 950651665}
+    - target: {fileID: 7792370884281391993, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
+      propertyPath: numberOfPlayers
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7792370884281391996, guid: 9348b6b65478d4a45aba1336fd309805, type: 3}
       propertyPath: m_RootOrder
       value: 1

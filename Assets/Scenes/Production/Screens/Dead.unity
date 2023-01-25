@@ -238,7 +238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 1290892157}
   nextlevel: {fileID: 0}
-  MaxlevelNum: 6
 --- !u!4 &183065628
 Transform:
   m_ObjectHideFlags: 0
@@ -885,7 +884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1290892156
 Transform:
   m_ObjectHideFlags: 0
