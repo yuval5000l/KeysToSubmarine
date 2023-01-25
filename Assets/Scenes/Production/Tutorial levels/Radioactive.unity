@@ -1409,7 +1409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &424904845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4234,7 +4234,6 @@ MonoBehaviour:
   upperBorder: {fileID: 0}
   lowerBorder: {fileID: 0}
   gameMusic: {fileID: 0}
-  menuMusic: {fileID: 0}
   button: {fileID: 844849575}
   panel: {fileID: 1304993139}
 --- !u!114 &1242015005
@@ -4608,7 +4607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1342400706
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4644,7 +4643,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   pauseMenuUI: {fileID: 424904844}
-  MainMenu: {fileID: 0}
 --- !u!114 &1342400708
 MonoBehaviour:
   m_ObjectHideFlags: 0
