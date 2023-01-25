@@ -382,7 +382,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 98a9e3cb9182de146a90c8b8c0b92b9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2166214dce16e45c285386860bb04843, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -542,7 +542,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   pauseMenuUI: {fileID: 258644833}
-  MainMenu: {fileID: 155792850}
 --- !u!114 &407145134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,7 +1235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
   nextlevel: {fileID: 0}
-  MaxlevelNum: 3
 --- !u!1 &1328633752
 GameObject:
   m_ObjectHideFlags: 0
