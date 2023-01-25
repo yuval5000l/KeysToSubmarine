@@ -24,7 +24,19 @@ public class MenuMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            Destroy(this.gameObject);
+
+#endif
+    }
+
+    void OnEnable() {
+        OurEventHandler.TutorialEnded.AddListener(destroyMusic);
+    }
+
+    void OnDisable() {
+        OurEventHandler.TutorialEnded.RemoveListener(destroyMusic);
     }
 
     public void destroyMusic()

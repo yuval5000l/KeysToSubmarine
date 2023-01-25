@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
+using UnityEngine.Events;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class MainMenuScript : MonoBehaviour
     private int num_players;
     //private int index = 0;
     // Start is called before the first frame update
+
+    // public static event Action TutorialEnded;
+    public static UnityEvent TutorialEnded = new();
+
     void Start()
     {
         num_players = gameManager.getNumOfPlayers();
@@ -150,6 +156,11 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            destroyMusic();
+
+#endif
     }
 
 
@@ -171,7 +182,7 @@ public class MainMenuScript : MonoBehaviour
     
     public void destroyMusic()
     {
-        Destroy(MenuMusic.instance);
+        TutorialEnded?.Invoke();
     }
 
 

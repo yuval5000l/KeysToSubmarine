@@ -9,6 +9,9 @@ public class BackGroundScript : MonoBehaviour
     
     private float num_seconds = 2f;
     private float timer = 0f;
+    [SerializeField] private AudioSource menuMusic;
+    [SerializeField] private AudioSource levelMusic;
+    [SerializeField] private AudioSource ambience;
     //private float mini_timer = 0f;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,9 @@ public class BackGroundScript : MonoBehaviour
             {
                 skip_first = true;
             }
+            
         }
+
         // 0 top left
         // 1-16 up
         // 17 top right
@@ -51,7 +56,6 @@ public class BackGroundScript : MonoBehaviour
         //{
         //    Debug.Log(obj);
         //}
-
     }
 
     // Update is called once per frame
@@ -77,5 +81,34 @@ public class BackGroundScript : MonoBehaviour
 
         MaSparks[spark].Play("Spark" + kind_sparks);
         //Debug.Log("SETSPARK");
+    }
+
+    public void PlayMenuMusic()
+    {
+        menuMusic.Play();
+    }
+
+    public void PauseMenuMusic()
+    {
+        menuMusic.Pause();
+    }
+
+    public void StopMenuMusic()
+    {
+        menuMusic.Stop();
+    }
+        public void PlayLevelMusic()
+    {
+        levelMusic.Play();
+    }
+
+    public void PauseLevelMusic()
+    {
+        levelMusic.Pause();
+    }
+
+    public void StopLevelMusic()
+    {
+        levelMusic.Stop();
     }
 }

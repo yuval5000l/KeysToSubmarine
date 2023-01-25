@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 
@@ -14,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     private int player_dead = 0;
     private int players_in_game = 3;
     // Start is called before the first frame update
+    public static UnityEvent TutorialEnded = new();
+
     void Start()
     {
         //Debug.Log(players_devices.Count);
@@ -82,7 +85,11 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+#if UNITY_EDITOR
+if (Input.GetKeyDown(KeyCode.Alpha2))
+    destroyMusic();
+
+#endif
     }
 
     public void SetPlayer(InputDevice inp, int num, int i)
@@ -156,5 +163,9 @@ public class PlayerManager : MonoBehaviour
     public PlayerController[] getPlayers()
     {
         return players;
+    }
+    public void destroyMusic()
+    {
+        TutorialEnded?.Invoke();
     }
 }

@@ -9,7 +9,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private OurEventHandler GM;
     public static bool isGamePaused = false;
     [SerializeField] private GameObject pauseMenuUI;
+    // [SerializeField] private AudioSource menuMusic;
     private GameObject pauseFirstButton;
+    private BackGroundScript BG;
     //[SerializeField] private MainMenuScript MainMenu;
     //[SerializeField] private MaEventHandler GM;
 
@@ -17,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         GM = FindObjectOfType<OurEventHandler>().GetComponent<OurEventHandler>();
+        BG = FindObjectOfType<BackGroundScript>().GetComponent<BackGroundScript>();
         //bool first = true;
         //Debug.Log(GetComponentsInChildren<RectTransform>()[0].name);
         //Debug.Log(GetComponentsInChildren<RectTransform>()[0].GetComponentsInChildren<RectTransform>()[1].name);
@@ -72,6 +75,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
+        BG.StopMenuMusic();
+        BG.PlayLevelMusic();
     }
 
 
@@ -88,19 +93,25 @@ public class PauseMenu : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         isGamePaused = true;
+        BG.PlayMenuMusic();
+        BG.PauseLevelMusic();
     }
 
     public void Restartlevel()
     {
         Time.timeScale = 1f;
         GM.restartlevel();
+        BG.StopMenuMusic();
+        BG.StopLevelMusic();
+        BG.PlayLevelMusic();
     }
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("StartScreen");
         pauseMenuUI.SetActive(false);
-
+        BG.StopMenuMusic();
+        BG.StopLevelMusic();
     }
     public void QuitGame()
     {

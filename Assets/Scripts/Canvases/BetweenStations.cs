@@ -7,7 +7,7 @@ public class BetweenStations : MonoBehaviour
 {
     [SerializeField] private BorderScript upperBorder;
     [SerializeField] private BorderScript lowerBorder;
-    [SerializeField] private AudioSource gameMusic;
+    // [SerializeField] private AudioSource gameMusic;
     [SerializeField] private Button button;
     //private bool slideOut = false;
     [SerializeField] private GameObject panel;
@@ -52,7 +52,7 @@ public class BetweenStations : MonoBehaviour
     {
         upperBorder.SlideOut();
         lowerBorder.SlideOut();
-        gameMusic.Play();
+        // gameMusic.Play();
     }
     
 

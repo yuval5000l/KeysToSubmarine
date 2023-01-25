@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class OurEventHandler : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class OurEventHandler : MonoBehaviour
     private static int counter_tut = 0;
     private string[] tutlevels = new string[4] { "Machines", "Doors", "CleaningCarts", "Radioactive" };
     // Start is called before the first frame update
+    public static UnityEvent TutorialEnded = new();
     void Start()
     {
         if (nextlevel == null)
@@ -67,6 +69,12 @@ public class OurEventHandler : MonoBehaviour
                 SceneManager.LoadScene("Dead");
             }
         }
+#if UNITY_EDITOR
+if (Input.GetKeyDown(KeyCode.Alpha2))
+    SceneManager.LoadScene("Good Luck");
+    
+
+#endif
     }
 
     public void HealAllPlayers()
@@ -188,5 +196,9 @@ public class OurEventHandler : MonoBehaviour
         }
         orbs = Orbs;
         game_over = true;
+    }
+    public void DestroyMusic()
+    {
+        TutorialEnded?.Invoke();
     }
 }
