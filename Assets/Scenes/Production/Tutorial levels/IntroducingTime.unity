@@ -4619,7 +4619,7 @@ MonoBehaviour:
   GM: {fileID: 866837694}
   timer_text: {fileID: 108313303}
   score_text: {fileID: 1728979914}
-  missionsToWinTarget: 5
+  missionsToWinTarget: 8
   time_left: 30
   TimeIndicator: {fileID: 666958758}
   Orbs:
