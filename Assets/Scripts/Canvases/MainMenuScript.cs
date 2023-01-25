@@ -185,5 +185,9 @@ public class MainMenuScript : MonoBehaviour
         TutorialEnded?.Invoke();
     }
 
-
+    public void setLevel(int num)
+    {
+        gameManager.Setlevel(num);
+        SceneManager.LoadScene("Janitor select");
+    }
 }
