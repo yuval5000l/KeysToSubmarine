@@ -17,35 +17,19 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         GM = FindObjectOfType<OurEventHandler>().GetComponent<OurEventHandler>();
-        //bool first = true;
-        //Debug.Log(GetComponentsInChildren<RectTransform>()[0].name);
-        //Debug.Log(GetComponentsInChildren<RectTransform>()[0].GetComponentsInChildren<RectTransform>()[1].name);
-        
-        //foreach (GameObject obj in GetComponentsInChildren<GameObject>())
-        //{
-        //    if (first)
-        //    {
-        //        first = false;
-        //    }
-        //    else
-        //    {
-        //        first = true;
-        //        foreach (GameObject ob in obj.GetComponentsInChildren<GameObject>())
-        //        {
-        //            if (first)
-        //            {
-        //                first = false;
-        //            }
-        //            else
-        //            {
-        //                pauseFirstButton = ob;
-        //            }
-        //        }
-        //    }
-        //}
-        //pauseFirstButton = GetComponentInChildren<>
     }
+    public void press()
+    {
+        if (isGamePaused)
+        {
+            Resume();
 
+        }
+        else
+        {
+            Pause();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
