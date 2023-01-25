@@ -121,11 +121,13 @@ public class PlayerChooserPap : MonoBehaviour
         //(player_joined[num]) ? player_joined[num] = true ? player_joined[num] = false;
         if (!player_joined[num])
         {
+            // ADD INDICATION JOINED
             player_joined[num] = true;
 
         }
         else
         {
+            // REMOVE INDICATION JOINED
             player_joined[num] = false;
         }
         if (is_all_joined())
