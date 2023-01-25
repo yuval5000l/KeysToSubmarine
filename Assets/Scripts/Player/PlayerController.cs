@@ -450,7 +450,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.Play("JanitorDeath");
             stopPlayer = true;
-            movement = Vector2.zero; 
+            movement = Vector2.zero;
+            destroyPlayer();
         }
         // else if (radioActivity >= 6666 && !levelsOfRadioActivity[1])
         // {

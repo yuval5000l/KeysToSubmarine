@@ -53,7 +53,7 @@ public class OurEventHandler : MonoBehaviour
         if (game_over)
         {
             counter -= Time.deltaTime;
-            if (orbs.Count != 0)
+            if (orbs != null)
             {
                 foreach (GameObject orb in orbs)
                 {
