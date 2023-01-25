@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerChooser : MonoBehaviour
 {
+
+    public SpriteRenderer spriteRenderer;
     PlayerChooserPap papa;
     private int player_num = -1;
     private bool in_place = false;
