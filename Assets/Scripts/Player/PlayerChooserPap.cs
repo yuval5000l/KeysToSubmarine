@@ -13,7 +13,8 @@ public class PlayerChooserPap : MonoBehaviour
     InputDevice[] devices = new InputDevice[3];
     private OurEventHandler GM;
     [SerializeField] private Button button;
-
+    [SerializeField] private Sprite whiteSprite;
+    [SerializeField] private Sprite blackSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -123,12 +124,14 @@ public class PlayerChooserPap : MonoBehaviour
         {
             // ADD INDICATION JOINED
             player_joined[num] = true;
+            players[num].spriteRenderer.sprite = whiteSprite;
 
         }
         else
         {
             // REMOVE INDICATION JOINED
             player_joined[num] = false;
+            players[num].spriteRenderer.sprite = blackSprite;
         }
         if (is_all_joined())
         {
