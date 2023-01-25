@@ -16,11 +16,11 @@ public class MainMenuScript : MonoBehaviour
     private List<Button> buttons = new List<Button>();
     // [SerializeField] private AudioSource menuMusic;
     private int num_players;
-    public static UnityEvent TutorialEnded = new();
     //private int index = 0;
     // Start is called before the first frame update
 
     // public static event Action TutorialEnded;
+    public static UnityEvent TutorialEnded = new();
 
     void Start()
     {
@@ -99,7 +99,6 @@ public class MainMenuScript : MonoBehaviour
     //}
     public void StartGame()
     {
-        DestroyMusic();
         gameManager.Nextlevel(-1);
 
     }
@@ -157,7 +156,11 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            destroyMusic();
 
+#endif
     }
 
 
@@ -177,7 +180,7 @@ public class MainMenuScript : MonoBehaviour
         Application.Quit();
     }
     
-    public void DestroyMusic()
+    public void destroyMusic()
     {
         TutorialEnded?.Invoke();
     }
@@ -185,6 +188,8 @@ public class MainMenuScript : MonoBehaviour
     public void setLevel(int num)
     {
         gameManager.Setlevel(num);
-        SceneManager.LoadScene("Janitor select");
+        gameManager.setTut(false);
+
+        SceneManager.LoadScene("Janitor select"); 
     }
 }
