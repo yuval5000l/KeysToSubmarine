@@ -23,7 +23,7 @@ public class OurEventHandler : MonoBehaviour
     private float counter = 2;
     private static bool tutorial = true;
     private static int counter_tut = 0;
-    private string[] tutlevels = new string[4] { "Machines", "Doors", "CleaningCarts", "Radioactive" };
+    private string[] tutlevels = new string[5] { "Machines", "Doors", "CleaningCarts", "Radioactive","IntroducingTime"};
     // Start is called before the first frame update
     public static UnityEvent TutorialEnded = new();
     void Start()
@@ -143,7 +143,7 @@ if (Input.GetKeyDown(KeyCode.Alpha2))
         if (tutorial)
         {
             counter_tut += numlevel + 1;
-            if (counter_tut == 4)
+            if (counter_tut == 5)
             {
                 tutorial = false;
                 levelNumber = 0;
