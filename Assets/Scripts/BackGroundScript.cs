@@ -11,7 +11,7 @@ public class BackGroundScript : MonoBehaviour
     private float timer = 0f;
     [SerializeField] private AudioSource menuMusic;
     [SerializeField] private AudioSource levelMusic;
-    [SerializeField] private AudioSource ambience;
+    private AudioSource ambience;
     //private float mini_timer = 0f;
     // Start is called before the first frame update
     void Start()
@@ -56,6 +56,7 @@ public class BackGroundScript : MonoBehaviour
         //{
         //    Debug.Log(obj);
         //}
+        ambience =  GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
