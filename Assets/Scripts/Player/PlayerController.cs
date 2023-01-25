@@ -52,9 +52,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource fix;
     [SerializeField] private AudioSource push;
 
+    private PauseMenu pauseMenu;
+
     private bool stopPlayer = false;
     void Awake()
     {
+        pauseMenu = FindObjectOfType<PauseMenu>();
+        //Debug.Log(pauseMenu);
         sprite = GetComponent<SpriteRenderer>();
         default_material = sprite.material;
         radio_active_material = Resources.Load<Material>("Radioactive_player");
@@ -68,6 +72,11 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(inputya.devices);
         //inputya.SwitchCurrentControlScheme("keyboard2");
+    }
+
+    public void OnPauseDatMenuuu()
+    {
+        pauseMenu.press();
     }
     private void Start()
     {
